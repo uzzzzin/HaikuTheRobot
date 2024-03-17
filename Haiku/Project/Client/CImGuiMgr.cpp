@@ -16,6 +16,7 @@
 #include "Outliner.h"
 #include "MenuUI.h"
 #include "ListUI.h"
+#include "Animation2DTool.h"
 
 #include "ParamUI.h"
 
@@ -191,6 +192,10 @@ void CImGuiMgr::create_ui()
 
     // List
     pUI = new ListUI;
+    AddUI(pUI->GetID(), pUI);
+
+    // Animation2D Tool
+    pUI = new Animation2DTool;
     AddUI(pUI->GetID(), pUI);
 }
 

@@ -174,11 +174,11 @@ void CLevel::ChangeState(LEVEL_STATE _NextState)
 		// None, Stop -> Play
 		if (LEVEL_STATE::STOP == m_State || LEVEL_STATE::NONE == m_State)
 		{
-			// 레벨 스테이트 변경
-			m_State = _NextState;
 
 			begin();
 		}
+		// 레벨 스테이트 변경
+		m_State = _NextState;
 	}
 
 	// 플레이 -> 정지 or 일시정지
