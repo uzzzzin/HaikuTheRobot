@@ -1,41 +1,48 @@
 #pragma once
 #include "CComponent.h"
 
-enum class COLLIDER2D_TYPE 
-{
-    RECT,
-    CIRCLE,
-};
-
-
 class CCollider2D :
     public CComponent
 {
 private:
-    Vec3            m_vOffsetPos;
-    Vec3            m_vOffsetScale;
-    int             m_CollisionCount;   // 다른 충돌체와 충돌중인 횟수
-    bool            m_bAbsolute;
+    Vec3    m_Offset;   // 오프셋 포지션
+    Vec3    m_FinalPos; // 충돌체의 최종 위치 ( Object Position + Collider offset )
 
-    Matrix          m_matColWorld;
-    COLLIDER2D_TYPE m_Type;    
+    Vec3    m_Scale;    // 오브젝트로부터 상대적인 배율    
+    Vec3    m_Rotation; // 오브젝트로부터 상대적인 회전(자전)
+
+    bool    m_Absolute; // true 인 경우, 오브젝트의 크기에 영향을 받지않는 절대(고정)크기로 계산
+
+    Matrix  m_matColWorld;
+
+    int     m_OverlapCount;
+
+    bool    m_Active;       // 충돌체의 활성화 여부
+    bool    m_SemiDeactive; // 비활성화 예정상태
 
 public:
-    void SetAbsolute(bool _bAbsol) { m_bAbsolute = _bAbsol; }
-    void SetOffsetPos(Vec2 _vOffset) { m_vOffsetPos = Vec3(_vOffset.x, _vOffset.y, 0.f); }
-    void SetOffsetScale(Vec2 _vOffsetScale) { m_vOffsetScale = Vec3(_vOffsetScale.x, _vOffsetScale.y, 1.f); }
-    void SetColliderType(COLLIDER2D_TYPE _Type) { m_Type = _Type; }
+    Vec3 GetOffset() { return m_Offset; }
+    Vec3 GetScale() { return m_Scale; }
+    Vec3 GetFinalPos() { return m_FinalPos; }
+    float GetRotationZ() { return m_Rotation.z; }
 
-    bool IsAbsolute() { return m_bAbsolute; }
-    Vec2 GetOffsetPos() { return Vec2(m_vOffsetPos.x, m_vOffsetPos.y); }
-    Vec2 GetOffsetScale() { return Vec2(m_vOffsetScale.x, m_vOffsetScale.y); }
-    COLLIDER2D_TYPE GetType() { return m_Type; }
+    void SetOffset(Vec3 _Offset) { m_Offset = _Offset; }
+    void SetScale(Vec3 _Scale) { m_Scale = _Scale; }
+    void SetRotationZ(float _Angle) { m_Rotation.z = _Angle; }
 
-    const Matrix& GetColliderWorldMat() { return m_matColWorld; }
+    const Matrix& GetWorldMat() { return m_matColWorld; }
+
+    void SetAbsolute(bool _Abs) { m_Absolute = _Abs; }
+    bool IsAbsolute() { return m_Absolute; }
+
+    void Activate();
+    void Deactivate();
+
+    bool IsActive() { return m_Active; }
+    bool IsSemiDeactive() { return m_SemiDeactive; }
 
 public:
     virtual void finaltick() override;
-
 
 public:
     void BeginOverlap(CCollider2D* _OtherCollider);
@@ -45,10 +52,12 @@ public:
     virtual void SaveToFile(FILE* _File) override;
     virtual void LoadFromFile(FILE* _File) override;
 
-    CLONE(CCollider2D);
 public:
+    CLONE(CCollider2D);
     CCollider2D();
     CCollider2D(const CCollider2D& _OriginCollider2D);
     ~CCollider2D();
+
+    friend class CTaskMgr;
 };
 

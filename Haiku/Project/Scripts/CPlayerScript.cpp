@@ -93,9 +93,19 @@ void CPlayerScript::tick()
 
 	if (KEY_TAP(KEY::SPACE))
 	{
-		Instantiate(m_Missile, Transform()->GetWorldPos(), 0);
+		//Instantiate(m_Missile, Transform()->GetWorldPos(), 0);
 		//GamePlayStatic::Play2DSound(L"sound\\DM.wav", 1, 0.5f, false);
-		GamePlayStatic::Play2DBGM(L"sound\\DM.wav", 0.5f);
+		//GamePlayStatic::Play2DBGM(L"sound\\DM.wav", 0.5f);
+		if (Collider2D()->IsActive())
+		{
+			Collider2D()->Deactivate();
+		}
+		else
+		{
+			Collider2D()->Activate();
+		}
+		
+
 	}
 
 	if (KEY_PRESSED(KEY::SPACE))

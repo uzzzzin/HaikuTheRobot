@@ -9,6 +9,8 @@
 #include "CAssetMgr.h"
 #include "CRenderMgr.h"
 
+#include "CCollider2D.h"
+
 CTaskMgr::CTaskMgr()
 	: m_bCreateObject(false)
 	, m_bDeleteObject(false)
@@ -114,6 +116,21 @@ void CTaskMgr::tick()
 
 			break;
 		}
+
+		case TASK_TYPE::COLLIDER2D_SEMI_DEACTIVE:
+		{
+			CCollider2D* pCollider = (CCollider2D*)m_vecTask[i].Param_1;
+			pCollider->m_SemiDeactive = true;
+		}
+		break;
+
+		case TASK_TYPE::COLLIDER2D_DEACTIVE:
+		{
+			CCollider2D* pCollider = (CCollider2D*)m_vecTask[i].Param_1;
+			pCollider->m_SemiDeactive = false;
+			pCollider->m_Active = false;
+		}
+		break;
 		case TASK_TYPE::ADD_CHILD:
 
 			break;
