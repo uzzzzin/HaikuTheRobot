@@ -14,7 +14,6 @@ private:
 
 	UI*				m_Parent;
 	vector<UI*>		m_vecChildUI;
-
 	
 
 public:

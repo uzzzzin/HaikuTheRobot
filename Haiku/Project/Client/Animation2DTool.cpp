@@ -3,22 +3,24 @@
 
 #include <Engine/CTexture.h>
 #include <Engine/CPathMgr.h>
+#include <Engine/CAnim.h>
 
 Animation2DTool::Animation2DTool()
 	: UI("Animation2DTool", "##Animation2DTool")
-	, curAtlasTex (nullptr)
-	, curFrameTex (nullptr)
+	, curAtlasTex(nullptr)
+	, curFrameTex(nullptr)
 	, gridWidthCnt(1)
-	, gridHeightCnt (1)
-	, setGrid (false)
-	, setClickedRect (false)
-	, atlasDiv (1)
+	, gridHeightCnt(1)
+	, setGrid(false)
+	, setClickedRect(false)
+	, atlasDiv(1)
 {
 }
 
 Animation2DTool::~Animation2DTool()
 {
 }
+
 
 void Animation2DTool::tick()
 {
@@ -148,6 +150,8 @@ void Animation2DTool::render_update()
 					ImVec2 rectLeftTop;
 					ImVec2 rectRightBottom;
 
+					tAnimFrm tmpFrm = {};
+
 					ImVec2 mousePos = ImGui::GetMousePos();
 
 					for (int row = 0; row < gridHeightCnt; ++row)
@@ -165,9 +169,14 @@ void Animation2DTool::render_update()
 
 								addRectPos.push_back(rectLeftTop);
 								addRectPos.push_back(rectRightBottom);
+
+								
+
 							}
 						}
 					}
+
+					animFrms.push_back(tmpFrm);
 				}
 
 				if (setClickedRect)
@@ -178,7 +187,6 @@ void Animation2DTool::render_update()
 					}
 				}
 			}
-			
 
 
 
@@ -192,15 +200,51 @@ void Animation2DTool::render_update()
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+			//
+			//// 애니메이션 Save 과정
+			//if (ImGui::Button("Animation Save", ImVec2(100, 25)))
+			//{
+			//	SaveAnimation2D();
+			//}
 
 			ImGui::End();
 		}
 		
 	}
 
-	
+
+
+
+
+	// 애니메이션 Load 과정
+	ImGui::SameLine();
+	if (ImGui::Button("Animation Load", ImVec2(110, 25)))
+	{
+		LoadAnimation2D();
+	}
 	
 
 }
 
+void Animation2DTool::SaveAnimation2D()
+{
+	int a = 0;
 
+}
+
+void Animation2DTool::LoadAnimation2D()
+{
+	int a = 0;
+}

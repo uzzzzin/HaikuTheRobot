@@ -2,7 +2,7 @@
 #include "UI.h"
 
 #include <Engine/CTexture.h>
-#include <Engine/CAnim.h                                                                            >
+#include <Engine/CAnim.h>
 
 // Animation2D Tool
 // - 아틀라스 이미지 텍스쳐 불러오기.
@@ -14,6 +14,7 @@ class Animation2DTool :
 {
 
 public:
+
     Ptr<CTexture> curAtlasTex;
     Ptr<CTexture> curFrameTex;
 
@@ -29,10 +30,12 @@ public:
     bool setClickedRect;
 
     vector<ImVec2> addRectPos;
+    vector<tAnimFrm> animFrms;
 
 
 public:
-    //Ptr<CTexture> MakeAtlasFromFileName(const wstring& _filePath);
+    void SaveAnimation2D();
+    void LoadAnimation2D();
 
 public:
     virtual void tick() override;

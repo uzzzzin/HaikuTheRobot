@@ -162,6 +162,17 @@ void CCreateTempLevel::CreateTempLevel()
 
 	pTempLevel->AddObject(pObj, L"Background", false);
 
+	// Particle Object
+	CGameObject* pParticleObj = new CGameObject;
+	pParticleObj->SetName(L"Particle");
+
+	pParticleObj->AddComponent(new CTransform);
+	pParticleObj->AddComponent(new CParticleSystem);
+
+	pParticleObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 200.f));
+
+	pTempLevel->AddObject(pParticleObj, L"Player", false);
+
 	// Player Object »ý¼º
 	pObj = new CGameObject;
 	pObj->SetName(L"Player");

@@ -10,6 +10,7 @@
 #include "CImGuiMgr.h"
 #include "Inspector.h"
 #include "TreeUI.h"
+#include "MenuUI.h"
 
 #include <Engine/CTaskMgr.h>
 
@@ -99,6 +100,9 @@ void Outliner::SelectObject(DWORD_PTR _Node)
 
 	Inspector* pInspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
 	pInspector->SetTargetObject(pObject);	
+
+	MenuUI* pMenu = (MenuUI*)CImGuiMgr::GetInst()->FindUI("##Menu");
+	pMenu->SetTargetGO(pObject);
 }
 
 void Outliner::DragDropObject(DWORD_PTR _Dest, DWORD_PTR _Source)
