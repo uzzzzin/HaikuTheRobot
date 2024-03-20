@@ -12,7 +12,6 @@ public:
 
 public:
     CGameObject* GetTargetGO() {return m_targetGO;}
-
     void SetTargetGO(CGameObject* _GO) { m_targetGO = _GO; }
 
 

@@ -1,6 +1,11 @@
 #include "pch.h"
 #include "CWooScript.h"
 
+#include <Engine/CGameObject.h>
+
+#include <Engine/CMaterial.h>
+#include <Engine/CRenderComponent.h>
+
 CWooScript::CWooScript()
 	:CScript(WOOSCRIPT)
 {
@@ -12,15 +17,15 @@ CWooScript::~CWooScript()
 
 void CWooScript::begin()
 {
+	//Ptr<CTexture> pAltasTex = CAssetMgr::GetInst()->Load<CTexture>(L"texture\\TILE.bmp", L"texture\\TILE.bmp");
+
+	//GetRenderComponent()->GetDynamicMaterial();
 }
 
 void CWooScript::tick()
 {
-	if (KEY_TAP(KEY::B))
-		Animator2D()->Play(L"test");
-
-	if (KEY_TAP(KEY::V))
-		Animator2D()->Play(L"test2");
+	if (KEY_TAP(KEY::T))
+		Animator2D()->Play(L"tileTest");
 }
 
 void CWooScript::BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)

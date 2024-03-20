@@ -184,15 +184,28 @@ void MenuUI::GameObject()
 {
     if (ImGui::BeginMenu("GameObject"))
     {
-        if (ImGui::MenuItem("Create Empty Object", ""))
+        if (ImGui::BeginMenu("Create Empty Object", ""))
         {
-            CGameObject* pNewObj = new CGameObject;
-            pNewObj->SetName(L"New GameObject");
-            pNewObj->AddComponent(new CTransform);
-            GamePlayStatic::SpawnGameObject(pNewObj, 0);
+            if (ImGui::BeginMenu("SetName"))
+            {
+                static char textBuffer[256] = "";
+                ImGui::InputText("##GOName", textBuffer, IM_ARRAYSIZE(textBuffer));
 
-            m_targetGO = pNewObj;
+               if (ImGui::Button("create"))
+               {
+                   string str(textBuffer);
+                   wstring GOname = ToWString(str);
+                   CGameObject* pNewObj = new CGameObject;
+                   pNewObj->SetName(GOname);
+                   pNewObj->AddComponent(new CTransform);
+                   GamePlayStatic::SpawnGameObject(pNewObj, 0);
+                   m_targetGO = pNewObj;
+               }
+               ImGui::EndMenu(); // Set Go Name
+            }
+            ImGui::EndMenu();
         }
+
         ImGui::Separator();
 
         if (ImGui::BeginMenu("Component", ""))
@@ -329,6 +342,26 @@ void MenuUI::GameObject()
             ImGui::EndMenu();
         }
 
+        //if (ImGui::BeginMenu("Script", ""))
+        //{
+        //    vector<wstring> vecScriptName;
+        //    CScriptMgr::GetScriptInfo(vecScriptName);
+
+        //    for (size_t i = 0; i < vecScriptName.size(); ++i)
+        //    {
+        //        if (ImGui::MenuItem(ToString(vecScriptName[i]).c_str()))
+        //        {
+        //            Inspector* inspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
+        //            if (nullptr != inspector->GetTargetObject())
+        //            {                     
+        //                inspector->GetTargetObject()->AddComponent(CScriptMgr::GetScript(vecScriptName[i]));
+        //            }
+        //        }
+        //    }
+
+        //    ImGui::EndMenu();
+        //}
+
         if (ImGui::BeginMenu("Script", ""))
         {
             vector<wstring> vecScriptName;
@@ -336,13 +369,27 @@ void MenuUI::GameObject()
 
             for (size_t i = 0; i < vecScriptName.size(); ++i)
             {
-                if (ImGui::MenuItem(ToString(vecScriptName[i]).c_str()))
+                if (ImGui::BeginMenu(ToString(vecScriptName[i]).c_str()))
                 {
                     Inspector* inspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
-                    if (nullptr != inspector->GetTargetObject())
-                    {                     
-                        inspector->GetTargetObject()->AddComponent(CScriptMgr::GetScript(vecScriptName[i]));
+
+                    if (ImGui::MenuItem(u8"추가"))
+                    {
+                        if (nullptr != inspector->GetTargetObject())
+                        {
+                            inspector->GetTargetObject()->AddComponent(CScriptMgr::GetScript(vecScriptName[i]));
+                        }
                     }
+
+                    if (ImGui::MenuItem(u8"삭제"))
+                    {
+                        if (nullptr != inspector->GetTargetObject())
+                        {
+                            inspector->GetTargetObject()->deleteScript(vecScriptName[i]);
+                        }
+                    }
+
+                    ImGui::EndMenu(); // 스크립트 각각의 Begin
                 }
             }
 

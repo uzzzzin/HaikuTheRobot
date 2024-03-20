@@ -94,6 +94,9 @@ void CPlayerScript::tick()
 	if (KEY_TAP(KEY::T))
 		Animator2D()->Play(L"test");
 
+	if (KEY_TAP(KEY::R))
+		Animator2D()->Play(L"tileTest");
+
 	if (KEY_TAP(KEY::SPACE))
 	{
 		//Animator2D()->Play(L"test");
@@ -111,6 +114,7 @@ void CPlayerScript::tick()
 		
 
 	}
+
 
 	if (KEY_PRESSED(KEY::SPACE))
 	{

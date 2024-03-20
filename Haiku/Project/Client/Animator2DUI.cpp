@@ -335,7 +335,7 @@ Ptr<CTexture> Animator2DUI::SetImageForMakeAnim()
 	ofn.lpstrFile = szFilePath;
 	ofn.lpstrFileTitle = NULL;
 	ofn.nMaxFile = sizeof(szFilePath);
-	ofn.lpstrFilter = L"ALL\0*.*\0texture\0*.png";
+	ofn.lpstrFilter = L"ALL\0*.*\0texture\0*.png\0*.bmp";
 	ofn.nFilterIndex = 1;
 
 	wstring strInitPath = CPathMgr::GetContentPath();

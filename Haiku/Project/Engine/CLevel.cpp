@@ -157,40 +157,70 @@ void CLevel::clear()
 	}
 }
 
+//void CLevel::ChangeState(LEVEL_STATE _NextState)
+//{
+//	if (m_State == _NextState)
+//		return;
+//
+//	// 정지 -> 플레이
+//	if ((LEVEL_STATE::STOP == m_State || LEVEL_STATE::PAUSE == m_State || LEVEL_STATE::NONE == m_State)
+//		&& LEVEL_STATE::PLAY == _NextState)
+//	{
+//		CTimeMgr::GetInst()->LockDeltaTime(false);
+//
+//		// 레벨 카메라 모드
+//		CRenderMgr::GetInst()->ActiveEditorMode(false);
+//
+//		// None, Stop -> Play
+//		if (LEVEL_STATE::STOP == m_State || LEVEL_STATE::NONE == m_State)
+//		{
+//
+//			begin();
+//		}
+//		// 레벨 스테이트 변경
+//		m_State = _NextState;
+//	}
+//
+//	// 플레이 -> 정지 or 일시정지
+//	else if ( (LEVEL_STATE::PLAY == m_State || LEVEL_STATE::NONE == m_State) &&
+//		(LEVEL_STATE::STOP == _NextState || LEVEL_STATE::PAUSE == _NextState || LEVEL_STATE::NONE == _NextState))
+//	{
+//		// 레벨 스테이트 변경
+//		m_State = _NextState;
+//
+//		CTimeMgr::GetInst()->LockDeltaTime(true);
+//
+//		// 에디터 카메라 모드
+//		CRenderMgr::GetInst()->ActiveEditorMode(true);
+//	}
+//}
+
 void CLevel::ChangeState(LEVEL_STATE _NextState)
 {
 	if (m_State == _NextState)
 		return;
 
-	// 정지 -> 플레이
-	if ((LEVEL_STATE::STOP == m_State || LEVEL_STATE::PAUSE == m_State || LEVEL_STATE::NONE == m_State)
-		&& LEVEL_STATE::PLAY == _NextState)
+	// case: 에디터 -> 게임 (정지 -> 플레이)
+	if ((m_State == LEVEL_STATE::STOP || m_State == LEVEL_STATE::PAUSE || m_State == LEVEL_STATE::NONE)
+		&& _NextState == LEVEL_STATE::PLAY)
 	{
 		CTimeMgr::GetInst()->LockDeltaTime(false);
+		CRenderMgr::GetInst()->ActiveEditorMode(false); // 레벨 카메라
 
-		// 레벨 카메라 모드
-		CRenderMgr::GetInst()->ActiveEditorMode(false);
-
-		// None, Stop -> Play
 		if (LEVEL_STATE::STOP == m_State || LEVEL_STATE::NONE == m_State)
 		{
-
+			m_State = _NextState;
 			begin();
 		}
-		// 레벨 스테이트 변경
-		m_State = _NextState;
 	}
 
-	// 플레이 -> 정지 or 일시정지
-	else if ( (LEVEL_STATE::PLAY == m_State || LEVEL_STATE::NONE == m_State) &&
-		(LEVEL_STATE::STOP == _NextState || LEVEL_STATE::PAUSE == _NextState || LEVEL_STATE::NONE == _NextState))
+	// case: 게임 -> 에디터 (플레이 -> 정지)
+	else if ((m_State == LEVEL_STATE::PLAY ||  m_State == LEVEL_STATE::NONE) &&
+		(_NextState == LEVEL_STATE::STOP || _NextState == LEVEL_STATE::PAUSE  || _NextState == LEVEL_STATE::NONE))
 	{
-		// 레벨 스테이트 변경
-		m_State = _NextState;
-
 		CTimeMgr::GetInst()->LockDeltaTime(true);
-
-		// 에디터 카메라 모드
-		CRenderMgr::GetInst()->ActiveEditorMode(true);
+		CRenderMgr::GetInst()->ActiveEditorMode(true); // 에디터 카메라
 	}
+
+	m_State = _NextState;
 }

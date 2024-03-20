@@ -22,8 +22,12 @@
     <ClInclude Include="CMonsterScript.h">
       <Filter>Scripts</Filter>
     </ClInclude>
-    <ClInclude Include="CWooScript.h" />
-    <ClInclude Include="CTestState.h" />
+    <ClInclude Include="CTestState.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="CWooScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -47,8 +51,12 @@
     <ClCompile Include="CMonsterScript.cpp">
       <Filter>Scripts</Filter>
     </ClCompile>
-    <ClCompile Include="CWooScript.cpp" />
-    <ClCompile Include="CTestState.cpp" />
+    <ClCompile Include="CTestState.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="CWooScript.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Default">
