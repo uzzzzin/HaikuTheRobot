@@ -17,6 +17,8 @@ void Inspector::CreateChildUI()
 #include "Light2DUI.h"
 #include "Animator2DUI.h"
 #include "PrefabUI.h"
+#include "TileMapUI.h"
+#include "ParticleSystemUI.h"
 
 void Inspector::CreateComponentUI()
 {
@@ -39,6 +41,14 @@ void Inspector::CreateComponentUI()
 	m_arrComUI[(UINT)COMPONENT_TYPE::ANIMATOR2D] = new Animator2DUI;
 	m_arrComUI[(UINT)COMPONENT_TYPE::ANIMATOR2D]->Deactivate();
 	AddChildUI(m_arrComUI[(UINT)COMPONENT_TYPE::ANIMATOR2D]);
+
+	m_arrComUI[(UINT)COMPONENT_TYPE::TILEMAP] = new TileMapUI;
+	m_arrComUI[(UINT)COMPONENT_TYPE::TILEMAP]->Deactivate();
+	AddChildUI(m_arrComUI[(UINT)COMPONENT_TYPE::TILEMAP]);
+
+	m_arrComUI[(UINT)COMPONENT_TYPE::PARTICLESYSTEM] = new ParticleSystemUI;
+	m_arrComUI[(UINT)COMPONENT_TYPE::PARTICLESYSTEM]->Deactivate();
+	AddChildUI(m_arrComUI[(UINT)COMPONENT_TYPE::PARTICLESYSTEM]);
 
 
 }

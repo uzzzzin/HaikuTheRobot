@@ -39,6 +39,9 @@
 #include "C:\Users\woo06\Desktop\Haiku\HaikuTheRobot\Haiku\Project\Client\Content.cpp"
 
 
+#include "C:\Users\woo06\Desktop\Haiku\HaikuTheRobot\Haiku\Project\Client\ParticleSystemUI.cpp"
+
+
 #include "C:\Users\woo06\Desktop\Haiku\HaikuTheRobot\Haiku\Project\Client\ScriptUI.cpp"
 
 

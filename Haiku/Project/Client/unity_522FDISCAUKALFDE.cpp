@@ -54,6 +54,9 @@
 #include "C:\Users\woo06\Desktop\Haiku\HaikuTheRobot\Haiku\Project\Client\TextureUI.cpp"
 
 
+#include "C:\Users\woo06\Desktop\Haiku\HaikuTheRobot\Haiku\Project\Client\TileMapUI.cpp"
+
+
 #include "C:\Users\woo06\Desktop\Haiku\HaikuTheRobot\Haiku\Project\Client\TransformUI.cpp"
 
 

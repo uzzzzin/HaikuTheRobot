@@ -268,6 +268,10 @@
     <ClInclude Include="ScriptUI.h">
       <Filter>02. UI\3. Inspector\ComponentUI\Script</Filter>
     </ClInclude>
+    <ClInclude Include="TileMapUI.h">
+      <Filter>02. UI\3. Inspector\ComponentUI\TileMap</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleSystemUI.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -410,5 +414,9 @@
     <ClCompile Include="ScriptUI.cpp">
       <Filter>02. UI\3. Inspector\ComponentUI\Script</Filter>
     </ClCompile>
+    <ClCompile Include="TileMapUI.cpp">
+      <Filter>02. UI\3. Inspector\ComponentUI\TileMap</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleSystemUI.cpp" />
   </ItemGroup>
 </Project>

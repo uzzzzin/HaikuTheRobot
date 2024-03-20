@@ -296,7 +296,7 @@ void MenuUI::GameObject()
                 }
                 ImGui::EndMenu();
             }
-            if (ImGui::BeginMenu("MeshRender"))
+            if (ImGui::BeginMenu("(RC)MeshRender"))
             {
                 if (ImGui::MenuItem(u8"추가"))
                 {
@@ -310,7 +310,7 @@ void MenuUI::GameObject()
                 }
                 ImGui::EndMenu();
             }
-            if (ImGui::BeginMenu("ParticleSystem"))
+            if (ImGui::BeginMenu("(RC)ParticleSystem"))
             {
                 if (ImGui::MenuItem(u8"추가"))
                 {
@@ -324,7 +324,7 @@ void MenuUI::GameObject()
                 }
                 ImGui::EndMenu();
             }
-            if (ImGui::BeginMenu("TileMap"))
+            if (ImGui::BeginMenu("(RC)TileMap"))
             {
                 if (ImGui::MenuItem(u8"추가"))
                 {
@@ -341,26 +341,6 @@ void MenuUI::GameObject()
 
             ImGui::EndMenu();
         }
-
-        //if (ImGui::BeginMenu("Script", ""))
-        //{
-        //    vector<wstring> vecScriptName;
-        //    CScriptMgr::GetScriptInfo(vecScriptName);
-
-        //    for (size_t i = 0; i < vecScriptName.size(); ++i)
-        //    {
-        //        if (ImGui::MenuItem(ToString(vecScriptName[i]).c_str()))
-        //        {
-        //            Inspector* inspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
-        //            if (nullptr != inspector->GetTargetObject())
-        //            {                     
-        //                inspector->GetTargetObject()->AddComponent(CScriptMgr::GetScript(vecScriptName[i]));
-        //            }
-        //        }
-        //    }
-
-        //    ImGui::EndMenu();
-        //}
 
         if (ImGui::BeginMenu("Script", ""))
         {
