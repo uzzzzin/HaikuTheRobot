@@ -184,6 +184,13 @@ void MenuUI::GameObject()
 {
     if (ImGui::BeginMenu("GameObject"))
     {
+        if (ImGui::MenuItem("Delete Target Object", ""))
+        {
+            m_targetGO->Destroy();
+        }
+
+        ImGui::Separator();
+
         if (ImGui::BeginMenu("Create Empty Object", ""))
         {
             if (ImGui::BeginMenu("SetName"))
