@@ -91,8 +91,8 @@ void CPlayerScript::tick()
 	Transform()->SetRelativePos(vPos);
 	Transform()->SetRelativeRotation(vRot);
 
-	if (KEY_TAP(KEY::N))
-		Animator2D()->Play(L"test7");
+	if (KEY_TAP(KEY::T))
+		Animator2D()->Play(L"test");
 
 	if (KEY_TAP(KEY::SPACE))
 	{

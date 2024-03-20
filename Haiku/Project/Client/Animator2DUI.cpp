@@ -248,6 +248,20 @@ void Animator2DUI::render_update()
 		static char textBuffer[256] = "";
 		ImGui::InputText("##AnimKey", textBuffer, IM_ARRAYSIZE(textBuffer));
 
+		// ----------------------------------------------------------
+
+		static float tmpFPS = 10.f;
+		ImGui::Text("Duration Setting");
+		ImGui::SameLine();
+		ImGui::InputFloat("##Duration", &tmpFPS);
+
+		for (int i = 0; i < animFrms.size(); ++i)
+		{
+			animFrms[i].Duration = 1 / tmpFPS;
+		}
+
+		// ----------------------------------------------------------
+
 		if (ImGui::Button("offset setting"))
 		{
 			vector<wstring> wvec;
@@ -299,28 +313,6 @@ void Animator2DUI::render_update()
 			m_curAtlasTex = nullptr;
 		}
 
-		//// Animation 미리보기
-		//if (ImGui::Button("Preview"))
-		//{
-		//	bPreviewBegin = true;
-		//}
-		//
-		//if(bPreviewBegin)
-		//{
-		//	ImGui::SetNextWindowSize(ImVec2(xSize * atlasDiv, ySize * atlasDiv));
-		//	ImGui::Begin("Preview", &bPreviewBegin);
-
-		//	if (0 == animFrms.size())
-		//		return;
-
-		//	
-
-		//	// 애니메이션 걍 야매로 잘라서 보여주는 거임
-
-
-
-		//	ImGui::End();
-		//}
 
 		ImGui::End(); // 아틀라스 편집창 닫는
 
