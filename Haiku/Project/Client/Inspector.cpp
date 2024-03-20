@@ -58,20 +58,10 @@ void Inspector::SetTargetObject(CGameObject* _Object)
 	}
 
 	// 해당 오브젝트가 보유하고 있는 Script 에 맞추어서 ScriptUI 를 활성화 시킨다.
-
 	for (size_t i = 0; i < m_vecScriptUI.size(); ++i)
 	{
 		m_vecScriptUI[i]->Deactivate();
 	}
-
-	//if (nullptr == _Object) // 오브젝트가 없을 때
-	//{
-	//	for (size_t i = 0; i < m_vecScriptUI.size(); ++i)
-	//	{
-	//		m_vecScriptUI[i]->Deactivate();
-	//	}
-
-	//}
 
 
 	if(nullptr != _Object) // 오브젝트 있을 때

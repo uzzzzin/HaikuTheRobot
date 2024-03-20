@@ -207,7 +207,7 @@ void MenuUI::GameObject()
                         m_targetGO->AddComponent(new CTransform);
                 }
 
-                ImGui::MenuItem(u8"삭제"); // 트랜스폼은 삭제가 되면 안 되지 않을까? .. 
+                ImGui::MenuItem(u8"삭제");
 
                 ImGui::EndMenu();
             }
@@ -231,7 +231,6 @@ void MenuUI::GameObject()
             {
                 if (ImGui::MenuItem(u8"추가"))
                 {
-                    // 만약 오브젝트가 트랜스폼 안 들고 있으면 추가
                     if (nullptr == m_targetGO->GetComponent(COMPONENT_TYPE::ANIMATOR2D))
                         m_targetGO->AddComponent(new CAnimator2D);
                 }
@@ -246,7 +245,6 @@ void MenuUI::GameObject()
             {
                 if (ImGui::MenuItem(u8"추가"))
                 {
-                    // 만약 오브젝트가 트랜스폼 안 들고 있으면 추가
                     if (nullptr == m_targetGO->GetComponent(COMPONENT_TYPE::LIGHT2D))
                         m_targetGO->AddComponent(new CLight2D);
                 }
@@ -261,7 +259,6 @@ void MenuUI::GameObject()
             {
                 if (ImGui::MenuItem(u8"추가"))
                 {
-                    // 만약 오브젝트가 트랜스폼 안 들고 있으면 추가
                     if (nullptr == m_targetGO->GetComponent(COMPONENT_TYPE::CAMERA))
                         m_targetGO->AddComponent(new CCamera);
                 }
@@ -276,7 +273,6 @@ void MenuUI::GameObject()
             {
                 if (ImGui::MenuItem(u8"추가"))
                 {
-                    // 만약 오브젝트가 트랜스폼 안 들고 있으면 추가
                     if (nullptr == m_targetGO->GetComponent(COMPONENT_TYPE::STATEMACHINE))
                         m_targetGO->AddComponent(new CStateMachine);
                 }
@@ -291,7 +287,6 @@ void MenuUI::GameObject()
             {
                 if (ImGui::MenuItem(u8"추가"))
                 {
-                    // 만약 오브젝트가 트랜스폼 안 들고 있으면 추가
                     if (nullptr == m_targetGO->GetComponent(COMPONENT_TYPE::MESHRENDER))
                         m_targetGO->AddComponent(new CMeshRender);
                 }
@@ -306,7 +301,6 @@ void MenuUI::GameObject()
             {
                 if (ImGui::MenuItem(u8"추가"))
                 {
-                    // 만약 오브젝트가 트랜스폼 안 들고 있으면 추가
                     if (nullptr == m_targetGO->GetComponent(COMPONENT_TYPE::PARTICLESYSTEM))
                         m_targetGO->AddComponent(new CParticleSystem);
                 }
@@ -321,7 +315,6 @@ void MenuUI::GameObject()
             {
                 if (ImGui::MenuItem(u8"추가"))
                 {
-                    // 만약 오브젝트가 트랜스폼 안 들고 있으면 추가
                     if (nullptr == m_targetGO->GetComponent(COMPONENT_TYPE::TILEMAP))
                         m_targetGO->AddComponent(new CTileMap);
                 }

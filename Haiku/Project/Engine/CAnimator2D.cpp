@@ -66,9 +66,43 @@ void CAnimator2D::Create(const wstring& _strKey, Ptr<CTexture> _AltasTex, Vec2 _
 	CAnim* pAnim = FindAnim(_strKey);
 	assert(!pAnim);
 
+
 	pAnim = new CAnim;	
 	pAnim->Create(this, _AltasTex, _LeftTop, _vSliceSize, _OffsetSize, _Background, _FrmCount, _FPS);
+	pAnim->SetName(_strKey);
 	m_mapAnim.insert(make_pair(_strKey, pAnim));
+}
+
+void CAnimator2D::Create(const wstring& _strKey, CAnim* _Anim)
+{
+	CAnim* pAnim = FindAnim(_strKey);
+	assert(!pAnim);
+	_Anim->SetName(_strKey);
+	m_mapAnim.insert(make_pair(_strKey, _Anim));
+
+}
+
+void CAnimator2D::Create(const wstring& _strKey, Ptr<CTexture> _AltasTex, const vector<tAnimFrm>& _vecFrm)
+{
+	CAnim* pAnim = FindAnim(_strKey);
+	if (pAnim && _strKey == L"PreviewAnim")
+	{
+		m_mapAnim.erase(m_mapAnim.find(_strKey));
+		pAnim->Clear();
+	}
+	else
+		assert(!pAnim);
+
+	pAnim = new CAnim;
+	pAnim->Create(this, _AltasTex, _vecFrm);
+	pAnim->SetName(_strKey);
+	m_mapAnim.insert(make_pair(_strKey, pAnim));
+}
+void CAnimator2D::AnimDelete(const wstring& _strKey)
+{
+	//map<wstring, CAnim*>::iterator iter = m_mapAnim.find(_strKey);
+	//delete iter->second;
+	m_mapAnim.erase(_strKey);
 }
 
 CAnim* CAnimator2D::FindAnim(const wstring& _strKey)

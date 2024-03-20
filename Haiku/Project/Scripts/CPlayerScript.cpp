@@ -91,11 +91,15 @@ void CPlayerScript::tick()
 	Transform()->SetRelativePos(vPos);
 	Transform()->SetRelativeRotation(vRot);
 
+	if (KEY_TAP(KEY::N))
+		Animator2D()->Play(L"test7");
+
 	if (KEY_TAP(KEY::SPACE))
 	{
+		//Animator2D()->Play(L"test");
 		//Instantiate(m_Missile, Transform()->GetWorldPos(), 0);
-		//GamePlayStatic::Play2DSound(L"sound\\DM.wav", 1, 0.5f, false);
-		//GamePlayStatic::Play2DBGM(L"sound\\DM.wav", 0.5f);
+		GamePlayStatic::Play2DSound(L"sound\\DM.wav", 1, 0.5f, false);
+		GamePlayStatic::Play2DBGM(L"sound\\DM.wav", 0.5f);
 		if (Collider2D()->IsActive())
 		{
 			Collider2D()->Deactivate();

@@ -16,6 +16,8 @@ private:
     
 
 public:
+    vector<string> GetVecStr() { return m_vecStr; }
+public:
     void AddString(const string& _str) { m_vecStr.push_back(_str); }
     void AddString(const vector<string>& _vecStr)
     {

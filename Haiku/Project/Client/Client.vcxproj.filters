@@ -128,9 +128,6 @@
     <Filter Include="05. Tool">
       <UniqueIdentifier>{08854ed4-bb5d-4bb1-b394-1ba6eefc4589}</UniqueIdentifier>
     </Filter>
-    <Filter Include="05. Tool\Animation2D">
-      <UniqueIdentifier>{44691ed0-752b-49a0-bda0-80870828d58d}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -270,9 +267,6 @@
     </ClInclude>
     <ClInclude Include="ScriptUI.h">
       <Filter>02. UI\3. Inspector\ComponentUI\Script</Filter>
-    </ClInclude>
-    <ClInclude Include="Animation2DTool.h">
-      <Filter>05. Tool\Animation2D</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -415,9 +409,6 @@
     </ClCompile>
     <ClCompile Include="ScriptUI.cpp">
       <Filter>02. UI\3. Inspector\ComponentUI\Script</Filter>
-    </ClCompile>
-    <ClCompile Include="Animation2DTool.cpp">
-      <Filter>05. Tool\Animation2D</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

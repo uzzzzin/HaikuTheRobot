@@ -21,6 +21,8 @@
 #include "CLevelSaveLoad.h"
 #include <Scripts/CMissileScript.h>
 #include <Scripts/CMonsterScript.h>
+#include <Scripts/CWooScript.h>
+
 
 #include <Engine/CAssetMgr.h>
 #include <Engine/CPrefab.h>
@@ -70,9 +72,9 @@ void CCreateTempLevel::CreateTempLevel()
 	pBackgroudMtrl->SetTexParam(TEX_PARAM::TEX_0, CAssetMgr::GetInst()->Load<CTexture>(L"texture\\Background.jpg", L"texture\\Background.jpg"));
 	pStd2DMtrl->SetTexParam(TEX_PARAM::TEX_0, CAssetMgr::GetInst()->Load<CTexture>(L"texture\\Fighter.bmp", L"texture\\Fighter.bmp"));*/
 
-	/*CLevel* pLevel = CLevelSaveLoad::LoadLevel(L"level\\temp.lv");
+	CLevel* pLevel = CLevelSaveLoad::LoadLevel(L"level\\test.lv");
 	CLevelMgr::GetInst()->ChangeLevel(pLevel, LEVEL_STATE::STOP);
-	return;*/
+	return;
 
 
 	CLevel* pTempLevel = new CLevel;
@@ -207,6 +209,7 @@ void CCreateTempLevel::CreateTempLevel()
 	pObj->AddComponent(new CCollider2D);
 	pObj->AddComponent(new CStateMachine);
 	pObj->AddComponent(new CMonsterScript);
+	pObj->AddComponent(new CWooScript);
 
 	pObj->Transform()->SetRelativePos(Vec3(500.f, 0.f, 500.f));
 	pObj->Transform()->SetRelativeScale(Vec3(200.f, 200.f, 1.f));
