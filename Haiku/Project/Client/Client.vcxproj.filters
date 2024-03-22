@@ -65,9 +65,6 @@
     <Filter Include="04. State\TraceState">
       <UniqueIdentifier>{c25d39ad-0bb4-4f56-9ee2-e43b64dfaff8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. UI\7. Tool">
-      <UniqueIdentifier>{08854ed4-bb5d-4bb1-b394-1ba6eefc4589}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02. UI\3. Inspector">
       <UniqueIdentifier>{f586164b-ea0b-4b01-b39e-0b8a4c38e08a}</UniqueIdentifier>
     </Filter>

@@ -134,6 +134,8 @@ int CMaterial::Save(const wstring& _strRelativePath)
 	// 재질이 참조하는 쉐이더 정보를 저장
 	SaveAssetRef<CGraphicsShader>(m_pShader, pFile);
 
+	fclose(pFile);
+
 	return 0;
 }
 
@@ -143,7 +145,9 @@ int CMaterial::Load(const wstring& _strFilePath)
 	_wfopen_s(&pFile, _strFilePath.c_str(), L"rb");
 
 	if (nullptr == pFile)
+	{
 		return E_FAIL;
+	}
 
 	// 재질 상수값 저장
 	fread(&m_Const, sizeof(tMtrlConst), 1, pFile);

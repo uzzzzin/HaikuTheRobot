@@ -22,8 +22,22 @@ public:
     int m_faceX;
     int m_faceY;
 
+    float TileRenderSizeX;
+    float TileRenderSizeY;
+
+    Vec2 TileRenderSize;
+
+    // 팔레트 브러쉬
+    int curBrushIdxCol; // x
+    int curBrushIdxRow; // y
+
+    // 브러쉬로 색칠 할 준비가 완료되었다는
+    bool bReady; // bReadyToColor
+
 public:
     Ptr<CTexture> SetImageForMakeAnim();
+
+    Vec3 ToRelativePos(Vec3 _curWindowPos);
 
     virtual void render_update() override;
 

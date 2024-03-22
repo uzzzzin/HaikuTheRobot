@@ -73,8 +73,8 @@ void CCreateTempLevel::CreateTempLevel()
 	pStd2DMtrl->SetTexParam(TEX_PARAM::TEX_0, CAssetMgr::GetInst()->Load<CTexture>(L"texture\\Fighter.bmp", L"texture\\Fighter.bmp"));*/
 
 
-	CLevel* pLevel = CLevelSaveLoad::LoadLevel(L"level\\test.lv");
-	CLevelMgr::GetInst()->ChangeLevel(pLevel, LEVEL_STATE::STOP);
+	//CLevel* pLevel = CLevelSaveLoad::LoadLevel(L"level\\test.lv");
+	//CLevelMgr::GetInst()->ChangeLevel(pLevel, LEVEL_STATE::STOP);
 
 	//CGameObject* pObj = new CGameObject;
 
@@ -102,7 +102,7 @@ void CCreateTempLevel::CreateTempLevel()
 
 	//pLevel->AddObject(pObj, L"Tile", false);
 
-	return;
+	//return;
 
 
 	CLevel* pTempLevel = new CLevel;
@@ -170,8 +170,29 @@ void CCreateTempLevel::CreateTempLevel()
 	pLight->Light2D()->SetAmbient(Vec3(0.8f, 0.8f, 0.8f));
 	pTempLevel->AddObject(pLight, L"Light");
 
-
 	CGameObject* pObj = nullptr;
+
+	pObj = new CGameObject;
+	pObj->SetName(L"TileMap");
+
+	pObj->AddComponent(new CTransform);
+	pObj->AddComponent(new CTileMap);
+
+	pObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 300.f));
+
+	Ptr<CTexture> pTileAtlas = CAssetMgr::GetInst()->Load<CTexture>(L"TileAtlasTex", L"texture\\TILE.bmp");
+
+	pObj->TileMap()->SetTileAtlas(pTileAtlas, Vec2(64.f, 64.f));
+	pObj->TileMap()->SetFace(6, 6);
+	for (int i = 0; i < 6; ++i)
+	{
+		for (int j = 0; j < 6; ++j)
+		{
+			pObj->TileMap()->SetTileIndex(i, j, i * 6 + j);
+		}
+	}
+
+	pTempLevel->AddObject(pObj, L"Tile", false);
 
 	// Backgruond Object »ý¼º
 	pObj = new CGameObject;
