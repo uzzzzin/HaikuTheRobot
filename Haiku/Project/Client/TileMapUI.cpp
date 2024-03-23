@@ -2,9 +2,12 @@
 #include "TileMapUI.h"
 
 #include <Engine/CEngine.h>
+#include <Engine/CRenderMgr.h>
+#include <Engine/CCamera.h>
 
 #include <Engine/CTileMap.h>
 #include <Engine/CTransform.h>
+
 
 
 TileMapUI::TileMapUI()
@@ -12,7 +15,7 @@ TileMapUI::TileMapUI()
 	, bStartBtn (false)
 	, bReady (false)
 {
-	SetSize(ImVec2(0.f, 250.f));
+	SetSize(ImVec2(0.f, 1000.f));
 	SetComopnentTitle("TileMap");
 }
 
@@ -41,44 +44,24 @@ void TileMapUI::render_update()
 	ImGui::SetNextItemWidth(100);
 	ImGui::InputInt("##FaceY", &m_faceY, 1, 1, ImGuiInputTextFlags_EnterReturnsTrue);
 
-	ImGui::Text(u8"타일 X 사이즈 (TileRenderSizeX, 기본 128)");
+	ImGui::Text(u8"타일 X 렌더 사이즈 (TileRenderSizeX, 기본 128)");
 	ImGui::SameLine();
 	ImGui::SetNextItemWidth(100);
 	ImGui::InputFloat("##TileRenderSizeX", &TileRenderSize.x, ImGuiInputTextFlags_EnterReturnsTrue);
 
-	ImGui::Text(u8"타일 Y 사이즈 (TileRenderSizeY, 기본 128)");
+	ImGui::Text(u8"타일 Y 렌더 사이즈 (TileRenderSizeY, 기본 128)");
 	ImGui::SameLine();
 	ImGui::SetNextItemWidth(100);
 	ImGui::InputFloat("##TileRenderSizeY", &TileRenderSize.y, ImGuiInputTextFlags_EnterReturnsTrue);
 
-	if (ImGui::Button("TileMap -> SetFace(), SetTileRenderSize()", ImVec2(220, 30)))
-	{
-		GetTargetObject()->TileMap()->SetTileRenderSize(TileRenderSize);
-		GetTargetObject()->TileMap()->SetFace(m_faceX, m_faceY);
-	}
-
-	// =============================================================================
-
-	if (ImGui::Button(u8"TileMap 에서 쓰일 아틀라스 세팅하기", ImVec2(220, 30)))
+	if (ImGui::Button(u8"TileMap 에서 쓰일 아틀라스 세팅하기", ImVec2(220, 25)))
 	{
 		bStartBtn = true;
+		m_curAtlasTex = SetImageForMakeAnim();
 	}
 
-	if (bStartBtn)
+	if (nullptr != m_curAtlasTex)
 	{
-		ImGui::Begin(u8"TileMap Component");
-
-		//if (nullptr == m_curAtlasTex)
-		//{
-		//	m_curAtlasTex = SetImageForMakeAnim();
-		//}
-
-		if ((nullptr == m_curAtlasTex) || (nullptr == GetTargetObject()->TileMap()->GetTileAtlas()))
-		{
-			m_curAtlasTex = SetImageForMakeAnim();
-			/*GetTargetObject()->TileMap()->SetTileAtlas(m_curAtlasTex)*/
-		}
-
 		realWidth = m_curAtlasTex->GetWidth();
 		realHeight = m_curAtlasTex->GetHeight();
 
@@ -92,12 +75,6 @@ void TileMapUI::render_update()
 		ImGui::Text("Height");
 		ImGui::SameLine();
 		ImGui::InputFloat("##TextureHeight", &Height, 0.f, 0.f, "%.3f", ImGuiInputTextFlags_ReadOnly);
-
-		while (Width >= 600 && Height >= 600)
-		{
-			Width /= 2;
-			Height /= 2;
-		}
 
 		float atlasDiv = realWidth / Width;
 
@@ -126,12 +103,13 @@ void TileMapUI::render_update()
 		ImGui::Text("Y size ");
 		ImGui::SameLine();
 		ImGui::SetNextItemWidth(100);
-		ImGui::InputFloat("##열 사이즈", &ySize, 0.f, 0.f, "%.3f", ImGuiInputTextFlags_ReadOnly);
+		ImGui::InputFloat("##행 사이즈", &ySize, 0.f, 0.f, "%.3f", ImGuiInputTextFlags_ReadOnly);
 
 		if (ImGui::Button("Create Grid", ImVec2(90, 25)))
 		{
 			bSetGrid = true;
 			GetTargetObject()->TileMap()->SetTileAtlas(m_curAtlasTex, atlasDiv * Vec2(xSize, ySize));
+			GetTargetObject()->TileMap()->SetTileRenderSize(TileRenderSize);
 			GetTargetObject()->TileMap()->SetFace(m_faceX, m_faceY);
 		}
 
@@ -151,14 +129,10 @@ void TileMapUI::render_update()
 				drawList->AddLine(ImVec2(startPos.x, startPos.y + y * ySize), ImVec2(startPos.x + Width, startPos.y + y * ySize), IM_COL32(200, 30, 30, 255), 1.5f);
 			}
 
-			// 좌클릭 된 칸은 팔레트에서 선택된 타일. 현재 브러쉬인거지
+			// 우클릭 된 칸은 팔레트에서 선택된 타일. 현재 브러쉬인거지
 			if (ImGui::IsMouseClicked(ImGuiMouseButton_Right))
 			{
 				ImVec2 mousePos = ImGui::GetMousePos();
-				// 선택된 타일 -> 아틀라스 기준 인덱스를 뽑아와서 -> setTileIndex()
-
-				//int curBrushIdxCol; // x
-				//int curBrushIdxRow; // y
 
 				for (int row = 0; row < gridHeightCnt; ++row)
 				{
@@ -171,80 +145,60 @@ void TileMapUI::render_update()
 							curBrushIdxRow = row;
 
 							bReady = true;
-
-							////세번째 인자
-							//gridWidthCnt* col + row;
-
-							//// 첫번째, 두번째 인자 => 화면에 클릭한 타일의 위치 인덱스. Face 걔네의 인덱스 말하는 거임 ㅇㅇ
-							////GetTargetObject()->TileMap()->SetTileIndex(gridWidthCnt, gridHeightCnt, gridWidthCnt * 6 + j);
 						}
 					}
 				}
 			}
 		}
-
-		if (bReady) // 색칠 할 준비가 완료되었다면. (브러쉬를 선택해서 들고 있다면.)
-		{
-			// 화면에 찍어야지..
-
-			////세번째 인자
-			//gridWidthCnt* col + row;
-
-			//// 첫번째, 두번째 인자 => 화면에 클릭한 타일의 위치 인덱스. Face 걔네의 인덱스 말하는 거임 ㅇㅇ
-			////GetTargetObject()->TileMap()->SetTileIndex(gridWidthCnt, gridHeightCnt, gridWidthCnt * 6 + j);
-
-			// 내 마우스 Pos(얜 screenPos)와 타일맵 GO의 현재 Pos의 차이
-
-			if (ImGui::IsMouseClicked(ImGuiMouseButton_Left))
-			{
-				ImVec2 mousePos = ImGui::GetMousePos(); // 얘 ScreenPos네
-				/*POINT pt = {};
-				GetCursorPos(&pt);
-				ScreenToClient(CEngine::GetInst()->GetMainWind(), &pt);
-				Vec2 RelativeMousePos = Vec2((float)pt.x, (float)pt.y);*/
-				Vec3 v1 = GetTargetObject()->Transform()->GetRelativePos();
-				Vec3 v2 = GetTargetObject()->Transform()->GetWorldPos();
-
-				
-				//float tmpX = (2.0f * mousePos.x / screenWidth - 1.0f);
-				//float tmpY = (1.0f - 2.0f * screenY / screenHeight);
-
-
-
-				int a = 0;
-
-
-
-
-				//Vec3 mouseRelativePos = ToRelativePos(DirectX::XMFLOAT3(mousePos.x, mousePos.y, 0));
-
-				//  일단 TileMap GO의 안에 들어와있는지 계산
-
-				// TileMap 오브젝트를 클릭한 것이라면, 그 후 LeftTop 기준으로 인덱스 계산
-
-				// 알아낸 인덱스 ---> GO TileMap의 SetTileIndex() 진행.
-			}
-
-		}
-
-
-
-
-
-		
-
-		ImGui::End(); // TileMap 툴 시작 Begin/End
-
-		// =============================================================================
 	}
 
-}
+	if (bReady) // 색칠 할 준비가 완료되었다면. (브러쉬를 선택해서 들고 있다면.)
+	{
+		// 내 마우스 Pos(얜 screenPos)와 타일맵 GO의 현재 Pos의 차이
 
-Vec3 ToRelativePos(Vec3 _curWindowPos)
-{
+		if (ImGui::IsMouseClicked(ImGuiMouseButton_Left))
+		{
+			int screenWidth = CEngine::GetInst()->GetResolution().x;
+			int screenHeight = CEngine::GetInst()->GetResolution().y;
 
-	
-	return Vec3();
+			POINT pt = {};
+			GetCursorPos(&pt);
+			ScreenToClient(CEngine::GetInst()->GetMainWind(), &pt);
+			Vec2 LClickedScreenPos = Vec2((float)pt.x, (float)pt.y);
+			Vec3 CamPos = CRenderMgr::GetInst()->GetEditorCam()->Camera()->Transform()->GetRelativePos();
+			Vec3 CamScale = CRenderMgr::GetInst()->GetEditorCam()->Camera()->Transform()->GetRelativeScale();
+
+			Vec2 LClickedRelataivePos = Vec2(CamPos.x - screenWidth / 2 + LClickedScreenPos.x, CamPos.y - screenHeight / 2 + LClickedScreenPos.y);
+			//World(X, Y) = (CameraPos.x - Camera.Width / 2 + Screen.X, CameraPos.Y - Camera.Height / 2 + Screen.Y)
+
+			Vec2 GOPos = Vec2(GetTargetObject()->Transform()->GetRelativePos().x, GetTargetObject()->Transform()->GetRelativePos().y);
+			Vec2 GOScale = Vec2(GetTargetObject()->Transform()->GetRelativeScale().x, GetTargetObject()->Transform()->GetRelativeScale().y);
+
+			Vec2 GOLeftTop = Vec2(GOPos.x - GOScale.x / 2, GOPos.y - GOScale.y / 2);
+
+			Vec2 TileRendersize = GetTargetObject()->TileMap()->GetTileRenderSize();
+
+			for (int row = 0; row < m_faceY; ++row)
+			{
+				for (int col = 0; col < m_faceX; ++col)
+				{
+					if (LClickedRelataivePos.x >= GOLeftTop.x + TileRendersize.x * col && LClickedRelataivePos.x < GOLeftTop.x + TileRendersize.x * (col + 1)
+						&& LClickedRelataivePos.y >= GOLeftTop.y + TileRendersize.y * row && LClickedRelataivePos.y < GOLeftTop.y + TileRendersize.y * (row + 1))
+					{
+						int curTileIdxCol = col;
+						int curTileIdxRow = row;
+
+						GetTargetObject()->TileMap()->SetTileIndex(curTileIdxRow, curTileIdxCol, gridWidthCnt * curBrushIdxRow + curBrushIdxCol);
+						// (gridWidthCnt-1) * curBrushIdxCol + curBrushIdxRow-1
+					}
+				}
+			}
+			
+			int a = 0;
+		}
+
+	}
+
 }
 
 

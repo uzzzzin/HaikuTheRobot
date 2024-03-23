@@ -94,7 +94,10 @@ void CImGuiMgr::init(HWND _hMainWnd, ComPtr<ID3D11Device> _Device
 
     
     // 한글 폰트 적용
-    io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\malgun.ttf", 17.0f, NULL, io.Fonts->GetGlyphRangesKorean());
+    wstring path = CPathMgr::GetContentPath();
+    path += L"fonts\\rdotum.ttf";
+    string pa = ToString(path);
+    io.Fonts->AddFontFromFileTTF(pa.c_str(), 17.0f, NULL, io.Fonts->GetGlyphRangesKorean());
 
     create_ui();
 

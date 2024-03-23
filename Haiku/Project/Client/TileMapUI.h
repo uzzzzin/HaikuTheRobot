@@ -37,8 +37,6 @@ public:
 public:
     Ptr<CTexture> SetImageForMakeAnim();
 
-    Vec3 ToRelativePos(Vec3 _curWindowPos);
-
     virtual void render_update() override;
 
 public:
