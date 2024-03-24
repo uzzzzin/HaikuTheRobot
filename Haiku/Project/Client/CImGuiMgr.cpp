@@ -95,9 +95,9 @@ void CImGuiMgr::init(HWND _hMainWnd, ComPtr<ID3D11Device> _Device
     
     // 한글 폰트 적용
     wstring path = CPathMgr::GetContentPath();
-    path += L"fonts\\rdotum.ttf";
+    path += L"fonts\\dulgi.ttf";
     string pa = ToString(path);
-    io.Fonts->AddFontFromFileTTF(pa.c_str(), 17.0f, NULL, io.Fonts->GetGlyphRangesKorean());
+    io.Fonts->AddFontFromFileTTF(pa.c_str(), 18.0f, NULL, io.Fonts->GetGlyphRangesKorean());
 
     create_ui();
 

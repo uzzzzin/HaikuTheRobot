@@ -391,24 +391,24 @@ void MenuUI::Asset()
 {
     if (ImGui::BeginMenu("Asset"))
     {
-        if (ImGui::MenuItem("Create Empty Material"))
+        if (ImGui::BeginMenu("Create Empty Material"))
         {
-            wchar_t szPath[255] = {};            
-            wstring FilePath = CPathMgr::GetContentPath();
-            
-            int num = 0;
-            while (true)
-            {                
-                swprintf_s(szPath, L"Material//New Material_%d.mtrl", num);
-                if (!exists(FilePath + szPath))
-                    break;
-                ++num;
-            }
+            static char textBuffer[256] = "";
+            ImGui::InputText("##MtrlName", textBuffer, IM_ARRAYSIZE(textBuffer));
 
-            CMaterial* pMtrl = new CMaterial;
-            pMtrl->SetName(szPath);
-            pMtrl->Save(szPath);
-            GamePlayStatic::AddAsset(pMtrl);
+            if (ImGui::Button("Create"))
+            {
+                string str(textBuffer);
+                wstring MtrlName = L"material\\" + ToWString(str);
+                MtrlName += L".mtrl";
+
+                CMaterial* pMtrl = new CMaterial;
+                pMtrl->SetName(MtrlName);
+                pMtrl->Save(MtrlName);
+                CAssetMgr::GetInst()->AddAsset<CMaterial>(MtrlName,pMtrl);
+                //GamePlayStatic::AddAsset(pMtrl);
+            }
+            ImGui::EndMenu();
         }
 
         ImGui::EndMenu();
