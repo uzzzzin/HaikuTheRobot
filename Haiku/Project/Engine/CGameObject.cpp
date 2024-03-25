@@ -156,8 +156,13 @@ void CGameObject::AddComponent(CComponent* _Comonent)
 	}
 	else
 	{
-		// 이미 해당 타입의 컴포넌트를 보유하고 있는 경우 
-		assert(!m_arrCom[(UINT)type]);
+		if (m_arrCom[(UINT)type])
+		{
+			MessageBoxA(nullptr, "이미 해당 컴포넌트를 가지고 있습니다!", "Add Component Failed!", MB_OK);
+			return;
+		}
+		//// 이미 해당 타입의 컴포넌트를 보유하고 있는 경우 
+		//assert(!m_arrCom[(UINT)type]);
 
 		m_arrCom[(UINT)type] = _Comonent;
 		_Comonent->m_Owner = this;

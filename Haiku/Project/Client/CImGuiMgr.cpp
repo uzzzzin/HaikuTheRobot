@@ -16,7 +16,7 @@
 #include "Outliner.h"
 #include "MenuUI.h"
 #include "ListUI.h"
-
+#include "MtrlEditorUI.h"
 #include "ParamUI.h"
 
 CImGuiMgr::CImGuiMgr()
@@ -198,6 +198,10 @@ void CImGuiMgr::create_ui()
 
     // List
     pUI = new ListUI;
+    AddUI(pUI->GetID(), pUI);
+
+    // Mtrl Inspector
+    pUI = new MtrlEditorUI;
     AddUI(pUI->GetID(), pUI);
 }
 

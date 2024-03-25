@@ -217,6 +217,7 @@ void MenuUI::GameObject()
 
         if (ImGui::BeginMenu("Component", ""))
         {
+            Inspector* pInspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
 
             if (ImGui::BeginMenu("Transform"))
             {
@@ -230,6 +231,7 @@ void MenuUI::GameObject()
                 ImGui::MenuItem(u8"삭제");
 
                 ImGui::EndMenu();
+                pInspector->SetTargetObject(m_targetGO);
             }
 
             if (ImGui::BeginMenu("Collider2D"))
@@ -245,6 +247,7 @@ void MenuUI::GameObject()
 
                 }
                 ImGui::EndMenu();
+                pInspector->SetTargetObject(m_targetGO);
             }
 
             if (ImGui::BeginMenu("Animator2D"))
@@ -274,6 +277,7 @@ void MenuUI::GameObject()
 
                 }
                 ImGui::EndMenu();
+                pInspector->SetTargetObject(m_targetGO);
             }
             if (ImGui::BeginMenu("Camera"))
             {
@@ -288,6 +292,7 @@ void MenuUI::GameObject()
 
                 }
                 ImGui::EndMenu();
+                pInspector->SetTargetObject(m_targetGO);
             }
             if (ImGui::BeginMenu("StateMachine(FSM)"))
             {
@@ -302,6 +307,7 @@ void MenuUI::GameObject()
 
                 }
                 ImGui::EndMenu();
+                pInspector->SetTargetObject(m_targetGO);
             }
             if (ImGui::BeginMenu("(RC)MeshRender"))
             {
@@ -316,6 +322,7 @@ void MenuUI::GameObject()
 
                 }
                 ImGui::EndMenu();
+                pInspector->SetTargetObject(m_targetGO);
             }
             if (ImGui::BeginMenu("(RC)ParticleSystem"))
             {
@@ -330,6 +337,7 @@ void MenuUI::GameObject()
 
                 }
                 ImGui::EndMenu();
+                pInspector->SetTargetObject(m_targetGO);
             }
             if (ImGui::BeginMenu("(RC)TileMap"))
             {
@@ -344,6 +352,7 @@ void MenuUI::GameObject()
 
                 }
                 ImGui::EndMenu();
+                pInspector->SetTargetObject(m_targetGO);
             }
 
             ImGui::EndMenu();
@@ -375,7 +384,7 @@ void MenuUI::GameObject()
                             inspector->GetTargetObject()->deleteScript(vecScriptName[i]);
                         }
                     }
-
+                    inspector->SetTargetObject(m_targetGO);
                     ImGui::EndMenu(); // 스크립트 각각의 Begin
                 }
             }
@@ -389,6 +398,8 @@ void MenuUI::GameObject()
 
 void MenuUI::Asset()
 {
+    Inspector* inspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
+
     if (ImGui::BeginMenu("Asset"))
     {
         if (ImGui::BeginMenu("Create Empty Material"))

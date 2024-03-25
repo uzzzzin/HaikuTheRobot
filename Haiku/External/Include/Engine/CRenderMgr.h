@@ -33,6 +33,7 @@ private:
     // render function pointer
     typedef void(CRenderMgr::*RENDER_FUNC)(void);
     RENDER_FUNC             m_RenderFunc;
+    bool                    m_isEditorMode;
 
 public:
     void RegisterCamera(CCamera* _Cam, int _Idx);
@@ -47,7 +48,6 @@ public:
 	Ptr<CTexture> GetPostProcessTex() { return m_PostProcessTex; }
 
     void RegisterEditorCamera(CCamera* _Cam) { m_EditorCam = _Cam; }
-
     CCamera* GetEditorCam() { return m_EditorCam; }
 
     void ClearCamera() { m_vecCam.clear(); }
@@ -55,9 +55,15 @@ public:
     void ActiveEditorMode(bool _bActive)
     {
         if (_bActive)
+        {
             m_RenderFunc = &CRenderMgr::render_editor;
+            m_isEditorMode = true;
+        }
         else
+        {
             m_RenderFunc = &CRenderMgr::render_play;
+            m_isEditorMode = false;
+        }
     }
 
 

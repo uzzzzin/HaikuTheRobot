@@ -110,9 +110,6 @@
     <Filter Include="02. UI\3. Inspector\ComponentUI\Collider2D">
       <UniqueIdentifier>{02792073-15c0-41b2-b6ff-01641a17a76c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. UI\3. Inspector\ComponentUI\Animator2D">
-      <UniqueIdentifier>{c4d60632-51d3-4efd-8d07-8a9ca9af4eff}</UniqueIdentifier>
-    </Filter>
     <Filter Include="02. UI\3. Inspector\ComponentUI\Light2D">
       <UniqueIdentifier>{73b9a42e-7388-4401-8907-819678f561b9}</UniqueIdentifier>
     </Filter>
@@ -124,6 +121,9 @@
     </Filter>
     <Filter Include="02. UI\3. Inspector\ComponentUI\Script">
       <UniqueIdentifier>{be25e58a-0a74-4344-8769-f0a1de4e97b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. UI\3. Inspector\ComponentUI\Animator2D">
+      <UniqueIdentifier>{c4d60632-51d3-4efd-8d07-8a9ca9af4eff}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -269,6 +269,9 @@
       <Filter>02. UI\3. Inspector\ComponentUI\TileMap</Filter>
     </ClInclude>
     <ClInclude Include="ParticleSystemUI.h" />
+    <ClInclude Include="MtrlEditorUI.h">
+      <Filter>02. UI\3. Inspector\AssetUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -415,5 +418,8 @@
       <Filter>02. UI\3. Inspector\ComponentUI\TileMap</Filter>
     </ClCompile>
     <ClCompile Include="ParticleSystemUI.cpp" />
+    <ClCompile Include="MtrlEditorUI.cpp">
+      <Filter>02. UI\3. Inspector\AssetUI</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
