@@ -15,6 +15,7 @@ void Inspector::CreateChildUI()
 #include "MeshRenderUI.h"
 #include "Collider2DUI.h"
 #include "Light2DUI.h"
+#include "CameraUI.h"
 #include "Animator2DUI.h"
 #include "PrefabUI.h"
 #include "TileMapUI.h"
@@ -37,6 +38,11 @@ void Inspector::CreateComponentUI()
 	m_arrComUI[(UINT)COMPONENT_TYPE::LIGHT2D] = new Light2DUI;
 	m_arrComUI[(UINT)COMPONENT_TYPE::LIGHT2D]->Deactivate();
 	AddChildUI(m_arrComUI[(UINT)COMPONENT_TYPE::LIGHT2D]);
+
+	m_arrComUI[(UINT)COMPONENT_TYPE::CAMERA] = new CameraUI;
+	m_arrComUI[(UINT)COMPONENT_TYPE::CAMERA]->Deactivate();
+	AddChildUI(m_arrComUI[(UINT)COMPONENT_TYPE::CAMERA]);
+
 
 	m_arrComUI[(UINT)COMPONENT_TYPE::ANIMATOR2D] = new Animator2DUI;
 	m_arrComUI[(UINT)COMPONENT_TYPE::ANIMATOR2D]->Deactivate();

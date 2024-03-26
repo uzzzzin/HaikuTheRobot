@@ -33,7 +33,6 @@ CCamera::~CCamera()
 {
 }
 
-
 void CCamera::begin()
 {
 	// 카메라를 우선순위값에 맞게 RenderMgr 에 등록시킴
@@ -198,6 +197,27 @@ void CCamera::render_postprocess()
 	m_vecPostProcess.clear();
 }
 
+
+bool CCamera::IsLayerCheck(UINT _LayerIdx)
+{
+	return m_LayerCheck & (1 << _LayerIdx);
+}
+
+bool CCamera::IsLayerCheck(const wstring& _strLayerName)
+{
+	CLevel* pCurLevel = CLevelMgr::GetInst()->GetCurrentLevel();
+	CLayer* pLayer = pCurLevel->GetLayer(_strLayerName);
+
+	if (nullptr == pLayer)
+	{
+		MessageBoxA(nullptr, "레이어가 없습니다.", "IsLayerCheck Failed!", MB_OK);
+		return false;
+	}
+
+	int idx = pLayer->GetLayerIdx();
+
+	return IsLayerCheck(idx);
+}
 void CCamera::SaveToFile(FILE* _File)
 {
 	fwrite(&m_ProjType, sizeof(PROJ_TYPE), 1, _File);

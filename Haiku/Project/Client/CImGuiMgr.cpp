@@ -19,6 +19,8 @@
 #include "MtrlEditorUI.h"
 #include "ParamUI.h"
 
+#include "EditorCamUI.h"
+
 CImGuiMgr::CImGuiMgr()
     : m_bDemoUI(true)
     , m_hNotify(nullptr)
@@ -202,6 +204,10 @@ void CImGuiMgr::create_ui()
 
     // Mtrl Inspector
     pUI = new MtrlEditorUI;
+    AddUI(pUI->GetID(), pUI);
+
+    // Editor Cam UI
+    pUI = new EditorCamUI;
     AddUI(pUI->GetID(), pUI);
 }
 

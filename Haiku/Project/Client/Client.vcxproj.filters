@@ -125,6 +125,9 @@
     <Filter Include="02. UI\3. Inspector\ComponentUI\Animator2D">
       <UniqueIdentifier>{c4d60632-51d3-4efd-8d07-8a9ca9af4eff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. UI\3. Inspector\ComponentUI\Camera">
+      <UniqueIdentifier>{f43b3358-1b5e-4114-b9a7-b4c7b7db8cf1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -271,6 +274,12 @@
     <ClInclude Include="ParticleSystemUI.h" />
     <ClInclude Include="MtrlEditorUI.h">
       <Filter>02. UI\3. Inspector\AssetUI</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraUI.h">
+      <Filter>02. UI\3. Inspector\ComponentUI\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorCamUI.h">
+      <Filter>02. UI\4. MenuUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -420,6 +429,12 @@
     <ClCompile Include="ParticleSystemUI.cpp" />
     <ClCompile Include="MtrlEditorUI.cpp">
       <Filter>02. UI\3. Inspector\AssetUI</Filter>
+    </ClCompile>
+    <ClCompile Include="CameraUI.cpp">
+      <Filter>02. UI\3. Inspector\ComponentUI\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorCamUI.cpp">
+      <Filter>02. UI\3. Inspector\ComponentUI\Camera</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

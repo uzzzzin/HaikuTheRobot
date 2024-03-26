@@ -152,6 +152,7 @@
   <ItemGroup>
     <ClInclude Include="Animator2DUI.h" />
     <ClInclude Include="AssetUI.h" />
+    <ClInclude Include="CameraUI.h" />
     <ClInclude Include="CCameraMoveScript.h" />
     <ClInclude Include="CCreateTempLevel.h" />
     <ClInclude Include="CEditorObjMgr.h" />
@@ -164,6 +165,7 @@
     <ClInclude Include="ComponentUI.h" />
     <ClInclude Include="ComputeShaderUI.h" />
     <ClInclude Include="Content.h" />
+    <ClInclude Include="EditorCamUI.h" />
     <ClInclude Include="MtrlEditorUI.h" />
     <ClInclude Include="ParticleSystemUI.h" />
     <ClInclude Include="ScriptUI.h" />
@@ -203,6 +205,7 @@
   <ItemGroup>
     <ClCompile Include="Animator2DUI.cpp" />
     <ClCompile Include="AssetUI.cpp" />
+    <ClCompile Include="CameraUI.cpp" />
     <ClCompile Include="CCameraMoveScript.cpp" />
     <ClCompile Include="CCreateTempLevel.cpp" />
     <ClCompile Include="CEditorObjMgr.cpp" />
@@ -214,6 +217,7 @@
     <ClCompile Include="ComponentUI.cpp" />
     <ClCompile Include="ComputeShaderUI.cpp" />
     <ClCompile Include="Content.cpp" />
+    <ClCompile Include="EditorCamUI.cpp" />
     <ClCompile Include="MtrlEditorUI.cpp" />
     <ClCompile Include="ParticleSystemUI.cpp" />
     <ClCompile Include="ScriptUI.cpp" />

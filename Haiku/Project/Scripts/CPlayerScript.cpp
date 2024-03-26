@@ -23,21 +23,24 @@ CPlayerScript::~CPlayerScript()
 
 void CPlayerScript::begin()
 {
-	Ptr<CTexture> pAltasTex = CAssetMgr::GetInst()->Load<CTexture>(L"texture\\link.png", L"texture\\link.png");
-	Animator2D()->Create(L"IDLE_UP", pAltasTex, Vec2(0.f, 260.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 1, 10);
-	Animator2D()->Create(L"IDLE_DOWN", pAltasTex, Vec2(0.f, 0.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 3, 10);
-	Animator2D()->Create(L"IDLE_LEFT", pAltasTex, Vec2(0.f, 130.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 3, 10);
-	Animator2D()->Create(L"IDLE_RIGHT", pAltasTex, Vec2(0.f, 390.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 3, 10);
+	//Ptr<CTexture> pAltasTex = CAssetMgr::GetInst()->Load<CTexture>(L"texture\\link.png", L"texture\\link.png");
+	//Animator2D()->Create(L"IDLE_UP", pAltasTex, Vec2(0.f, 260.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 1, 10);
+	//Animator2D()->Create(L"IDLE_DOWN", pAltasTex, Vec2(0.f, 0.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 3, 10);
+	//Animator2D()->Create(L"IDLE_LEFT", pAltasTex, Vec2(0.f, 130.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 3, 10);
+	//Animator2D()->Create(L"IDLE_RIGHT", pAltasTex, Vec2(0.f, 390.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 3, 10);
 
-	Animator2D()->Create(L"MOVE_UP", pAltasTex, Vec2(0.f, 780.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 10, 20);
-	Animator2D()->Create(L"MOVE_DOWN", pAltasTex, Vec2(0.f, 520.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 10, 20);
-	Animator2D()->Create(L"MOVE_LEFT", pAltasTex, Vec2(0.f, 650.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 10, 20);
-	Animator2D()->Create(L"MOVE_RIGHT", pAltasTex, Vec2(0.f, 910.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 10, 20);
+	//Animator2D()->Create(L"MOVE_UP", pAltasTex, Vec2(0.f, 780.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 10, 20);
+	//Animator2D()->Create(L"MOVE_DOWN", pAltasTex, Vec2(0.f, 520.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 10, 20);
+	//Animator2D()->Create(L"MOVE_LEFT", pAltasTex, Vec2(0.f, 650.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 10, 20);
+	//Animator2D()->Create(L"MOVE_RIGHT", pAltasTex, Vec2(0.f, 910.f), Vec2(120.f, 130.f), Vec2(0.f, 0.f), Vec2(200.f, 200.f), 10, 20);
 
-	GetRenderComponent()->GetDynamicMaterial();
+	//GetRenderComponent()->GetDynamicMaterial();
 
 	//m_Missile = CAssetMgr::GetInst()->FindAsset<CPrefab>(L"MissilePrefab");
 	//m_Missile = CAssetMgr::GetInst()->Load<CPrefab>(L"prefab\\missile.pref", L"prefab\\missile.pref");
+	
+	
+	Animator2D()->Play(L"haiku_idle");
 }
 
 void CPlayerScript::tick()
@@ -45,12 +48,13 @@ void CPlayerScript::tick()
 	Vec3 vPos = Transform()->GetRelativePos();
 	Vec3 vRot = Transform()->GetRelativeRotation();
 
-	if (KEY_PRESSED(KEY::UP))
+
+	/*if (KEY_PRESSED(KEY::UP))
 		vPos.y += DT * m_Speed;	
 	if (KEY_TAP(KEY::UP))
-		Animator2D()->Play(L"MOVE_UP");
+		Animator2D()->Play(L"haiku_idle");
 	if (KEY_RELEASED(UP))
-		Animator2D()->Play(L"IDLE_UP");
+		Animator2D()->Play(L"haiku_idle");
 	
 	if (KEY_PRESSED(KEY::DOWN))
 		vPos.y -= DT * m_Speed;
@@ -71,9 +75,9 @@ void CPlayerScript::tick()
 	if (KEY_TAP(KEY::RIGHT))
 		Animator2D()->Play(L"MOVE_RIGHT");
 	if (KEY_RELEASED(RIGHT))
-		Animator2D()->Play(L"IDLE_RIGHT");
+		Animator2D()->Play(L"IDLE_RIGHT");*/
 
-	if (KEY_PRESSED(KEY::X))
+	/*if (KEY_PRESSED(KEY::X))
 	{
 		vRot.x += DT * XM_PI;
 	}
@@ -86,23 +90,17 @@ void CPlayerScript::tick()
 	if (KEY_PRESSED(KEY::Z))
 	{
 		vRot.z += DT * XM_PI;
-	}
+	}*/
 	
 	Transform()->SetRelativePos(vPos);
 	Transform()->SetRelativeRotation(vRot);
-
-	if (KEY_TAP(KEY::T))
-		Animator2D()->Play(L"test");
-
-	if (KEY_TAP(KEY::R))
-		Animator2D()->Play(L"tileTest");
 
 	if (KEY_TAP(KEY::SPACE))
 	{
 		//Animator2D()->Play(L"test");
 		//Instantiate(m_Missile, Transform()->GetWorldPos(), 0);
-		GamePlayStatic::Play2DSound(L"sound\\DM.wav", 1, 0.5f, false);
-		GamePlayStatic::Play2DBGM(L"sound\\DM.wav", 0.5f);
+		/*GamePlayStatic::Play2DSound(L"sound\\DM.wav", 1, 0.5f, false);
+		GamePlayStatic::Play2DBGM(L"sound\\DM.wav", 0.5f);*/
 		if (Collider2D()->IsActive())
 		{
 			Collider2D()->Deactivate();
@@ -116,22 +114,21 @@ void CPlayerScript::tick()
 	}
 
 
-	if (KEY_PRESSED(KEY::SPACE))
-	{
-		Ptr<CMaterial> pMtrl = MeshRender()->GetMaterial();
-		if (nullptr != pMtrl)
-		{
-			pMtrl->SetScalarParam(SCALAR_PARAM::INT_0, 1);
-		}
-	}
-	else if (KEY_RELEASED(KEY::SPACE))
-	{
-		Ptr<CMaterial> pMtrl = MeshRender()->GetMaterial();
-		if (nullptr != pMtrl)
-		{
-			pMtrl->SetScalarParam(SCALAR_PARAM::INT_0, 0);
-		}
-	}
+	//if (KEY_PRESSED(KEY::SPACE))
+	//{
+	//	Ptr<CMaterial> pMtrl = MeshRender()->GetMaterial();
+	//	if (nullptr != pMtrl)
+	//	{
+	//		pMtrl->SetScalarParam(SCALAR_PARAM::INT_0, 1);
+	//	}
+	//}
+	//else if (KEY_RELEASED(KEY::SPACE))
+	//{
+	//	Ptr<CMaterial> pMtrl = MeshRender()->GetMaterial();
+	//	if (nullptr != pMtrl)
+	//	{
+	//		pMtrl->SetScalarParam(SCALAR_PARAM::INT_0, 0);
+	//	}
 
 	//static float f = 0.f;
 	//f += DT * 0.3f;

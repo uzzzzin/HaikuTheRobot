@@ -13,15 +13,25 @@ CCameraMoveScript::~CCameraMoveScript()
 
 void CCameraMoveScript::tick()
 {
+	//if (KEY_TAP(KEY::P))
+	//{
+	//	if (Camera()->GetProjType() == PROJ_TYPE::ORTHOGRAPHIC)
+	//		Camera()->SetProjType(PROJ_TYPE::PERSPECTIVE);
+	//	else
+	//	{
+	//		Camera()->SetProjType(PROJ_TYPE::ORTHOGRAPHIC);
+	//		//Transform()->SetRelativeRotation(Vec3(0.f, 0.f, 0.f));
+	//	}		
+	//}
+
 	if (KEY_TAP(KEY::P))
 	{
-		if (Camera()->GetProjType() == PROJ_TYPE::ORTHOGRAPHIC)
-			Camera()->SetProjType(PROJ_TYPE::PERSPECTIVE);
-		else
-		{
-			Camera()->SetProjType(PROJ_TYPE::ORTHOGRAPHIC);
-			Transform()->SetRelativeRotation(Vec3(0.f, 0.f, 0.f));
-		}		
+		Camera()->SetProjType(PROJ_TYPE::PERSPECTIVE);
+	}
+
+	if (KEY_TAP(KEY::O))
+	{
+		Camera()->SetProjType(PROJ_TYPE::ORTHOGRAPHIC);
 	}
 
 
@@ -56,6 +66,20 @@ void CCameraMoveScript::MoveOrthographic()
 {
 	Vec3 vPos = Transform()->GetRelativePos();
 
+	float fScale = Camera()->GetScale();
+
+	if (KEY_PRESSED(KEY::Q))
+	{
+		fScale -= 0.001;
+		Camera()->SetScale(fScale);
+	}
+
+	if (KEY_PRESSED(KEY::E))
+	{
+		fScale += 0.001;
+		Camera()->SetScale(fScale);
+	}
+
 	if (KEY_PRESSED(KEY::W))
 	{
 		vPos.y += DT_ENGINE * m_CamSpeed;
@@ -87,12 +111,12 @@ void CCameraMoveScript::MovePerspective()
 	Vec3 vRight = Transform()->GetWorldDir(DIR_TYPE::RIGHT);
 	Vec3 vUp = Transform()->GetWorldDir(DIR_TYPE::UP);
 
-	if (KEY_PRESSED(KEY::W))
+	if (KEY_PRESSED(KEY::K))
 	{
 		vPos += DT_ENGINE * m_CamSpeed * vFront;
 	}
 
-	if (KEY_PRESSED(KEY::S))
+	if (KEY_PRESSED(KEY::L))
 	{
 		vPos += DT_ENGINE * m_CamSpeed * -vFront;
 	}
@@ -107,11 +131,11 @@ void CCameraMoveScript::MovePerspective()
 		vPos += DT_ENGINE * m_CamSpeed * vRight;
 	}
 
-	if (KEY_PRESSED(KEY::Q))
+	if (KEY_PRESSED(KEY::S))
 	{
 		vPos += DT_ENGINE * m_CamSpeed * -vUp;
 	}
-	if (KEY_PRESSED(KEY::E))
+	if (KEY_PRESSED(KEY::W))
 	{
 		vPos += DT_ENGINE * m_CamSpeed * vUp;
 	}

@@ -56,10 +56,15 @@ public:
     const Matrix& GetProjMat() { return m_matProj; }
 
     void SetCameraPriority(int _Priority);
+    int GetPriority() { return m_CameraPriority; }
+
     void LayerCheck(UINT _LayerIdx, bool _bCheck);
     void LayerCheck(const wstring& _strLayerName, bool _bCheck);
     void LayerCheckAll() { m_LayerCheck = 0xffffffff; }
 
+    // Layer 체크 확인
+    bool IsLayerCheck(UINT _LayerIdx);
+    bool IsLayerCheck(const wstring& _strLayerName);
 
 public:
     virtual void begin() override;

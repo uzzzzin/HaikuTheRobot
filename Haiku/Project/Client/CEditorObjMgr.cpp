@@ -33,6 +33,10 @@ void CEditorObjMgr::init()
 	pEditorCam->Camera()->SetFOV(XM_PI / 2.f);
 	pEditorCam->Camera()->SetFar(100000.f);
 
+	pEditorCam->Camera()->SetScale(3.f);
+
+	pEditorCam->Transform()->SetRelativePos(Vec3( -480.f, 120.f, -100.f));
+
 	m_vecEditorObj.push_back(pEditorCam);
 
 	// Editor 용 카메라로서 렌더매니저에 등록

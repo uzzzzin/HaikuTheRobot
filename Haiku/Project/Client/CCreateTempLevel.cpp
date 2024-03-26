@@ -66,44 +66,41 @@ void CCreateTempLevel::Init()
 
 void CCreateTempLevel::CreateTempLevel()
 {		
-	/*Ptr<CMaterial> pBackgroudMtrl = CAssetMgr::GetInst()->FindAsset<CMaterial>(L"BackgroundMtrl");
-	Ptr<CMaterial> pStd2DMtrl = CAssetMgr::GetInst()->FindAsset<CMaterial>(L"Std2DMtrl");
+	//Ptr<CMaterial> pBackgroudMtrl = CAssetMgr::GetInst()->FindAsset<CMaterial>(L"BackgroundMtrl");
+	//Ptr<CMaterial> pStd2DMtrl = CAssetMgr::GetInst()->FindAsset<CMaterial>(L"Std2DMtrl");
 
-	pBackgroudMtrl->SetTexParam(TEX_PARAM::TEX_0, CAssetMgr::GetInst()->Load<CTexture>(L"texture\\Background.jpg", L"texture\\Background.jpg"));
-	pStd2DMtrl->SetTexParam(TEX_PARAM::TEX_0, CAssetMgr::GetInst()->Load<CTexture>(L"texture\\Fighter.bmp", L"texture\\Fighter.bmp"));*/
-
+	//pBackgroudMtrl->SetTexParam(TEX_PARAM::TEX_0, CAssetMgr::GetInst()->Load<CTexture>(L"texture\\Background.jpg", L"texture\\Background.jpg"));
+	//pStd2DMtrl->SetTexParam(TEX_PARAM::TEX_0, CAssetMgr::GetInst()->Load<CTexture>(L"texture\\Fighter.bmp", L"texture\\Fighter.bmp"));
 
 	/*CLevel* pLevel = CLevelSaveLoad::LoadLevel(L"level\\test.lv");
 	CLevelMgr::GetInst()->ChangeLevel(pLevel, LEVEL_STATE::STOP);*/
 
-	//CGameObject* pObj = new CGameObject;
 
 	 //TileMap Object
 
-	//pObj = new CGameObject;
-	//pObj->SetName(L"TileMap");
+	/*pObj = new CGameObject;
+	pObj->SetName(L"TileMap");
 
-	//pObj->AddComponent(new CTransform);
-	//pObj->AddComponent(new CTileMap);
+	pObj->AddComponent(new CTransform);
+	pObj->AddComponent(new CTileMap);
 
-	//pObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 300.f));
+	pObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 300.f));
 
-	//Ptr<CTexture> pTileAtlas = CAssetMgr::GetInst()->Load<CTexture>(L"TileAtlasTex", L"texture\\TILE.bmp");
+	Ptr<CTexture> pTileAtlas = CAssetMgr::GetInst()->Load<CTexture>(L"TileAtlasTex", L"texture\\TILE.bmp");
 
-	//pObj->TileMap()->SetTileAtlas(pTileAtlas, Vec2(64.f, 64.f));
-	//pObj->TileMap()->SetFace(6, 6);
-	//for (int i = 0; i < 6; ++i)
-	//{
-	//	for (int j = 0; j < 6; ++j)
-	//	{
-	//		pObj->TileMap()->SetTileIndex(i, j, i * 6 + j);
-	//	}
-	//}
+	pObj->TileMap()->SetTileAtlas(pTileAtlas, Vec2(64.f, 64.f));
+	pObj->TileMap()->SetFace(6, 6);
+	for (int i = 0; i < 6; ++i)
+	{
+		for (int j = 0; j < 6; ++j)
+		{
+			pObj->TileMap()->SetTileIndex(i, j, i * 6 + j);
+		}
+	}
 
-	//pLevel->AddObject(pObj, L"Tile", false);
+	pTempLevel->AddObject(pObj, L"Tile", false);*/
 
 	//return;
-
 
 	CLevel* pTempLevel = new CLevel;
 
@@ -170,29 +167,29 @@ void CCreateTempLevel::CreateTempLevel()
 	pLight->Light2D()->SetAmbient(Vec3(0.f, 0.f, 0.f));
 	pTempLevel->AddObject(pLight, L"Light");
 
-	CGameObject* pObj = nullptr;
 
-	pObj = new CGameObject;
-	pObj->SetName(L"TileMap");
+	//CGameObject* pObj = nullptr;
+	//pObj = new CGameObject;
+	//pObj->SetName(L"TileMap");
 
-	pObj->AddComponent(new CTransform);
-	pObj->AddComponent(new CTileMap);
+	//pObj->AddComponent(new CTransform);
+	//pObj->AddComponent(new CTileMap);
 
-	pObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 300.f));
+	//pObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 300.f));
 
-	/*Ptr<CTexture> pTileAtlas = CAssetMgr::GetInst()->Load<CTexture>(L"TileAtlasTex", L"texture\\TILE.bmp");
+	//Ptr<CTexture> pTileAtlas = CAssetMgr::GetInst()->Load<CTexture>(L"TileAtlasTex", L"texture\\TILE.bmp");
 
-	pObj->TileMap()->SetTileAtlas(pTileAtlas, Vec2(64.f, 64.f));
-	pObj->TileMap()->SetFace(6, 6);
-	for (int i = 0; i < 6; ++i)
-	{
-		for (int j = 0; j < 6; ++j)
-		{
-			pObj->TileMap()->SetTileIndex(i, j, i * 6 + j);
-		}
-	}
+	//pObj->TileMap()->SetTileAtlas(pTileAtlas, Vec2(64.f, 64.f));
+	//pObj->TileMap()->SetFace(6, 6);
+	//for (int i = 0; i < 6; ++i)
+	//{
+	//	for (int j = 0; j < 6; ++j)
+	//	{
+	//		pObj->TileMap()->SetTileIndex(i, j, i * 6 + j);
+	//	}
+	//}
 
-	pTempLevel->AddObject(pObj, L"Tile", false);*/
+	//pTempLevel->AddObject(pObj, L"Tile", false);
 
 	// Backgruond Object 持失
 	//pObj = new CGameObject;
@@ -225,28 +222,28 @@ void CCreateTempLevel::CreateTempLevel()
 	//pTempLevel->AddObject(pParticleObj, L"Player", false);
 
 	//// Player Object 持失
-	//pObj = new CGameObject;
-	//pObj->SetName(L"Player");
+	/*pObj = new CGameObject;
+	pObj->SetName(L"Player");
 
-	//pObj->AddComponent(new CTransform);
-	//pObj->AddComponent(new CMeshRender);
-	//pObj->AddComponent(new CCollider2D);
-	//pObj->AddComponent(new CAnimator2D);
-	//pObj->AddComponent(new CPlayerScript);
-	//pObj->AddComponent(new CMissileScript);
+	pObj->AddComponent(new CTransform);
+	pObj->AddComponent(new CMeshRender);
+	pObj->AddComponent(new CCollider2D);
+	pObj->AddComponent(new CAnimator2D);
+	pObj->AddComponent(new CPlayerScript);
+	pObj->AddComponent(new CMissileScript);
 
-	//pObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 500.f));
-	//pObj->Transform()->SetRelativeScale(Vec3(200.f, 200.f, 1.f));
+	pObj->Transform()->SetRelativePos(Vec3(0.f, 0.f, 500.f));
+	pObj->Transform()->SetRelativeScale(Vec3(200.f, 200.f, 1.f));
 
-	//pObj->Collider2D()->SetAbsolute(true);
-	//pObj->Collider2D()->SetScale(Vec3(100.f, 100.f,1.f));
-	//pObj->Collider2D()->SetOffset(Vec3(0.f, 0.f,0.f));
+	pObj->Collider2D()->SetAbsolute(true);
+	pObj->Collider2D()->SetScale(Vec3(100.f, 100.f,1.f));
+	pObj->Collider2D()->SetOffset(Vec3(0.f, 0.f,0.f));
 
-	//pObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
-	//pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"Std2DMtrl"));
-	//pObj->MeshRender()->GetMaterial()->SetTexParam(TEX_PARAM::TEX_0, CAssetMgr::GetInst()->Load<CTexture>(L"texture\\Fighter.bmp", L"texture\\Fighter.bmp"));
+	pObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
+	pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"Std2DMtrl"));
+	pObj->MeshRender()->GetMaterial()->SetTexParam(TEX_PARAM::TEX_0, CAssetMgr::GetInst()->Load<CTexture>(L"texture\\Fighter.bmp", L"texture\\Fighter.bmp"));
 
-	//pTempLevel->AddObject(pObj, L"Player", false);
+	pTempLevel->AddObject(pObj, L"Player", false);*/
 
 
 	//// Monster Object 持失
@@ -282,5 +279,4 @@ void CCreateTempLevel::CreateTempLevel()
 
 	CLevelMgr::GetInst()->ChangeLevel(pTempLevel, LEVEL_STATE::STOP);
 
-	CLevelSaveLoad::SaveLevel(pTempLevel, L"level\\temp.lv");	
 }
