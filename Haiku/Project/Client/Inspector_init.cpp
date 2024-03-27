@@ -17,6 +17,7 @@ void Inspector::CreateChildUI()
 #include "Light2DUI.h"
 #include "CameraUI.h"
 #include "Animator2DUI.h"
+#include "MovementUI.h"
 #include "PrefabUI.h"
 #include "TileMapUI.h"
 #include "ParticleSystemUI.h"
@@ -43,10 +44,13 @@ void Inspector::CreateComponentUI()
 	m_arrComUI[(UINT)COMPONENT_TYPE::CAMERA]->Deactivate();
 	AddChildUI(m_arrComUI[(UINT)COMPONENT_TYPE::CAMERA]);
 
-
 	m_arrComUI[(UINT)COMPONENT_TYPE::ANIMATOR2D] = new Animator2DUI;
 	m_arrComUI[(UINT)COMPONENT_TYPE::ANIMATOR2D]->Deactivate();
 	AddChildUI(m_arrComUI[(UINT)COMPONENT_TYPE::ANIMATOR2D]);
+
+	m_arrComUI[(UINT)COMPONENT_TYPE::MOVEMENT] = new MovementUI;
+	m_arrComUI[(UINT)COMPONENT_TYPE::MOVEMENT]->Deactivate();
+	AddChildUI(m_arrComUI[(UINT)COMPONENT_TYPE::MOVEMENT]);
 
 	m_arrComUI[(UINT)COMPONENT_TYPE::TILEMAP] = new TileMapUI;
 	m_arrComUI[(UINT)COMPONENT_TYPE::TILEMAP]->Deactivate();

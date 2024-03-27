@@ -189,6 +189,9 @@ CGameObject* CLevelSaveLoad::LoadGameObject(FILE* _File)
 		case COMPONENT_TYPE::CAMERA:
 			pComponent = new CCamera;
 			break;
+		case COMPONENT_TYPE::MOVEMENT:
+			pComponent = new CMovement;
+			break;
 		case COMPONENT_TYPE::STATEMACHINE:
 			pComponent = new CStateMachine;
 			break;

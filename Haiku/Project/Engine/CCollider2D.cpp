@@ -10,6 +10,7 @@ CCollider2D::CCollider2D()
     , m_Absolute(true)
     , m_Active(true)
     , m_SemiDeactive(false)
+    , m_RenderDebugRect (true)
 {
 
 }
@@ -80,9 +81,15 @@ void CCollider2D::finaltick()
     }
 
     if (0 == m_OverlapCount)
-        GamePlayStatic::DrawDebugRect(m_matColWorld, Vec3(0.f, 1.f, 0.f), false);
+    {
+        if(true == IsRenderDebugRect())
+            GamePlayStatic::DrawDebugRect(m_matColWorld, Vec3(0.f, 1.f, 0.f), false);
+    }
     else if (1 <= m_OverlapCount)
-        GamePlayStatic::DrawDebugRect(m_matColWorld, Vec3(1.f, 0.f, 0.f), false);
+    {
+        if(true == IsRenderDebugRect())
+            GamePlayStatic::DrawDebugRect(m_matColWorld, Vec3(1.f, 0.f, 0.f), false);
+    }
     else
         assert(nullptr);
 

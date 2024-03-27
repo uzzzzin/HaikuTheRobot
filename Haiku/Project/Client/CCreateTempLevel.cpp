@@ -35,7 +35,7 @@
 void CCreateTempLevel::Init()
 {
 	// Missile Prefab 생성
-	/*CGameObject* pObj = nullptr;
+	CGameObject* pObj = nullptr;
 
 	pObj = new CGameObject;
 	pObj->SetName(L"Missile");
@@ -53,7 +53,7 @@ void CCreateTempLevel::Init()
 	
 
 	//pMissilePrefab->Save(L"prefab\\missile.pref");
-	*/
+	
 
 	// 임시 FSM 객체 에셋 하나 생성하기
 	Ptr<CFSM>	pFSM = new CFSM(true);

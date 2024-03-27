@@ -166,6 +166,7 @@
     <ClInclude Include="ComputeShaderUI.h" />
     <ClInclude Include="Content.h" />
     <ClInclude Include="EditorCamUI.h" />
+    <ClInclude Include="MovementUI.h" />
     <ClInclude Include="MtrlEditorUI.h" />
     <ClInclude Include="ParticleSystemUI.h" />
     <ClInclude Include="ScriptUI.h" />
@@ -218,6 +219,7 @@
     <ClCompile Include="ComputeShaderUI.cpp" />
     <ClCompile Include="Content.cpp" />
     <ClCompile Include="EditorCamUI.cpp" />
+    <ClCompile Include="MovementUI.cpp" />
     <ClCompile Include="MtrlEditorUI.cpp" />
     <ClCompile Include="ParticleSystemUI.cpp" />
     <ClCompile Include="ScriptUI.cpp" />

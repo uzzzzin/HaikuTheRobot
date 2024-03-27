@@ -40,7 +40,7 @@ void CPlayerScript::begin()
 	//m_Missile = CAssetMgr::GetInst()->Load<CPrefab>(L"prefab\\missile.pref", L"prefab\\missile.pref");
 	
 	
-	Animator2D()->Play(L"haiku_idle");
+	Animator2D()->Play(L"haiku_walk");
 }
 
 void CPlayerScript::tick()

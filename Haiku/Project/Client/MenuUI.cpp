@@ -263,7 +263,25 @@ void MenuUI::GameObject()
 
                 }
                 ImGui::EndMenu();
+                pInspector->SetTargetObject(m_targetGO);
             }
+
+            if (ImGui::BeginMenu("Movement"))
+            {
+                if (ImGui::MenuItem(u8"추가"))
+                {
+                    if (nullptr == m_targetGO->GetComponent(COMPONENT_TYPE::MOVEMENT))
+                        m_targetGO->AddComponent(new CMovement);
+                }
+
+                if (ImGui::MenuItem(u8"삭제"))
+                {
+
+                }
+                ImGui::EndMenu();
+                pInspector->SetTargetObject(m_targetGO);
+            }
+
             if (ImGui::BeginMenu("Light2D"))
             {
                 if (ImGui::MenuItem(u8"추가"))
