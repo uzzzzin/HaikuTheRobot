@@ -26,6 +26,8 @@ public:
     void init(HWND _hMainWnd, ComPtr<ID3D11Device> _Device, ComPtr <ID3D11DeviceContext> _Context);
     void progress();
 
+    void render_copytex();
+
 private:
     void tick();
     void render();

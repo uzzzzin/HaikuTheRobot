@@ -49,7 +49,7 @@ void CLevelMgr::tick()
 	CCollisionMgr::GetInst()->tick();
 
 	// Render
-	CRenderMgr::GetInst()->tick();
+	//CRenderMgr::GetInst()->tick();
 }
 
 void CLevelMgr::ChangeLevel(CLevel* _NextLevel, LEVEL_STATE _NextLevelStartState)

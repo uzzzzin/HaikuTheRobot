@@ -2,6 +2,7 @@
 #include "EditorCamUI.h"
 #include "CGameObjectEx.h"
 
+#include <Engine/CTransform.h>
 #include <Engine/CCamera.h>
 #include <Engine/CRenderMgr.h>
 

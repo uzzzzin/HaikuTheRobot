@@ -166,7 +166,9 @@
     <ClInclude Include="CFontMgr.h">
       <Filter>04. Manager\FontMgr</Filter>
     </ClInclude>
-    <ClInclude Include="CMovement.h" />
+    <ClInclude Include="CMovement.h">
+      <Filter>08. Component\10. Movement</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -322,7 +324,9 @@
     <ClCompile Include="CFontMgr.cpp">
       <Filter>04. Manager\FontMgr</Filter>
     </ClCompile>
-    <ClCompile Include="CMovement.cpp" />
+    <ClCompile Include="CMovement.cpp">
+      <Filter>08. Component\10. Movement</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Default">

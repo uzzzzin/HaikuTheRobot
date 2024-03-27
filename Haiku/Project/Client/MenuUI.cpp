@@ -270,8 +270,8 @@ void MenuUI::GameObject()
             {
                 if (ImGui::MenuItem(u8"추가"))
                 {
-                    if (nullptr == m_targetGO->GetComponent(COMPONENT_TYPE::MOVEMENT))
-                        m_targetGO->AddComponent(new CMovement);
+                   /* if (nullptr == m_targetGO->GetComponent(COMPONENT_TYPE::MOVEMENT))
+                        m_targetGO->AddComponent(new CMovement);*/
                 }
 
                 if (ImGui::MenuItem(u8"삭제"))
