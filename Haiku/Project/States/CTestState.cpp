@@ -12,3 +12,17 @@ CTestState::~CTestState()
 {
 
 }
+
+void CTestState::Enter()
+{
+
+}
+
+void CTestState::finaltick()
+{
+
+}
+void CTestState::Exit()
+{
+
+}

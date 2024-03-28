@@ -154,9 +154,6 @@
     <ClInclude Include="CStateMachine.h">
       <Filter>08. Component\09. StateMachine</Filter>
     </ClInclude>
-    <ClInclude Include="CFSM.h">
-      <Filter>06. Asset\FSM</Filter>
-    </ClInclude>
     <ClInclude Include="CState.h">
       <Filter>06. Asset\FSM\State</Filter>
     </ClInclude>
@@ -168,6 +165,9 @@
     </ClInclude>
     <ClInclude Include="CMovement.h">
       <Filter>08. Component\10. Movement</Filter>
+    </ClInclude>
+    <ClInclude Include="CFSM.h">
+      <Filter>06. Asset\FSM</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -312,9 +312,6 @@
     <ClCompile Include="CStateMachine.cpp">
       <Filter>08. Component\09. StateMachine</Filter>
     </ClCompile>
-    <ClCompile Include="CFSM.cpp">
-      <Filter>06. Asset\FSM</Filter>
-    </ClCompile>
     <ClCompile Include="CState.cpp">
       <Filter>06. Asset\FSM\State</Filter>
     </ClCompile>
@@ -326,6 +323,9 @@
     </ClCompile>
     <ClCompile Include="CMovement.cpp">
       <Filter>08. Component\10. Movement</Filter>
+    </ClCompile>
+    <ClCompile Include="CFSM.cpp">
+      <Filter>06. Asset\FSM</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

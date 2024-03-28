@@ -15,7 +15,7 @@ void CStateMachine::begin()
 {
 	// 원본 FSM 에셋의 Instance 를 생성해둔다.
 	if (m_FSM.Get())
-	{		
+	{
 		m_FSM_Inst = m_FSM->GetFSMIstance();
 		m_FSM_Inst->SetStateMachine(this);
 	}
@@ -51,5 +51,18 @@ void CStateMachine::SaveToFile(FILE* _File)
 void CStateMachine::LoadFromFile(FILE* _File)
 {
 	LoadAssetRef(m_FSM, _File);
+}
+
+Ptr<CFSM> CStateMachine::GetDynamicFSM()
+{
+	if (nullptr == m_FSM)
+		return nullptr;
+
+	if (!m_FSM_Inst.Get())
+	{
+		m_FSM_Inst = m_FSM->GetFSMIstance();
+	}
+
+	return m_FSM_Inst;
 }
 

@@ -42,15 +42,15 @@ void CTaskMgr::tick()
 
 			m_bCreateObject = true;
 
-		    /*if (LEVEL_STATE::PLAY == pCurLevel->GetState())
+			/*if (LEVEL_STATE::PLAY == pCurLevel->GetState())
 			{
 				Object->begin();
 			}*/
-		}		
-			break;
+		}
+		break;
 		case TASK_TYPE::DELETE_OBJECT:
 		{
-			CGameObject* pDeadObj = (CGameObject*)m_vecTask[i].Param_1;		
+			CGameObject* pDeadObj = (CGameObject*)m_vecTask[i].Param_1;
 
 			list<CGameObject*> queue;
 			queue.push_back(pDeadObj);
@@ -66,7 +66,7 @@ void CTaskMgr::tick()
 				for (size_t i = 0; i < pObject->m_vecChild.size(); ++i)
 				{
 					queue.push_back(pObject->m_vecChild[i]);
-				}								
+				}
 			}
 
 			if (m_DeleteFrameCount == 0)
@@ -74,9 +74,9 @@ void CTaskMgr::tick()
 			else if (m_DeleteFrameCount == 2)
 				m_DeleteFrameCount = 1;
 		}
-			break;
+		break;
 
-			
+
 		case TASK_TYPE::ADD_ASSET:
 		{
 			// Param1 : Asset Adress
@@ -84,7 +84,7 @@ void CTaskMgr::tick()
 			CAssetMgr::GetInst()->AddAsset(pAsset->GetName(), pAsset);
 			m_bAssetChange = true;
 		}
-			break;	
+		break;
 
 		case TASK_TYPE::DELETE_ASSET:
 		{
@@ -95,7 +95,7 @@ void CTaskMgr::tick()
 			m_bAssetChange = true;
 		}
 
-			break;
+		break;
 
 		case TASK_TYPE::CHANGE_LEVELSTATE:
 		{
@@ -104,7 +104,7 @@ void CTaskMgr::tick()
 
 			pLevel->ChangeState(NextState);
 		}
-			break;
+		break;
 
 		case TASK_TYPE::CHANGE_LEVEL:
 		{
@@ -139,6 +139,16 @@ void CTaskMgr::tick()
 		case TASK_TYPE::DISCONNECT_PARENT:
 
 			break;
+
+		case TASK_TYPE::CHANGE_STATE:
+		{
+			// Param1: Parent Object    |   Param2: Next State
+			CGameObject* pObj = (CGameObject*)m_vecTask[i].Param_1;
+			CState* pNextState = (CState*)m_vecTask[i].Param_2;
+			pObj->StateMachine()->GetDynamicFSM()->ChangeState_proc(pNextState);
+
+			break;
+		}
 		}
 	}
 

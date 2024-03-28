@@ -52,7 +52,7 @@ public:
     Ptr<T> FindAsset(const wstring& _strKey);
 
     template<typename T>
-    Ptr<T> Load(const wstring& _strKey, const wstring& _strRelativePath);
+    Ptr<T> Load(const wstring& _strKey, const wstring& _strRelativePath, bool _bAbsol = false);
 
     template<typename T>
     Ptr<T> Load(const wstring& _strRelativePath);
@@ -155,7 +155,7 @@ Ptr<T> CAssetMgr::FindAsset(const wstring& _strKey)
 
 
 template<typename T>
-Ptr<T> CAssetMgr::Load(const wstring& _strKey, const wstring& _strRelativePath)
+Ptr<T> CAssetMgr::Load(const wstring& _strKey, const wstring& _strRelativePath, bool _bAbsol)
 {
     Ptr<T> pAsset = FindAsset<T>(_strKey);
 
@@ -163,12 +163,20 @@ Ptr<T> CAssetMgr::Load(const wstring& _strKey, const wstring& _strRelativePath)
     if (nullptr != pAsset)
     {
         return (T*)pAsset.Get();
-    }      
+    }
 
-    wstring strFilePath = CPathMgr::GetContentPath();
-    strFilePath += _strRelativePath;
+    wstring strFilePath;
+    if (_bAbsol)
+        strFilePath = _strRelativePath;
+    else
+        strFilePath = CPathMgr::GetContentPath() + _strRelativePath;
 
-    pAsset = new T;
+    if constexpr (std::is_same_v<CFSM, T>)
+        pAsset = new CFSM(nullptr);
+    else
+        pAsset = new T;
+
+
     if (FAILED(pAsset->Load(strFilePath)))
     {
         MessageBox(nullptr, L"에셋 로딩 실패", L"에셋 로딩 실패", MB_OK);

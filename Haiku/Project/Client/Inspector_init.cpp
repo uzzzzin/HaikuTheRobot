@@ -21,6 +21,7 @@ void Inspector::CreateChildUI()
 #include "PrefabUI.h"
 #include "TileMapUI.h"
 #include "ParticleSystemUI.h"
+#include "StateMachineUI.h"
 
 #include "ObjectController.h"
 
@@ -57,6 +58,10 @@ void Inspector::CreateComponentUI()
 	m_arrComUI[(UINT)COMPONENT_TYPE::TILEMAP] = new TileMapUI;
 	m_arrComUI[(UINT)COMPONENT_TYPE::TILEMAP]->Deactivate();
 	AddChildUI(m_arrComUI[(UINT)COMPONENT_TYPE::TILEMAP]);
+
+	m_arrComUI[(UINT)COMPONENT_TYPE::STATEMACHINE] = new StateMachineUI;
+	m_arrComUI[(UINT)COMPONENT_TYPE::STATEMACHINE]->Deactivate();
+	AddChildUI(m_arrComUI[(UINT)COMPONENT_TYPE::STATEMACHINE]);
 
 	m_arrComUI[(UINT)COMPONENT_TYPE::PARTICLESYSTEM] = new ParticleSystemUI;
 	m_arrComUI[(UINT)COMPONENT_TYPE::PARTICLESYSTEM]->Deactivate();

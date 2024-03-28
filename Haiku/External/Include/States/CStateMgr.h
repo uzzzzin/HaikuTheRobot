@@ -3,6 +3,12 @@
 #include <vector>
 #include <string>
 
+enum STATE_TYPE
+{
+	IDLESTATE,
+	TESTSTATE,
+	TRACESTATE,
+	STATE_END,
 };
 
 using namespace std;
