@@ -21,4 +21,11 @@
 
 #include "CScriptMgr.h"
 
+// State lib
+#ifdef _DEBUG
+#pragma comment(lib, "States\\States_d.lib")
+#else
+#pragma comment(lib, "States\\States.lib")
+#endif
+
 #endif //PCH_H
