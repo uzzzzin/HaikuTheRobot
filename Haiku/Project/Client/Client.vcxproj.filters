@@ -128,6 +128,9 @@
     <Filter Include="02. UI\3. Inspector\ComponentUI\StateMachine">
       <UniqueIdentifier>{fc61830e-3a79-4bd0-9d71-dd818d36f259}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. UI\7. ObjectController">
+      <UniqueIdentifier>{9ab7192f-7eb7-40f7-85ce-d85264605763}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Client.h">
@@ -280,11 +283,11 @@
     <ClInclude Include="MovementUI.h">
       <Filter>02. UI\3. Inspector\ComponentUI\Movement</Filter>
     </ClInclude>
-    <ClInclude Include="ObjectController.h">
-      <Filter>02. UI</Filter>
-    </ClInclude>
     <ClInclude Include="StateMachineUI.h">
       <Filter>02. UI\3. Inspector\ComponentUI\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjectController.h">
+      <Filter>02. UI\7. ObjectController</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -440,11 +443,11 @@
     <ClCompile Include="MovementUI.cpp">
       <Filter>02. UI\3. Inspector\ComponentUI\Movement</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectController.cpp">
-      <Filter>02. UI</Filter>
-    </ClCompile>
     <ClCompile Include="StateMachineUI.cpp">
       <Filter>02. UI\3. Inspector\ComponentUI\StateMachine</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectController.cpp">
+      <Filter>02. UI\7. ObjectController</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

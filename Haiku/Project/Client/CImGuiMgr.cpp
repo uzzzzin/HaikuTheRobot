@@ -3,6 +3,7 @@
 
 #include <Engine/CLevelMgr.h>
 #include <Engine/CLevel.h>
+#include <Engine/CLayer.h>
 #include <Engine/CGameObject.h>
 
 #include <Engine/CPathMgr.h>
@@ -114,6 +115,7 @@ void CImGuiMgr::init(HWND _hMainWnd, ComPtr<ID3D11Device> _Device
     m_hNotify = FindFirstChangeNotification(strContentPath.c_str(), true
                                         , FILE_NOTIFY_CHANGE_FILE_NAME | FILE_NOTIFY_CHANGE_DIR_NAME 
                                         | FILE_ACTION_ADDED | FILE_ACTION_REMOVED);
+
 }
 
 void CImGuiMgr::progress()
@@ -134,6 +136,21 @@ void CImGuiMgr::tick()
 
     if (CTaskMgr::GetInst()->GetChangeLevel())
     {
+
+        //CLevel* curLevel = CLevelMgr::GetInst()->GetCurrentLevel();
+
+        //curLevel->GetLayer(0)->SetName(L"Default");
+        //curLevel->GetLayer(1)->SetName(L"Background");
+        //curLevel->GetLayer(2)->SetName(L"Platform");
+        //curLevel->GetLayer(3)->SetName(L"Map,Tile");
+        //curLevel->GetLayer(4)->SetName(L"Player");
+        //curLevel->GetLayer(5)->SetName(L"Monster");
+        //curLevel->GetLayer(6)->SetName(L"Light");
+        //curLevel->GetLayer(7)->SetName(L"Particle");
+
+        //curLevel->GetLayer(30)->SetName(L"Camera");
+        //curLevel->GetLayer(31)->SetName(L"UI");
+
         LoadLayerName();
     }
     

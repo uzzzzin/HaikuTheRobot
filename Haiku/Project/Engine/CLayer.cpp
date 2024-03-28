@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "CLayer.h"
 
+#include "CLevelMgr.h"
 #include "CGameObject.h"
 #include "CGC.h"
 
@@ -30,6 +31,7 @@ CLayer::~CLayer()
 
 void CLayer::begin()
 {
+
 	for (size_t i = 0; i < m_vecParent.size(); ++i)
 	{
 		m_vecParent[i]->begin();

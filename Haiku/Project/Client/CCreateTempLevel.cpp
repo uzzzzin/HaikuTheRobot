@@ -98,14 +98,17 @@ void CCreateTempLevel::CreateTempLevel()
 
 	CLevel* pTempLevel = new CLevel;
 
-	pTempLevel->GetLayer(0)->SetName(L"Default");
-	pTempLevel->GetLayer(1)->SetName(L"Background");
-	pTempLevel->GetLayer(2)->SetName(L"Tile");
-	pTempLevel->GetLayer(3)->SetName(L"Player");
-	pTempLevel->GetLayer(4)->SetName(L"Monster");
-	pTempLevel->GetLayer(5)->SetName(L"Light");
-	pTempLevel->GetLayer(6)->SetName(L"Tile");
-	pTempLevel->GetLayer(31)->SetName(L"UI");
+	//pTempLevel->GetLayer(0)->SetName(L"Default");
+	//pTempLevel->GetLayer(1)->SetName(L"Background");
+	//pTempLevel->GetLayer(2)->SetName(L"Platform");
+	//pTempLevel->GetLayer(3)->SetName(L"Map,Tile");
+	//pTempLevel->GetLayer(4)->SetName(L"Player");
+	//pTempLevel->GetLayer(5)->SetName(L"Monster");
+	//pTempLevel->GetLayer(6)->SetName(L"Light");
+	//pTempLevel->GetLayer(7)->SetName(L"Particle");
+
+	//pTempLevel->GetLayer(30)->SetName(L"Camera");
+	//pTempLevel->GetLayer(31)->SetName(L"UI");
 
 	// ComputeShader 테스트
 	// 사용할 텍스쳐 생성

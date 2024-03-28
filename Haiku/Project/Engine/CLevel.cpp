@@ -26,6 +26,7 @@ CLevel::CLevel(const CLevel& _OriginLevel)
 	{
 		m_arrLayer[i] = _OriginLevel.m_arrLayer[i]->Clone();
 	}
+
 }
 
 CLevel::~CLevel()
@@ -35,6 +36,7 @@ CLevel::~CLevel()
 
 void CLevel::begin()
 {
+
 	for (int i = 0; i < LAYER_MAX; ++i)
 	{
 		m_arrLayer[i]->begin();

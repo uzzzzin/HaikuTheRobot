@@ -237,6 +237,16 @@ void ObjectController::render()
 
 	ImGui::Text("Layer"); ImGui::SameLine(150);
 
+
+	// ---------------------------------------- 레이어 이름 수정 가능하게 -> 잠시만 쓰고 지우장
+	
+	//if (ImGui::Button("Fix", ImVec2(20, 20)))
+	//{
+
+	//}
+
+	// ----------------------------------------
+
 	m_vecLayerName.push_back("[All]");
 
 	const vector<string>& LayerName = CImGuiMgr::GetInst()->GetLayerName();
