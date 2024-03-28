@@ -269,22 +269,30 @@ void CImGuiMgr::render_copytex()
     ImVec2 windowSize = ImVec2(Resolution.x * (RightBottom.x - LeftTopUv.x), Resolution.y * (RightBottom.y - LeftTopUv.y));
     Inspector* pInspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
 
-    pInspector->GetObjController()->SetStartPos(windowPos);
-    pInspector->GetObjController()->SetViewportSize(windowSize);
+    m_ViewportStart = windowPos;
+    m_ViewportSize = windowSize;
+
+  /*  pInspector->GetObjController()->SetStartPos(windowPos);
+    pInspector->GetObjController()->SetViewportSize(windowSize);*/
 
     // Image 출력
     ImGui::Image((void*)pCopyTex->GetSRV().Get(), ImVec2(Resolution.x * (RightBottom.x - LeftTopUv.x), Resolution.y * (RightBottom.y - LeftTopUv.y)), LeftTopUv, RightBottom);
 
-    // case: drop
-   if (ImGui::IsMouseReleased(0) && ImGui::BeginDragDropTarget())
-   {
-      if (m_Prefab.Get())
-      {
-         GamePlayStatic::SpawnGameObject(m_Prefab->Instantiate(), 0);
-      }
 
-      ImGui::EndDragDropTarget();
-   }
+    // case: drop
+    if (ImGui::IsMouseReleased(0) && ImGui::BeginDragDropTarget())
+    {
+        if (m_Prefab.Get())
+        {
+            CGameObject* pObj = m_Prefab->Instantiate();
+            ImVec2 mousePosition = ImGui::GetMousePos();
+            Vec2 MouseWorldPos = GetMouseWorldPos(mousePosition);
+            pObj->Transform()->SetRelativePos(Vec3(MouseWorldPos.x, MouseWorldPos.y, pObj->Transform()->GetRelativePos().z));
+            GamePlayStatic::SpawnGameObject(pObj, 0);
+        }
+
+        ImGui::EndDragDropTarget();
+    }
 
     ImGui::End();
 
@@ -317,4 +325,31 @@ void CImGuiMgr::DragPrefab(DWORD_PTR _pref)
     {
         m_Prefab = (CPrefab*)pAsset.Get();
     }
+}
+
+Vec2 CImGuiMgr::GetMouseWorldPos(ImVec2 _MousePos)
+{
+    CCamera* pCurCam = nullptr;
+    if (CRenderMgr::GetInst()->IsEditorMode())
+    {
+        pCurCam = CRenderMgr::GetInst()->GetEditorCam();
+    }
+    else
+    {
+        vector<CCamera*> vecCams = CRenderMgr::GetInst()->GetCameras();
+        if (vecCams.size() > 0)
+        {
+            pCurCam = vecCams[0];
+        }
+    }
+
+    ImVec2 WinCenter = ImVec2(m_ViewportStart.x + m_ViewportSize.x / 2.f, m_ViewportStart.y + m_ViewportSize.y / 2.f);
+
+    // Window 좌표계라 y축 뒤집어 줘야 함
+    ImVec2 diffVec = _MousePos - WinCenter;
+    diffVec.y *= -1;
+
+    Vec2 MouseWorldPos = pCurCam->GetWorldPosInWindow(Vec2(diffVec.x, diffVec.y));
+
+    return MouseWorldPos;
 }

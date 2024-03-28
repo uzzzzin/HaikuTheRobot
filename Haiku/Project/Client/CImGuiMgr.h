@@ -25,10 +25,17 @@ private:
 
     Ptr<CPrefab>       m_Prefab;
 
+    ImVec2            m_ViewportStart;
+    ImVec2            m_ViewportSize;
+
 public:
     const vector<string>& GetLayerName() { return m_LayerName; }
     void LoadLayerName();
 
+    ImVec2 GetViewportStart() { return m_ViewportStart; }
+    ImVec2 GetViewportSize() { return m_ViewportSize; }
+
+    Vec2 GetMouseWorldPos(ImVec2 _MousePos);
 
 public:
     void init(HWND _hMainWnd, ComPtr<ID3D11Device> _Device, ComPtr <ID3D11DeviceContext> _Context);

@@ -66,18 +66,23 @@ void ObjectController::tick()
 	// mouse pos
 	ImVec2 mousePosition = ImGui::GetMousePos();
 
+
+	ImVec2 ViewportStart = CImGuiMgr::GetInst()->GetViewportStart();
+	ImVec2 ViewportSize = CImGuiMgr::GetInst()->GetViewportSize();
+
+
 	// 마우스가 영역 안에 있다면
-	if (mousePosition.x >= m_ViewportStart.x && mousePosition.y >= m_ViewportStart.y
-		&& mousePosition.x <= m_ViewportStart.x + m_ViewportSize.x && mousePosition.y <= m_ViewportStart.y + m_ViewportSize.y)
+	if (mousePosition.x >= ViewportStart.x && mousePosition.y >= ViewportStart.y
+		&& mousePosition.x <= ViewportStart.x + ViewportSize.x && mousePosition.y <= ViewportStart.y + ViewportSize.y)
 	{
 		// 해당 마우스 Pos -> World Pos로 변환 
 		// 해당 영역의 중앙
-		ImVec2 WinCenter = ImVec2(m_ViewportStart.x + m_ViewportSize.x/2.f, m_ViewportStart.y + m_ViewportSize.y/2.f);
+		ImVec2 WinCenter = ImVec2(ViewportStart.x + ViewportSize.x / 2.f, ViewportStart.y + ViewportSize.y / 2.f);
 
 		// Window 좌표계라 y축 뒤집어 줘야 함
-		ImVec2 diffVec =  mousePosition - WinCenter;
+		ImVec2 diffVec = mousePosition - WinCenter;
 		diffVec.y *= -1;
-		
+
 		Vec2 MouseWorldPos = pCurCam->GetWorldPosInWindow(Vec2(diffVec.x, diffVec.y));
 
 
