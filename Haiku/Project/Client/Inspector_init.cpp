@@ -22,6 +22,8 @@ void Inspector::CreateChildUI()
 #include "TileMapUI.h"
 #include "ParticleSystemUI.h"
 
+#include "ObjectController.h"
+
 void Inspector::CreateComponentUI()
 {
 	m_arrComUI[(UINT)COMPONENT_TYPE::TRANSFORM] = new TransformUI;
@@ -60,7 +62,7 @@ void Inspector::CreateComponentUI()
 	m_arrComUI[(UINT)COMPONENT_TYPE::PARTICLESYSTEM]->Deactivate();
 	AddChildUI(m_arrComUI[(UINT)COMPONENT_TYPE::PARTICLESYSTEM]);
 
-
+	m_ObjController = new ObjectController;
 }
 
 #include "TextureUI.h"

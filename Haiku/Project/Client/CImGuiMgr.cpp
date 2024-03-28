@@ -21,8 +21,10 @@
 
 #include <Engine/CDevice.h>
 #include <Engine/CRenderMgr.h>
+#include <Engine/CTaskMgr.h>
 
 #include "EditorCamUI.h"
+#include "ObjectController.h"
 
 CImGuiMgr::CImGuiMgr()
     : m_bDemoUI(true)
@@ -130,6 +132,10 @@ void CImGuiMgr::tick()
     ImGui::NewFrame();
     ImGui::DockSpaceOverViewport(ImGui::GetMainViewport());
 
+    if (CTaskMgr::GetInst()->GetChangeLevel())
+    {
+        LoadLayerName();
+    }
     
     if (m_bDemoUI)
     {
@@ -263,13 +269,52 @@ void CImGuiMgr::render_copytex()
     ImVec2 windowSize = ImVec2(Resolution.x * (RightBottom.x - LeftTopUv.x), Resolution.y * (RightBottom.y - LeftTopUv.y));
     Inspector* pInspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
 
-   /* pInspector->GetObjController()->SetStartPos(windowPos);
-    pInspector->GetObjController()->SetViewportSize(windowSize);*/
+    pInspector->GetObjController()->SetStartPos(windowPos);
+    pInspector->GetObjController()->SetViewportSize(windowSize);
 
     // Image Ãâ·Â
     ImGui::Image((void*)pCopyTex->GetSRV().Get(), ImVec2(Resolution.x * (RightBottom.x - LeftTopUv.x), Resolution.y * (RightBottom.y - LeftTopUv.y)), LeftTopUv, RightBottom);
 
+    // case: drop
+   if (ImGui::IsMouseReleased(0) && ImGui::BeginDragDropTarget())
+   {
+      if (m_Prefab.Get())
+      {
+         GamePlayStatic::SpawnGameObject(m_Prefab->Instantiate(), 0);
+      }
+
+      ImGui::EndDragDropTarget();
+   }
 
     ImGui::End();
 
+}
+
+void CImGuiMgr::LoadLayerName()
+{
+    m_LayerName.clear();
+
+    CLevel* pLevel = CLevelMgr::GetInst()->GetCurrentLevel();
+
+    for (int i = 0; i < LAYER_MAX; ++i)
+    {
+        wstring layerName = pLevel->GetLayer(i)->GetName();
+        string strLayerName = string(layerName.begin(), layerName.end());
+        if (strLayerName == "")
+        {
+            strLayerName = std::to_string(i);
+        }
+
+        m_LayerName.push_back("[" + std::to_string(i) + "]" + " " + strLayerName);
+    }
+}
+
+void CImGuiMgr::DragPrefab(DWORD_PTR _pref)
+{
+    Ptr<CAsset> pAsset = (CAsset*)_pref;
+
+    if (pAsset.Get() && pAsset->GetType() == ASSET_TYPE::PREFAB)
+    {
+        m_Prefab = (CPrefab*)pAsset.Get();
+    }
 }

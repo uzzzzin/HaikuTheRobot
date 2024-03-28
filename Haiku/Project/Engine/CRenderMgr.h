@@ -58,6 +58,8 @@ public:
     void RegisterEditorCamera(CCamera* _Cam) { m_EditorCam = _Cam; }
     CCamera* GetEditorCam() { return m_EditorCam; }
 
+    const vector<CCamera*>& GetCameras() { return m_vecCam; }
+
     void ClearCamera() { m_vecCam.clear(); }
 
     void ActiveEditorMode(bool _bActive)
@@ -73,6 +75,8 @@ public:
             m_isEditorMode = false;
         }
     }
+
+    bool IsEditorMode() { return m_isEditorMode; }
 
 
 public:

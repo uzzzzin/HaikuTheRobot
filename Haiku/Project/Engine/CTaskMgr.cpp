@@ -113,6 +113,7 @@ void CTaskMgr::tick()
 			CRenderMgr::GetInst()->ClearCamera();
 			CLevelMgr::GetInst()->ChangeLevel_Task(pNextLevel, State);
 			m_bCreateObject = true;
+			m_bChangeLevel = true;
 
 			break;
 		}
@@ -147,6 +148,7 @@ void CTaskMgr::tick()
 void CTaskMgr::Clear()
 {
 	m_bCreateObject = false;
+	m_bChangeLevel = false;
 	
 	// ¾ïÁö
 	if (1 == m_DeleteFrameCount)

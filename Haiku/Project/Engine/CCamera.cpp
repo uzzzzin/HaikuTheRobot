@@ -236,8 +236,21 @@ void CCamera::LoadFromFile(FILE* _File)
 	fread(&m_FOV, sizeof(float), 1, _File);
 	fread(&m_Width, sizeof(float), 1, _File);
 	fread(&m_Scale, sizeof(float), 1, _File);
-	fread(&m_AspectRatio, sizeof(float), 1, _File);
+	//fread(&m_AspectRatio, sizeof(float), 1, _File);
+	fread(&m_Width, sizeof(float), 1, _File);
 	fread(&m_Far, sizeof(float), 1, _File);
 	fread(&m_LayerCheck, sizeof(UINT), 1, _File);
 	fread(&m_CameraPriority, sizeof(int), 1, _File);
+}
+
+Vec2 CCamera::GetWorldPosInWindow(Vec2 _Diff)
+{
+	Vec3 Center = Transform()->GetWorldPos();
+
+	Vec2 vResol = CDevice::GetInst()->GetRenderResolution();
+	Vec2 vWinSize = Vec2(vResol.x * m_Scale, (vResol.x / m_AspectRatio) * m_Scale);
+
+	Vec2 MouseWorldPos = Vec2(Center.x + _Diff.x * m_Scale, Center.y + _Diff.y * m_Scale);
+
+	return MouseWorldPos;
 }

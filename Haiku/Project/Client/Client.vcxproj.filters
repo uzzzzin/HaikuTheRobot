@@ -289,6 +289,9 @@
     <ClInclude Include="MovementUI.h">
       <Filter>02. UI\3. Inspector\ComponentUI\Movement</Filter>
     </ClInclude>
+    <ClInclude Include="ObjectController.h">
+      <Filter>02. UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Client.rc">
@@ -448,6 +451,9 @@
     </ClCompile>
     <ClCompile Include="MovementUI.cpp">
       <Filter>02. UI\3. Inspector\ComponentUI\Movement</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjectController.cpp">
+      <Filter>02. UI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

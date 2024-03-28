@@ -21,6 +21,12 @@ CRenderMgr::CRenderMgr()
 	, m_isEditorMode(true)
 {	
 	m_RenderFunc = &CRenderMgr::render_play;
+
+#ifdef _DEBUG
+	m_isEditorMode = true;
+#else
+	m_isEditorMode = false;
+#endif
 }
 
 CRenderMgr::~CRenderMgr()

@@ -34,25 +34,21 @@
 
 void CCreateTempLevel::Init()
 {
-	// Missile Prefab 积己
-	CGameObject* pObj = nullptr;
 
+	////Missile Prefab 积己
+	CGameObject* pObj = nullptr;
 	pObj = new CGameObject;
 	pObj->SetName(L"Missile");
 	pObj->AddComponent(new CTransform);
 	pObj->AddComponent(new CMeshRender);
-	pObj->AddComponent(new CMissileScript);
-
+	//pObj->AddComponent(new CMissileScript);
 	pObj->Transform()->SetRelativeScale(Vec3(50.f, 50.f, 1.f));
-
 	pObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
-	pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"Std2DMtrl"));
+	pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"Std2DMat"));
 
-	Ptr<CPrefab> pMissilePrefab = new CPrefab(pObj);
+	Ptr<CPrefab> pMissilePrefab = new CPrefab(pObj, true);
 	CAssetMgr::GetInst()->AddAsset<CPrefab>(L"MissilePrefab", pMissilePrefab.Get());
-	
-
-	//pMissilePrefab->Save(L"prefab\\missile.pref");
+	pMissilePrefab->Save(L"prefab\\missile.pref");
 	
 
 	// 烙矫 FSM 按眉 俊悸 窍唱 积己窍扁
@@ -222,7 +218,7 @@ void CCreateTempLevel::CreateTempLevel()
 	//pTempLevel->AddObject(pParticleObj, L"Player", false);
 
 	//// Player Object 积己
-	/*pObj = new CGameObject;
+	CGameObject* pObj = new CGameObject;
 	pObj->SetName(L"Player");
 
 	pObj->AddComponent(new CTransform);
@@ -243,7 +239,7 @@ void CCreateTempLevel::CreateTempLevel()
 	pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"Std2DMtrl"));
 	pObj->MeshRender()->GetMaterial()->SetTexParam(TEX_PARAM::TEX_0, CAssetMgr::GetInst()->Load<CTexture>(L"texture\\Fighter.bmp", L"texture\\Fighter.bmp"));
 
-	pTempLevel->AddObject(pObj, L"Player", false);*/
+	pTempLevel->AddObject(pObj, L"Player", false);
 
 
 	//// Monster Object 积己

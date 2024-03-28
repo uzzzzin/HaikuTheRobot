@@ -21,6 +21,14 @@ private:
 
     HANDLE              m_hNotify;
 
+    vector<string>     m_LayerName;
+
+    Ptr<CPrefab>       m_Prefab;
+
+public:
+    const vector<string>& GetLayerName() { return m_LayerName; }
+    void LoadLayerName();
+
 
 public:
     void init(HWND _hMainWnd, ComPtr<ID3D11Device> _Device, ComPtr <ID3D11DeviceContext> _Context);
@@ -37,5 +45,8 @@ private:
 public:
     UI* FindUI(const string& _strUIName);   
     void AddUI(const string& _strKey, UI* _UI);
+
+public:
+    void DragPrefab(DWORD_PTR _pref);
 };
 

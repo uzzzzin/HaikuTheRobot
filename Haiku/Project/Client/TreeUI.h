@@ -32,7 +32,6 @@ private:
         _Node->m_ParentNode = this;
     }
 
-
 public:
     void render_update();
 
@@ -69,6 +68,9 @@ private:
     Delegate_2      m_DragDropFunc;
     bool            m_bDragDropEvent;
 
+    Delegate_0          m_RightClickFunc;
+    bool                m_bRightClickEvent;
+
 public:
     virtual void render_update() override;
 
@@ -78,6 +80,8 @@ public:
 
     void AddSelectDelegate(UI* _Inst, Delegate_1 _pFunc) { m_SelectInst = _Inst; m_SelectFunc = _pFunc; }
     void AddDragDropDelegate(UI* _Inst, Delegate_2 _pFunc) { m_DragDropInst = _Inst; m_DragDropFunc = _pFunc; }
+
+    void AddRightClickDelegate(UI* _Inst, Delegate_0 _pFunc) { m_SelectInst = _Inst; m_RightClickFunc = _pFunc; }
 
     void ShowRootNode(bool _bShow) { m_bShowRoot = _bShow; }
     void UseDragDrop(bool _Use) { m_bDragDrop = _Use; }
@@ -97,7 +101,7 @@ private:
     void SetDragNode(TreeNode* _DragNode);
     void SetDropNode(TreeNode* _DropNode);
 
-
+    void SetRightClickedNode(TreeNode* _SelectNode);
 
 
 public:

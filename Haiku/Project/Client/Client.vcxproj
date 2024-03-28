@@ -168,6 +168,7 @@
     <ClInclude Include="EditorCamUI.h" />
     <ClInclude Include="MovementUI.h" />
     <ClInclude Include="MtrlEditorUI.h" />
+    <ClInclude Include="ObjectController.h" />
     <ClInclude Include="ParticleSystemUI.h" />
     <ClInclude Include="ScriptUI.h" />
     <ClInclude Include="CTraceState.h" />
@@ -221,6 +222,7 @@
     <ClCompile Include="EditorCamUI.cpp" />
     <ClCompile Include="MovementUI.cpp" />
     <ClCompile Include="MtrlEditorUI.cpp" />
+    <ClCompile Include="ObjectController.cpp" />
     <ClCompile Include="ParticleSystemUI.cpp" />
     <ClCompile Include="ScriptUI.cpp" />
     <ClCompile Include="CTraceState.cpp" />

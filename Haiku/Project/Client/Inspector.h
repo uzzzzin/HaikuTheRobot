@@ -14,6 +14,7 @@
 class ComponentUI;
 class ScriptUI;
 class AssetUI;
+class ObjectController;
 
 class Inspector :
     public UI
@@ -27,6 +28,8 @@ private:
 
     AssetUI*            m_arrAssetUI[(UINT)ASSET_TYPE::END];
 
+    ObjectController*   m_ObjController;
+
 public:
     virtual void tick() override;
     virtual void render_update() override;
@@ -36,6 +39,8 @@ public:
     void SetTargetAsset(Ptr<CAsset> _Asset);
 
     CGameObject* GetTargetObject() { return m_TargetObject; }
+
+    ObjectController* GetObjController() { return m_ObjController; }
 
 private:
     void CreateChildUI();

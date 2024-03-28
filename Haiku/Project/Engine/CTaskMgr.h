@@ -54,7 +54,11 @@ private:
 	bool			m_bAssetChange;
 	int				m_DeleteFrameCount;
 
+	bool         m_bChangeLevel;
+
 public:
+	bool GetChangeLevel() { return m_bChangeLevel; }
+
 	void tick();
 	void AddTask(const tTask& _Task) { m_vecTask.push_back(_Task); }
 	bool GetObjectEvent() { return m_bCreateObject || m_bDeleteObject; }

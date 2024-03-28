@@ -61,10 +61,14 @@ public:
     void LayerCheck(UINT _LayerIdx, bool _bCheck);
     void LayerCheck(const wstring& _strLayerName, bool _bCheck);
     void LayerCheckAll() { m_LayerCheck = 0xffffffff; }
+    void LayerCheckOffAll() { m_LayerCheck = 0X00000000;  }
 
     // Layer 체크 확인
     bool IsLayerCheck(UINT _LayerIdx);
     bool IsLayerCheck(const wstring& _strLayerName);
+
+    // 인자로 들어오는 값은 카메라 기준 Diff 벡터
+    Vec2 GetWorldPosInWindow(Vec2 _Diff);
 
 public:
     virtual void begin() override;

@@ -46,6 +46,8 @@ public:
 
     void AddAsset(const wstring& _strKey, CAsset* _Asset);
 
+
+
     template<typename T>
     Ptr<T> FindAsset(const wstring& _strKey);
 
@@ -109,13 +111,32 @@ template<typename T>
 inline void CAssetMgr::AddAsset(const wstring& _strKey, T* _Asset)
 {
     ASSET_TYPE Type = GetAssetType<T>();
-
     map<wstring, Ptr<CAsset>>::iterator iter = m_mapAsset[(UINT)Type].find(_strKey);
-    assert(iter == m_mapAsset[(UINT)Type].end());
-    
-    _Asset->SetKey(_strKey);
-    m_mapAsset[(UINT)Type].insert(make_pair(_strKey, _Asset));
+
+    if (iter != m_mapAsset[(UINT)Type].end())
+    {
+        MessageBoxA(nullptr, "Asset already exist! Overwriting the asset.", "Add Asset Warning", MB_OK);
+        _Asset->SetKey(_strKey);
+        _Asset->SetRelativePath(_strKey);
+        m_mapAsset[(UINT)Type][_strKey] = _Asset;
+    }
+    else
+    {
+        _Asset->SetKey(_strKey);
+        _Asset->SetRelativePath(_strKey);
+        m_mapAsset[(UINT)Type].insert(make_pair(_strKey, _Asset));
+    }
 }
+//inline void CAssetMgr::AddAsset(const wstring& _strKey, T* _Asset)
+//{
+//    ASSET_TYPE Type = GetAssetType<T>();
+//
+//    map<wstring, Ptr<CAsset>>::iterator iter = m_mapAsset[(UINT)Type].find(_strKey);
+//    assert(iter == m_mapAsset[(UINT)Type].end());
+//    
+//    _Asset->SetKey(_strKey);
+//    m_mapAsset[(UINT)Type].insert(make_pair(_strKey, _Asset));
+//}
 
 template<typename T>
 Ptr<T> CAssetMgr::FindAsset(const wstring& _strKey)

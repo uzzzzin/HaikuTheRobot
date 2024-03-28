@@ -40,7 +40,16 @@ void TreeNode::render_update()
 
 			// Tree 에 자신이 Drag 된 노드임을 알린다.
 			m_Owner->SetDragNode(this);
+
+			// case: prefab drag
+			if (m_ParentNode->GetName() == "PREFAB")
+				CImGuiMgr::GetInst()->DragPrefab(m_Data);
+			else
+				CImGuiMgr::GetInst()->DragPrefab(DWORD_PTR(0));
 		}
+
+		else if (KEY_RELEASED(KEY::RBTN) && ImGui::IsItemHovered(ImGuiHoveredFlags_None))
+			m_Owner->SetRightClickedNode(this);
 
 		else if (ImGui::BeginDragDropTarget())
 		{
@@ -125,14 +134,6 @@ void TreeUI::render_update()
 		}
 	}
 
-	
-
-
-
-
-
-
-
 	// Delegate 호출
 	if (m_bSelectEvent)
 	{
@@ -140,6 +141,12 @@ void TreeUI::render_update()
 		{
 			(m_SelectInst->*m_SelectFunc)((DWORD_PTR)m_Selected);
 		}
+	}
+
+	if (m_bRightClickEvent)
+	{
+		if (m_SelectInst && m_RightClickFunc)
+			(m_SelectInst->*m_RightClickFunc)();
 	}
 
 
@@ -165,6 +172,7 @@ void TreeUI::render_update()
 
 	m_bSelectEvent = false;
 	m_bDragDropEvent = false;
+	m_bRightClickEvent = false;
 }
 
 TreeNode* TreeUI::AddTreeNode(TreeNode* _Parent, string _strName, DWORD_PTR _dwData)
@@ -222,4 +230,10 @@ void TreeUI::SetDropNode(TreeNode* _DropNode)
 {
 	m_DropNode = _DropNode;
 	m_bDragDropEvent = true;
+}
+
+void TreeUI::SetRightClickedNode(TreeNode* _SelectNode)
+{
+	SetSelectedNode(_SelectNode);
+	m_bRightClickEvent = true;
 }
