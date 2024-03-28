@@ -73,6 +73,7 @@ public:
         return nullptr;
     }
 
+    int ChangeLayer(int _Idx);
 
     int DisconnectWithParent();
     int DisconnectWithLayer();

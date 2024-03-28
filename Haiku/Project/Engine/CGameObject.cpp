@@ -286,3 +286,11 @@ bool CGameObject::IsAncestor(CGameObject* _Other)
 
 	return false;
 }
+
+int CGameObject::ChangeLayer(int _Idx)
+{
+	DisconnectWithLayer();
+	CLevelMgr::GetInst()->GetCurrentLevel()->AddObject(this, _Idx, false);
+
+	return 0;
+}

@@ -87,7 +87,7 @@ void ObjectController::tick()
 
 
 		// 마우스가 클릭 되었다면
-		if (KEY_TAP(KEY::LBTN))
+		if (KEY_TAP(KEY::LBTN) && KEY_PRESSED(KEY::LCTRL))
 		{
 			CGameObject* pObject = FindObject(MouseWorldPos);
 

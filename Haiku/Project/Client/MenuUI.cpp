@@ -54,6 +54,25 @@ void MenuUI::render_update()
 
 void MenuUI::File()
 {
+
+    //if (ImGui::BeginMenu("Movement"))
+    //{
+    //    Inspector* pInspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
+    //    if (ImGui::MenuItem(u8"추가"))
+    //    {
+    //        if (nullptr == m_targetGO->GetComponent(COMPONENT_TYPE::MOVEMENT))
+    //            m_targetGO->AddComponent(new CMovement);
+    //    }
+
+    //    if (ImGui::MenuItem(u8"삭제"))
+    //    {
+
+    //    }
+    //    ImGui::EndMenu();
+    //    pInspector->SetTargetObject(m_targetGO);
+    //}
+
+
     if (ImGui::BeginMenu("File"))
     {
         if (ImGui::MenuItem("Save Level", ""))
@@ -231,7 +250,7 @@ void MenuUI::GameObject()
                 ImGui::MenuItem(u8"삭제");
 
                 ImGui::EndMenu();
-                pInspector->SetTargetObject(m_targetGO);
+                //pInspector->SetTargetObject(m_targetGO);
             }
 
             if (ImGui::BeginMenu("Collider2D"))
@@ -247,7 +266,7 @@ void MenuUI::GameObject()
 
                 }
                 ImGui::EndMenu();
-                pInspector->SetTargetObject(m_targetGO);
+                //pInspector->SetTargetObject(m_targetGO);
             }
 
             if (ImGui::BeginMenu("Animator2D"))
@@ -263,15 +282,15 @@ void MenuUI::GameObject()
 
                 }
                 ImGui::EndMenu();
-                pInspector->SetTargetObject(m_targetGO);
+                //pInspector->SetTargetObject(m_targetGO);
             }
 
             if (ImGui::BeginMenu("Movement"))
             {
                 if (ImGui::MenuItem(u8"추가"))
                 {
-                   /* if (nullptr == m_targetGO->GetComponent(COMPONENT_TYPE::MOVEMENT))
-                        m_targetGO->AddComponent(new CMovement);*/
+                    if (nullptr == m_targetGO->GetComponent(COMPONENT_TYPE::MOVEMENT))
+                        m_targetGO->AddComponent(new CMovement);
                 }
 
                 if (ImGui::MenuItem(u8"삭제"))
@@ -279,7 +298,7 @@ void MenuUI::GameObject()
 
                 }
                 ImGui::EndMenu();
-                pInspector->SetTargetObject(m_targetGO);
+                //pInspector->SetTargetObject(m_targetGO);
             }
 
             if (ImGui::BeginMenu("Light2D"))
@@ -295,7 +314,7 @@ void MenuUI::GameObject()
 
                 }
                 ImGui::EndMenu();
-                pInspector->SetTargetObject(m_targetGO);
+                //pInspector->SetTargetObject(m_targetGO);
             }
             if (ImGui::BeginMenu("Camera"))
             {
@@ -310,7 +329,7 @@ void MenuUI::GameObject()
 
                 }
                 ImGui::EndMenu();
-                pInspector->SetTargetObject(m_targetGO);
+                //pInspector->SetTargetObject(m_targetGO);
             }
             if (ImGui::BeginMenu("StateMachine(FSM)"))
             {
@@ -325,7 +344,7 @@ void MenuUI::GameObject()
 
                 }
                 ImGui::EndMenu();
-                pInspector->SetTargetObject(m_targetGO);
+                //pInspector->SetTargetObject(m_targetGO);
             }
             if (ImGui::BeginMenu("(RC)MeshRender"))
             {
@@ -340,7 +359,7 @@ void MenuUI::GameObject()
 
                 }
                 ImGui::EndMenu();
-                pInspector->SetTargetObject(m_targetGO);
+                //pInspector->SetTargetObject(m_targetGO);
             }
             if (ImGui::BeginMenu("(RC)ParticleSystem"))
             {
@@ -355,7 +374,7 @@ void MenuUI::GameObject()
 
                 }
                 ImGui::EndMenu();
-                pInspector->SetTargetObject(m_targetGO);
+                //pInspector->SetTargetObject(m_targetGO);
             }
             if (ImGui::BeginMenu("(RC)TileMap"))
             {
@@ -370,10 +389,11 @@ void MenuUI::GameObject()
 
                 }
                 ImGui::EndMenu();
-                pInspector->SetTargetObject(m_targetGO);
+               // pInspector->SetTargetObject(m_targetGO);
             }
 
             ImGui::EndMenu();
+            pInspector->SetTargetObject(m_targetGO);
         }
 
         if (ImGui::BeginMenu("Script", ""))

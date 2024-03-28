@@ -42,6 +42,8 @@ public:
 
     ObjectController* GetObjController() { return m_ObjController; }
 
+    void DrawLayerUI();
+
 private:
     void CreateChildUI();
     void CreateComponentUI();
