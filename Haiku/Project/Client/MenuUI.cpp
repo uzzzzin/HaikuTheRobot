@@ -237,6 +237,7 @@ void MenuUI::GameObject()
         if (ImGui::BeginMenu("Component", ""))
         {
             Inspector* pInspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
+            m_targetGO = pInspector->GetTargetObject();
 
             if (ImGui::BeginMenu("Transform"))
             {
@@ -250,7 +251,6 @@ void MenuUI::GameObject()
                 ImGui::MenuItem(u8"삭제");
 
                 ImGui::EndMenu();
-                //pInspector->SetTargetObject(m_targetGO);
             }
 
             if (ImGui::BeginMenu("Collider2D"))
@@ -266,7 +266,6 @@ void MenuUI::GameObject()
 
                 }
                 ImGui::EndMenu();
-                //pInspector->SetTargetObject(m_targetGO);
             }
 
             if (ImGui::BeginMenu("Animator2D"))
@@ -282,7 +281,6 @@ void MenuUI::GameObject()
 
                 }
                 ImGui::EndMenu();
-                //pInspector->SetTargetObject(m_targetGO);
             }
 
             if (ImGui::BeginMenu("Movement"))
@@ -298,7 +296,6 @@ void MenuUI::GameObject()
 
                 }
                 ImGui::EndMenu();
-                //pInspector->SetTargetObject(m_targetGO);
             }
 
             if (ImGui::BeginMenu("Light2D"))
@@ -314,7 +311,6 @@ void MenuUI::GameObject()
 
                 }
                 ImGui::EndMenu();
-                //pInspector->SetTargetObject(m_targetGO);
             }
             if (ImGui::BeginMenu("Camera"))
             {
@@ -329,7 +325,6 @@ void MenuUI::GameObject()
 
                 }
                 ImGui::EndMenu();
-                //pInspector->SetTargetObject(m_targetGO);
             }
             if (ImGui::BeginMenu("StateMachine(FSM)"))
             {
@@ -344,7 +339,6 @@ void MenuUI::GameObject()
 
                 }
                 ImGui::EndMenu();
-                //pInspector->SetTargetObject(m_targetGO);
             }
             if (ImGui::BeginMenu("(RC)MeshRender"))
             {
@@ -359,7 +353,6 @@ void MenuUI::GameObject()
 
                 }
                 ImGui::EndMenu();
-                //pInspector->SetTargetObject(m_targetGO);
             }
             if (ImGui::BeginMenu("(RC)ParticleSystem"))
             {
@@ -374,7 +367,6 @@ void MenuUI::GameObject()
 
                 }
                 ImGui::EndMenu();
-                //pInspector->SetTargetObject(m_targetGO);
             }
             if (ImGui::BeginMenu("(RC)TileMap"))
             {
@@ -389,7 +381,6 @@ void MenuUI::GameObject()
 
                 }
                 ImGui::EndMenu();
-               // pInspector->SetTargetObject(m_targetGO);
             }
 
             ImGui::EndMenu();
@@ -406,6 +397,7 @@ void MenuUI::GameObject()
                 if (ImGui::BeginMenu(ToString(vecScriptName[i]).c_str()))
                 {
                     Inspector* inspector = (Inspector*)CImGuiMgr::GetInst()->FindUI("##Inspector");
+                    //m_targetGO = inspector->GetTargetObject();
 
                     if (ImGui::MenuItem(u8"추가"))
                     {
