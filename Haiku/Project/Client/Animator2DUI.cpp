@@ -16,7 +16,7 @@ Animator2DUI::Animator2DUI()
 	, curAnimRepeat (true)
 	, bAtlasMakeStart (false)
 {
-	SetSize(ImVec2(0.f, 300.f));
+	SetSize(ImVec2(0.f, 260.f));
 	SetComopnentTitle("Animator2D");
 
 	//m_mapList = new ListUI();

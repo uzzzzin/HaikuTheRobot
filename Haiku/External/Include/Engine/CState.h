@@ -1,7 +1,6 @@
 #pragma once
 #include "CEntity.h"
 
-
 class CFSM;
 class CStateMachine;
 
@@ -11,6 +10,10 @@ class CState :
 private:
     CFSM*       m_FSM;
     const UINT        m_StateType;
+
+    wstring     curStateName;
+
+
 
 public:
     virtual void finaltick() = 0;
@@ -27,6 +30,17 @@ public:
     UINT GetStateType() { return m_StateType; }
     virtual void SaveToFile(FILE* _File) {}
     virtual void LoadFromFile(FILE* _File) {}
+
+public:
+    //wstring GetCurStateName()
+    //{
+    //    return curStateName;
+    //}
+
+    //void SetCurStateName(const wstring& _strStateName);
+
+    CGameObject* GetOwnerObj();
+
 
 
 public:

@@ -1,5 +1,6 @@
 CBackgroundScript
+CHaikuScript
 CMissileScript
 CMonsterScript
+CPlatformScript
 CPlayerScript
-CWooScript

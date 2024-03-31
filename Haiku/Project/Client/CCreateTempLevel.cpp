@@ -21,7 +21,6 @@
 #include "CLevelSaveLoad.h"
 #include <Scripts/CMissileScript.h>
 #include <Scripts/CMonsterScript.h>
-#include <Scripts/CWooScript.h>
 
 
 #include <Engine/CAssetMgr.h>

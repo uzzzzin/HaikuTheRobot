@@ -10,11 +10,20 @@
     <Filter Include="StateMgr">
       <UniqueIdentifier>{362bcb0c-c278-4639-bded-1a733a81f9eb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="States\TraceState">
+    <Filter Include="States\Haiku">
+      <UniqueIdentifier>{d961f608-1695-4240-b1f3-732e8a585a06}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States\Etc">
+      <UniqueIdentifier>{64f1740c-abe4-4eb9-85a4-879267611acb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States\Etc\TraceState">
       <UniqueIdentifier>{b03b8ff8-264f-4926-9f06-f767838e004e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="States\IdleState">
+    <Filter Include="States\Etc\IdleState">
       <UniqueIdentifier>{c27751b5-702f-4eb8-9b0b-495b2883eaf7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States\Haiku\Jump">
+      <UniqueIdentifier>{dab48394-f41b-4cda-91e9-463450a4f119}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -28,12 +37,32 @@
       <Filter>StateMgr</Filter>
     </ClInclude>
     <ClInclude Include="CIdleState.h">
-      <Filter>States</Filter>
+      <Filter>States\Etc\IdleState</Filter>
     </ClInclude>
     <ClInclude Include="CTraceState.h">
-      <Filter>States\IdleState</Filter>
+      <Filter>States\Etc\TraceState</Filter>
     </ClInclude>
-    <ClInclude Include="CTestState.h" />
+    <ClInclude Include="CHaikuIdleState.h">
+      <Filter>States\Haiku</Filter>
+    </ClInclude>
+    <ClInclude Include="CHaikuRepairState.h">
+      <Filter>States\Haiku</Filter>
+    </ClInclude>
+    <ClInclude Include="CHaikuDieState.h">
+      <Filter>States\Haiku</Filter>
+    </ClInclude>
+    <ClInclude Include="CHaikuDashState.h">
+      <Filter>States\Haiku</Filter>
+    </ClInclude>
+    <ClInclude Include="CHaikuStartState.h">
+      <Filter>States\Haiku</Filter>
+    </ClInclude>
+    <ClInclude Include="CHaikuJumpFallState.h">
+      <Filter>States\Haiku\Jump</Filter>
+    </ClInclude>
+    <ClInclude Include="CHaikuJumpRiseState.h">
+      <Filter>States\Haiku\Jump</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -46,11 +75,31 @@
       <Filter>StateMgr</Filter>
     </ClCompile>
     <ClCompile Include="CIdleState.cpp">
-      <Filter>States</Filter>
+      <Filter>States\Etc\IdleState</Filter>
     </ClCompile>
     <ClCompile Include="CTraceState.cpp">
-      <Filter>States\IdleState</Filter>
+      <Filter>States\Etc\TraceState</Filter>
     </ClCompile>
-    <ClCompile Include="CTestState.cpp" />
+    <ClCompile Include="CHaikuIdleState.cpp">
+      <Filter>States\Haiku</Filter>
+    </ClCompile>
+    <ClCompile Include="CHaikuRepairState.cpp">
+      <Filter>States\Haiku</Filter>
+    </ClCompile>
+    <ClCompile Include="CHaikuDieState.cpp">
+      <Filter>States\Haiku</Filter>
+    </ClCompile>
+    <ClCompile Include="CHaikuDashState.cpp">
+      <Filter>States\Haiku</Filter>
+    </ClCompile>
+    <ClCompile Include="CHaikuStartState.cpp">
+      <Filter>States\Haiku</Filter>
+    </ClCompile>
+    <ClCompile Include="CHaikuJumpFallState.cpp">
+      <Filter>States\Haiku\Jump</Filter>
+    </ClCompile>
+    <ClCompile Include="CHaikuJumpRiseState.cpp">
+      <Filter>States\Haiku\Jump</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

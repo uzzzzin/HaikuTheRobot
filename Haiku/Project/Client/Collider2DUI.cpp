@@ -26,6 +26,7 @@ void Collider2DUI::render_update()
 	float fRotation = GetTargetObject()->Collider2D()->GetRotationZ();
 	fRotation = fRotation / XM_PI * 100.f;
 	bool bAbsolute = GetTargetObject()->Collider2D()->IsAbsolute();
+	bool bRenderDebug = GetTargetObject()->Collider2D()->IsRenderDebugRect();
 
 	Vec3 FinalPos = GetTargetObject()->Collider2D()->GetFinalPos();
 
@@ -43,13 +44,18 @@ void Collider2DUI::render_update()
 
 	ImGui::Text("Absolute");
 	ImGui::SameLine();
-	ImGui::Checkbox("Absolute", &bAbsolute);
-
+	ImGui::Checkbox("##Absolute", &bAbsolute);
+	ImGui::SameLine();
+	ImGui::Text("RenderDebug");
+	ImGui::SameLine();
+	ImGui::Checkbox("##RenderDebug", &bRenderDebug);
+	
 	GetTargetObject()->Collider2D()->SetOffset(vOffset);
 	GetTargetObject()->Collider2D()->SetScale(vScale);
 	fRotation = (fRotation / 100.f) * XM_PI;
 	GetTargetObject()->Collider2D()->SetRotationZ(fRotation);
 	GetTargetObject()->Collider2D()->SetAbsolute(bAbsolute);
+	GetTargetObject()->Collider2D()->SetRenderDebugRect(bRenderDebug);
 
 	ImGui::Text("FinalPos");
 	ImGui::SameLine();

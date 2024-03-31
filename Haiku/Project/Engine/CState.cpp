@@ -24,4 +24,13 @@ void CState::ChangeState(const wstring& _strStateName)
 {
 	assert(m_FSM);
 	m_FSM->ChangeState(_strStateName);
+} 
+
+CGameObject* CState::GetOwnerObj()
+{
+	return m_FSM->GetStateMachine()->GetOwner();
 }
+
+//void CState::SetCurStateName(const wstring& _strStateName)
+//{
+//}

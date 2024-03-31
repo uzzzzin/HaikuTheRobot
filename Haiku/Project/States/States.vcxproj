@@ -172,17 +172,29 @@ call CodeGen.exe</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CHaikuDashState.h" />
+    <ClInclude Include="CHaikuDieState.h" />
+    <ClInclude Include="CHaikuIdleState.h" />
+    <ClInclude Include="CHaikuJumpFallState.h" />
+    <ClInclude Include="CHaikuJumpRiseState.h" />
+    <ClInclude Include="CHaikuRepairState.h" />
+    <ClInclude Include="CHaikuStartState.h" />
     <ClInclude Include="CIdleState.h" />
     <ClInclude Include="CStateMgr.h" />
-    <ClInclude Include="CTestState.h" />
     <ClInclude Include="CTraceState.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CHaikuDashState.cpp" />
+    <ClCompile Include="CHaikuDieState.cpp" />
+    <ClCompile Include="CHaikuIdleState.cpp" />
+    <ClCompile Include="CHaikuJumpFallState.cpp" />
+    <ClCompile Include="CHaikuJumpRiseState.cpp" />
+    <ClCompile Include="CHaikuRepairState.cpp" />
+    <ClCompile Include="CHaikuStartState.cpp" />
     <ClCompile Include="CIdleState.cpp" />
     <ClCompile Include="CStateMgr.cpp" />
-    <ClCompile Include="CTestState.cpp" />
     <ClCompile Include="CTraceState.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

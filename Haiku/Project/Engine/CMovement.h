@@ -31,6 +31,7 @@ public:
     virtual void LoadFromFile(FILE* _File) override;
 
 public:
+    void SetForce(Vec3 _vForce) { m_vForce = _vForce; }
     void AddForce(Vec3 _vForce) { m_vForce += _vForce; }
     void SetVelocity(Vec3 _vVelocity) { m_vVelocity = _vVelocity; }
     void SetGravityForce(Vec3 _vGravityForce) { m_vGravityForce = _vGravityForce; }

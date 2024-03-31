@@ -2,32 +2,36 @@
 #include "CScriptMgr.h"
 
 #include "CBackgroundScript.h"
+#include "CHaikuScript.h"
 #include "CMissileScript.h"
 #include "CMonsterScript.h"
+#include "CPlatformScript.h"
 #include "CPlayerScript.h"
-#include "CWooScript.h"
 
 void CScriptMgr::GetScriptInfo(vector<wstring>& _vec)
 {
 	_vec.push_back(L"CBackgroundScript");
+	_vec.push_back(L"CHaikuScript");
 	_vec.push_back(L"CMissileScript");
 	_vec.push_back(L"CMonsterScript");
+	_vec.push_back(L"CPlatformScript");
 	_vec.push_back(L"CPlayerScript");
-	_vec.push_back(L"CWooScript");
 }
 
 CScript * CScriptMgr::GetScript(const wstring& _strScriptName)
 {
 	if (L"CBackgroundScript" == _strScriptName)
 		return new CBackgroundScript;
+	if (L"CHaikuScript" == _strScriptName)
+		return new CHaikuScript;
 	if (L"CMissileScript" == _strScriptName)
 		return new CMissileScript;
 	if (L"CMonsterScript" == _strScriptName)
 		return new CMonsterScript;
+	if (L"CPlatformScript" == _strScriptName)
+		return new CPlatformScript;
 	if (L"CPlayerScript" == _strScriptName)
 		return new CPlayerScript;
-	if (L"CWooScript" == _strScriptName)
-		return new CWooScript;
 	return nullptr;
 }
 
@@ -38,17 +42,20 @@ CScript * CScriptMgr::GetScript(UINT _iScriptType)
 	case (UINT)SCRIPT_TYPE::BACKGROUNDSCRIPT:
 		return new CBackgroundScript;
 		break;
+	case (UINT)SCRIPT_TYPE::HAIKUSCRIPT:
+		return new CHaikuScript;
+		break;
 	case (UINT)SCRIPT_TYPE::MISSILESCRIPT:
 		return new CMissileScript;
 		break;
 	case (UINT)SCRIPT_TYPE::MONSTERSCRIPT:
 		return new CMonsterScript;
 		break;
+	case (UINT)SCRIPT_TYPE::PLATFORMSCRIPT:
+		return new CPlatformScript;
+		break;
 	case (UINT)SCRIPT_TYPE::PLAYERSCRIPT:
 		return new CPlayerScript;
-		break;
-	case (UINT)SCRIPT_TYPE::WOOSCRIPT:
-		return new CWooScript;
 		break;
 	}
 	return nullptr;
@@ -62,6 +69,10 @@ const wchar_t * CScriptMgr::GetScriptName(CScript * _pScript)
 		return L"CBackgroundScript";
 		break;
 
+	case SCRIPT_TYPE::HAIKUSCRIPT:
+		return L"CHaikuScript";
+		break;
+
 	case SCRIPT_TYPE::MISSILESCRIPT:
 		return L"CMissileScript";
 		break;
@@ -70,12 +81,12 @@ const wchar_t * CScriptMgr::GetScriptName(CScript * _pScript)
 		return L"CMonsterScript";
 		break;
 
-	case SCRIPT_TYPE::PLAYERSCRIPT:
-		return L"CPlayerScript";
+	case SCRIPT_TYPE::PLATFORMSCRIPT:
+		return L"CPlatformScript";
 		break;
 
-	case SCRIPT_TYPE::WOOSCRIPT:
-		return L"CWooScript";
+	case SCRIPT_TYPE::PLAYERSCRIPT:
+		return L"CPlayerScript";
 		break;
 
 	}

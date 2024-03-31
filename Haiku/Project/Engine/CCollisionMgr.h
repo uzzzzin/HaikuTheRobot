@@ -42,6 +42,7 @@ public:
 private:
     void CollisionBtwLayers(UINT _Left, UINT _Right);
     void CollisionBtwCollider2D(CCollider2D* _LeftCol, CCollider2D* _RightCol);
+public:
     bool IsCollision(CCollider2D* _LeftCol, CCollider2D* _RightCol);
 };
 

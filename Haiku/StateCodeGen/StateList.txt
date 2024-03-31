@@ -1,3 +1,9 @@
+CHaikuDashState
+CHaikuDieState
+CHaikuIdleState
+CHaikuJumpFallState
+CHaikuJumpRiseState
+CHaikuRepairState
+CHaikuStartState
 CIdleState
-CTestState
 CTraceState
