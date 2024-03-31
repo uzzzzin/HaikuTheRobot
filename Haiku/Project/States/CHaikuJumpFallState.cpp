@@ -37,18 +37,19 @@ void CHaikuJumpFallState::finaltick()
 		
 		if (CCollisionMgr::GetInst()->IsCollision(GetOwnerObj()->Collider2D(), colPlatform->Collider2D()))
 		{
+			GetOwnerObj()->Movement()->SetVelocity(Vec3());
 			ChangeState(L"Idle");
 		}
 	}
 
 	if (KEY_PRESSED(KEY::LEFT)) //점프중인데 이동중인 상태라면
 	{
-		GetOwnerObj()->Movement()->AddForce(Vec3(-300.f, 50.f, 0.f) * DT);
+		GetOwnerObj()->Movement()->AddForce(Vec3(-400.f, 0.f, 0.f) * DT);
 	}
 
 	if ((KEY_PRESSED(KEY::RIGHT)))
 	{
-		GetOwnerObj()->Movement()->AddForce(Vec3(300.f, 50.f, 0.f) * DT);
+		GetOwnerObj()->Movement()->AddForce(Vec3(400.f, 0.f, 0.f) * DT);
 	}
 }
 

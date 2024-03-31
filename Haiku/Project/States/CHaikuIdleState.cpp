@@ -24,8 +24,10 @@ void CHaikuIdleState::Enter()
 {
 	CHaikuScript* pScpt = GetOwnerObj()->GetScript<CHaikuScript>();
 	pScpt->SetCurStateName(L"Idle");
-
-	GetFSM()->GetStateMachine()->Animator2D()->Play(L"haiku_idle");
+	if ((KEY_PRESSED(KEY::RIGHT)) || (KEY_PRESSED(KEY::LEFT)))
+		GetFSM()->GetStateMachine()->Animator2D()->Play(L"haiku_walk");
+	else
+		GetFSM()->GetStateMachine()->Animator2D()->Play(L"haiku_idle");
 }
 
 void CHaikuIdleState::finaltick()

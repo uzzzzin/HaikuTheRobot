@@ -44,12 +44,12 @@ void CHaikuJumpRiseState::finaltick()
 
 	if (KEY_PRESSED(KEY::LEFT)&& KEY_PRESSED(KEY::SPACE)) //점프중인데 이동중인 상태라면
 	{
-		GetOwnerObj()->Movement()->AddForce(Vec3(-300.f, 50.f, 0.f));
+		GetOwnerObj()->Movement()->AddForce(Vec3(-400.f, 50.f, 0.f));
 	}
 
 	if (KEY_PRESSED(KEY::RIGHT)&& KEY_PRESSED(KEY::SPACE))
 	{
-		GetOwnerObj()->Movement()->AddForce(Vec3(300.f, 50.f, 0.f));
+		GetOwnerObj()->Movement()->AddForce(Vec3(400.f, 50.f, 0.f));
 	}
 }
 

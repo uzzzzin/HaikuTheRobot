@@ -4,3 +4,4 @@ CMissileScript
 CMonsterScript
 CPlatformScript
 CPlayerScript
+CTraceCameraScript

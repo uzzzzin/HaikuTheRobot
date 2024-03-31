@@ -7,6 +7,7 @@
 #include "CMonsterScript.h"
 #include "CPlatformScript.h"
 #include "CPlayerScript.h"
+#include "CTraceCameraScript.h"
 
 void CScriptMgr::GetScriptInfo(vector<wstring>& _vec)
 {
@@ -16,6 +17,7 @@ void CScriptMgr::GetScriptInfo(vector<wstring>& _vec)
 	_vec.push_back(L"CMonsterScript");
 	_vec.push_back(L"CPlatformScript");
 	_vec.push_back(L"CPlayerScript");
+	_vec.push_back(L"CTraceCameraScript");
 }
 
 CScript * CScriptMgr::GetScript(const wstring& _strScriptName)
@@ -32,6 +34,8 @@ CScript * CScriptMgr::GetScript(const wstring& _strScriptName)
 		return new CPlatformScript;
 	if (L"CPlayerScript" == _strScriptName)
 		return new CPlayerScript;
+	if (L"CTraceCameraScript" == _strScriptName)
+		return new CTraceCameraScript;
 	return nullptr;
 }
 
@@ -56,6 +60,9 @@ CScript * CScriptMgr::GetScript(UINT _iScriptType)
 		break;
 	case (UINT)SCRIPT_TYPE::PLAYERSCRIPT:
 		return new CPlayerScript;
+		break;
+	case (UINT)SCRIPT_TYPE::TRACECAMERASCRIPT:
+		return new CTraceCameraScript;
 		break;
 	}
 	return nullptr;
@@ -87,6 +94,10 @@ const wchar_t * CScriptMgr::GetScriptName(CScript * _pScript)
 
 	case SCRIPT_TYPE::PLAYERSCRIPT:
 		return L"CPlayerScript";
+		break;
+
+	case SCRIPT_TYPE::TRACECAMERASCRIPT:
+		return L"CTraceCameraScript";
 		break;
 
 	}

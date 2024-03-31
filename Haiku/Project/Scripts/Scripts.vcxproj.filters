@@ -28,6 +28,7 @@
     <ClInclude Include="CPlatformScript.h">
       <Filter>Scripts</Filter>
     </ClInclude>
+    <ClInclude Include="CTraceCameraScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -57,6 +58,7 @@
     <ClCompile Include="CPlatformScript.cpp">
       <Filter>Scripts</Filter>
     </ClCompile>
+    <ClCompile Include="CTraceCameraScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Default">
