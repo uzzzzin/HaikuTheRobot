@@ -1,4 +1,5 @@
 CBackgroundScript
+CCtrlScript
 CHaikuScript
 CMissileScript
 CMonsterScript

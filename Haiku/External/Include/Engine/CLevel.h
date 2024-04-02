@@ -24,8 +24,12 @@ public:
 	CLayer* GetLayer(int _iLayerIdx) { return m_arrLayer[_iLayerIdx]; }
 	CLayer* GetLayer(const wstring& _strLayerName);
 
+	//CLayer* GetArrLayer() { return m_arrLayer[LAYER_MAX]; }
+
 	CGameObject* FindObjectByName(const wstring& _strName);
 	void FindObjectsByName(const wstring& _strName, vector<CGameObject*>& _vecObj);
+
+	void GetAllObjects(vector<CGameObject*>& _vecObj);
 
 public:
 	void ChangeState(LEVEL_STATE _NextState);

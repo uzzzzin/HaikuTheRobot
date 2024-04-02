@@ -29,6 +29,7 @@
       <Filter>Scripts</Filter>
     </ClInclude>
     <ClInclude Include="CTraceCameraScript.h" />
+    <ClInclude Include="CCtrlScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -59,6 +60,7 @@
       <Filter>Scripts</Filter>
     </ClCompile>
     <ClCompile Include="CTraceCameraScript.cpp" />
+    <ClCompile Include="CCtrlScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Default">

@@ -48,6 +48,8 @@ void ScriptUI::render_update()
 			break;
 		case SCRIPT_PARAM::OBJECT:
 			break;		
+		case SCRIPT_PARAM::BOOL:
+			ParamUI::Param_BOOL((bool*)vecParam[i].pData, vecParam[i].Desc);
 		}		
 	}
 }
