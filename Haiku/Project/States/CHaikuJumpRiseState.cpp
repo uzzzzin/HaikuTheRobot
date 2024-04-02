@@ -22,8 +22,6 @@ void CHaikuJumpRiseState::Enter()
 
 	GetOwnerObj()->Movement()->SetGround(false);
 	GetOwnerObj()->Movement()->SetVelocity(Vec3(0, 250, 0));
-
-
 }
 
 void CHaikuJumpRiseState::finaltick()

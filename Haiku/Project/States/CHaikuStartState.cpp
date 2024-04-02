@@ -37,7 +37,7 @@ void CHaikuStartState::finaltick()
 		bStart = true;
 	}
 
-	if ( true== bStart) //  && true == GetOwnerObj()->Movement()->IsGround()
+	if ( true== bStart)
 	{
 		ChangeState(L"Idle");
 	}

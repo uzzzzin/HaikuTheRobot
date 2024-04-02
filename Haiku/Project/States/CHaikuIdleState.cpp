@@ -6,8 +6,7 @@
 
 #include <Engine/CAnimator2D.h>
 
-#include <ENgine/CKeyMgr.h>
-
+#include <Engine/CKeyMgr.h>
 
 #include <Scripts/CHaikuScript.h>
 
@@ -32,7 +31,6 @@ void CHaikuIdleState::Enter()
 
 void CHaikuIdleState::finaltick()
 {
-
 	if (KEY_TAP(KEY::C))
 	{
 		ChangeState(L"Dash");
