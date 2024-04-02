@@ -3,6 +3,12 @@
 class CPlatformScript :
     public CScript
 {
+private:
+    COLLISION_DIR curColDir;
+public:
+    COLLISION_DIR GetCurColDir() { return curColDir; }
+    COLLISION_DIR DetectCollision(Vec3 PlatformPos, float PlatformWidth, float PlatformHeight, Vec3 ObjPos, float ObjWidth, float ObjHeight);
+
 public:
     virtual void begin() override;
     virtual void tick() override;
@@ -18,4 +24,6 @@ public:
     CPlatformScript();
     ~CPlatformScript();
 };
+
+
 

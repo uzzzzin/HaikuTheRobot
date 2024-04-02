@@ -249,3 +249,12 @@ enum class LEVEL_STATE
 	STOP,
 	NONE,
 };
+
+enum class COLLISION_DIR
+{
+	UP,
+	DOWN,
+	LEFT,
+	RIGHT,
+	NONE,
+};

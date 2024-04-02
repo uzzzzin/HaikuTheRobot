@@ -5,6 +5,7 @@
 #include <Engine/CMovement.h>
 
 #include <Engine/CCollisionMgr.h>
+#include "CPlatformScript.h"
 
 
 CHaikuScript::CHaikuScript()
@@ -89,8 +90,14 @@ void CHaikuScript::BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, 
 {
 	if (2 == _OtherObj->GetLayerIdx())
 	{
-		Movement()->SetGround(true); 
 		colPlatformName = _OtherObj->GetName();
+		COLLISION_DIR dir = _OtherObj->GetScript<CPlatformScript>()->GetCurColDir();
+
+		if (COLLISION_DIR::DOWN == dir)
+		{
+			Movement()->SetGround(true); 
+		}
+		//Movement()->SetGround(true); 
 	}
 
 	//tateMachine()->GetDynamicFSM()->ChangeState(L"");
@@ -113,9 +120,14 @@ void CHaikuScript::EndOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CC
 {
 	if (2 == _OtherObj->GetLayerIdx())
 	{
-		Movement()->SetGround(false);
+		COLLISION_DIR dir = _OtherObj->GetScript<CPlatformScript>()->GetCurColDir();
+		if (COLLISION_DIR::DOWN == dir)
+		{
+			Movement()->SetGround(false);
+		}
 	}
 	colPlatformName = L"";
+	Movement()->SetGround(false);
 }
 
 void CHaikuScript::SaveToFile(FILE* _File)
