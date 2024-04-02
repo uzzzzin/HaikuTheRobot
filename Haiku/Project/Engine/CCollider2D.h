@@ -22,6 +22,8 @@ private:
 
     bool    m_RenderDebugRect; // 콜라이더 네모 그릴지 말지 정하는
 
+    Vec3    m_PrevFinalPos;
+
 public:
     Vec3 GetOffset() { return m_Offset; }
     Vec3 GetScale() { return m_Scale; }
@@ -47,6 +49,8 @@ public:
 
     void SetRenderDebugRect(bool _b) { m_RenderDebugRect = _b; }
     bool IsRenderDebugRect() { return m_RenderDebugRect;  }
+
+    Vec3 GetPrevFinalPos() { return m_PrevFinalPos; }
 
 public:
     virtual void finaltick() override;

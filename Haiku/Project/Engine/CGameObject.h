@@ -40,7 +40,7 @@ public:
     CComponent* GetComponent(COMPONENT_TYPE _Type) { return m_arrCom[(UINT)_Type]; }        
     CRenderComponent* GetRenderComponent() { return m_RenderCom; }
 
-    void deleteScript(const wstring& _ScriptName);
+   // void deleteScript(const wstring& _ScriptName);
 
     GET_COMPONENT(Transform, TRANSFORM);
     GET_COMPONENT(MeshRender, MESHRENDER);

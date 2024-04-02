@@ -5,6 +5,10 @@ class CTransform :
     public CComponent
 {
 private:
+
+    Vec3    m_vPrevWorldPos;
+    Vec3    m_vCurWorldPos;
+
     Vec3    m_vRelativePos;
     Vec3    m_vRelativeScale;
     Vec3    m_vRealtiveRotation;
@@ -25,6 +29,9 @@ public:
     void SetRelativeRotation(Vec3 _Rotation) { m_vRealtiveRotation = _Rotation; }
 
     void SetWorldMat(const Matrix _matWorld) { m_matWorld = _matWorld; }
+
+    Vec3 GetPrevPos() { return m_vPrevWorldPos; }
+    Vec3 GetCurPos() { return m_vCurWorldPos; }
 
     Vec3 GetRelativePos() { return m_vRelativePos; }
     Vec3 GetRelativeScale() { return m_vRelativeScale; }

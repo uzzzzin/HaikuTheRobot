@@ -196,6 +196,7 @@ enum class SCRIPT_PARAM
 	VEC3,
 	VEC4,
 	OBJECT,
+	BOOL,
 };
 
 

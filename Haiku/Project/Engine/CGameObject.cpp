@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "CGameObject.h"
 
-#include <Scripts/CScriptMgr.h>
+//#include <Scripts/CScriptMgr.h>
 
 #include "CComponent.h"
 #include "CRenderComponent.h"
@@ -180,20 +180,20 @@ void CGameObject::AddComponent(CComponent* _Comonent)
 	}
 }
 
-void CGameObject::deleteScript(const wstring& _ScriptName)
-{
-	for (auto iter = m_vecScript.begin(); iter != m_vecScript.end();)
-	{
-		if (_ScriptName == CScriptMgr::GetScriptName(*iter))
-		{
-			iter = m_vecScript.erase(iter);
-		}
-		else
-		{
-			++iter;
-		}
-	}
-}
+//void CGameObject::deleteScript(const wstring& _ScriptName)
+//{
+//	for (auto iter = m_vecScript.begin(); iter != m_vecScript.end();)
+//	{
+//		if (_ScriptName == CScriptMgr::GetScriptName(*iter))
+//		{
+//			iter = m_vecScript.erase(iter);
+//		}
+//		else
+//		{
+//			++iter;
+//		}
+//	}
+//}
 
 
 int CGameObject::DisconnectWithParent()

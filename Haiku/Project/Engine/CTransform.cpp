@@ -71,11 +71,15 @@ void CTransform::finaltick()
 
 		for (int i = 0; i < 3; ++i)
 		{
+
 			// m_matWorld 행렬에 크기정보가 있을 수 있기 때문에 다시 길이를 1로 정규화 시킨다.
 			m_arrWorldDir[i] = XMVector3TransformNormal(arrAxis[i], m_matWorld);
 			m_arrWorldDir[i].Normalize();
 		}
 	}
+
+	m_vPrevWorldPos = m_vCurWorldPos;
+	m_vCurWorldPos = GetWorldPos();
 }
 
 void CTransform::UpdateData()

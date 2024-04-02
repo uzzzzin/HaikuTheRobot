@@ -53,6 +53,8 @@ void CCollider2D::finaltick()
 
     // 최종 위치값을 계산
     Vec3 vObjPos = Transform()->GetRelativePos();
+
+    m_PrevFinalPos = m_FinalPos;
     m_FinalPos = vObjPos + m_Offset;
 
     if (false == m_Absolute)

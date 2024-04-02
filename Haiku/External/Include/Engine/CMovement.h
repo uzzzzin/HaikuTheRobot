@@ -7,6 +7,16 @@
 
 class CPlayer;
 
+typedef short MovementDir;
+
+enum MovementDirFlag
+{
+    MV_UP = 0x01,
+    MV_DOWN = 0x02,
+    MV_LEFT = 0x04,
+    MV_RIGHT = 0x08,
+};
+
 class CMovement :
     public CComponent
 {
@@ -22,6 +32,8 @@ private:
     float       m_fFrictionScale;    // ¸¶Âû Å©±â
     bool        m_bUseGravity;       // Áß·Â »ç¿ë
     bool        m_bGround;           // ¶¥ À§
+
+    MovementDir m_Dir;
 
 public:
     virtual void begin() override;
@@ -54,6 +66,10 @@ public:
     float GetFrictionScale() { return m_fFrictionScale; }
     bool IsUseGravity() { return m_bUseGravity; }
     bool IsGround() { return m_bGround; }
+
+public:
+    MovementDir GetDir() { return m_Dir; }
+    void CalDir();
 
 public:
     CLONE(CMovement);

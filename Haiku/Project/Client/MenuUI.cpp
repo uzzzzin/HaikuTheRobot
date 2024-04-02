@@ -411,7 +411,7 @@ void MenuUI::GameObject()
                     {
                         if (nullptr != inspector->GetTargetObject())
                         {
-                            inspector->GetTargetObject()->deleteScript(vecScriptName[i]);
+                            //inspector->GetTargetObject()->deleteScript(vecScriptName[i]);
                         }
                     }
                     inspector->SetTargetObject(m_targetGO);

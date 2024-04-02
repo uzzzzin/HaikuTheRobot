@@ -10,10 +10,12 @@
 
 CHaikuScript::CHaikuScript()
 	: CScript(HAIKUSCRIPT)
-	, curDir (false)
+	, curDir(false)
 	, prevDir(false)
 	, curStateName(L"Start")
 	, prevStateName(L"Start")
+	, prevColDir(COLLISION_DIR::NONE)
+	, collisionCnt(0)
 {
 }
 
@@ -47,7 +49,7 @@ void CHaikuScript::tick()
 		Animator2D()->Play(L"haiku_walk");
 	}
 
-	if ( KEY_PRESSED(KEY::LEFT)) //점프가 아닐 때만
+	if (KEY_PRESSED(KEY::LEFT)) //점프가 아닐 때만
 	{
 		Movement()->AddForce(Vec3(-300.f, 0.f, 0.f) * DT);
 	}
@@ -86,48 +88,29 @@ void CHaikuScript::tick()
 	prevDir = curDir;
 }
 
+// =====================================================================================================================
+
+
 void CHaikuScript::BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
 {
+
 	if (2 == _OtherObj->GetLayerIdx())
 	{
 		colPlatformName = _OtherObj->GetName();
-		COLLISION_DIR dir = _OtherObj->GetScript<CPlatformScript>()->GetCurColDir();
 
-		if (COLLISION_DIR::DOWN == dir)
-		{
-			Movement()->SetGround(true); 
-		}
-		//Movement()->SetGround(true); 
 	}
-
-	//tateMachine()->GetDynamicFSM()->ChangeState(L"");
 }
 
 void CHaikuScript::Overlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
 {
-	//if (2 == _OtherObj->GetLayerIdx())
-	//{
-	//	Movement()->SetGround(true);
-	//}
 
-	//if ( Movement()->GetForce().y >= 0)
-	//{
-	//	Movement()->SetGround(false);
-	//}
 }
 
 void CHaikuScript::EndOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
 {
-	if (2 == _OtherObj->GetLayerIdx())
-	{
-		COLLISION_DIR dir = _OtherObj->GetScript<CPlatformScript>()->GetCurColDir();
-		if (COLLISION_DIR::DOWN == dir)
-		{
-			Movement()->SetGround(false);
-		}
-	}
+	
+
 	colPlatformName = L"";
-	Movement()->SetGround(false);
 }
 
 void CHaikuScript::SaveToFile(FILE* _File)
@@ -136,4 +119,30 @@ void CHaikuScript::SaveToFile(FILE* _File)
 
 void CHaikuScript::LoadFromFile(FILE* _File)
 {
+}
+
+void CHaikuScript::AddOverlapGround(CGameObject* _pObejct)
+{
+	m_Ground.push_back(_pObejct);
+
+	m_OverlapGround = m_Ground.size();
+}
+
+void CHaikuScript::SubOverlapGround(CGameObject* _pObejct)
+{
+	vector<CGameObject*>::iterator iter = m_Ground.begin();
+
+	for (; iter != m_Ground.end();)
+	{
+		if (*iter == _pObejct)
+		{
+			iter = m_Ground.erase(iter);
+		}
+		else
+		{
+			++iter;
+		}
+	}
+
+	m_OverlapGround = m_Ground.size();
 }

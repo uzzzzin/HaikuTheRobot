@@ -125,6 +125,9 @@
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <MinFilesInUnityFile>10</MinFilesInUnityFile>
+      <MaxFilesInUnityFile>20</MaxFilesInUnityFile>
+      <UnityFilesDirectory>$(ProjectDir)</UnityFilesDirectory>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -148,6 +151,9 @@ call CodeGen.exe</Command>
       <ConformanceMode>true</ConformanceMode>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
+      <MinFilesInUnityFile>10</MinFilesInUnityFile>
+      <MaxFilesInUnityFile>20</MaxFilesInUnityFile>
+      <UnityFilesDirectory>$(ProjectDir)</UnityFilesDirectory>
     </ClCompile>
     <Link>
       <SubSystem>

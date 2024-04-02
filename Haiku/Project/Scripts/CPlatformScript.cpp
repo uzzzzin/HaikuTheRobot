@@ -1,11 +1,26 @@
 #include "pch.h"
 #include "CPlatformScript.h"
 
+#include "CHaikuScript.h"
+#include <Engine\CMovement.h>
+
 
 CPlatformScript::CPlatformScript()
 	:CScript(PLATFORMSCRIPT)
-	, curColDir(COLLISION_DIR::NONE)
+	, m_SideCollision(false)
+	, m_PermitRange(0.f)
 {
+	AddScriptParam(SCRIPT_PARAM::BOOL, "Side Collision", &m_SideCollision);
+	AddScriptParam(SCRIPT_PARAM::FLOAT, "Permit Range", &m_PermitRange);
+}
+
+CPlatformScript::CPlatformScript(const CPlatformScript& _OriginScript)
+	: CScript(_OriginScript)
+	, m_SideCollision(_OriginScript.m_SideCollision)
+	, m_PermitRange(_OriginScript.m_PermitRange)
+{
+	AddScriptParam(SCRIPT_PARAM::BOOL, "Side Collision", &m_SideCollision);
+	AddScriptParam(SCRIPT_PARAM::FLOAT, "Permit Range", &m_PermitRange);
 }
 
 CPlatformScript::~CPlatformScript()
@@ -18,132 +33,245 @@ void CPlatformScript::begin()
 
 void CPlatformScript::tick()
 {
-
 }
 
 void CPlatformScript::BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
 {
-	if (4 == _OtherObj->GetLayerIdx()) // 얘가 하이쿠일 때
+	// Unit이 아니거나 Movement가 없다면 return
+	if (nullptr == _OtherObj->GetScript<CHaikuScript>() || !(_OtherObj->Movement()))
 	{
-		//Vec3 PlatformPos, float PlatformWidth, float PlatformHeight, Vec3 ObjPos, float ObjWidth, float ObjHeight
-		curColDir = DetectCollision(Transform()->GetRelativePos(), Transform()->GetRelativeScale().x, Transform()->GetRelativeScale().y, _OtherCollider->GetFinalPos(), _OtherCollider->GetScale().x, _OtherCollider->GetScale().y);
+		return;
 	}
+
+	// Platform 
+	Vec3 ColPos, ColScale;
+	Vec2 PlatformLT, PlatformRB;
+
+	ColPos = _Collider->GetFinalPos();
+
+	// Object
+	Vec3 ObjColPos, ObjColScale;
+	Vec2 ObjLT, ObjRB;
+
+	ObjColPos = _OtherCollider->GetFinalPos();
+
+	if (_Collider->IsAbsolute())
+	{
+		ColScale = _Collider->GetScale();
+	}
+	// 조부모 오브젝트가 있을경우 안맞을 듯
+	else
+	{
+		ColScale = _Collider->Transform()->GetWorldScale();
+	}
+
+	if (_OtherCollider->IsAbsolute())
+	{
+		ObjColScale = _OtherCollider->GetScale();
+	}
+	// 조부모 오브젝트가 있을경우 안맞을 듯
+	else
+	{
+		ObjColScale = _OtherCollider->Transform()->GetWorldScale();
+	}
+
+
+	PlatformLT = Vec2(ColPos.x - ColScale.x / 2.f, ColPos.y + ColScale.y / 2.f);
+	PlatformRB = Vec2(ColPos.x + ColScale.x / 2.f, ColPos.y - ColScale.y / 2.f);
+
+	// Object의 방향 구하기
+	_OtherObj->Movement()->CalDir();
+	MovementDir ObjDir = _OtherObj->Movement()->GetDir();
+
+	// Object Collider의 PrevPos
+	Vec3 PrevPos = _OtherObj->Collider2D()->GetPrevFinalPos();
+
+	// 위에서 아래로 충돌
+	if ((ObjDir & MV_DOWN) && PlatformLT.y < PrevPos.y - ObjColScale.y / 2.f)
+	{
+		UpCollision(_OtherObj, PlatformLT.y, ObjColScale.y);
+	}
+	// 아래서 위로 충돌
+	else if ((ObjDir & MV_UP) && PlatformRB.y >= PrevPos.y + ObjColScale.y / 2.f)
+	{
+		DownCollision(_OtherObj, PlatformRB.y, ObjColScale.y);
+	}
+	else
+	{
+		// 허용 범위안에서 플랫폼을 넘어갈 때
+		if ((PlatformLT.y - m_PermitRange < PrevPos.y - ObjColScale.y / 2.f) && (PlatformLT.y + m_PermitRange > PrevPos.y - ObjColScale.y / 2.f))
+		{
+			UpCollision(_OtherObj, PlatformLT.y, ObjColScale.y);
+		}
+		else if (m_SideCollision)
+		{
+			// Left 충돌
+			if ((ObjDir & MV_RIGHT) && PlatformLT.x >= PrevPos.x + ObjColScale.x / 2.f)
+			{
+				LeftCollision(_OtherObj, PlatformLT.x, ObjColScale.x);
+			}
+			// Right 충돌
+			else if ((ObjDir & MV_LEFT) && PlatformRB.x <= PrevPos.x - ObjColScale.x / 2.f)
+			{
+				RightCollision(_OtherObj, PlatformRB.x, ObjColScale.x);
+			}
+		}
+	}
+
 }
 
 void CPlatformScript::Overlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
 {
-	if (4 == _OtherObj->GetLayerIdx()) // 얘가 하이쿠일 때
+	// Unit이 아니거나 Movement가 없다면 return
+	if (nullptr == _OtherObj->GetScript<CHaikuScript>() || !(_OtherObj->Movement()))
 	{
-		switch (curColDir)
+		return;
+	}
+
+	// Platform 
+	Vec3 ColPos, ColScale;
+	Vec2 PlatformLT, PlatformRB;
+
+	ColPos = _Collider->GetFinalPos();
+
+	// Object
+	Vec3 ObjColPos, ObjColScale;
+	Vec2 ObjLT, ObjRB;
+
+	ObjColPos = _OtherCollider->GetFinalPos();
+
+	if (_Collider->IsAbsolute())
+	{
+		ColScale = _Collider->GetScale();
+	}
+	// 조부모 오브젝트가 있을경우 안맞을 듯
+	else
+	{
+		ColScale = _Collider->Transform()->GetWorldScale();
+	}
+
+	if (_OtherCollider->IsAbsolute())
+	{
+		ObjColScale = _OtherCollider->GetScale();
+	}
+	// 조부모 오브젝트가 있을경우 안맞을 듯
+	else
+	{
+		ObjColScale = _OtherCollider->Transform()->GetWorldScale();
+	}
+
+	PlatformLT = Vec2(ColPos.x - ColScale.x / 2.f, ColPos.y + ColScale.y / 2.f);
+	PlatformRB = Vec2(ColPos.x + ColScale.x / 2.f, ColPos.y - ColScale.y / 2.f);
+
+	// Object의 방향 구하기
+	_OtherObj->Movement()->CalDir();
+	MovementDir ObjDir = _OtherObj->Movement()->GetDir();
+
+	// Object Collider의 PrevPos
+	Vec3 PrevPos = _OtherObj->Collider2D()->GetPrevFinalPos();
+
+
+	// 아래서 위 충돌
+	if ((ObjDir & MV_UP) && PlatformRB.y >= PrevPos.y + ObjColScale.y / 2.f)
+	{
+		DownCollision(_OtherObj, PlatformRB.y, ObjColScale.y);
+	}
+
+	if (m_SideCollision)
+	{
+		// Left 충돌
+		if ((ObjDir & MV_RIGHT) && PlatformLT.x >= PrevPos.x + ObjColScale.x / 2.f)
 		{
-		case COLLISION_DIR::UP: // 하이쿠가 천장박음
-			// 위쪽 충돌
-			break;
-		case COLLISION_DIR::DOWN: // 하이쿠가 플랫폼을 밟고 있음
-		{
-			float y1 = Transform()->GetRelativePos().y + Transform()->GetRelativeScale().y / 2;
-
-			float y2 = _OtherCollider->GetFinalPos().y - _OtherCollider->GetScale().y / 2;
-
-			float y3 = y1 - y2;
-
-			Vec3 v = Vec3(_OtherObj->Transform()->GetRelativePos().x, _OtherObj->Transform()->GetRelativePos().y + y3, _OtherObj->Transform()->GetRelativePos().z);
-
-			_OtherObj->Transform()->SetRelativePos(v);
+			LeftCollision(_OtherObj, PlatformLT.x, ObjColScale.x);
 		}
-			break;
-		case COLLISION_DIR::LEFT: // 왼쪽에서 쿵
-			// 왼쪽 충돌
-			break;
-		case COLLISION_DIR::RIGHT: // 오른쪽에서 쿵
-			// 오른쪽 충돌
-			break;
-		case COLLISION_DIR::NONE: // 들어오면 사고
-			break;
+		// Right 충돌
+		else if ((ObjDir & MV_LEFT) && PlatformRB.x <= PrevPos.x - ObjColScale.x / 2.f)
+		{
+			RightCollision(_OtherObj, PlatformRB.x, ObjColScale.x);
 		}
 	}
-	
 
-	//if (4 == _OtherObj->GetLayerIdx()) // 얘가 하이쿠일 때
-	//{
-		//float y1 = Transform()->GetRelativePos().y + Transform()->GetRelativeScale().y / 2;
-
-		//float y2 = _OtherCollider->GetFinalPos().y - _OtherCollider->GetScale().y / 2;
-
-		//float y3 = y1 - y2;
-
-		//Vec3 v = Vec3(_OtherObj->Transform()->GetRelativePos().x, _OtherObj->Transform()->GetRelativePos().y + y3, _OtherObj->Transform()->GetRelativePos().z);
-
-		//_OtherObj->Transform()->SetRelativePos(v);
-	//}
 }
 
 void CPlatformScript::EndOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
 {
-	curColDir = COLLISION_DIR::NONE;
+	if (nullptr == _OtherObj->GetScript<CHaikuScript>() || !(_OtherObj->Movement()))
+	{
+		return;
+	}
+
+	CHaikuScript* UnitScript = _OtherObj->GetScript<CHaikuScript>();
+	UnitScript->SubOverlapGround(GetOwner());
+
+	if (UnitScript->GetOverlapGround() <= 0)
+	{
+		_OtherObj->Movement()->SetGround(false);
+	}
 }
 
 void CPlatformScript::SaveToFile(FILE* _File)
 {
+	fwrite(&m_SideCollision, sizeof(bool), 1, _File);
+	fwrite(&m_PermitRange, sizeof(float), 1, _File);
 }
 
 void CPlatformScript::LoadFromFile(FILE* _File)
 {
+	fread(&m_SideCollision, sizeof(bool), 1, _File);
+	fread(&m_PermitRange, sizeof(float), 1, _File);
 }
 
-COLLISION_DIR CPlatformScript::DetectCollision(Vec3 PlatformPos, float PlatformWidth, float PlatformHeight, Vec3 ObjPos, float ObjWidth, float ObjHeight)
+void CPlatformScript::UpCollision(CGameObject* _Obj, float _PlatformTop, float _ObjColScaleY)
 {
-	// 콜라이더 크기 절반
-	float halfPlatformWidth = PlatformWidth * 0.5f;
-	float halfPlatformHeight = PlatformHeight * 0.5f;
-	float halfObjWidth = ObjWidth * 0.5f;
-	float halfObjHeight = ObjHeight * 0.5f;
+	float NewY = _PlatformTop + _ObjColScaleY / 2.f;
 
-	// 충돌 지점에서의 상대 위치 계산
-	float relativeX = ObjPos.x - PlatformPos.x;
-	float relativeY = ObjPos.y - PlatformPos.y;
+	NewY -= _Obj->Collider2D()->GetOffset().y;
 
-	// 두 축에 대한 오버랩 계산
-	float xOverlap = halfObjWidth + halfPlatformWidth - abs(relativeX);
-	float yOverlap = halfObjHeight + halfPlatformHeight - abs(relativeY);
 
-	// 충돌 여부 확인
-	if (xOverlap > 0 && yOverlap > 0) 
+	Vec3 ObjPos = _Obj->Transform()->GetRelativePos();
+	ObjPos.y = NewY;
+
+	_Obj->Transform()->SetRelativePos(ObjPos);
+
+	CHaikuScript* UnitScript = _Obj->GetScript<CHaikuScript>();
+	UnitScript->AddOverlapGround(GetOwner());
+
+	if (UnitScript->GetOverlapGround() > 0)
 	{
-		// x축과 y축 중 어느 축에서 오버랩이 더 큰지 확인하여 충돌 방향 결정
-		if (xOverlap < yOverlap) 
-		{
-			// 좌우 충돌
-			if (relativeX < 0) 
-			{
-				// 플랫폼의 왼쪽에서 충돌
-				// 좌측 충돌
-				return COLLISION_DIR::LEFT;
-			}
-			else 
-			{
-				// 플랫폼의 오른쪽에서 충돌
-				// 우측 충돌
-				return COLLISION_DIR::RIGHT;
-			}
-		}
-		else {
-			// 위아래 충돌
-			if (relativeY < 0) 
-			{
-				// 플랫폼의 위에서 충돌
-				// 상단 충돌
-				return COLLISION_DIR::UP;
-			}
-			else 
-			{
-				// 플랫폼의 아래에서 충돌
-				// 하단 충돌
-				return COLLISION_DIR::DOWN;
-			}
-		}
+		_Obj->Movement()->SetGround(true);
 	}
+}
 
-	// 충돌이 없는 경우
-	return COLLISION_DIR::NONE;
+void CPlatformScript::DownCollision(CGameObject* _Obj, float _PlatformBottom, float _ObjColScaleY)
+{
+	float NewY = _PlatformBottom - _ObjColScaleY / 2.f;
+	NewY -= _Obj->Collider2D()->GetOffset().y;
+
+	Vec3 ObjPos = _Obj->Transform()->GetRelativePos();
+	ObjPos.y = NewY;
+
+	_Obj->Transform()->SetRelativePos(ObjPos);
+}
+
+void CPlatformScript::LeftCollision(CGameObject* _Obj, float _PlatformLeft, float _ObjColScaleX)
+{
+	float NewX = _PlatformLeft - _ObjColScaleX / 2.f;
+	NewX -= _Obj->Collider2D()->GetOffset().x;
+
+	Vec3 ObjPos = _Obj->Transform()->GetRelativePos();
+	ObjPos.x = NewX;
+
+	_Obj->Transform()->SetRelativePos(ObjPos);
+
+}
+
+void CPlatformScript::RightCollision(CGameObject* _Obj, float _PlatformRight, float _ObjColScaleX)
+{
+	float NewX = _PlatformRight + _ObjColScaleX / 2.f;
+	NewX -= _Obj->Collider2D()->GetOffset().x;
+
+	Vec3 ObjPos = _Obj->Transform()->GetRelativePos();
+	ObjPos.x = NewX;
+
+	_Obj->Transform()->SetRelativePos(ObjPos);
 }

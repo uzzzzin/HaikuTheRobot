@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Engine\CScript.h"
 class CHaikuScript :
     public CScript
@@ -16,12 +17,29 @@ private:
 
     wstring colPlatformName;
 
+    COLLISION_DIR prevColDir; // 1틱 전이 충돌상태였을 때 1틱 전 충돌 방향 
+
+    int collisionCnt;
+
+    vector<CGameObject*> m_Ground;
+    int  m_OverlapGround;
+
 public:
     bool GetCurDir() { return curDir; }
     bool GetPrevDir() { return prevDir; }
+
     wstring GetCurStateName() { return curStateName;  }
     wstring GetPrevStateName() { return prevStateName; }
+
     wstring GetColPlatformName() { return colPlatformName; }
+
+    COLLISION_DIR GetPrevColDir() { return prevColDir; }
+
+    void AddOverlapGround(CGameObject* _pObejct);
+    void SubOverlapGround(CGameObject* _pObejct);
+
+    int GetOverlapGround() { return m_OverlapGround; }
+
 
 public:
     void SetCurDir(bool _dir) { curDir = _dir; }
@@ -44,4 +62,3 @@ public:
     CHaikuScript();
     ~CHaikuScript();
 };
-

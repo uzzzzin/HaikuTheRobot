@@ -1,7 +1,6 @@
 #include "pch.h"
 #include "CHaikuStartState.h"
 
-#include <Engine/CGameObject.h>
 #include <Engine/CAnimator2D.h>
 #include <Engine/CMovement.h>
 
@@ -38,7 +37,7 @@ void CHaikuStartState::finaltick()
 		bStart = true;
 	}
 
-	if ( true== bStart && true == GetOwnerObj()->Movement()->IsGround())
+	if ( true== bStart) //  && true == GetOwnerObj()->Movement()->IsGround()
 	{
 		ChangeState(L"Idle");
 	}
