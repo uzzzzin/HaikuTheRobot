@@ -24,7 +24,7 @@ void CHaikuStartState::Enter()
 {
 	CHaikuScript* pScpt = GetOwnerObj()->GetScript<CHaikuScript>();
 	pScpt->SetCurStateName(L"Start");
-
+	GetOwnerObj()->Movement()->SetGround(true);
 	GetOwnerObj()->Animator2D()->Play(L"haiku_null");
 }
 

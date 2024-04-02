@@ -58,15 +58,21 @@ void CHaikuScript::tick()
 
 	if (KEY_RELEASED(KEY::LEFT))
 	{
-		Animator2D()->Play(L"haiku_idle");
-		//Movement()->SetVelocity(Vec3());
+		Movement()->SetVelocity(Vec3());
+		if (!(KEY_PRESSED(KEY::RIGHT)))
+		{
+			Animator2D()->Play(L"haiku_idle");
+		}
+
 	}
 
 	if ((KEY_RELEASED(KEY::RIGHT)))
 	{
-		Animator2D()->Play(L"haiku_idle");
-		//Movement()->SetForce(Vec3());
-		//Movement()->SetVelocity(Vec3());
+		Movement()->SetVelocity(Vec3());
+		if (!(KEY_PRESSED(KEY::LEFT)))
+		{
+			Animator2D()->Play(L"haiku_idle");
+		}
 	}
 
 	if (prevDir != curDir) // 현재와 과거의 방향이 달랐다면
