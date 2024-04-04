@@ -51,5 +51,5 @@ void CHaikuStartState::Exit()
 	bStart = false;
 
 	CHaikuScript* pScpt = GetOwnerObj()->GetScript<CHaikuScript>();
-	pScpt->SetCurStateName(L"Start");
+	pScpt->SetPrevStateName(L"Start");
 }

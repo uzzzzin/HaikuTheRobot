@@ -15,6 +15,9 @@
 #include "C:\Users\woo06\Desktop\Haiku\HaikuTheRobot\Haiku\Project\States\CHaikuJumpRiseState.cpp"
 
 
+#include "C:\Users\woo06\Desktop\Haiku\HaikuTheRobot\Haiku\Project\States\CHaikuPlatformGeneralAttackState.cpp"
+
+
 #include "C:\Users\woo06\Desktop\Haiku\HaikuTheRobot\Haiku\Project\States\CHaikuRepairState.cpp"
 
 

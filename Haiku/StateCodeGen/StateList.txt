@@ -3,6 +3,7 @@ CHaikuDieState
 CHaikuIdleState
 CHaikuJumpFallState
 CHaikuJumpRiseState
+CHaikuPlatformGeneralAttackState
 CHaikuRepairState
 CHaikuStartState
 CIdleState

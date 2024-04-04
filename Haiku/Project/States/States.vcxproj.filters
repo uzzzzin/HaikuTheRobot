@@ -25,6 +25,12 @@
     <Filter Include="States\Haiku\Jump">
       <UniqueIdentifier>{dab48394-f41b-4cda-91e9-463450a4f119}</UniqueIdentifier>
     </Filter>
+    <Filter Include="States\Haiku\Platform">
+      <UniqueIdentifier>{835ee793-0a64-40d5-93cd-00e10ca142c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States\Haiku\Attack">
+      <UniqueIdentifier>{1ab6bdbb-85e9-44da-b9ec-04a2f2afcb30}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -42,18 +48,6 @@
     <ClInclude Include="CTraceState.h">
       <Filter>States\Etc\TraceState</Filter>
     </ClInclude>
-    <ClInclude Include="CHaikuIdleState.h">
-      <Filter>States\Haiku</Filter>
-    </ClInclude>
-    <ClInclude Include="CHaikuRepairState.h">
-      <Filter>States\Haiku</Filter>
-    </ClInclude>
-    <ClInclude Include="CHaikuDieState.h">
-      <Filter>States\Haiku</Filter>
-    </ClInclude>
-    <ClInclude Include="CHaikuDashState.h">
-      <Filter>States\Haiku</Filter>
-    </ClInclude>
     <ClInclude Include="CHaikuStartState.h">
       <Filter>States\Haiku</Filter>
     </ClInclude>
@@ -62,6 +56,21 @@
     </ClInclude>
     <ClInclude Include="CHaikuJumpRiseState.h">
       <Filter>States\Haiku\Jump</Filter>
+    </ClInclude>
+    <ClInclude Include="CHaikuDashState.h">
+      <Filter>States\Haiku\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="CHaikuDieState.h">
+      <Filter>States\Haiku\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="CHaikuRepairState.h">
+      <Filter>States\Haiku\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="CHaikuIdleState.h">
+      <Filter>States\Haiku</Filter>
+    </ClInclude>
+    <ClInclude Include="CHaikuPlatformGeneralAttackState.h">
+      <Filter>States\Haiku\Attack</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -80,18 +89,6 @@
     <ClCompile Include="CTraceState.cpp">
       <Filter>States\Etc\TraceState</Filter>
     </ClCompile>
-    <ClCompile Include="CHaikuIdleState.cpp">
-      <Filter>States\Haiku</Filter>
-    </ClCompile>
-    <ClCompile Include="CHaikuRepairState.cpp">
-      <Filter>States\Haiku</Filter>
-    </ClCompile>
-    <ClCompile Include="CHaikuDieState.cpp">
-      <Filter>States\Haiku</Filter>
-    </ClCompile>
-    <ClCompile Include="CHaikuDashState.cpp">
-      <Filter>States\Haiku</Filter>
-    </ClCompile>
     <ClCompile Include="CHaikuStartState.cpp">
       <Filter>States\Haiku</Filter>
     </ClCompile>
@@ -100,6 +97,21 @@
     </ClCompile>
     <ClCompile Include="CHaikuJumpRiseState.cpp">
       <Filter>States\Haiku\Jump</Filter>
+    </ClCompile>
+    <ClCompile Include="CHaikuDashState.cpp">
+      <Filter>States\Haiku\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="CHaikuDieState.cpp">
+      <Filter>States\Haiku\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="CHaikuRepairState.cpp">
+      <Filter>States\Haiku\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="CHaikuIdleState.cpp">
+      <Filter>States\Haiku</Filter>
+    </ClCompile>
+    <ClCompile Include="CHaikuPlatformGeneralAttackState.cpp">
+      <Filter>States\Haiku\Attack</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

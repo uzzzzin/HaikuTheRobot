@@ -49,6 +49,7 @@ void CHaikuIdleState::finaltick()
 	if (KEY_TAP(KEY::X))
 	{
 		ChangeState(L"PlatformGeneralAttack");
+		//GetFSM()->GetStateMachine()->Animator2D()->Play(L"haiku_generalAttack1", false);
 	}
 
 	//if (몬스터에게 피해를 입으면)
