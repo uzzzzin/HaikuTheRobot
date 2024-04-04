@@ -29,6 +29,7 @@ void CHaikuJumpFallState::finaltick()
 {
 	CHaikuScript* pScpt = GetOwnerObj()->GetScript<CHaikuScript>();
 
+
 	if (KEY_PRESSED(KEY::LEFT)) //점프중인데 이동중인 상태라면
 	{
 		GetOwnerObj()->Movement()->AddForce(Vec3(-150.f, 0.f, 0.f));

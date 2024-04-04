@@ -11,6 +11,7 @@ CCollider2D::CCollider2D()
     , m_Active(true)
     , m_SemiDeactive(false)
     , m_RenderDebugRect (true)
+    , m_lastColDir(LAST_COL_DIR::NONE)
 {
 
 }
@@ -21,6 +22,7 @@ CCollider2D::CCollider2D(const CCollider2D& _OriginCollider2D)
     , m_Scale(_OriginCollider2D.m_Scale)
     , m_OverlapCount(0)
     , m_Absolute(_OriginCollider2D.m_Absolute)
+    , m_lastColDir(LAST_COL_DIR::NONE)
 {
 }
 

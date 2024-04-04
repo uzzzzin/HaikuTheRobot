@@ -69,7 +69,6 @@ void CHaikuDashState::finaltick()
 	else
 	{
 		// ´ë½Ã ³¡
-		int a = 0;
 		ChangeState(L"Idle");
 	}
 }

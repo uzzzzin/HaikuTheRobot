@@ -24,6 +24,8 @@ private:
 
     Vec3    m_PrevFinalPos;
 
+    LAST_COL_DIR     m_lastColDir; // 마지막으로 충돌한 것은 어느 방향으로부터 충돌되었는지
+
 public:
     Vec3 GetOffset() { return m_Offset; }
     Vec3 GetScale() { return m_Scale; }
@@ -51,6 +53,9 @@ public:
     bool IsRenderDebugRect() { return m_RenderDebugRect;  }
 
     Vec3 GetPrevFinalPos() { return m_PrevFinalPos; }
+
+    void SetLastColDir(LAST_COL_DIR _dir) { m_lastColDir = _dir; }
+    LAST_COL_DIR GetLastColDir() { return m_lastColDir; }
 
 public:
     virtual void finaltick() override;

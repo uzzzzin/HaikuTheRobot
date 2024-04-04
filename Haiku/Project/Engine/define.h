@@ -259,3 +259,12 @@ enum class COLLISION_DIR
 	RIGHT,
 	NONE,
 };
+
+enum class LAST_COL_DIR
+{
+	UP,
+	DOWN,
+	LEFT,
+	RIGHT,
+	NONE,
+};

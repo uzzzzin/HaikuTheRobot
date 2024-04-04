@@ -8,6 +8,8 @@
 #include <Engine/CKeyMgr.h>
 #include <Scripts/CHaikuScript.h>
 
+#include <Engine/CFontMgr.h>
+
 CHaikuStartState::CHaikuStartState()
 	:CState(HAIKUSTARTSTATE)
 	, bStart(false)

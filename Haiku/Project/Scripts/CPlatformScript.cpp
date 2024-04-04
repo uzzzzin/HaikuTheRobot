@@ -90,11 +90,13 @@ void CPlatformScript::BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherOb
 	if ((ObjDir & MV_DOWN) && PlatformLT.y < PrevPos.y - ObjColScale.y / 2.f)
 	{
 		UpCollision(_OtherObj, PlatformLT.y, ObjColScale.y);
+		_OtherCollider->SetLastColDir(LAST_COL_DIR::UP);
 	}
 	// 아래서 위로 충돌
 	else if ((ObjDir & MV_UP) && PlatformRB.y >= PrevPos.y + ObjColScale.y / 2.f)
 	{
 		DownCollision(_OtherObj, PlatformRB.y, ObjColScale.y);
+		_OtherCollider->SetLastColDir(LAST_COL_DIR::DOWN);
 	}
 	else
 	{
@@ -102,6 +104,7 @@ void CPlatformScript::BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherOb
 		if ((PlatformLT.y - m_PermitRange < PrevPos.y - ObjColScale.y / 2.f) && (PlatformLT.y + m_PermitRange > PrevPos.y - ObjColScale.y / 2.f))
 		{
 			UpCollision(_OtherObj, PlatformLT.y, ObjColScale.y);
+			_OtherCollider->SetLastColDir(LAST_COL_DIR::UP);
 		}
 		else if (m_SideCollision)
 		{
@@ -109,11 +112,13 @@ void CPlatformScript::BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherOb
 			if ((ObjDir & MV_RIGHT) && PlatformLT.x >= PrevPos.x + ObjColScale.x / 2.f)
 			{
 				LeftCollision(_OtherObj, PlatformLT.x, ObjColScale.x);
+				_OtherCollider->SetLastColDir(LAST_COL_DIR::LEFT);
 			}
 			// Right 충돌
 			else if ((ObjDir & MV_LEFT) && PlatformRB.x <= PrevPos.x - ObjColScale.x / 2.f)
 			{
 				RightCollision(_OtherObj, PlatformRB.x, ObjColScale.x);
+				_OtherCollider->SetLastColDir(LAST_COL_DIR::RIGHT);
 			}
 		}
 	}
@@ -175,6 +180,7 @@ void CPlatformScript::Overlap(CCollider2D* _Collider, CGameObject* _OtherObj, CC
 	if ((ObjDir & MV_UP) && PlatformRB.y >= PrevPos.y + ObjColScale.y / 2.f)
 	{
 		DownCollision(_OtherObj, PlatformRB.y, ObjColScale.y);
+		_OtherCollider->SetLastColDir(LAST_COL_DIR::DOWN);
 	}
 
 	if (m_SideCollision)
@@ -183,11 +189,13 @@ void CPlatformScript::Overlap(CCollider2D* _Collider, CGameObject* _OtherObj, CC
 		if ((ObjDir & MV_RIGHT) && PlatformLT.x >= PrevPos.x + ObjColScale.x / 2.f)
 		{
 			LeftCollision(_OtherObj, PlatformLT.x, ObjColScale.x);
+			_OtherCollider->SetLastColDir(LAST_COL_DIR::LEFT);
 		}
 		// Right 충돌
 		else if ((ObjDir & MV_LEFT) && PlatformRB.x <= PrevPos.x - ObjColScale.x / 2.f)
 		{
 			RightCollision(_OtherObj, PlatformRB.x, ObjColScale.x);
+			_OtherCollider->SetLastColDir(LAST_COL_DIR::RIGHT);
 		}
 	}
 

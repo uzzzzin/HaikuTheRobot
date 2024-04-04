@@ -5,6 +5,8 @@
 
 CHaikuRepairState::CHaikuRepairState()
 	: CState(STATE_TYPE::HAIKUREPAIRSTATE)
+	, duration(3.47f)
+	, accTime(0)
 {
 }
 
@@ -19,12 +21,19 @@ void CHaikuRepairState::Enter()
 	pScpt->SetCurStateName(L"Repair");
 
 	GetFSM()->GetStateMachine()->Animator2D()->Play(L"haiku_repair", false);
+	accTime = 0;
 }
 
 void CHaikuRepairState::finaltick()
 {
-	if (KEY_TAP(KEY::G))
+	if (duration >= accTime)
+	{
+		accTime += DT;
+	}
+	else
+	{
 		ChangeState(L"Idle");
+	}
 }
 
 void CHaikuRepairState::Exit()
