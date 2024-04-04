@@ -31,23 +31,25 @@ void CHaikuJumpRiseState::finaltick()
 	{
 		ChangeState(L"JumpFall");
 	}
+
 	// 맥시멈 프레스 시간을 넘기려고 하거나
 	// 천장에 부딪혔거나
 
+	Vec3 vVelo = GetOwnerObj()->Movement()->GetVelocity();
 
 	if (KEY_PRESSED(KEY::SPACE))
 	{
-		GetOwnerObj()->Movement()->AddForce(Vec3(0,50,0));
+		GetOwnerObj()->Movement()->SetVelocity(Vec3(vVelo.x, vVelo.y + 0.5f, vVelo.z));
 	}
 
 	if (KEY_PRESSED(KEY::LEFT)&& KEY_PRESSED(KEY::SPACE)) //점프중인데 이동중인 상태라면
 	{
-		GetOwnerObj()->Movement()->AddForce(Vec3(-400.f, 50.f, 0.f));
+		GetOwnerObj()->Movement()->AddForce(Vec3(-150.f, 40.f, 0.f));
 	}
 
 	if (KEY_PRESSED(KEY::RIGHT)&& KEY_PRESSED(KEY::SPACE))
 	{
-		GetOwnerObj()->Movement()->AddForce(Vec3(400.f, 50.f, 0.f));
+		GetOwnerObj()->Movement()->AddForce(Vec3(150.f, 40.f, 0.f));
 	}
 }
 

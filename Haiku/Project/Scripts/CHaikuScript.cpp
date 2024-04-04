@@ -49,27 +49,30 @@ void CHaikuScript::tick()
 		Animator2D()->Play(L"haiku_walk");
 	}
 
-	if (KEY_PRESSED(KEY::LEFT)) //점프가 아닐 때만
+	wstring c = GetCurStateName();
+	if (KEY_PRESSED(KEY::LEFT) && GetCurStateName() == L"Idle" && Movement()->IsGround()) //점프가 아닐 때만
 	{
-		Movement()->AddForce(Vec3(-300.f, 0.f, 0.f) * DT);
+		Vec3 vVelo = Movement()->GetVelocity();
+		Movement()->SetVelocity(Vec3(-400.f, 0.f, 0.f));
 	}
 
-	if ((KEY_PRESSED(KEY::RIGHT)))
+	if ( KEY_PRESSED(KEY::RIGHT) && GetCurStateName() == L"Idle" && Movement()->IsGround())
 	{
-		Movement()->AddForce(Vec3(300.f, 0.f, 0.f) * DT);
+		Vec3 vVelo = Movement()->GetVelocity();
+		Movement()->SetVelocity(Vec3(400.f, 0.f, 0.f));
 	}
 
 	if (KEY_RELEASED(KEY::LEFT))
 	{
 		Movement()->SetVelocity(Vec3());
-		if (!(KEY_PRESSED(KEY::RIGHT)))
+		if (!(KEY_PRESSED(KEY::RIGHT)) && !(KEY_PRESSED(KEY::SPACE)))
 		{
 			Animator2D()->Play(L"haiku_idle");
 		}
 
 	}
 
-	if ((KEY_RELEASED(KEY::RIGHT)))
+	if ((KEY_RELEASED(KEY::RIGHT)) && !(KEY_PRESSED(KEY::SPACE)))
 	{
 		Movement()->SetVelocity(Vec3());
 		if (!(KEY_PRESSED(KEY::LEFT)))
@@ -93,7 +96,7 @@ void CHaikuScript::tick()
 
 void CHaikuScript::BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
 {
-
+	++collisionCnt;
 	if (2 == _OtherObj->GetLayerIdx())
 	{
 		colPlatformName = _OtherObj->GetName();
@@ -109,7 +112,7 @@ void CHaikuScript::Overlap(CCollider2D* _Collider, CGameObject* _OtherObj, CColl
 void CHaikuScript::EndOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
 {
 	
-
+	--collisionCnt;
 	colPlatformName = L"";
 }
 

@@ -40,6 +40,7 @@ public:
 
     int GetOverlapGround() { return m_OverlapGround; }
 
+    int GetCollisionCnt() { return collisionCnt; }
 
 public:
     void SetCurDir(bool _dir) { curDir = _dir; }

@@ -59,17 +59,17 @@ void CMovement::finaltick()
 	// 1. 속도 계산
 	// ------------------------------
 	// case: 힘을 주기 시작하는 경우 초기상태 지정
-	if (m_vVelocity.Length() < 0.1f && m_vAccel != Vec3())
-	{
-		Vec3 vAccelDir = m_vAccel;
-		vAccelDir.Normalize();
-		m_vVelocity = vAccelDir * m_fInitSpeed;
-	}
-	else
-	{
-		m_vVelocity += m_vAccel * DT;
-	}
-	//m_vVelocity += m_vAccel * DT;
+	//if (m_vVelocity.Length() < 0.1f && m_vAccel != Vec3())
+	//{
+	//	Vec3 vAccelDir = m_vAccel;
+	//	vAccelDir.Normalize();
+	//	m_vVelocity = vAccelDir * m_fInitSpeed;
+	//}
+	//else
+	//{
+	//	m_vVelocity += m_vAccel * DT;
+	//}
+	m_vVelocity += m_vAccel * DT;
 	
 	// 최대 속도 제한
 	if (m_bGround && fabs(m_vVelocity.Length() > m_fMaxSpeed_Ground))
