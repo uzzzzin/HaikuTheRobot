@@ -20,7 +20,7 @@ void CHaikuPlatformGeneralAttackState::Enter()
 	CHaikuScript* pScpt = GetOwnerObj()->GetScript<CHaikuScript>();
 	pScpt->SetCurStateName(L"PlatformGeneralAttack");
 	accTime = 0;
-	GetFSM()->GetStateMachine()->Animator2D()->Play(L"haiku_generalAttack1", true);
+	GetFSM()->GetStateMachine()->Animator2D()->Play(L"testt", true);
 }
 
 void CHaikuPlatformGeneralAttackState::finaltick()

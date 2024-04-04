@@ -125,6 +125,13 @@ void CAnimator2D::Play(const wstring& _strAnimName, bool _bRepeat)
 
 	m_CurAnim = pAnim;
 	m_CurAnim->Reset();
+
+	// 새로 생긴 애니메이션의 크기에 맞게 트랜스폼 정보를 업데이트
+	Vec2 FrmSize = m_CurAnim->m_vecFrm[m_CurAnim->m_CurFrmIdx].vSlice;
+	FrmSize.x = FrmSize.x * m_CurAnim->m_AtlasTex->GetWidth();
+	FrmSize.y = FrmSize.y * m_CurAnim->m_AtlasTex->GetHeight();
+
+	Transform()->SetRelativeScale(Vec3(FrmSize.x, FrmSize.y, 1));
 }
 
 void CAnimator2D::SaveToFile(FILE* _File)
