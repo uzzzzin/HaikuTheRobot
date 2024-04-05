@@ -6,5 +6,6 @@ CHaikuJumpRiseState
 CHaikuPlatformGeneralAttackState
 CHaikuRepairState
 CHaikuStartState
+CHaikuWalkState
 CIdleState
 CTraceState

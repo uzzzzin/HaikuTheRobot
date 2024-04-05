@@ -29,20 +29,26 @@ void CHaikuJumpFallState::finaltick()
 {
 	CHaikuScript* pScpt = GetOwnerObj()->GetScript<CHaikuScript>();
 
-
 	if (KEY_PRESSED(KEY::LEFT)) //점프중인데 이동중인 상태라면
 	{
-		GetOwnerObj()->Movement()->AddForce(Vec3(-150.f, 0.f, 0.f));
+		GetOwnerObj()->Movement()->AddForce(Vec3(-170.f, 0.f, 0.f));
 	}
 
 	if ((KEY_PRESSED(KEY::RIGHT)))
 	{
-		GetOwnerObj()->Movement()->AddForce(Vec3(150.f, 0.f, 0.f));
+		GetOwnerObj()->Movement()->AddForce(Vec3(170.f, 0.f, 0.f));
 	}
 
 	if (GetOwnerObj()->Movement()->IsGround())// 땅에 닿아버렸다 ;;
 	{
-	 	ChangeState(L"Idle");
+		if ((KEY_PRESSED(KEY::RIGHT)) || (KEY_PRESSED(KEY::LEFT)))
+		{
+			ChangeState(L"Walk");
+		}
+		else if ((KEY_NONE(KEY::RIGHT)) || (KEY_NONE(KEY::LEFT)))
+		{
+			ChangeState(L"Idle");
+		}
 	}
 }
 

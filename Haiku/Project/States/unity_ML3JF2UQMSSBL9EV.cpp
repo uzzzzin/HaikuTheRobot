@@ -24,6 +24,9 @@
 #include "C:\Users\woo06\Desktop\Haiku\HaikuTheRobot\Haiku\Project\States\CHaikuStartState.cpp"
 
 
+#include "C:\Users\woo06\Desktop\Haiku\HaikuTheRobot\Haiku\Project\States\CHaikuWalkState.cpp"
+
+
 #include "C:\Users\woo06\Desktop\Haiku\HaikuTheRobot\Haiku\Project\States\CIdleState.cpp"
 
 

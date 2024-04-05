@@ -49,18 +49,18 @@ void CHaikuJumpRiseState::finaltick()
 		if (KEY_PRESSED(KEY::SPACE))
 		{
 			GetOwnerObj()->Movement()->SetVelocity(Vec3(vVelo.x, vVelo.y + 0.5f, vVelo.z));
-		}
 
-		if (KEY_PRESSED(KEY::LEFT) && KEY_PRESSED(KEY::SPACE)) //점프중인데 이동중인 상태라면
-		{
-			GetOwnerObj()->Movement()->AddForce(Vec3(-150.f, 40.f, 0.f));
-		}
+			if (KEY_PRESSED(KEY::LEFT))
+			{
+				GetOwnerObj()->Movement()->AddForce(Vec3(-170.f, 20.f, 0.f));
+			}
 
-		if (KEY_PRESSED(KEY::RIGHT) && KEY_PRESSED(KEY::SPACE))
-		{
-			GetOwnerObj()->Movement()->AddForce(Vec3(150.f, 40.f, 0.f));
-		}
+			if (KEY_PRESSED(KEY::RIGHT))
+			{
+				GetOwnerObj()->Movement()->AddForce(Vec3(170.f, 20.f, 0.f));
+			}
 
+		}
 		accTime += DT;
 	}
 	else

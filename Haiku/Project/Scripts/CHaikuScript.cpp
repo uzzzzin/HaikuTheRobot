@@ -10,12 +10,13 @@
 
 CHaikuScript::CHaikuScript()
 	: CScript(HAIKUSCRIPT)
-	, curDir(false)
-	, prevDir(false)
+	, curDir(0)
+	, prevDir(0)
 	, curStateName(L"Start")
 	, prevStateName(L"Start")
 	, prevColDir(COLLISION_DIR::NONE)
 	, collisionCnt(0)
+	, bGeneralAttackSeed(false)
 {
 }
 
@@ -31,62 +32,27 @@ void CHaikuScript::begin()
 		StateMachine()->GetDynamicFSM()->ChangeState(L"Start");
 	}
 
+	GetRenderComponent()->GetDynamicMaterial();
+
 	// 충돌 설정
 	CCollisionMgr::GetInst()->LayerCheck(4, 2); // 하이쿠 & 플랫폼
 }
 
 void CHaikuScript::tick()
 {
-	if (KEY_TAP(KEY::LEFT))
+	if(KEY_TAP(KEY::LEFT))
 	{
-		curDir = true; // 현재 왼쪽
-		Animator2D()->Play(L"haiku_walk");
+		curDir = 1; // 현재 왼쪽
+		StateMachine()->GetDynamicFSM()->ChangeState(L"Walk");
 	}
 
-	if ((KEY_TAP(KEY::RIGHT)))
+	if(KEY_TAP(KEY::RIGHT))
 	{
-		curDir = false; // 현재 오른쪽
-		Animator2D()->Play(L"haiku_walk");
+		curDir = 0; // 현재 오른쪽
+		StateMachine()->GetDynamicFSM()->ChangeState(L"Walk");
 	}
-
-	wstring c = GetCurStateName();
-	if (KEY_PRESSED(KEY::LEFT) && GetCurStateName() == L"Idle" && Movement()->IsGround()) //점프가 아닐 때만
-	{
-		Vec3 vVelo = Movement()->GetVelocity();
-		Movement()->SetVelocity(Vec3(-400.f, 0.f, 0.f));
-	}
-
-	if ( KEY_PRESSED(KEY::RIGHT) && GetCurStateName() == L"Idle" && Movement()->IsGround())
-	{
-		Vec3 vVelo = Movement()->GetVelocity();
-		Movement()->SetVelocity(Vec3(400.f, 0.f, 0.f));
-	}
-
-	if (KEY_RELEASED(KEY::LEFT))
-	{
-		Movement()->SetVelocity(Vec3());
-		if (!(KEY_PRESSED(KEY::RIGHT)) && !(KEY_PRESSED(KEY::SPACE)))
-		{
-			Animator2D()->Play(L"haiku_idle");
-		}
-
-	}
-
-	if ((KEY_RELEASED(KEY::RIGHT)) && !(KEY_PRESSED(KEY::SPACE)))
-	{
-		Movement()->SetVelocity(Vec3());
-		if (!(KEY_PRESSED(KEY::LEFT)))
-		{
-			Animator2D()->Play(L"haiku_idle");
-		}
-	}
-
-	if (prevDir != curDir) // 현재와 과거의 방향이 달랐다면
-	{
-		float x = Transform()->GetRelativeScale().x * -1;
-		Vec3 vPos = Vec3(Transform()->GetRelativeScale().x * -1, Transform()->GetRelativeScale().y, Transform()->GetRelativeScale().z);
-		Transform()->SetRelativeScale(vPos);
-	}
+	
+	GetRenderComponent()->GetMaterial()->SetScalarParam(SCALAR_PARAM::INT_0, curDir);
 
 	prevDir = curDir;
 }

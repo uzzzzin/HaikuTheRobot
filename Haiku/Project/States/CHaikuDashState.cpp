@@ -5,9 +5,9 @@
 
 CHaikuDashState::CHaikuDashState()
 	: CState(STATE_TYPE::HAIKUDASHSTATE)
-	, duration (0.18f)
+	, duration (0.15f)
 	, accTime (0)
-	, dashLength(180.f)
+	, dashLength(110.f)
 	, dashSpeed (0)
 {
 	dashSpeed = dashLength / duration;
@@ -25,27 +25,19 @@ void CHaikuDashState::DashSet()
 void CHaikuDashState::Enter()
 {
 	CHaikuScript* pScpt = GetOwnerObj()->GetScript<CHaikuScript>();
-
-	if (pScpt->GetPrevStateName() != L"Idle") // Idle에서 온 게 아니라면 비정상적으로 들어온 거임;;
-	{
-		ChangeState(pScpt->GetPrevStateName()); // 다시 이전으로 돌아가세용 
-	}
-	else // Idle에서 왔습니다 
-	{
-		pScpt->SetCurStateName(L"Dash");
-		GetFSM()->GetStateMachine()->Animator2D()->Play(L"haiku_dash");
-		accTime = 0;
+	pScpt->SetCurStateName(L"Dash");
+	GetFSM()->GetStateMachine()->Animator2D()->Play(L"haiku_dash");
+	accTime = 0;
 		
-		if (pScpt->GetCurDir()) // true 면 left, false 면 right
-		{
-			afterDashPos = Vec3(GetOwnerObj()->Transform()->GetRelativePos().x - dashLength,
-				GetOwnerObj()->Transform()->GetRelativePos().y, GetOwnerObj()->Transform()->GetRelativePos().z);
-		}
-		else
-		{
-			afterDashPos = Vec3(GetOwnerObj()->Transform()->GetRelativePos().x + dashLength,
-				GetOwnerObj()->Transform()->GetRelativePos().y, GetOwnerObj()->Transform()->GetRelativePos().z);
-		}
+	if (1 == pScpt->GetCurDir()) // true 면 left, false 면 right
+	{
+		afterDashPos = Vec3(GetOwnerObj()->Transform()->GetRelativePos().x - dashLength,
+			GetOwnerObj()->Transform()->GetRelativePos().y, GetOwnerObj()->Transform()->GetRelativePos().z);
+	}
+	else if (0 == pScpt->GetCurDir())
+	{
+		afterDashPos = Vec3(GetOwnerObj()->Transform()->GetRelativePos().x + dashLength,
+			GetOwnerObj()->Transform()->GetRelativePos().y, GetOwnerObj()->Transform()->GetRelativePos().z);
 	}
 }
 
@@ -69,7 +61,14 @@ void CHaikuDashState::finaltick()
 	else
 	{
 		// 대시 끝
-		ChangeState(L"Idle");
+		if ((KEY_PRESSED(KEY::RIGHT)) || (KEY_PRESSED(KEY::LEFT)))
+		{
+			ChangeState(L"Walk");
+		}
+		else if ((KEY_NONE(KEY::RIGHT)) || (KEY_NONE(KEY::LEFT)))
+		{
+			ChangeState(L"Idle");
+		}
 	}
 }
 

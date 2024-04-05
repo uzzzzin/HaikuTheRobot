@@ -9,8 +9,8 @@ private:
     int power; // 그 요상한 기력
 
 private:
-    bool curDir; // 현재 방향           // true = L. false = R
-    bool prevDir; // 1틱 전 방향        // true = L. false = R
+    int curDir; // 현재 방향          // R 0, L 1
+    int prevDir; // 1틱 전 방향        // true = L. false = R
 
     wstring curStateName;  // 현재 상태
     wstring prevStateName; // 이전 상태 (어떤 상태로부터 넘어왔는지)
@@ -24,9 +24,11 @@ private:
     vector<CGameObject*> m_Ground;
     int  m_OverlapGround;
 
+    bool bGeneralAttackSeed;
+
 public:
-    bool GetCurDir() { return curDir; }
-    bool GetPrevDir() { return prevDir; }
+    int GetCurDir() { return curDir; }
+    int GetPrevDir() { return prevDir; }
 
     wstring GetCurStateName() { return curStateName;  }
     wstring GetPrevStateName() { return prevStateName; }
@@ -42,11 +44,19 @@ public:
 
     int GetCollisionCnt() { return collisionCnt; }
 
+    bool GetGeneralAttackSeed() { return bGeneralAttackSeed; }
+
 public:
     void SetCurDir(bool _dir) { curDir = _dir; }
     void SetPrevDir(bool _dir) { prevDir = _dir; }
     void SetCurStateName(wstring _stateName) { curStateName = _stateName; }
     void SetPrevStateName(wstring _stateName) { prevStateName = _stateName; }
+
+    void ChangeGeneralAttackSeed()
+    {
+        if (bGeneralAttackSeed) { bGeneralAttackSeed = false; }
+        else { bGeneralAttackSeed = false; }
+    }
 
 public:
     virtual void begin() override;

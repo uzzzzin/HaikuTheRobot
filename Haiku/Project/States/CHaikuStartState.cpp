@@ -41,7 +41,10 @@ void CHaikuStartState::finaltick()
 
 	if ( true== bStart)
 	{
-		ChangeState(L"Idle");
+		if ((KEY_PRESSED(KEY::RIGHT)) || (KEY_PRESSED(KEY::LEFT)))
+			ChangeState(L"Walk");
+		else
+			ChangeState(L"Idle");
 	}
 }
 

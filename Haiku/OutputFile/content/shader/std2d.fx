@@ -28,8 +28,17 @@ VS_OUT VS_Std2D(VS_IN _in)
     output.vColor = _in.vColor;
     output.vUV = _in.vUV;
     
-    output.vWorldPos = mul(float4(_in.vPos, 1.f), g_matWorld);
+    if (0 == g_int_0)
+    {
+        output.vUV.x = _in.vUV.x;
+    }
+    else
+    {
+        output.vUV.x = 1- _in.vUV.x;
+    }
     
+    output.vWorldPos = mul(float4(_in.vPos, 1.f), g_matWorld);
+
     return output;
 }
 

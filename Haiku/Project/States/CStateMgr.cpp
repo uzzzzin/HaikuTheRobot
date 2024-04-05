@@ -9,6 +9,7 @@
 #include "CHaikuPlatformGeneralAttackState.h"
 #include "CHaikuRepairState.h"
 #include "CHaikuStartState.h"
+#include "CHaikuWalkState.h"
 #include "CIdleState.h"
 #include "CTraceState.h"
 
@@ -22,6 +23,7 @@ void CStateMgr::GetStateInfo(vector<wstring>& _vec)
 	_vec.push_back(L"CHaikuPlatformGeneralAttackState");
 	_vec.push_back(L"CHaikuRepairState");
 	_vec.push_back(L"CHaikuStartState");
+	_vec.push_back(L"CHaikuWalkState");
 	_vec.push_back(L"CIdleState");
 	_vec.push_back(L"CTraceState");
 }
@@ -44,6 +46,8 @@ CState* CStateMgr::GetState(const wstring& _strStateName)
 		return new CHaikuRepairState;
 	if (L"CHaikuStartState" == _strStateName)
 		return new CHaikuStartState;
+	if (L"CHaikuWalkState" == _strStateName)
+		return new CHaikuWalkState;
 	if (L"CIdleState" == _strStateName)
 		return new CIdleState;
 	if (L"CTraceState" == _strStateName)
@@ -78,6 +82,9 @@ CState* CStateMgr::GetState(UINT _iStateType)
 		break;
 	case (UINT)STATE_TYPE::HAIKUSTARTSTATE:
 		return new CHaikuStartState;
+		break;
+	case (UINT)STATE_TYPE::HAIKUWALKSTATE:
+		return new CHaikuWalkState;
 		break;
 	case (UINT)STATE_TYPE::IDLESTATE:
 		return new CIdleState;
@@ -123,6 +130,10 @@ const wchar_t * CStateMgr::GetStateName(CState * _pState)
 
 	case STATE_TYPE::HAIKUSTARTSTATE:
 		return L"CHaikuStartState";
+		break;
+
+	case STATE_TYPE::HAIKUWALKSTATE:
+		return L"CHaikuWalkState";
 		break;
 
 	case STATE_TYPE::IDLESTATE:

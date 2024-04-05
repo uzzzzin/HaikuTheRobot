@@ -72,6 +72,7 @@
     <ClInclude Include="CHaikuPlatformGeneralAttackState.h">
       <Filter>States\Haiku\Attack</Filter>
     </ClInclude>
+    <ClInclude Include="CHaikuWalkState.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -113,5 +114,6 @@
     <ClCompile Include="CHaikuPlatformGeneralAttackState.cpp">
       <Filter>States\Haiku\Attack</Filter>
     </ClCompile>
+    <ClCompile Include="CHaikuWalkState.cpp" />
   </ItemGroup>
 </Project>

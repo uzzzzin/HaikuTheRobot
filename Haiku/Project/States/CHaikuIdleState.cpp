@@ -23,10 +23,8 @@ void CHaikuIdleState::Enter()
 {
 	CHaikuScript* pScpt = GetOwnerObj()->GetScript<CHaikuScript>();
 	pScpt->SetCurStateName(L"Idle");
-	if ((KEY_PRESSED(KEY::RIGHT)) || (KEY_PRESSED(KEY::LEFT)))
-		GetFSM()->GetStateMachine()->Animator2D()->Play(L"haiku_walk");
-	else
-		GetFSM()->GetStateMachine()->Animator2D()->Play(L"haiku_idle");
+
+	GetFSM()->GetStateMachine()->Animator2D()->Play(L"haiku_idle");
 }
 
 void CHaikuIdleState::finaltick()
@@ -49,7 +47,6 @@ void CHaikuIdleState::finaltick()
 	if (KEY_TAP(KEY::X))
 	{
 		ChangeState(L"PlatformGeneralAttack");
-		//GetFSM()->GetStateMachine()->Animator2D()->Play(L"haiku_generalAttack1", false);
 	}
 
 	//if (몬스터에게 피해를 입으면)

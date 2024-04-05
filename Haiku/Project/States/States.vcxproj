@@ -180,6 +180,7 @@ call CodeGen.exe</Command>
     <ClInclude Include="CHaikuPlatformGeneralAttackState.h" />
     <ClInclude Include="CHaikuRepairState.h" />
     <ClInclude Include="CHaikuStartState.h" />
+    <ClInclude Include="CHaikuWalkState.h" />
     <ClInclude Include="CIdleState.h" />
     <ClInclude Include="CStateMgr.h" />
     <ClInclude Include="CTraceState.h" />
@@ -195,6 +196,7 @@ call CodeGen.exe</Command>
     <ClCompile Include="CHaikuPlatformGeneralAttackState.cpp" />
     <ClCompile Include="CHaikuRepairState.cpp" />
     <ClCompile Include="CHaikuStartState.cpp" />
+    <ClCompile Include="CHaikuWalkState.cpp" />
     <ClCompile Include="CIdleState.cpp" />
     <ClCompile Include="CStateMgr.cpp" />
     <ClCompile Include="CTraceState.cpp" />
