@@ -54,8 +54,14 @@ public:
 
     void ChangeGeneralAttackSeed()
     {
-        if (bGeneralAttackSeed) { bGeneralAttackSeed = false; }
-        else { bGeneralAttackSeed = false; }
+        if (bGeneralAttackSeed)
+        {
+            bGeneralAttackSeed = false;
+        }
+        else
+        {
+            bGeneralAttackSeed = true;
+        }
     }
 
 public:

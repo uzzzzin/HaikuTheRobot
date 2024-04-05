@@ -34,6 +34,11 @@ void CHaikuJumpRiseState::finaltick()
 
 	if(duration >= accTime)
 	{
+		//if (KEY_TAP(KEY::X) || KEY_PRESSED(KEY::X))
+		//{
+		//	ChangeState(L"PlatformGeneralAttack");
+		//}
+
 		if (LAST_COL_DIR::DOWN == GetOwnerObj()->Collider2D()->GetLastColDir())
 		{
 			ChangeState(L"JumpFall");

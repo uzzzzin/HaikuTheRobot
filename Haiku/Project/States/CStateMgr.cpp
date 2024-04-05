@@ -5,7 +5,10 @@
 #include "CHaikuDieState.h"
 #include "CHaikuIdleState.h"
 #include "CHaikuJumpFallState.h"
+#include "CHaikuJumpRiseDownAttackState.h"
+#include "CHaikuJumpRiseGeneralAttackState.h"
 #include "CHaikuJumpRiseState.h"
+#include "CHaikuJumpRiseUpAttackState.h"
 #include "CHaikuPlatformGeneralAttackState.h"
 #include "CHaikuRepairState.h"
 #include "CHaikuStartState.h"
@@ -19,7 +22,10 @@ void CStateMgr::GetStateInfo(vector<wstring>& _vec)
 	_vec.push_back(L"CHaikuDieState");
 	_vec.push_back(L"CHaikuIdleState");
 	_vec.push_back(L"CHaikuJumpFallState");
+	_vec.push_back(L"CHaikuJumpRiseDownAttackState");
+	_vec.push_back(L"CHaikuJumpRiseGeneralAttackState");
 	_vec.push_back(L"CHaikuJumpRiseState");
+	_vec.push_back(L"CHaikuJumpRiseUpAttackState");
 	_vec.push_back(L"CHaikuPlatformGeneralAttackState");
 	_vec.push_back(L"CHaikuRepairState");
 	_vec.push_back(L"CHaikuStartState");
@@ -38,8 +44,14 @@ CState* CStateMgr::GetState(const wstring& _strStateName)
 		return new CHaikuIdleState;
 	if (L"CHaikuJumpFallState" == _strStateName)
 		return new CHaikuJumpFallState;
+	if (L"CHaikuJumpRiseDownAttackState" == _strStateName)
+		return new CHaikuJumpRiseDownAttackState;
+	if (L"CHaikuJumpRiseGeneralAttackState" == _strStateName)
+		return new CHaikuJumpRiseGeneralAttackState;
 	if (L"CHaikuJumpRiseState" == _strStateName)
 		return new CHaikuJumpRiseState;
+	if (L"CHaikuJumpRiseUpAttackState" == _strStateName)
+		return new CHaikuJumpRiseUpAttackState;
 	if (L"CHaikuPlatformGeneralAttackState" == _strStateName)
 		return new CHaikuPlatformGeneralAttackState;
 	if (L"CHaikuRepairState" == _strStateName)
@@ -71,8 +83,17 @@ CState* CStateMgr::GetState(UINT _iStateType)
 	case (UINT)STATE_TYPE::HAIKUJUMPFALLSTATE:
 		return new CHaikuJumpFallState;
 		break;
+	case (UINT)STATE_TYPE::HAIKUJUMPRISEDOWNATTACKSTATE:
+		return new CHaikuJumpRiseDownAttackState;
+		break;
+	case (UINT)STATE_TYPE::HAIKUJUMPRISEGENERALATTACKSTATE:
+		return new CHaikuJumpRiseGeneralAttackState;
+		break;
 	case (UINT)STATE_TYPE::HAIKUJUMPRISESTATE:
 		return new CHaikuJumpRiseState;
+		break;
+	case (UINT)STATE_TYPE::HAIKUJUMPRISEUPATTACKSTATE:
+		return new CHaikuJumpRiseUpAttackState;
 		break;
 	case (UINT)STATE_TYPE::HAIKUPLATFORMGENERALATTACKSTATE:
 		return new CHaikuPlatformGeneralAttackState;
@@ -116,8 +137,20 @@ const wchar_t * CStateMgr::GetStateName(CState * _pState)
 		return L"CHaikuJumpFallState";
 		break;
 
+	case STATE_TYPE::HAIKUJUMPRISEDOWNATTACKSTATE:
+		return L"CHaikuJumpRiseDownAttackState";
+		break;
+
+	case STATE_TYPE::HAIKUJUMPRISEGENERALATTACKSTATE:
+		return L"CHaikuJumpRiseGeneralAttackState";
+		break;
+
 	case STATE_TYPE::HAIKUJUMPRISESTATE:
 		return L"CHaikuJumpRiseState";
+		break;
+
+	case STATE_TYPE::HAIKUJUMPRISEUPATTACKSTATE:
+		return L"CHaikuJumpRiseUpAttackState";
 		break;
 
 	case STATE_TYPE::HAIKUPLATFORMGENERALATTACKSTATE:

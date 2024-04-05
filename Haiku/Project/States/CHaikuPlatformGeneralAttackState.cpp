@@ -20,6 +20,8 @@ void CHaikuPlatformGeneralAttackState::Enter()
 	CHaikuScript* pScpt = GetOwnerObj()->GetScript<CHaikuScript>();
 	pScpt->SetCurStateName(L"PlatformGeneralAttack");
 	accTime = 0;
+
+	pScpt->ChangeGeneralAttackSeed();
 	bool bb = pScpt->GetGeneralAttackSeed();
 	if (bb)
 	{
@@ -51,6 +53,4 @@ void CHaikuPlatformGeneralAttackState::Exit()
 {
 	CHaikuScript* pScpt = GetOwnerObj()->GetScript<CHaikuScript>();
 	pScpt->SetPrevStateName(L"PlatformGeneralAttack");
-
-	pScpt->ChangeGeneralAttackSeed();
 }

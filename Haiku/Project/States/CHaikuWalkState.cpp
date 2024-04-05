@@ -36,7 +36,7 @@ void CHaikuWalkState::finaltick()
 		ChangeState(L"Dash");
 	}
 
-	if (KEY_PRESSED(KEY::LEFT) && KEY_NONE(KEY::RIGHT) && GetFSM()->GetStateMachine()->Movement()->IsGround()) //점프가 아닐 때만
+	if (KEY_PRESSED(KEY::LEFT) && KEY_NONE(KEY::RIGHT) && GetFSM()->GetStateMachine()->Movement()->IsGround()) 
 	{
 		GetFSM()->GetStateMachine()->Movement()->SetVelocity(Vec3(-400.f, 0.f, 0.f));
 	}

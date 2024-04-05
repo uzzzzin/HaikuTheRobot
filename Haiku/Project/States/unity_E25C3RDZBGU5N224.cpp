@@ -12,7 +12,16 @@
 #include "C:\Users\woo06\Desktop\Haiku\HaikuTheRobot\Haiku\Project\States\CHaikuJumpFallState.cpp"
 
 
+#include "C:\Users\woo06\Desktop\Haiku\HaikuTheRobot\Haiku\Project\States\CHaikuJumpRiseDownAttackState.cpp"
+
+
+#include "C:\Users\woo06\Desktop\Haiku\HaikuTheRobot\Haiku\Project\States\CHaikuJumpRiseGeneralAttackState.cpp"
+
+
 #include "C:\Users\woo06\Desktop\Haiku\HaikuTheRobot\Haiku\Project\States\CHaikuJumpRiseState.cpp"
+
+
+#include "C:\Users\woo06\Desktop\Haiku\HaikuTheRobot\Haiku\Project\States\CHaikuJumpRiseUpAttackState.cpp"
 
 
 #include "C:\Users\woo06\Desktop\Haiku\HaikuTheRobot\Haiku\Project\States\CHaikuPlatformGeneralAttackState.cpp"
