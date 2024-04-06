@@ -30,7 +30,7 @@ void CHaikuIdleState::Enter()
 	for (int i = 0; i < children.size(); ++i)
 	{
 		children[i]->Animator2D()->Play(L"sword_null");
-	}	
+	}
 }
 
 void CHaikuIdleState::finaltick()

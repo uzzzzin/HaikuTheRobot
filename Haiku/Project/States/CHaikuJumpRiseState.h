@@ -4,7 +4,7 @@ class CHaikuJumpRiseState :
     public CState
 {
     float duration;
-    float accTime; // 현재 누적 대시 시간
+    float accTime; // 현재 누적 시간
 
 public:
     virtual void Enter() override;

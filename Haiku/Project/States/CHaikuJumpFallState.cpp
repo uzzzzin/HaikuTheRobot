@@ -29,10 +29,23 @@ void CHaikuJumpFallState::finaltick()
 {
 	CHaikuScript* pScpt = GetOwnerObj()->GetScript<CHaikuScript>();
 
-	//if (KEY_TAP(KEY::X) || KEY_PRESSED(KEY::X))
-	//{
-	//	ChangeState(L"PlatformGeneralAttack");
-	//}
+	if ((KEY_TAP(KEY::X) || KEY_PRESSED(KEY::X)))
+	{
+		if (KEY_NONE(KEY::UP) && KEY_NONE(KEY::DOWN))
+		{
+			ChangeState(L"JumpFallGeneralAttack");
+		}
+
+		if (KEY_PRESSED(KEY::UP) && KEY_NONE(KEY::DOWN))
+		{
+			//ChangeState(L"JumpFallUpAttack");
+		}
+
+		if (KEY_PRESSED(KEY::DOWN) && KEY_NONE(KEY::UP))
+		{
+			//ChangeState(L"JumpFallDownAttack");
+		}
+	}
 
 	if (KEY_PRESSED(KEY::LEFT)) //점프중인데 이동중인 상태라면
 	{

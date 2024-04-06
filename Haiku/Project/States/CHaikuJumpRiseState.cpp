@@ -34,13 +34,27 @@ void CHaikuJumpRiseState::finaltick()
 
 	if(duration >= accTime)
 	{
-		//if (KEY_TAP(KEY::X) || KEY_PRESSED(KEY::X))
-		//{
-		//	ChangeState(L"PlatformGeneralAttack");
-		//}
+		if ((KEY_TAP(KEY::X) || KEY_PRESSED(KEY::X)))
+		{
+			if (KEY_NONE(KEY::UP) && KEY_NONE(KEY::DOWN))
+			{
+				ChangeState(L"JumpRiseGeneralAttack");
+			}
+
+			if (KEY_PRESSED(KEY::UP) && KEY_NONE(KEY::DOWN))
+			{
+				ChangeState(L"JumpRiseUpAttack");
+			}
+
+			if (KEY_PRESSED(KEY::DOWN) && KEY_NONE(KEY::UP))
+			{
+				//ChangeState(L"JumpRiseDownAttack");
+			}
+		}
 
 		if (LAST_COL_DIR::DOWN == GetOwnerObj()->Collider2D()->GetLastColDir())
 		{
+			GetOwnerObj()->Movement()->SetVelocity(Vec3(0,0,0));
 			ChangeState(L"JumpFall");
 		}
 

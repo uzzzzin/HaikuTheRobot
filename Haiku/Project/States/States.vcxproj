@@ -175,6 +175,7 @@ call CodeGen.exe</Command>
     <ClInclude Include="CHaikuDashState.h" />
     <ClInclude Include="CHaikuDieState.h" />
     <ClInclude Include="CHaikuIdleState.h" />
+    <ClInclude Include="CHaikuJumpFallGeneralAttackState.h" />
     <ClInclude Include="CHaikuJumpFallState.h" />
     <ClInclude Include="CHaikuJumpRiseDownAttackState.h" />
     <ClInclude Include="CHaikuJumpRiseGeneralAttackState.h" />
@@ -194,6 +195,7 @@ call CodeGen.exe</Command>
     <ClCompile Include="CHaikuDashState.cpp" />
     <ClCompile Include="CHaikuDieState.cpp" />
     <ClCompile Include="CHaikuIdleState.cpp" />
+    <ClCompile Include="CHaikuJumpFallGeneralAttackState.cpp" />
     <ClCompile Include="CHaikuJumpFallState.cpp" />
     <ClCompile Include="CHaikuJumpRiseDownAttackState.cpp" />
     <ClCompile Include="CHaikuJumpRiseGeneralAttackState.cpp" />
