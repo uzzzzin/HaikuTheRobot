@@ -48,7 +48,7 @@ void CHaikuJumpRiseState::finaltick()
 
 			if (KEY_PRESSED(KEY::DOWN) && KEY_NONE(KEY::UP))
 			{
-				//ChangeState(L"JumpRiseDownAttack");
+				ChangeState(L"JumpRiseDownAttack");
 			}
 		}
 
