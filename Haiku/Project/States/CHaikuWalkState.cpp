@@ -19,6 +19,12 @@ void CHaikuWalkState::Enter()
 	CHaikuScript* pScpt = GetOwnerObj()->GetScript<CHaikuScript>();
 	pScpt->SetCurStateName(L"Walk");
 	GetFSM()->GetStateMachine()->Animator2D()->Play(L"haiku_walk");
+
+	const vector<CGameObject*>& children = GetFSM()->GetStateMachine()->GetOwner()->GetChild();
+	for (int i = 0; i < children.size(); ++i)
+	{
+		children[i]->Animator2D()->Play(L"sword_null");
+	}
 }
 
 
@@ -34,6 +40,11 @@ void CHaikuWalkState::finaltick()
 	if (KEY_TAP(KEY::C))
 	{
 		ChangeState(L"Dash");
+	}
+
+	if (KEY_TAP(KEY::X))
+	{
+		ChangeState(L"PlatformGeneralAttack");
 	}
 
 	if (KEY_PRESSED(KEY::LEFT) && KEY_NONE(KEY::RIGHT) && GetFSM()->GetStateMachine()->Movement()->IsGround()) 

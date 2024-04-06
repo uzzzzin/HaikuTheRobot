@@ -25,6 +25,12 @@ void CHaikuIdleState::Enter()
 	pScpt->SetCurStateName(L"Idle");
 
 	GetFSM()->GetStateMachine()->Animator2D()->Play(L"haiku_idle");
+
+	const vector<CGameObject*>& children = GetFSM()->GetStateMachine()->GetOwner()->GetChild();
+	for (int i = 0; i < children.size(); ++i)
+	{
+		children[i]->Animator2D()->Play(L"sword_null");
+	}	
 }
 
 void CHaikuIdleState::finaltick()
@@ -39,7 +45,7 @@ void CHaikuIdleState::finaltick()
 		ChangeState(L"Repair");
 	}
 
-	if (KEY_TAP(KEY::SPACE))
+	if (KEY_TAP(KEY::SPACE) || KEY_PRESSED(KEY::SPACE))
 	{
 		ChangeState(L"JumpRise");
 	}
@@ -47,6 +53,11 @@ void CHaikuIdleState::finaltick()
 	if (KEY_TAP(KEY::X))
 	{
 		ChangeState(L"PlatformGeneralAttack");
+	}
+
+	if (KEY_NONE(KEY::SPACE) && (KEY_TAP(KEY::LEFT)|| KEY_TAP(KEY::RIGHT) || KEY_PRESSED(KEY::LEFT) || KEY_PRESSED(KEY::RIGHT)))
+	{
+		ChangeState(L"Walk");
 	}
 
 	//if (몬스터에게 피해를 입으면)

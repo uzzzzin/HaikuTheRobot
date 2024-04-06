@@ -21,6 +21,13 @@ void CHaikuRepairState::Enter()
 	pScpt->SetCurStateName(L"Repair");
 
 	GetFSM()->GetStateMachine()->Animator2D()->Play(L"haiku_repair", false);
+
+	const vector<CGameObject*>& children = GetFSM()->GetStateMachine()->GetOwner()->GetChild();
+	for (int i = 0; i < children.size(); ++i)
+	{
+		children[i]->Animator2D()->Play(L"sword_null");
+	}
+
 	accTime = 0;
 }
 

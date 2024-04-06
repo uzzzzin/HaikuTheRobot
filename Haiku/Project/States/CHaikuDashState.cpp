@@ -5,9 +5,9 @@
 
 CHaikuDashState::CHaikuDashState()
 	: CState(STATE_TYPE::HAIKUDASHSTATE)
-	, duration (0.15f)
+	, duration (0.14f)
 	, accTime (0)
-	, dashLength(110.f)
+	, dashLength(100.f)
 	, dashSpeed (0)
 {
 	dashSpeed = dashLength / duration;
@@ -27,6 +27,13 @@ void CHaikuDashState::Enter()
 	CHaikuScript* pScpt = GetOwnerObj()->GetScript<CHaikuScript>();
 	pScpt->SetCurStateName(L"Dash");
 	GetFSM()->GetStateMachine()->Animator2D()->Play(L"haiku_dash");
+
+	const vector<CGameObject*>& children = GetFSM()->GetStateMachine()->GetOwner()->GetChild();
+	for (int i = 0; i < children.size(); ++i)
+	{
+		children[i]->Animator2D()->Play(L"sword_null");
+	}
+
 	accTime = 0;
 		
 	if (1 == pScpt->GetCurDir()) // true ¸é left, false ¸é right

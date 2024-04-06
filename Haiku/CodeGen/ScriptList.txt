@@ -1,6 +1,7 @@
 CBackgroundScript
 CCtrlScript
 CHaikuScript
+CHaikuSwordScript
 CMissileScript
 CMonsterScript
 CPlatformScript

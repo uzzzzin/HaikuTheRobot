@@ -16,6 +16,7 @@ void CHaikuJumpRiseGeneralAttackState::Enter()
 {
 	CHaikuScript* pScpt = GetOwnerObj()->GetScript<CHaikuScript>();
 	pScpt->SetCurStateName(L"JumpRiseGeneralAttack");
+	GetFSM()->GetStateMachine()->Animator2D()->Play(L"haiku_jump_rise_gen_attack");
 	//haiku_jump_rise_gen_attack
 }
 
