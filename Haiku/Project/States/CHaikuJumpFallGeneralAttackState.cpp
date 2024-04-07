@@ -25,6 +25,7 @@ void CHaikuJumpFallGeneralAttackState::Enter()
 	for (int i = 0; i < children.size(); ++i)
 	{
 		children[i]->Animator2D()->Play(L"sword_jump_fall_gen_attack");
+		children[i]->Collider2D()->Activate();
 	}
 
 }
@@ -67,4 +68,11 @@ void CHaikuJumpFallGeneralAttackState::Exit()
 {
 	CHaikuScript* pScpt = GetOwnerObj()->GetScript<CHaikuScript>();
 	pScpt->SetPrevStateName(L"JumpFallGeneralAttack");
+
+	const vector<CGameObject*>& children = GetFSM()->GetStateMachine()->GetOwner()->GetChild();
+	for (int i = 0; i < children.size(); ++i)
+	{
+		children[i]->Animator2D()->Play(L"sword_null", false);
+		children[i]->Collider2D()->Deactivate();
+	}
 }

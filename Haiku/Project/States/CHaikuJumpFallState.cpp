@@ -36,15 +36,15 @@ void CHaikuJumpFallState::finaltick()
 			ChangeState(L"JumpFallGeneralAttack");
 		}
 
-		if (KEY_PRESSED(KEY::UP) && KEY_NONE(KEY::DOWN))
-		{
-			//ChangeState(L"JumpFallUpAttack");
-		}
+		//if (KEY_PRESSED(KEY::UP) && KEY_NONE(KEY::DOWN))
+		//{
+		//	//ChangeState(L"JumpFallUpAttack");
+		//}
 
-		if (KEY_PRESSED(KEY::DOWN) && KEY_NONE(KEY::UP))
-		{
-			//ChangeState(L"JumpFallDownAttack");
-		}
+		//if (KEY_PRESSED(KEY::DOWN) && KEY_NONE(KEY::UP))
+		//{
+		//	//ChangeState(L"JumpFallDownAttack");
+		//}
 	}
 
 	if (KEY_PRESSED(KEY::LEFT)) //점프중인데 이동중인 상태라면
