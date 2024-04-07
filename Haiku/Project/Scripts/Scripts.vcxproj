@@ -176,6 +176,7 @@ call CodeGen.exe</Command>
     <ClInclude Include="CHaikuSwordScript.h" />
     <ClInclude Include="CMissileScript.h" />
     <ClInclude Include="CMonsterScript.h" />
+    <ClInclude Include="CNuttyScript.h" />
     <ClInclude Include="CPlatformScript.h" />
     <ClInclude Include="CPlayerScript.h" />
     <ClInclude Include="CScriptMgr.h" />
@@ -190,6 +191,7 @@ call CodeGen.exe</Command>
     <ClCompile Include="CHaikuSwordScript.cpp" />
     <ClCompile Include="CMissileScript.cpp" />
     <ClCompile Include="CMonsterScript.cpp" />
+    <ClCompile Include="CNuttyScript.cpp" />
     <ClCompile Include="CPlatformScript.cpp" />
     <ClCompile Include="CPlayerScript.cpp" />
     <ClCompile Include="CScriptMgr.cpp" />

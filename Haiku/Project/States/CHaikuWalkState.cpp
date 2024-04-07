@@ -32,7 +32,7 @@ void CHaikuWalkState::finaltick()
 {
 	CHaikuScript* pScpt = GetOwnerObj()->GetScript<CHaikuScript>();
 
-	if (KEY_TAP(KEY::SPACE))
+	if (KEY_TAP(KEY::SPACE) || KEY_PRESSED(KEY::SPACE))
 	{
 		ChangeState(L"JumpRise");
 	}

@@ -277,6 +277,26 @@ void CAssetMgr::CreateDefaultGraphicsShader()
 	pShader->SetDomain(SHADER_DOMAIN::DOMAIN_DEBUG);
 
 	AddAsset(L"DebugShapeShader", pShader.Get());
+
+
+	//// =================================
+	//// Nutty Shader
+	//// =================================
+	//pShader = new CGraphicsShader;
+	//pShader->CreateVertexShader(L"shader\\nutty.fx", "VS_Nutty");
+	//pShader->CreatePixelShader(L"shader\\nutty.fx", "PS_Nutty");
+
+	//pShader->SetRSType(RS_TYPE::CULL_NONE);
+	//pShader->SetDSType(DS_TYPE::LESS);
+	//pShader->SetBSType(BS_TYPE::DEFAULT);
+	//pShader->SetDomain(SHADER_DOMAIN::DOMAIN_MASKED);
+
+	//// Parameter	
+	//pShader->AddScalarParam(SCALAR_PARAM::INT_0, "Cur Dir Param");
+	////pShader->AddTexParam(TEX_PARAM::TEX_0, "Output Texture 1");
+
+	//AddAsset(L"NuttyShader", pShader.Get());
+
 }
 
 

@@ -7,6 +7,7 @@
 #include "CHaikuSwordScript.h"
 #include "CMissileScript.h"
 #include "CMonsterScript.h"
+#include "CNuttyScript.h"
 #include "CPlatformScript.h"
 #include "CPlayerScript.h"
 #include "CTraceCameraScript.h"
@@ -19,6 +20,7 @@ void CScriptMgr::GetScriptInfo(vector<wstring>& _vec)
 	_vec.push_back(L"CHaikuSwordScript");
 	_vec.push_back(L"CMissileScript");
 	_vec.push_back(L"CMonsterScript");
+	_vec.push_back(L"CNuttyScript");
 	_vec.push_back(L"CPlatformScript");
 	_vec.push_back(L"CPlayerScript");
 	_vec.push_back(L"CTraceCameraScript");
@@ -38,6 +40,8 @@ CScript * CScriptMgr::GetScript(const wstring& _strScriptName)
 		return new CMissileScript;
 	if (L"CMonsterScript" == _strScriptName)
 		return new CMonsterScript;
+	if (L"CNuttyScript" == _strScriptName)
+		return new CNuttyScript;
 	if (L"CPlatformScript" == _strScriptName)
 		return new CPlatformScript;
 	if (L"CPlayerScript" == _strScriptName)
@@ -68,6 +72,9 @@ CScript * CScriptMgr::GetScript(UINT _iScriptType)
 		break;
 	case (UINT)SCRIPT_TYPE::MONSTERSCRIPT:
 		return new CMonsterScript;
+		break;
+	case (UINT)SCRIPT_TYPE::NUTTYSCRIPT:
+		return new CNuttyScript;
 		break;
 	case (UINT)SCRIPT_TYPE::PLATFORMSCRIPT:
 		return new CPlatformScript;
@@ -108,6 +115,10 @@ const wchar_t * CScriptMgr::GetScriptName(CScript * _pScript)
 
 	case SCRIPT_TYPE::MONSTERSCRIPT:
 		return L"CMonsterScript";
+		break;
+
+	case SCRIPT_TYPE::NUTTYSCRIPT:
+		return L"CNuttyScript";
 		break;
 
 	case SCRIPT_TYPE::PLATFORMSCRIPT:

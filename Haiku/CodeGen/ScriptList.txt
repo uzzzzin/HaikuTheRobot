@@ -4,6 +4,7 @@ CHaikuScript
 CHaikuSwordScript
 CMissileScript
 CMonsterScript
+CNuttyScript
 CPlatformScript
 CPlayerScript
 CTraceCameraScript

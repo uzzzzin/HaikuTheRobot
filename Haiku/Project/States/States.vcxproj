@@ -186,6 +186,9 @@ call CodeGen.exe</Command>
     <ClInclude Include="CHaikuStartState.h" />
     <ClInclude Include="CHaikuWalkState.h" />
     <ClInclude Include="CIdleState.h" />
+    <ClInclude Include="CNuttyDetectState.h" />
+    <ClInclude Include="CNuttyIdleState.h" />
+    <ClInclude Include="CNuttyTraceState.h" />
     <ClInclude Include="CStateMgr.h" />
     <ClInclude Include="CTraceState.h" />
     <ClInclude Include="framework.h" />
@@ -206,6 +209,9 @@ call CodeGen.exe</Command>
     <ClCompile Include="CHaikuStartState.cpp" />
     <ClCompile Include="CHaikuWalkState.cpp" />
     <ClCompile Include="CIdleState.cpp" />
+    <ClCompile Include="CNuttyDetectState.cpp" />
+    <ClCompile Include="CNuttyIdleState.cpp" />
+    <ClCompile Include="CNuttyTraceState.cpp" />
     <ClCompile Include="CStateMgr.cpp" />
     <ClCompile Include="CTraceState.cpp" />
     <ClCompile Include="pch.cpp">

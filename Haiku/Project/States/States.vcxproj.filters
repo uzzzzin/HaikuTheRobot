@@ -37,6 +37,12 @@
     <Filter Include="States\Haiku\Attack\JumpFall">
       <UniqueIdentifier>{2b2eb2b0-6c62-4b8e-ae0f-9b1bc04eb42e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="States\Monster">
+      <UniqueIdentifier>{19cccdc9-6948-48af-97d4-43ab926f12de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States\Monster\Nutty">
+      <UniqueIdentifier>{ecae1cb2-af39-40a3-bb40-9ff717f17c6e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -93,6 +99,13 @@
     <ClInclude Include="CHaikuJumpFallGeneralAttackState.h">
       <Filter>States\Haiku\Attack\JumpFall</Filter>
     </ClInclude>
+    <ClInclude Include="CNuttyIdleState.h">
+      <Filter>States\Monster\Nutty</Filter>
+    </ClInclude>
+    <ClInclude Include="CNuttyDetectState.h">
+      <Filter>States\Monster\Nutty</Filter>
+    </ClInclude>
+    <ClInclude Include="CNuttyTraceState.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -149,5 +162,12 @@
     <ClCompile Include="CHaikuJumpFallGeneralAttackState.cpp">
       <Filter>States\Haiku\Attack\JumpFall</Filter>
     </ClCompile>
+    <ClCompile Include="CNuttyIdleState.cpp">
+      <Filter>States\Monster\Nutty</Filter>
+    </ClCompile>
+    <ClCompile Include="CNuttyDetectState.cpp">
+      <Filter>States\Monster\Nutty</Filter>
+    </ClCompile>
+    <ClCompile Include="CNuttyTraceState.cpp" />
   </ItemGroup>
 </Project>

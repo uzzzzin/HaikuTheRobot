@@ -37,6 +37,9 @@
     <ClInclude Include="CMonsterScript.h">
       <Filter>Scripts\etc.</Filter>
     </ClInclude>
+    <ClInclude Include="CNuttyScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -44,9 +47,6 @@
     </ClCompile>
     <ClCompile Include="Scripts.cpp">
       <Filter>Default</Filter>
-    </ClCompile>
-    <ClCompile Include="CPlayerScript.cpp">
-      <Filter>Scripts</Filter>
     </ClCompile>
     <ClCompile Include="CScriptMgr.cpp">
       <Filter>ScriptMgr</Filter>
@@ -73,6 +73,12 @@
       <Filter>Scripts\etc.</Filter>
     </ClCompile>
     <ClCompile Include="CMonsterScript.cpp">
+      <Filter>Scripts\etc.</Filter>
+    </ClCompile>
+    <ClCompile Include="CNuttyScript.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="CPlayerScript.cpp">
       <Filter>Scripts\etc.</Filter>
     </ClCompile>
   </ItemGroup>
