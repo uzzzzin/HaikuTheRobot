@@ -191,7 +191,11 @@ call CodeGen.exe</Command>
     <ClInclude Include="CNuttyIdleState.h" />
     <ClInclude Include="CNuttyTraceState.h" />
     <ClInclude Include="CStateMgr.h" />
-    <ClInclude Include="CTireIdleState.h" />
+    <ClInclude Include="CTireDieState.h" />
+    <ClInclude Include="CTireIdleState.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">아니오</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">아니오</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="CTraceState.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
@@ -216,7 +220,11 @@ call CodeGen.exe</Command>
     <ClCompile Include="CNuttyIdleState.cpp" />
     <ClCompile Include="CNuttyTraceState.cpp" />
     <ClCompile Include="CStateMgr.cpp" />
-    <ClCompile Include="CTireIdleState.cpp" />
+    <ClCompile Include="CTireDieState.cpp" />
+    <ClCompile Include="CTireIdleState.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">아니오</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">아니오</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="CTraceState.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

@@ -6,6 +6,9 @@ class CTiredTireScript :
 private :
     vector<CGameObject*> m_Ground;
     int  m_OverlapGround;
+
+    int life; // 2
+
 public:
     void AddOverlapGround(CGameObject* _pObejct);
     void SubOverlapGround(CGameObject* _pObejct);

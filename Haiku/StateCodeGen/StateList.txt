@@ -16,5 +16,6 @@ CNuttyAttackedState
 CNuttyDetectState
 CNuttyIdleState
 CNuttyTraceState
+CTireDieState
 CTireIdleState
 CTraceState

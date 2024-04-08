@@ -7,9 +7,6 @@
     <ClInclude Include="pch.h">
       <Filter>Default</Filter>
     </ClInclude>
-    <ClInclude Include="CPlayerScript.h">
-      <Filter>Scripts</Filter>
-    </ClInclude>
     <ClInclude Include="CScriptMgr.h">
       <Filter>ScriptMgr</Filter>
     </ClInclude>
@@ -42,6 +39,12 @@
     </ClInclude>
     <ClInclude Include="CTiredTireScript.h">
       <Filter>Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="CScrewScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="CPlayerScript.h">
+      <Filter>Scripts\etc.</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +88,9 @@
       <Filter>Scripts\etc.</Filter>
     </ClCompile>
     <ClCompile Include="CTiredTireScript.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="CScrewScript.cpp">
       <Filter>Scripts</Filter>
     </ClCompile>
   </ItemGroup>

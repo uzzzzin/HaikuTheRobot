@@ -179,8 +179,12 @@ call CodeGen.exe</Command>
     <ClInclude Include="CNuttyScript.h" />
     <ClInclude Include="CPlatformScript.h" />
     <ClInclude Include="CPlayerScript.h" />
+    <ClInclude Include="CScrewScript.h" />
     <ClInclude Include="CScriptMgr.h" />
-    <ClInclude Include="CTiredTireScript.h" />
+    <ClInclude Include="CTiredTireScript.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">아니오</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">아니오</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="CTraceCameraScript.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
@@ -195,8 +199,12 @@ call CodeGen.exe</Command>
     <ClCompile Include="CNuttyScript.cpp" />
     <ClCompile Include="CPlatformScript.cpp" />
     <ClCompile Include="CPlayerScript.cpp" />
+    <ClCompile Include="CScrewScript.cpp" />
     <ClCompile Include="CScriptMgr.cpp" />
-    <ClCompile Include="CTiredTireScript.cpp" />
+    <ClCompile Include="CTiredTireScript.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">아니오</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">아니오</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="CTraceCameraScript.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

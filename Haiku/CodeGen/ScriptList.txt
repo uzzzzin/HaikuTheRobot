@@ -7,5 +7,6 @@ CMonsterScript
 CNuttyScript
 CPlatformScript
 CPlayerScript
+CScrewScript
 CTiredTireScript
 CTraceCameraScript

@@ -19,6 +19,7 @@
 #include "CNuttyDetectState.h"
 #include "CNuttyIdleState.h"
 #include "CNuttyTraceState.h"
+#include "CTireDieState.h"
 #include "CTireIdleState.h"
 #include "CTraceState.h"
 
@@ -42,6 +43,7 @@ void CStateMgr::GetStateInfo(vector<wstring>& _vec)
 	_vec.push_back(L"CNuttyDetectState");
 	_vec.push_back(L"CNuttyIdleState");
 	_vec.push_back(L"CNuttyTraceState");
+	_vec.push_back(L"CTireDieState");
 	_vec.push_back(L"CTireIdleState");
 	_vec.push_back(L"CTraceState");
 }
@@ -84,6 +86,8 @@ CState* CStateMgr::GetState(const wstring& _strStateName)
 		return new CNuttyIdleState;
 	if (L"CNuttyTraceState" == _strStateName)
 		return new CNuttyTraceState;
+	if (L"CTireDieState" == _strStateName)
+		return new CTireDieState;
 	if (L"CTireIdleState" == _strStateName)
 		return new CTireIdleState;
 	if (L"CTraceState" == _strStateName)
@@ -148,6 +152,9 @@ CState* CStateMgr::GetState(UINT _iStateType)
 		break;
 	case (UINT)STATE_TYPE::NUTTYTRACESTATE:
 		return new CNuttyTraceState;
+		break;
+	case (UINT)STATE_TYPE::TIREDIESTATE:
+		return new CTireDieState;
 		break;
 	case (UINT)STATE_TYPE::TIREIDLESTATE:
 		return new CTireIdleState;
@@ -233,6 +240,10 @@ const wchar_t * CStateMgr::GetStateName(CState * _pState)
 
 	case STATE_TYPE::NUTTYTRACESTATE:
 		return L"CNuttyTraceState";
+		break;
+
+	case STATE_TYPE::TIREDIESTATE:
+		return L"CTireDieState";
 		break;
 
 	case STATE_TYPE::TIREIDLESTATE:

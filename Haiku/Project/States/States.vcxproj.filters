@@ -117,6 +117,9 @@
     <ClInclude Include="CTireIdleState.h">
       <Filter>States\Monster\TiredTire</Filter>
     </ClInclude>
+    <ClInclude Include="CTireDieState.h">
+      <Filter>States\Monster\TiredTire</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -186,6 +189,9 @@
       <Filter>States\Monster\Nutty</Filter>
     </ClCompile>
     <ClCompile Include="CTireIdleState.cpp">
+      <Filter>States\Monster\TiredTire</Filter>
+    </ClCompile>
+    <ClCompile Include="CTireDieState.cpp">
       <Filter>States\Monster\TiredTire</Filter>
     </ClCompile>
   </ItemGroup>

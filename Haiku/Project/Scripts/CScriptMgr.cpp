@@ -10,6 +10,7 @@
 #include "CNuttyScript.h"
 #include "CPlatformScript.h"
 #include "CPlayerScript.h"
+#include "CScrewScript.h"
 #include "CTiredTireScript.h"
 #include "CTraceCameraScript.h"
 
@@ -24,6 +25,7 @@ void CScriptMgr::GetScriptInfo(vector<wstring>& _vec)
 	_vec.push_back(L"CNuttyScript");
 	_vec.push_back(L"CPlatformScript");
 	_vec.push_back(L"CPlayerScript");
+	_vec.push_back(L"CScrewScript");
 	_vec.push_back(L"CTiredTireScript");
 	_vec.push_back(L"CTraceCameraScript");
 }
@@ -48,6 +50,8 @@ CScript * CScriptMgr::GetScript(const wstring& _strScriptName)
 		return new CPlatformScript;
 	if (L"CPlayerScript" == _strScriptName)
 		return new CPlayerScript;
+	if (L"CScrewScript" == _strScriptName)
+		return new CScrewScript;
 	if (L"CTiredTireScript" == _strScriptName)
 		return new CTiredTireScript;
 	if (L"CTraceCameraScript" == _strScriptName)
@@ -85,6 +89,9 @@ CScript * CScriptMgr::GetScript(UINT _iScriptType)
 		break;
 	case (UINT)SCRIPT_TYPE::PLAYERSCRIPT:
 		return new CPlayerScript;
+		break;
+	case (UINT)SCRIPT_TYPE::SCREWSCRIPT:
+		return new CScrewScript;
 		break;
 	case (UINT)SCRIPT_TYPE::TIREDTIRESCRIPT:
 		return new CTiredTireScript;
@@ -134,6 +141,10 @@ const wchar_t * CScriptMgr::GetScriptName(CScript * _pScript)
 
 	case SCRIPT_TYPE::PLAYERSCRIPT:
 		return L"CPlayerScript";
+		break;
+
+	case SCRIPT_TYPE::SCREWSCRIPT:
+		return L"CScrewScript";
 		break;
 
 	case SCRIPT_TYPE::TIREDTIRESCRIPT:
