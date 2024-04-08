@@ -36,6 +36,9 @@ public:
     void render();
 
 public:
+    void SetLayerIdx(int _LayerIdx) { m_iLayerIdx = _LayerIdx; }
+
+public:
     void AddComponent(CComponent* _Comonent);
     CComponent* GetComponent(COMPONENT_TYPE _Type) { return m_arrCom[(UINT)_Type]; }        
     CRenderComponent* GetRenderComponent() { return m_RenderCom; }
@@ -79,6 +82,7 @@ public:
     int DisconnectWithLayer();
 
     void AddChild(CGameObject* _Child);
+    void AddChild_Load(CGameObject* _Child);
     bool IsDead() { return m_bDead; }
 
     void Destroy();

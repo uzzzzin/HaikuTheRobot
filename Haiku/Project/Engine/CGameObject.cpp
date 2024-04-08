@@ -296,3 +296,10 @@ int CGameObject::ChangeLayer(int _Idx)
 
 	return 0;
 }
+
+void CGameObject::AddChild_Load(CGameObject* _Child)
+{
+	// 부모 자식 연결
+	_Child->m_Parent = this;
+	m_vecChild.push_back(_Child);
+}
