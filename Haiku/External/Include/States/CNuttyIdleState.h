@@ -18,8 +18,8 @@ class CNuttyIdleState :
     float        NuttyDetectRightPos;
 
 public:
-    virtual void finaltick() override;
     virtual void Enter() override;
+    virtual void finaltick() override;
     virtual void Exit() override;
 
 public:

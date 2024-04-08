@@ -40,6 +40,9 @@
     <ClInclude Include="CNuttyScript.h">
       <Filter>Scripts</Filter>
     </ClInclude>
+    <ClInclude Include="CTiredTireScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -80,6 +83,9 @@
     </ClCompile>
     <ClCompile Include="CPlayerScript.cpp">
       <Filter>Scripts\etc.</Filter>
+    </ClCompile>
+    <ClCompile Include="CTiredTireScript.cpp">
+      <Filter>Scripts</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

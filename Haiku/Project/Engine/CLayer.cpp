@@ -143,3 +143,20 @@ void CLayer::DetachGameObject(CGameObject* _Object)
 
 	assert(nullptr);
 }
+
+//void CLayer::DetachGameObject(CGameObject* _Object)
+//{
+//	assert(!(_Object->m_iLayerIdx == -1 || _Object->m_iLayerIdx != m_iLayerIdx));
+//
+//	_Object->m_iLayerIdx = -1;
+//
+//	// case: top parent object
+//	if (!_Object->GetParent())
+//	{
+//		vector<CGameObject*>::iterator iter = find(m_vecParent.begin(), m_vecParent.end(), _Object);
+//		if (iter != m_vecParent.end())
+//			m_vecParent.erase(iter);
+//		else
+//			assert(nullptr);
+//	}
+//}

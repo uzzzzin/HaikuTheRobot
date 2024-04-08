@@ -32,20 +32,20 @@
 void CCreateTempLevel::Init()
 {
 
-	////Missile Prefab 생성
-	CGameObject* pObj = nullptr;
-	pObj = new CGameObject;
-	pObj->SetName(L"Missile");
-	pObj->AddComponent(new CTransform);
-	pObj->AddComponent(new CMeshRender);
-	//pObj->AddComponent(new CMissileScript);
-	pObj->Transform()->SetRelativeScale(Vec3(50.f, 50.f, 1.f));
-	pObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
-	pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"Std2DMat"));
+	//////Missile Prefab 생성
+	//CGameObject* pObj = nullptr;
+	//pObj = new CGameObject;
+	//pObj->SetName(L"Missile");
+	//pObj->AddComponent(new CTransform);
+	//pObj->AddComponent(new CMeshRender);
+	////pObj->AddComponent(new CMissileScript);
+	//pObj->Transform()->SetRelativeScale(Vec3(50.f, 50.f, 1.f));
+	//pObj->MeshRender()->SetMesh(CAssetMgr::GetInst()->FindAsset<CMesh>(L"RectMesh"));
+	//pObj->MeshRender()->SetMaterial(CAssetMgr::GetInst()->FindAsset<CMaterial>(L"Std2DMat"));
 
-	Ptr<CPrefab> pMissilePrefab = new CPrefab(pObj, true);
-	CAssetMgr::GetInst()->AddAsset<CPrefab>(L"MissilePrefab", pMissilePrefab.Get());
-	pMissilePrefab->Save(L"prefab\\missile.pref");
+	//Ptr<CPrefab> pMissilePrefab = new CPrefab(pObj, true);
+	//CAssetMgr::GetInst()->AddAsset<CPrefab>(L"MissilePrefab", pMissilePrefab.Get());
+	//pMissilePrefab->Save(L"prefab\\missile.pref");
 	
 //
 //	// 임시 FSM 객체 에셋 하나 생성하기
@@ -65,8 +65,8 @@ void CCreateTempLevel::CreateTempLevel()
 	//pBackgroudMtrl->SetTexParam(TEX_PARAM::TEX_0, CAssetMgr::GetInst()->Load<CTexture>(L"texture\\Background.jpg", L"texture\\Background.jpg"));
 	//pStd2DMtrl->SetTexParam(TEX_PARAM::TEX_0, CAssetMgr::GetInst()->Load<CTexture>(L"texture\\Fighter.bmp", L"texture\\Fighter.bmp"));
 
-	/*CLevel* pLevel = CLevelSaveLoad::LoadLevel(L"level\\test.lv");
-	CLevelMgr::GetInst()->ChangeLevel(pLevel, LEVEL_STATE::STOP);*/
+	CLevel* pLevel = CLevelSaveLoad::LoadLevel(L"level\\tut2.lv");
+	CLevelMgr::GetInst()->ChangeLevel(pLevel, LEVEL_STATE::STOP);
 
 
 	 //TileMap Object
@@ -93,7 +93,7 @@ void CCreateTempLevel::CreateTempLevel()
 
 	pTempLevel->AddObject(pObj, L"Tile", false);*/
 
-	//return;
+	return;
 
 	CLevel* pTempLevel = new CLevel;
 

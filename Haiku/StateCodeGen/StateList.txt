@@ -12,7 +12,9 @@ CHaikuRepairState
 CHaikuStartState
 CHaikuWalkState
 CIdleState
+CNuttyAttackedState
 CNuttyDetectState
 CNuttyIdleState
 CNuttyTraceState
+CTireIdleState
 CTraceState

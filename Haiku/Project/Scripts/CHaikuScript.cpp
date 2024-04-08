@@ -34,8 +34,6 @@ void CHaikuScript::begin()
 
 	GetRenderComponent()->GetDynamicMaterial();
 
-	// Ãæµ¹ ¼³Á¤
-	CCollisionMgr::GetInst()->LayerCheck(4, 2); // ÇÏÀÌÄí & ÇÃ·§Æû
 }
 
 void CHaikuScript::tick()

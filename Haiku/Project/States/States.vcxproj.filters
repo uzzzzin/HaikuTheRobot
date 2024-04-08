@@ -43,6 +43,9 @@
     <Filter Include="States\Monster\Nutty">
       <UniqueIdentifier>{ecae1cb2-af39-40a3-bb40-9ff717f17c6e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="States\Monster\TiredTire">
+      <UniqueIdentifier>{37edd709-6bc1-4f88-a0e3-aaa24b11d93e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -105,7 +108,15 @@
     <ClInclude Include="CNuttyDetectState.h">
       <Filter>States\Monster\Nutty</Filter>
     </ClInclude>
-    <ClInclude Include="CNuttyTraceState.h" />
+    <ClInclude Include="CNuttyTraceState.h">
+      <Filter>States\Monster\Nutty</Filter>
+    </ClInclude>
+    <ClInclude Include="CNuttyAttackedState.h">
+      <Filter>States\Monster\Nutty</Filter>
+    </ClInclude>
+    <ClInclude Include="CTireIdleState.h">
+      <Filter>States\Monster\TiredTire</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -168,6 +179,14 @@
     <ClCompile Include="CNuttyDetectState.cpp">
       <Filter>States\Monster\Nutty</Filter>
     </ClCompile>
-    <ClCompile Include="CNuttyTraceState.cpp" />
+    <ClCompile Include="CNuttyTraceState.cpp">
+      <Filter>States\Monster\Nutty</Filter>
+    </ClCompile>
+    <ClCompile Include="CNuttyAttackedState.cpp">
+      <Filter>States\Monster\Nutty</Filter>
+    </ClCompile>
+    <ClCompile Include="CTireIdleState.cpp">
+      <Filter>States\Monster\TiredTire</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

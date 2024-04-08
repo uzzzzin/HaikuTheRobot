@@ -15,9 +15,11 @@
 #include "CHaikuStartState.h"
 #include "CHaikuWalkState.h"
 #include "CIdleState.h"
+#include "CNuttyAttackedState.h"
 #include "CNuttyDetectState.h"
 #include "CNuttyIdleState.h"
 #include "CNuttyTraceState.h"
+#include "CTireIdleState.h"
 #include "CTraceState.h"
 
 void CStateMgr::GetStateInfo(vector<wstring>& _vec)
@@ -36,9 +38,11 @@ void CStateMgr::GetStateInfo(vector<wstring>& _vec)
 	_vec.push_back(L"CHaikuStartState");
 	_vec.push_back(L"CHaikuWalkState");
 	_vec.push_back(L"CIdleState");
+	_vec.push_back(L"CNuttyAttackedState");
 	_vec.push_back(L"CNuttyDetectState");
 	_vec.push_back(L"CNuttyIdleState");
 	_vec.push_back(L"CNuttyTraceState");
+	_vec.push_back(L"CTireIdleState");
 	_vec.push_back(L"CTraceState");
 }
 
@@ -72,12 +76,16 @@ CState* CStateMgr::GetState(const wstring& _strStateName)
 		return new CHaikuWalkState;
 	if (L"CIdleState" == _strStateName)
 		return new CIdleState;
+	if (L"CNuttyAttackedState" == _strStateName)
+		return new CNuttyAttackedState;
 	if (L"CNuttyDetectState" == _strStateName)
 		return new CNuttyDetectState;
 	if (L"CNuttyIdleState" == _strStateName)
 		return new CNuttyIdleState;
 	if (L"CNuttyTraceState" == _strStateName)
 		return new CNuttyTraceState;
+	if (L"CTireIdleState" == _strStateName)
+		return new CTireIdleState;
 	if (L"CTraceState" == _strStateName)
 		return new CTraceState;
 	return nullptr;
@@ -129,6 +137,9 @@ CState* CStateMgr::GetState(UINT _iStateType)
 	case (UINT)STATE_TYPE::IDLESTATE:
 		return new CIdleState;
 		break;
+	case (UINT)STATE_TYPE::NUTTYATTACKEDSTATE:
+		return new CNuttyAttackedState;
+		break;
 	case (UINT)STATE_TYPE::NUTTYDETECTSTATE:
 		return new CNuttyDetectState;
 		break;
@@ -137,6 +148,9 @@ CState* CStateMgr::GetState(UINT _iStateType)
 		break;
 	case (UINT)STATE_TYPE::NUTTYTRACESTATE:
 		return new CNuttyTraceState;
+		break;
+	case (UINT)STATE_TYPE::TIREIDLESTATE:
+		return new CTireIdleState;
 		break;
 	case (UINT)STATE_TYPE::TRACESTATE:
 		return new CTraceState;
@@ -205,6 +219,10 @@ const wchar_t * CStateMgr::GetStateName(CState * _pState)
 		return L"CIdleState";
 		break;
 
+	case STATE_TYPE::NUTTYATTACKEDSTATE:
+		return L"CNuttyAttackedState";
+		break;
+
 	case STATE_TYPE::NUTTYDETECTSTATE:
 		return L"CNuttyDetectState";
 		break;
@@ -215,6 +233,10 @@ const wchar_t * CStateMgr::GetStateName(CState * _pState)
 
 	case STATE_TYPE::NUTTYTRACESTATE:
 		return L"CNuttyTraceState";
+		break;
+
+	case STATE_TYPE::TIREIDLESTATE:
+		return L"CTireIdleState";
 		break;
 
 	case STATE_TYPE::TRACESTATE:

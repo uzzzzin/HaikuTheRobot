@@ -39,15 +39,26 @@ void CNuttyScript::tick()
 
 void CNuttyScript::BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
 {
-	//
+	if (_OtherObj->GetName() == L"HaikuSword")
+	{
+		/*StateMachine()->GetDynamicFSM()->ChangeState(L"Attacked");*/
+	}
 }
 
 void CNuttyScript::Overlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
 {
+	if (_OtherObj->GetName() == L"HaikuSword")
+	{
+	}
 }
 
 void CNuttyScript::EndOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
 {
+	if (_OtherObj->GetName() == L"HaikuSword")
+	{
+		// ¼Ò¸êÇÏ¼Å¾ß ÇÕ´Ï´Ù....
+		StateMachine()->GetDynamicFSM()->ChangeState(L"Attacked");
+	}
 }
 
 

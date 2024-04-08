@@ -14,6 +14,7 @@ private:
 
     CGameObject*  m_Target;
 
+
 public:
     int GetCurDir() { return m_CurDir; }
     Vec3 GetOriginPos() { return m_OriginPos; }

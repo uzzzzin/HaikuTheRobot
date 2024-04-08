@@ -4,12 +4,18 @@
 #include <Engine/CLevelMgr.h>
 #include <Engine/CLevel.h>
 
+#include <Engine/CCollisionMgr.h>
+
 CCtrlScript::CCtrlScript()
 	:CScript(CTRLSCRIPT)
 	, curCtrlColliderDebug(true)
 	, prevCtrlColliderDebug(true)
 {
 	AddScriptParam(SCRIPT_PARAM::BOOL, "Collider Debug", &curCtrlColliderDebug);
+	// Ãæµ¹ ¼³Á¤
+	CCollisionMgr::GetInst()->LayerCheck(4, 2); // ÇÏÀÌÄí & ÇÃ·§Æû
+	CCollisionMgr::GetInst()->LayerCheck(4, 5); // ÇÏÀÌÄí & ¸ó½ºÅÍ
+	CCollisionMgr::GetInst()->LayerCheck(5, 2); // ¸ó½ºÅÍ & ÇÃ·§Æû
 }
 
 CCtrlScript::~CCtrlScript()
