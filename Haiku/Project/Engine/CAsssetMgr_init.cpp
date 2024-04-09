@@ -175,9 +175,29 @@ void CAssetMgr::CreateDefaultGraphicsShader()
 	// Parameter	
 	pShader->AddScalarParam(SCALAR_PARAM::INT_0, "Test Param");
 	pShader->AddTexParam(TEX_PARAM::TEX_0, "Output Texture 1");
-	
 
 	AddAsset(L"Std2DShader", pShader.Get());
+
+
+	// =================================
+	// ChnageRoom Shader
+	// =================================
+
+	pShader = new CGraphicsShader;
+	pShader->CreateVertexShader(L"shader\\std2d.fx", "VS_Std2D");
+	pShader->CreatePixelShader(L"shader\\std2d.fx", "PS_ChangeRoom");
+
+	pShader->SetRSType(RS_TYPE::CULL_NONE);
+	pShader->SetDSType(DS_TYPE::LESS);
+	pShader->SetBSType(BS_TYPE::ALPHA_BLEND);
+	pShader->SetDomain(SHADER_DOMAIN::DOMAIN_MASKED);
+
+	// Parameter	
+	pShader->AddScalarParam(SCALAR_PARAM::INT_0, "Change room");
+	pShader->AddTexParam(TEX_PARAM::TEX_0, "Before Change");
+	pShader->AddTexParam(TEX_PARAM::TEX_1, "After Change");
+
+	AddAsset(L"ChangeRoomShader", pShader.Get());
 
 	// =================================
 	// EffectShader

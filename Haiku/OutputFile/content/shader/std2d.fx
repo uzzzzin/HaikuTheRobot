@@ -20,6 +20,7 @@ struct VS_OUT
     float3 vWorldPos : POSITION;
 };
 
+
 VS_OUT VS_Std2D(VS_IN _in)
 {
     VS_OUT output = (VS_OUT) 0.f;
@@ -40,6 +41,25 @@ VS_OUT VS_Std2D(VS_IN _in)
     output.vWorldPos = mul(float4(_in.vPos, 1.f), g_matWorld);
 
     return output;
+}
+
+float4 PS_ChangeRoom(VS_OUT _in) : SV_Target
+{
+    float4 vColor = float4(0.f, 0.f, 0.f, 0.f);
+    
+    if (0 == g_int_1)
+    {
+        vColor = g_tex_0.Sample(g_sam_1, _in.vUV);
+    }
+    else
+    {
+        vColor = g_tex_1.Sample(g_sam_1, _in.vUV);
+    }
+    
+    if (0.f == vColor.a)
+        discard;
+    
+    return vColor;
 }
 
 float4 PS_Std2D(VS_OUT _in) : SV_Target
@@ -167,6 +187,7 @@ float4 PS_Std2D_Effect(VS_OUT _in) : SV_Target
     
     return vColor;
 }
+
 
 
 #endif

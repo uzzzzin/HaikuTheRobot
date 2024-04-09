@@ -1,4 +1,5 @@
 CBackgroundScript
+CChangeRoomScript
 CCtrlScript
 CHaikuScript
 CHaikuSwordScript
@@ -7,6 +8,7 @@ CMonsterScript
 CNuttyScript
 CPlatformScript
 CPlayerScript
+CRoomMgrScript
 CScrewScript
 CTiredTireScript
 CTraceCameraScript

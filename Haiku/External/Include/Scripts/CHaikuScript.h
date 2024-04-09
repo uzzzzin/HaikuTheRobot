@@ -26,6 +26,8 @@ private:
 
     bool bGeneralAttackSeed;
 
+    bool    bChanging;
+
 public:
     int GetCurDir() { return curDir; }
     int GetPrevDir() { return prevDir; }
@@ -46,6 +48,8 @@ public:
 
     bool GetGeneralAttackSeed() { return bGeneralAttackSeed; }
 
+    bool GetChanging() { return bChanging; }
+
 public:
     void SetCurDir(bool _dir) { curDir = _dir; }
     void SetPrevDir(bool _dir) { prevDir = _dir; }
@@ -63,6 +67,8 @@ public:
             bGeneralAttackSeed = true;
         }
     }
+
+    void SetChanging(bool _b) { bChanging = _b; }
 
 public:
     virtual void begin() override;

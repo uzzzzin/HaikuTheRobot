@@ -17,6 +17,8 @@ CCtrlScript::CCtrlScript()
 	CCollisionMgr::GetInst()->LayerCheck(4, 5); // 하이쿠 & 몬스터
 	CCollisionMgr::GetInst()->LayerCheck(8, 5); // 하이쿠 검 & 몬스터
 	CCollisionMgr::GetInst()->LayerCheck(5, 2); // 몬스터 & 플랫폼
+
+	CCollisionMgr::GetInst()->LayerCheck(4, 10); // 하이쿠 & 체인지룸
 }
 
 CCtrlScript::~CCtrlScript()

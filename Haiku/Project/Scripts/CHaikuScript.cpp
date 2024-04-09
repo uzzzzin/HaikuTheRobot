@@ -17,6 +17,7 @@ CHaikuScript::CHaikuScript()
 	, prevColDir(COLLISION_DIR::NONE)
 	, collisionCnt(0)
 	, bGeneralAttackSeed(false)
+	, bChanging(false)
 {
 }
 

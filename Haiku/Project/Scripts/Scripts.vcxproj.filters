@@ -46,6 +46,12 @@
     <ClInclude Include="CPlayerScript.h">
       <Filter>Scripts\etc.</Filter>
     </ClInclude>
+    <ClInclude Include="CChangeRoomScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="CRoomMgrScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -91,6 +97,12 @@
       <Filter>Scripts</Filter>
     </ClCompile>
     <ClCompile Include="CScrewScript.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="CChangeRoomScript.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="CRoomMgrScript.cpp">
       <Filter>Scripts</Filter>
     </ClCompile>
   </ItemGroup>

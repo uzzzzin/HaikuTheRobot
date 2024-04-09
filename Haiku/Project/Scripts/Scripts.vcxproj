@@ -171,6 +171,7 @@ call CodeGen.exe</Command>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CBackgroundScript.h" />
+    <ClInclude Include="CChangeRoomScript.h" />
     <ClInclude Include="CCtrlScript.h" />
     <ClInclude Include="CHaikuScript.h" />
     <ClInclude Include="CHaikuSwordScript.h" />
@@ -179,6 +180,7 @@ call CodeGen.exe</Command>
     <ClInclude Include="CNuttyScript.h" />
     <ClInclude Include="CPlatformScript.h" />
     <ClInclude Include="CPlayerScript.h" />
+    <ClInclude Include="CRoomMgrScript.h" />
     <ClInclude Include="CScrewScript.h" />
     <ClInclude Include="CScriptMgr.h" />
     <ClInclude Include="CTiredTireScript.h">
@@ -191,6 +193,7 @@ call CodeGen.exe</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CBackgroundScript.cpp" />
+    <ClCompile Include="CChangeRoomScript.cpp" />
     <ClCompile Include="CCtrlScript.cpp" />
     <ClCompile Include="CHaikuScript.cpp" />
     <ClCompile Include="CHaikuSwordScript.cpp" />
@@ -199,6 +202,7 @@ call CodeGen.exe</Command>
     <ClCompile Include="CNuttyScript.cpp" />
     <ClCompile Include="CPlatformScript.cpp" />
     <ClCompile Include="CPlayerScript.cpp" />
+    <ClCompile Include="CRoomMgrScript.cpp" />
     <ClCompile Include="CScrewScript.cpp" />
     <ClCompile Include="CScriptMgr.cpp" />
     <ClCompile Include="CTiredTireScript.cpp">
