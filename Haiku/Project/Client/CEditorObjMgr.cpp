@@ -33,7 +33,7 @@ void CEditorObjMgr::init()
 	pEditorCam->Camera()->SetFOV(XM_PI / 2.f);
 	pEditorCam->Camera()->SetFar(100000.f);
 
-	pEditorCam->Camera()->SetScale(3.f);
+	pEditorCam->Camera()->SetScale(1.f);
 
 	pEditorCam->Transform()->SetRelativePos(Vec3( -480.f, 120.f, -100.f));
 
