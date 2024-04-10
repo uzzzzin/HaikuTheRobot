@@ -22,7 +22,10 @@ void CCamEventScript::begin()
 
 	CGameObject* MainCam = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"MainCamera");
 
-	MainCam->GetScript<CCamEventScript>()->Shake(1.5f, 10);
+	//MainCam->GetScript<CCamEventScript>()->(1.f, 6);
+	//MainCam->GetScript<CCamEventScript>()->FadeOut(0.4);
+
+	//MainCam->GetScript<CCamEventScript>()->FadeIn(0.4);
 }
 
 void CCamEventScript::tick()

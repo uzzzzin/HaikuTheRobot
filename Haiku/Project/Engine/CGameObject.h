@@ -12,6 +12,7 @@ class CCollider2D;
 class CLight2D;
 class CStateMachine;
 class CMovement;
+class CParticleSystem;
 
 class CGameObject :
     public CEntity
@@ -43,7 +44,7 @@ public:
     CComponent* GetComponent(COMPONENT_TYPE _Type) { return m_arrCom[(UINT)_Type]; }        
     CRenderComponent* GetRenderComponent() { return m_RenderCom; }
 
-   // void deleteScript(const wstring& _ScriptName);
+   void deleteScript(const wstring& _ScriptName);
 
     GET_COMPONENT(Transform, TRANSFORM);
     GET_COMPONENT(MeshRender, MESHRENDER);
@@ -54,6 +55,7 @@ public:
     GET_COMPONENT(Light2D, LIGHT2D);
     GET_COMPONENT(TileMap, TILEMAP);
     GET_COMPONENT(Movement, MOVEMENT);
+    GET_COMPONENT(ParticleSystem, PARTICLESYSTEM);
 
 
 

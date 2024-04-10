@@ -24,6 +24,16 @@ private:
     float                   m_Time;
 
 public:
+    tParticleModule GetParticleModule() { return m_Module; }
+
+public:
+    void SetParticleModule(tParticleModule _module) { m_Module = _module; }
+    void SetParticleTexture(wstring _path) 
+    { 
+        m_ParticleTex = CAssetMgr::GetInst()->Load<CTexture>(_path,_path);
+    }
+
+public:
     virtual void UpdateData() override;
     virtual void finaltick() override;
     virtual void render() override;

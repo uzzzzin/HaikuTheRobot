@@ -90,10 +90,8 @@ CParticleSystem::CParticleSystem()
 	m_Module.AlphaMaxAge = 2.f;
 
 
-
-
-	m_ParticleTex = CAssetMgr::GetInst()->Load<CTexture>(L"texture\\particle\\ray.png"
-														, L"texture\\particle\\ray.png");
+	m_ParticleTex = CAssetMgr::GetInst()->Load<CTexture>(L"texture\\particle\\HardRain.png"
+														, L"texture\\particle\\HardRain.png");
 }
 
 CParticleSystem::CParticleSystem(const CParticleSystem& _OriginParticle)

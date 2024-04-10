@@ -4,6 +4,7 @@ CChangeRoomScript
 CCtrlScript
 CHaikuScript
 CHaikuSwordScript
+CIntroParticleScript
 CMissileScript
 CMonsterScript
 CNuttyScript

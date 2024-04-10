@@ -31,8 +31,12 @@ void CChangeRoomScript::BeginOverlap(CCollider2D* _Collider, CGameObject* _Other
 {
 	change = 1;
 
-	//CGameObject* MainCam = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"MainCamera");
-	//MainCam->GetScript<CCamEventScript>()->FadeIn(0.5f);
+	if (false == _OtherObj->GetScript<CHaikuScript>()->GetChanging()) // 체인지 상태로 들어갈 때 ( 입구에서 비긴오버랩 걸릴  때)
+	{
+		CGameObject* MainCam = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"MainCamera");
+		MainCam->GetScript<CCamEventScript>()->FadeOut(0.5f);
+	}
+
 }
 
 void CChangeRoomScript::Overlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
@@ -41,12 +45,12 @@ void CChangeRoomScript::Overlap(CCollider2D* _Collider, CGameObject* _OtherObj, 
 
 void CChangeRoomScript::EndOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
 {
-	if (true == _OtherObj->GetScript<CHaikuScript>()->GetChanging())
+	if (true == _OtherObj->GetScript<CHaikuScript>()->GetChanging()) // 출구로 나갈 때
 	{
+		change = 0;
 		_OtherObj->GetScript<CHaikuScript>()->SetChanging(false);
 		return;
 	}
-	change = 0;
 	CGameObject* kingGO = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"ImtheKing");
 	kingGO->GetScript<CRoomMgrScript>()->SetChanging(true, GetOwner()->GetName());
 }

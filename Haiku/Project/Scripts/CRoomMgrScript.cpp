@@ -37,7 +37,7 @@ void CRoomMgrScript::Change(wstring _name)
 	CGameObject* AfterRoom = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(afterRoomName);
 	
 	CGameObject* Haiku = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"Haiku");
-	Haiku->Transform()->SetRelativePos(Vec3(AfterRoom->Transform()->GetRelativePos().x, AfterRoom->Transform()->GetRelativePos().y+5, Haiku->Transform()->GetRelativePos().z));
+	Haiku->Transform()->SetRelativePos(Vec3(AfterRoom->Transform()->GetRelativePos().x, AfterRoom->Transform()->GetRelativePos().y+2, Haiku->Transform()->GetRelativePos().z));
 	Haiku->GetScript<CHaikuScript>()->SetChanging(true);
 
 	CGameObject* MainCam = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"MainCamera");

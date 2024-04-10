@@ -7,6 +7,7 @@
 #include "CCtrlScript.h"
 #include "CHaikuScript.h"
 #include "CHaikuSwordScript.h"
+#include "CIntroParticleScript.h"
 #include "CMissileScript.h"
 #include "CMonsterScript.h"
 #include "CNuttyScript.h"
@@ -25,6 +26,7 @@ void CScriptMgr::GetScriptInfo(vector<wstring>& _vec)
 	_vec.push_back(L"CCtrlScript");
 	_vec.push_back(L"CHaikuScript");
 	_vec.push_back(L"CHaikuSwordScript");
+	_vec.push_back(L"CIntroParticleScript");
 	_vec.push_back(L"CMissileScript");
 	_vec.push_back(L"CMonsterScript");
 	_vec.push_back(L"CNuttyScript");
@@ -50,6 +52,8 @@ CScript * CScriptMgr::GetScript(const wstring& _strScriptName)
 		return new CHaikuScript;
 	if (L"CHaikuSwordScript" == _strScriptName)
 		return new CHaikuSwordScript;
+	if (L"CIntroParticleScript" == _strScriptName)
+		return new CIntroParticleScript;
 	if (L"CMissileScript" == _strScriptName)
 		return new CMissileScript;
 	if (L"CMonsterScript" == _strScriptName)
@@ -92,6 +96,9 @@ CScript * CScriptMgr::GetScript(UINT _iScriptType)
 		break;
 	case (UINT)SCRIPT_TYPE::HAIKUSWORDSCRIPT:
 		return new CHaikuSwordScript;
+		break;
+	case (UINT)SCRIPT_TYPE::INTROPARTICLESCRIPT:
+		return new CIntroParticleScript;
 		break;
 	case (UINT)SCRIPT_TYPE::MISSILESCRIPT:
 		return new CMissileScript;
@@ -150,6 +157,10 @@ const wchar_t * CScriptMgr::GetScriptName(CScript * _pScript)
 
 	case SCRIPT_TYPE::HAIKUSWORDSCRIPT:
 		return L"CHaikuSwordScript";
+		break;
+
+	case SCRIPT_TYPE::INTROPARTICLESCRIPT:
+		return L"CIntroParticleScript";
 		break;
 
 	case SCRIPT_TYPE::MISSILESCRIPT:

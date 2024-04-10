@@ -21,7 +21,7 @@ CTraceCameraScript::~CTraceCameraScript()
 void CTraceCameraScript::begin()
 {
 	CLevel* curLevel = CLevelMgr::GetInst()->GetCurrentLevel();
-	Target = curLevel->FindObjectByName(L"Haiku"); // ggboss0bg
+	Target = curLevel->FindObjectByName(L"IntroParticle"); // ggboss0bg
 	TargetPosX = Target->Transform()->GetRelativePos().x;
 	TargetPosY = Target->Transform()->GetRelativePos().y;
 	GetOwner()->Transform()->SetRelativePos(Vec3(TargetPosX, TargetPosY, TargetPosZ));

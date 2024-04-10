@@ -36,6 +36,7 @@ public:
     GET_OTHER_COMPONENT(TileMap);
     GET_OTHER_COMPONENT(StateMachine);
     GET_OTHER_COMPONENT(Movement);
+    GET_OTHER_COMPONENT(ParticleSystem);
    
     CRenderComponent* GetRenderComponent() { return m_Owner->GetRenderComopnent();}
 
