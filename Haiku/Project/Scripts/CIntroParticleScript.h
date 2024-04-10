@@ -3,6 +3,9 @@
 class CIntroParticleScript :
     public CScript
 {
+private:
+    tParticleModule m_PModule;
+
 public:
     virtual void begin() override;
     virtual void tick() override;

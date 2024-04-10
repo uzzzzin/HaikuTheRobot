@@ -5,6 +5,7 @@
 
 CIntroParticleScript::CIntroParticleScript()
 	: CScript(INTROPARTICLESCRIPT)
+	, m_PModule()
 {
 }
 
@@ -15,8 +16,7 @@ CIntroParticleScript::~CIntroParticleScript()
 
 void CIntroParticleScript::begin()
 {
-	tParticleModule Intro = {};
-	//GetOwner()->ParticleSystem()->SetParticleModule(Intro);
+	//GetOwner()->ParticleSystem()->SetParticleModule(m_PModule);
 }
 
 void CIntroParticleScript::tick()

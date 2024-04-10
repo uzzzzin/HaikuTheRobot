@@ -55,7 +55,9 @@
     <ClInclude Include="CCamEventScript.h">
       <Filter>Scripts</Filter>
     </ClInclude>
-    <ClInclude Include="CIntroParticleScript.h" />
+    <ClInclude Include="CIntroParticleScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -112,7 +114,9 @@
     <ClCompile Include="CCamEventScript.cpp">
       <Filter>Scripts</Filter>
     </ClCompile>
-    <ClCompile Include="CIntroParticleScript.cpp" />
+    <ClCompile Include="CIntroParticleScript.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Default">
