@@ -71,7 +71,9 @@ void CTiredTireScript::BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherO
         Vec3 v3 = Vec3(v2.x, v2.y, 0);
         float speed = v2.Length();
         
-        if (_OtherCollider->GetFinalPos().x > _Collider->GetFinalPos().x) //하이쿠가 오른쪽에서 치면
+
+
+        if (_OtherObj->GetParent()->Collider2D()->GetFinalPos().x > _Collider->GetFinalPos().x) //하이쿠가 오른쪽에서 치면
         {
             v3 = Vec3(v3.x * -1, v3.y, 0);
             Movement()->AddForce(v3 * speed * 4);

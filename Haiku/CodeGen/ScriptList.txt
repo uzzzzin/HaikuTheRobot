@@ -1,4 +1,5 @@
 CBackgroundScript
+CCamEventScript
 CChangeRoomScript
 CCtrlScript
 CHaikuScript

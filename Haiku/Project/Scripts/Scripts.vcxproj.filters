@@ -52,6 +52,9 @@
     <ClInclude Include="CRoomMgrScript.h">
       <Filter>Scripts</Filter>
     </ClInclude>
+    <ClInclude Include="CCamEventScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -103,6 +106,9 @@
       <Filter>Scripts</Filter>
     </ClCompile>
     <ClCompile Include="CRoomMgrScript.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="CCamEventScript.cpp">
       <Filter>Scripts</Filter>
     </ClCompile>
   </ItemGroup>

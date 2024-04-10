@@ -2,6 +2,7 @@
 #include "CScriptMgr.h"
 
 #include "CBackgroundScript.h"
+#include "CCamEventScript.h"
 #include "CChangeRoomScript.h"
 #include "CCtrlScript.h"
 #include "CHaikuScript.h"
@@ -19,6 +20,7 @@
 void CScriptMgr::GetScriptInfo(vector<wstring>& _vec)
 {
 	_vec.push_back(L"CBackgroundScript");
+	_vec.push_back(L"CCamEventScript");
 	_vec.push_back(L"CChangeRoomScript");
 	_vec.push_back(L"CCtrlScript");
 	_vec.push_back(L"CHaikuScript");
@@ -38,6 +40,8 @@ CScript * CScriptMgr::GetScript(const wstring& _strScriptName)
 {
 	if (L"CBackgroundScript" == _strScriptName)
 		return new CBackgroundScript;
+	if (L"CCamEventScript" == _strScriptName)
+		return new CCamEventScript;
 	if (L"CChangeRoomScript" == _strScriptName)
 		return new CChangeRoomScript;
 	if (L"CCtrlScript" == _strScriptName)
@@ -73,6 +77,9 @@ CScript * CScriptMgr::GetScript(UINT _iScriptType)
 	{
 	case (UINT)SCRIPT_TYPE::BACKGROUNDSCRIPT:
 		return new CBackgroundScript;
+		break;
+	case (UINT)SCRIPT_TYPE::CAMEVENTSCRIPT:
+		return new CCamEventScript;
 		break;
 	case (UINT)SCRIPT_TYPE::CHANGEROOMSCRIPT:
 		return new CChangeRoomScript;
@@ -123,6 +130,10 @@ const wchar_t * CScriptMgr::GetScriptName(CScript * _pScript)
 	{
 	case SCRIPT_TYPE::BACKGROUNDSCRIPT:
 		return L"CBackgroundScript";
+		break;
+
+	case SCRIPT_TYPE::CAMEVENTSCRIPT:
+		return L"CCamEventScript";
 		break;
 
 	case SCRIPT_TYPE::CHANGEROOMSCRIPT:

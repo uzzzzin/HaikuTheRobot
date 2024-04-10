@@ -5,6 +5,7 @@
 #include <Engine/CLevelMgr.h>
 #include <Engine/CLevel.h>
 #include "CHaikuScript.h"
+#include "CCamEventScript.h"
 
 CChangeRoomScript::CChangeRoomScript()
 	:CScript(CHANGEROOMSCRIPT)
@@ -30,7 +31,8 @@ void CChangeRoomScript::BeginOverlap(CCollider2D* _Collider, CGameObject* _Other
 {
 	change = 1;
 
-
+	//CGameObject* MainCam = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"MainCamera");
+	//MainCam->GetScript<CCamEventScript>()->FadeIn(0.5f);
 }
 
 void CChangeRoomScript::Overlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)

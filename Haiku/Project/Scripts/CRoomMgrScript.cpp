@@ -4,6 +4,7 @@
 #include <Engine/CLevelMgr.h>
 #include <Engine/CLevel.h>
 #include "CHaikuScript.h"
+#include "CCamEventScript.h"
 
 CRoomMgrScript::CRoomMgrScript()
 	: CScript(ROOMMGRSCRIPT)
@@ -36,8 +37,11 @@ void CRoomMgrScript::Change(wstring _name)
 	CGameObject* AfterRoom = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(afterRoomName);
 	
 	CGameObject* Haiku = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"Haiku");
-	Haiku->Transform()->SetRelativePos(AfterRoom->Transform()->GetRelativePos());
+	Haiku->Transform()->SetRelativePos(Vec3(AfterRoom->Transform()->GetRelativePos().x, AfterRoom->Transform()->GetRelativePos().y+5, Haiku->Transform()->GetRelativePos().z));
 	Haiku->GetScript<CHaikuScript>()->SetChanging(true);
+
+	CGameObject* MainCam = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"MainCamera");
+	MainCam->GetScript<CCamEventScript>()->FadeIn(0.5f);
 }
 
 void CRoomMgrScript::SaveToFile(FILE* _File)
