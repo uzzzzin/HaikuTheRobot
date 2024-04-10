@@ -3,6 +3,7 @@
 
 #include <Engine/CLevelMgr.h>
 #include <Engine/CLevel.h>
+#include "CCamEventScript.h"
 
 CTraceCameraScript::CTraceCameraScript()
 	: CScript(SCRIPT_TYPE::TRACECAMERASCRIPT)
@@ -29,6 +30,14 @@ void CTraceCameraScript::begin()
 
 void CTraceCameraScript::tick()
 {
+	CCamEventScript* pScpt = GetOwner()->GetScript<CCamEventScript>();
+
+	if (pScpt != nullptr)
+	{
+		if (CAM_EFFECT::SHAKE == pScpt->GetCurCamEffect())
+			return;
+	}
+
 	if (nullptr != Target)
 	{
 		TargetPosX = Target->Transform()->GetRelativePos().x;

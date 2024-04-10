@@ -8,6 +8,7 @@ CCamEventScript::CCamEventScript()
 	: CScript(CAMEVENTSCRIPT)
 	, m_EventExecute(false)
 	, m_CurEventAccTime (0)
+	, m_CurEvent(CAM_EFFECT::NONE)
 {
 }
 
@@ -20,7 +21,8 @@ void CCamEventScript::begin()
 	m_Directional_Light = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"Directional Light");
 
 	CGameObject* MainCam = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"MainCamera");
-	MainCam->GetScript<CCamEventScript>()->FadeOut(1.f);
+
+	MainCam->GetScript<CCamEventScript>()->Shake(1.5f, 10);
 }
 
 void CCamEventScript::tick()
@@ -72,6 +74,7 @@ void CCamEventScript::FadeIn_Imp(FCamEvent _event)
 {
 	if (m_EventExecute == false) // 이벤트가 처음 수행되어질 때
 	{
+		m_CurEvent = CAM_EFFECT::FADE_IN;
 		m_Origin_Ambient = m_Directional_Light->Light2D()->GetAmbient();
 		m_Directional_Light->Light2D()->SetAmbient(Vec3(0,0,0));
 		m_EventExecute = true;
@@ -96,6 +99,7 @@ void CCamEventScript::FadeIn_Imp(FCamEvent _event)
 		m_EventList.pop_front();
 		m_EventExecute = false;
 		m_CurEventAccTime = 0;
+		m_CurEvent = CAM_EFFECT::NONE;
 	}
 }
 
@@ -103,6 +107,7 @@ void CCamEventScript::FadeOut_Imp(FCamEvent _event)
 {
 	if (m_EventExecute == false) // 이벤트가 처음 수행되어질 때
 	{
+		m_CurEvent = CAM_EFFECT::FADE_OUT;
 		m_Origin_Ambient = m_Directional_Light->Light2D()->GetAmbient();
 		m_EventExecute = true;
 	}
@@ -121,21 +126,42 @@ void CCamEventScript::FadeOut_Imp(FCamEvent _event)
 		m_EventList.pop_front();
 		m_EventExecute = false;
 		m_CurEventAccTime = 0;
+		m_CurEvent = CAM_EFFECT::NONE;
 	}
 }
 
 void CCamEventScript::Shake_Imp(FCamEvent _event)
 {
+	if (m_EventExecute == false) // 이벤트가 처음 수행되어질 때
+	{
+		m_CurEvent = CAM_EFFECT::SHAKE;
+		m_Origin_MainCamPos = GetOwner()->Transform()->GetRelativePos();
+		m_EventExecute = true;
+	}
+
 	m_CurEventAccTime += DT;
 
 	if (_event.Duration > m_CurEventAccTime)
 	{
+		if (L"MainCamera" == GetOwner()->GetName())
+		{
+			Vec3 vPos = m_Origin_MainCamPos;
 
+			int ShakeX = rand() % _event.ShakingSize - _event.ShakingSize / 2;
+			int ShakeY = rand() % _event.ShakingSize - _event.ShakingSize / 2;
 
+			vPos.x += ShakeX;
+			vPos.y += ShakeY;
+
+			GetOwner()->Transform()->SetRelativePos(vPos);
+		}
 	}
 	else
 	{
 		m_EventList.pop_front();
+		m_EventExecute = false;
+		m_CurEventAccTime = 0;
+		m_CurEvent = CAM_EFFECT::NONE;
 	}
 }
 

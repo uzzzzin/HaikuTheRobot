@@ -5,7 +5,8 @@ enum class CAM_EFFECT
 {
     FADE_IN,
     FADE_OUT,
-    SHAKE
+    SHAKE,
+    NONE
 };
 
 struct FCamEvent
@@ -20,15 +21,21 @@ class CCamEventScript :
 {
 private:
     list<FCamEvent>		m_EventList;
+    CAM_EFFECT          m_CurEvent; // 현재 카메라 상태
 
     bool                m_EventExecute; // 이벤트가 수행중인지
 
-    CGameObject*        m_Directional_Light; // 페이드인아웃 조정할라구..
+    // FadeIn, Out
+    CGameObject*        m_Directional_Light;
     Vec4                m_Origin_Ambient;
+
+    // Shake
+    Vec3                m_Origin_MainCamPos;
 
     float               m_CurEventAccTime;
 
-
+public:
+    CAM_EFFECT GetCurCamEffect() { return m_CurEvent; }
 
 private:
     void FadeIn_Imp(FCamEvent _event);
