@@ -41,8 +41,6 @@ void StateMachineUI::StateSelect(DWORD_PTR _ptr)
 		MessageBoxA(nullptr, "State의 Key가 이미 존재합니다.", "Add State Failed!", MB_OK);
 		delete pState;
 	}
-
-
 }
 
 

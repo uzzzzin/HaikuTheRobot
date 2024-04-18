@@ -46,6 +46,12 @@
     <Filter Include="States\Monster\TiredTire">
       <UniqueIdentifier>{37edd709-6bc1-4f88-a0e3-aaa24b11d93e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="States\Boss">
+      <UniqueIdentifier>{b8bd1987-e1d7-4367-a9db-7202c113e911}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States\Boss\SwingingGarbageMagnet">
+      <UniqueIdentifier>{b4c086ae-5a3f-4a5b-af6c-11566612ff98}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -120,7 +126,12 @@
     <ClInclude Include="CTireDieState.h">
       <Filter>States\Monster\TiredTire</Filter>
     </ClInclude>
-    <ClInclude Include="CHaikuIntroState.h" />
+    <ClInclude Include="CHaikuIntroState.h">
+      <Filter>States\Haiku</Filter>
+    </ClInclude>
+    <ClInclude Include="CSGMNullState.h">
+      <Filter>States\Boss\SwingingGarbageMagnet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -195,6 +206,11 @@
     <ClCompile Include="CTireDieState.cpp">
       <Filter>States\Monster\TiredTire</Filter>
     </ClCompile>
-    <ClCompile Include="CHaikuIntroState.cpp" />
+    <ClCompile Include="CHaikuIntroState.cpp">
+      <Filter>States\Haiku</Filter>
+    </ClCompile>
+    <ClCompile Include="CSGMNullState.cpp">
+      <Filter>States\Boss\SwingingGarbageMagnet</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

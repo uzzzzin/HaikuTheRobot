@@ -2,6 +2,7 @@
 #include "CScriptMgr.h"
 
 #include "CBackgroundScript.h"
+#include "CBoss1RoomScript.h"
 #include "CCamEventScript.h"
 #include "CChangeRoomScript.h"
 #include "CCtrlScript.h"
@@ -15,12 +16,14 @@
 #include "CPlayerScript.h"
 #include "CRoomMgrScript.h"
 #include "CScrewScript.h"
+#include "CSwingingGarbageMagnetScript.h"
 #include "CTiredTireScript.h"
 #include "CTraceCameraScript.h"
 
 void CScriptMgr::GetScriptInfo(vector<wstring>& _vec)
 {
 	_vec.push_back(L"CBackgroundScript");
+	_vec.push_back(L"CBoss1RoomScript");
 	_vec.push_back(L"CCamEventScript");
 	_vec.push_back(L"CChangeRoomScript");
 	_vec.push_back(L"CCtrlScript");
@@ -34,6 +37,7 @@ void CScriptMgr::GetScriptInfo(vector<wstring>& _vec)
 	_vec.push_back(L"CPlayerScript");
 	_vec.push_back(L"CRoomMgrScript");
 	_vec.push_back(L"CScrewScript");
+	_vec.push_back(L"CSwingingGarbageMagnetScript");
 	_vec.push_back(L"CTiredTireScript");
 	_vec.push_back(L"CTraceCameraScript");
 }
@@ -42,6 +46,8 @@ CScript * CScriptMgr::GetScript(const wstring& _strScriptName)
 {
 	if (L"CBackgroundScript" == _strScriptName)
 		return new CBackgroundScript;
+	if (L"CBoss1RoomScript" == _strScriptName)
+		return new CBoss1RoomScript;
 	if (L"CCamEventScript" == _strScriptName)
 		return new CCamEventScript;
 	if (L"CChangeRoomScript" == _strScriptName)
@@ -68,6 +74,8 @@ CScript * CScriptMgr::GetScript(const wstring& _strScriptName)
 		return new CRoomMgrScript;
 	if (L"CScrewScript" == _strScriptName)
 		return new CScrewScript;
+	if (L"CSwingingGarbageMagnetScript" == _strScriptName)
+		return new CSwingingGarbageMagnetScript;
 	if (L"CTiredTireScript" == _strScriptName)
 		return new CTiredTireScript;
 	if (L"CTraceCameraScript" == _strScriptName)
@@ -81,6 +89,9 @@ CScript * CScriptMgr::GetScript(UINT _iScriptType)
 	{
 	case (UINT)SCRIPT_TYPE::BACKGROUNDSCRIPT:
 		return new CBackgroundScript;
+		break;
+	case (UINT)SCRIPT_TYPE::BOSS1ROOMSCRIPT:
+		return new CBoss1RoomScript;
 		break;
 	case (UINT)SCRIPT_TYPE::CAMEVENTSCRIPT:
 		return new CCamEventScript;
@@ -121,6 +132,9 @@ CScript * CScriptMgr::GetScript(UINT _iScriptType)
 	case (UINT)SCRIPT_TYPE::SCREWSCRIPT:
 		return new CScrewScript;
 		break;
+	case (UINT)SCRIPT_TYPE::SWINGINGGARBAGEMAGNETSCRIPT:
+		return new CSwingingGarbageMagnetScript;
+		break;
 	case (UINT)SCRIPT_TYPE::TIREDTIRESCRIPT:
 		return new CTiredTireScript;
 		break;
@@ -137,6 +151,10 @@ const wchar_t * CScriptMgr::GetScriptName(CScript * _pScript)
 	{
 	case SCRIPT_TYPE::BACKGROUNDSCRIPT:
 		return L"CBackgroundScript";
+		break;
+
+	case SCRIPT_TYPE::BOSS1ROOMSCRIPT:
+		return L"CBoss1RoomScript";
 		break;
 
 	case SCRIPT_TYPE::CAMEVENTSCRIPT:
@@ -189,6 +207,10 @@ const wchar_t * CScriptMgr::GetScriptName(CScript * _pScript)
 
 	case SCRIPT_TYPE::SCREWSCRIPT:
 		return L"CScrewScript";
+		break;
+
+	case SCRIPT_TYPE::SWINGINGGARBAGEMAGNETSCRIPT:
+		return L"CSwingingGarbageMagnetScript";
 		break;
 
 	case SCRIPT_TYPE::TIREDTIRESCRIPT:

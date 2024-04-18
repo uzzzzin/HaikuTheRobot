@@ -191,6 +191,7 @@ call CodeGen.exe</Command>
     <ClInclude Include="CNuttyDetectState.h" />
     <ClInclude Include="CNuttyIdleState.h" />
     <ClInclude Include="CNuttyTraceState.h" />
+    <ClInclude Include="CSGMNullState.h" />
     <ClInclude Include="CStateMgr.h" />
     <ClInclude Include="CTireDieState.h" />
     <ClInclude Include="CTireIdleState.h">
@@ -221,6 +222,7 @@ call CodeGen.exe</Command>
     <ClCompile Include="CNuttyDetectState.cpp" />
     <ClCompile Include="CNuttyIdleState.cpp" />
     <ClCompile Include="CNuttyTraceState.cpp" />
+    <ClCompile Include="CSGMNullState.cpp" />
     <ClCompile Include="CStateMgr.cpp" />
     <ClCompile Include="CTireDieState.cpp" />
     <ClCompile Include="CTireIdleState.cpp">

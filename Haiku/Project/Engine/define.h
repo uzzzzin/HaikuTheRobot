@@ -268,3 +268,12 @@ enum class LAST_COL_DIR
 	RIGHT,
 	NONE,
 };
+
+enum class BOSS_SWINGING_GARBAGE_MAGNET
+{
+	AWAKE,
+	DIE,
+	MOVE,
+	//ATTACK, 종류 여러개 다 분리하기..
+	NONE,
+};

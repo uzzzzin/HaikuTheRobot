@@ -1,4 +1,5 @@
 CBackgroundScript
+CBoss1RoomScript
 CCamEventScript
 CChangeRoomScript
 CCtrlScript
@@ -12,5 +13,6 @@ CPlatformScript
 CPlayerScript
 CRoomMgrScript
 CScrewScript
+CSwingingGarbageMagnetScript
 CTiredTireScript
 CTraceCameraScript

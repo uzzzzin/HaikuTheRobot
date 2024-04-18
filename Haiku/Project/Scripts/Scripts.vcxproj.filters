@@ -58,6 +58,12 @@
     <ClInclude Include="CIntroParticleScript.h">
       <Filter>Scripts</Filter>
     </ClInclude>
+    <ClInclude Include="CBoss1RoomScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="CSwingingGarbageMagnetScript.h">
+      <Filter>Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -115,6 +121,12 @@
       <Filter>Scripts</Filter>
     </ClCompile>
     <ClCompile Include="CIntroParticleScript.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="CBoss1RoomScript.cpp">
+      <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="CSwingingGarbageMagnetScript.cpp">
       <Filter>Scripts</Filter>
     </ClCompile>
   </ItemGroup>

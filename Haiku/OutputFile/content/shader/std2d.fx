@@ -59,6 +59,27 @@ float4 PS_ChangeRoom(VS_OUT _in) : SV_Target
     if (0.f == vColor.a)
         discard;
     
+    // 광원 처리
+    // 광원의 타입별 처리
+    // 광원이 여러개일 때 처리   
+    tLightColor LightColor = (tLightColor) 0.f;
+    
+    for (int i = 0; i < g_Light2DCount; ++i)
+    {
+        CalLight2D(_in.vWorldPos, i, LightColor);
+    }
+    
+    vColor.rgb *= (LightColor.vColor.rgb + LightColor.vAmbient.rgb);
+        
+    if (0.f == vColor.a)
+        discard;
+    
+    float x = g_NoiseTex.Sample(g_sam_0, _in.vUV).x;
+    if (0 > x - g_float_1)
+    {
+        discard;
+    }
+    
     return vColor;
 }
 

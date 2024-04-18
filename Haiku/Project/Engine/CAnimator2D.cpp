@@ -1,6 +1,9 @@
 #include "pch.h"
 #include "CAnimator2D.h"
 
+//#include "CLevelMgr.h"
+//#include "CLevel.h"
+
 #include "CAnim.h"
 
 CAnimator2D::CAnimator2D()
@@ -183,3 +186,36 @@ void CAnimator2D::LoadFromFile(FILE* _File)
 
 	fread(&m_bRepeat, sizeof(bool), 1, _File);
 }
+
+//void CAnimator2D::UpdatePipeline()
+//{
+//	if (not m_CurAnim)
+//	{
+//		if ((CLevelMgr::GetInst()->GetCurrentLevel()->GetState() == LEVEL_STATE::STOP)
+//			&& !m_mapAnim.empty())
+//		{
+//			// find default anim
+//			CAnim* pAnim = FindAnim(L"Idle");
+//			if (!pAnim)
+//				pAnim = m_mapAnim.begin()->second;
+//
+//			// set size
+//			if (m_LevelStart)
+//			{
+//				Vec3 newBgSize = Vec3(pAnim->m_vecFrm[0].vBackgroundSize.x, pAnim->m_vecFrm[0].vBackgroundSize.y, 1.f);
+//				newBgSize.x *= pAnim->m_AtlasTex->GetWidth();
+//				newBgSize.y *= pAnim->m_AtlasTex->GetHeight();
+//
+//				Transform()->SetRelativeScale(newBgSize);
+//				m_LevelStart = false;
+//			}
+//
+//			// play anim's first frame
+//			pAnim->UpdatePipeline();
+//		}
+//
+//		return;
+//	}
+//
+//	m_CurAnim->UpdatePipeline();
+//}

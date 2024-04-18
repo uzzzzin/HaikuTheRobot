@@ -171,6 +171,7 @@ call CodeGen.exe</Command>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="CBackgroundScript.h" />
+    <ClInclude Include="CBoss1RoomScript.h" />
     <ClInclude Include="CCamEventScript.h" />
     <ClInclude Include="CChangeRoomScript.h" />
     <ClInclude Include="CCtrlScript.h" />
@@ -185,6 +186,7 @@ call CodeGen.exe</Command>
     <ClInclude Include="CRoomMgrScript.h" />
     <ClInclude Include="CScrewScript.h" />
     <ClInclude Include="CScriptMgr.h" />
+    <ClInclude Include="CSwingingGarbageMagnetScript.h" />
     <ClInclude Include="CTiredTireScript.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">아니오</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">아니오</ExcludedFromBuild>
@@ -195,6 +197,7 @@ call CodeGen.exe</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CBackgroundScript.cpp" />
+    <ClCompile Include="CBoss1RoomScript.cpp" />
     <ClCompile Include="CCamEventScript.cpp" />
     <ClCompile Include="CChangeRoomScript.cpp" />
     <ClCompile Include="CCtrlScript.cpp" />
@@ -209,6 +212,7 @@ call CodeGen.exe</Command>
     <ClCompile Include="CRoomMgrScript.cpp" />
     <ClCompile Include="CScrewScript.cpp" />
     <ClCompile Include="CScriptMgr.cpp" />
+    <ClCompile Include="CSwingingGarbageMagnetScript.cpp" />
     <ClCompile Include="CTiredTireScript.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">아니오</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">아니오</ExcludedFromBuild>
