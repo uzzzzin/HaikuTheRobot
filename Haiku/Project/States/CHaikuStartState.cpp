@@ -12,7 +12,8 @@
 
 CHaikuStartState::CHaikuStartState()
 	:CState(HAIKUSTARTSTATE)
-	, bStart(false)
+	//, duration(3.5f)
+	//, accTime(0)
 {
 }
 
@@ -25,7 +26,18 @@ void CHaikuStartState::Enter()
 	CHaikuScript* pScpt = GetOwnerObj()->GetScript<CHaikuScript>();
 	pScpt->SetCurStateName(L"Start");
 	GetOwnerObj()->Movement()->SetGround(true);
-	GetOwnerObj()->Animator2D()->Play(L"haiku_null");
+
+	if (L"None" == pScpt->GetPrevStateName()) // 인트로 없이
+	{
+		GetOwnerObj()->Animator2D()->Play(L"haiku_null");
+	}
+
+	if (L"Intro" == pScpt->GetPrevStateName()) // 인트로에서 넘어온
+	{
+		GetOwnerObj()->Animator2D()->Play(L"haiku_intro_null");
+	}
+
+	//accTime = 0;
 
 	const vector<CGameObject*>& children = GetFSM()->GetStateMachine()->GetOwner()->GetChild();
 	for (int i = 0; i < children.size(); ++i)
@@ -37,28 +49,32 @@ void CHaikuStartState::Enter()
 
 void CHaikuStartState::finaltick()
 {
-	if((KEY_TAP(KEY::Q)))
-	{
-		GetOwnerObj()->Animator2D()->Play(L"haiku_fall");
-		GetOwnerObj()->Movement()->SetGround(false);
-		GetOwnerObj()->Movement()->SetGravityForce(Vec3(0, -1, 0));
-		bStart = true;
-	}
+	//accTime += DT;
 
-	if ( true== bStart)
+	CHaikuScript* pScpt = GetOwnerObj()->GetScript<CHaikuScript>();
+
+	if (L"None" == pScpt->GetPrevStateName()) // 인트로 없이
 	{
+		//if ((KEY_TAP(KEY::Q)))
+		//{
+		//	GetOwnerObj()->Animator2D()->Play(L"haiku_fall");
+		//	GetOwnerObj()->Movement()->SetGround(false);
+		//	GetOwnerObj()->Movement()->SetGravityForce(Vec3(0, -1, 0));
+		//}
 		if ((KEY_PRESSED(KEY::RIGHT)) || (KEY_PRESSED(KEY::LEFT)))
 			ChangeState(L"Walk");
 		else
 			ChangeState(L"Idle");
 	}
+
+	if (L"Intro" == pScpt->GetPrevStateName()) // 인트로에서 넘어온
+	{
+
+	}
 }
 
 void CHaikuStartState::Exit()
 {
-	GetOwnerObj()->Movement()->SetGravityForce(Vec3(0, -980, 0));
-	bStart = false;
-
 	CHaikuScript* pScpt = GetOwnerObj()->GetScript<CHaikuScript>();
 	pScpt->SetPrevStateName(L"Start");
 }

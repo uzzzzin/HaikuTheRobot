@@ -12,12 +12,13 @@ CHaikuScript::CHaikuScript()
 	: CScript(HAIKUSCRIPT)
 	, curDir(0)
 	, prevDir(0)
-	, curStateName(L"Start")
-	, prevStateName(L"Start")
+	, curStateName(L"None")
+	, prevStateName(L"None")
 	, prevColDir(COLLISION_DIR::NONE)
 	, collisionCnt(0)
 	, bGeneralAttackSeed(false)
 	, bChanging(false)
+	, bIntro(false)
 {
 }
 
@@ -30,7 +31,15 @@ void CHaikuScript::begin()
 
 	if (nullptr != StateMachine()->GetFSM())
 	{
-		StateMachine()->GetDynamicFSM()->ChangeState(L"Start");
+		if(true == bIntro)
+		{
+			StateMachine()->GetDynamicFSM()->ChangeState(L"Intro");
+		}
+		else
+		{
+			StateMachine()->GetDynamicFSM()->ChangeState(L"Start");
+		}
+
 	}
 
 	GetRenderComponent()->GetDynamicMaterial();

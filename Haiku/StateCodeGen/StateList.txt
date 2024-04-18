@@ -1,6 +1,7 @@
 CHaikuDashState
 CHaikuDieState
 CHaikuIdleState
+CHaikuIntroState
 CHaikuJumpFallGeneralAttackState
 CHaikuJumpFallState
 CHaikuJumpRiseDownAttackState

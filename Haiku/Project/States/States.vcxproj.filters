@@ -120,6 +120,7 @@
     <ClInclude Include="CTireDieState.h">
       <Filter>States\Monster\TiredTire</Filter>
     </ClInclude>
+    <ClInclude Include="CHaikuIntroState.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -194,5 +195,6 @@
     <ClCompile Include="CTireDieState.cpp">
       <Filter>States\Monster\TiredTire</Filter>
     </ClCompile>
+    <ClCompile Include="CHaikuIntroState.cpp" />
   </ItemGroup>
 </Project>

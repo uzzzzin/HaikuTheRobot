@@ -28,6 +28,8 @@ private:
 
     bool    bChanging;
 
+    bool    bIntro; // 인트로로 시작할건지
+
 public:
     int GetCurDir() { return curDir; }
     int GetPrevDir() { return prevDir; }

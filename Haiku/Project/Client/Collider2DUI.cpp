@@ -61,9 +61,4 @@ void Collider2DUI::render_update()
 	ImGui::SameLine();
 	ImGui::InputFloat3("##TextureWidth", FinalPos, 0, ImGuiInputTextFlags_ReadOnly);
 
-
-
-
-
-
 }

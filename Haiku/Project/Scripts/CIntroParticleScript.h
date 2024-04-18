@@ -5,6 +5,10 @@ class CIntroParticleScript :
 {
 private:
     tParticleModule m_PModule;
+    float accTime;
+    float duration;
+
+    Vec4 originSpawnMaxScale;
 
 public:
     virtual void begin() override;

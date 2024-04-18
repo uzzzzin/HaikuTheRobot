@@ -25,7 +25,7 @@ private:
 
 public:
     tParticleModule GetParticleModule() { return m_Module; }
-    wstring GetParticleTexFileName() {return m_ParticleTex->GetKey(); }
+    wstring GetParticleTexFileName() { m_ParticleTex->GetKey(); }
 
 public:
     void SetParticleModule(tParticleModule _module) { m_Module = _module; }
