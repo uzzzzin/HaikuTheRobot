@@ -277,3 +277,11 @@ enum class BOSS_SWINGING_GARBAGE_MAGNET
 	//ATTACK, 종류 여러개 다 분리하기..
 	NONE,
 };
+
+enum class MAIN_CAMERA_TYPE
+{
+	TRACE,
+	FIXED,
+
+	NONE,
+};

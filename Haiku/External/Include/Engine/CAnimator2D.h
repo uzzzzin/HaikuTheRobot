@@ -29,7 +29,7 @@ public:
     void Create(const wstring& _strKey, CAnim* _Anim);
     void Create(const wstring& _strKey, Ptr<CTexture> _AltasTex, const vector<tAnimFrm>& _vecFrm);
 
-
+    //void UpdatePipeline();
 
     void AnimDelete(const wstring& _strKey);
 

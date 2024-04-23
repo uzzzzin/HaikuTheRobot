@@ -4,6 +4,9 @@
 #include <Engine/CLevelMgr.h>
 #include <Engine/CLevel.h>
 
+#include "CRoomMgrScript.h"
+#include "CTraceCameraScript.h"
+
 CBoss1RoomScript::CBoss1RoomScript()
 	:CScript(BOSS1ROOMSCRIPT)
 	, bIntroDoor(false)
@@ -16,15 +19,24 @@ CBoss1RoomScript::~CBoss1RoomScript()
 
 void CBoss1RoomScript::begin()
 {
-	CGameObject* bossDoorR = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"gbossDoorR_SGM");
-	CGameObject* bossDoorL = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"gbossDoorL_SGM");
-	bossDoorR->Animator2D()->Play(L"boss_Door", false);
-	bossDoorL->Animator2D()->Play(L"boss_Door", false);
 }
 
 void CBoss1RoomScript::tick()
 {
+	//CRoomMgrScript* RoomMgrScpt = GetOwner()->GetScript<CRoomMgrScript>();
+	//RoomMgrScpt->SetCurBossRoomPos();
+}
 
+void CBoss1RoomScript::BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
+{
+}
+
+void CBoss1RoomScript::Overlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
+{
+}
+
+void CBoss1RoomScript::EndOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
+{
 }
 
 void CBoss1RoomScript::SaveToFile(FILE* _File)

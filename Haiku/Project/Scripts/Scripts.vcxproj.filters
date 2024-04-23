@@ -64,6 +64,7 @@
     <ClInclude Include="CSwingingGarbageMagnetScript.h">
       <Filter>Scripts</Filter>
     </ClInclude>
+    <ClInclude Include="CMainCameraScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -129,6 +130,7 @@
     <ClCompile Include="CSwingingGarbageMagnetScript.cpp">
       <Filter>Scripts</Filter>
     </ClCompile>
+    <ClCompile Include="CMainCameraScript.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Default">

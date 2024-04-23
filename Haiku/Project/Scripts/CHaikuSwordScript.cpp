@@ -96,6 +96,8 @@ void CHaikuSwordScript::Overlap(CCollider2D* _Collider, CGameObject* _OtherObj, 
 
 void CHaikuSwordScript::EndOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
 {
+
+
 }
 
 void CHaikuSwordScript::SaveToFile(FILE* _File)

@@ -6,6 +6,7 @@ CCtrlScript
 CHaikuScript
 CHaikuSwordScript
 CIntroParticleScript
+CMainCameraScript
 CMissileScript
 CMonsterScript
 CNuttyScript

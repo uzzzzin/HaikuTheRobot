@@ -4,6 +4,10 @@
 #include <Engine/CLevelMgr.h>
 #include <Engine/CLevel.h>
 
+#include "CTraceCameraScript.h"
+#include "CCamEventScript.h"
+
+
 CSwingingGarbageMagnetScript::CSwingingGarbageMagnetScript()
 	:CScript(SWINGINGGARBAGEMAGNETSCRIPT)
 	, curStateName(L"None")
@@ -22,6 +26,9 @@ void CSwingingGarbageMagnetScript::begin()
 	SGMBar->Transform()->SetRelativeScale(Vec3(400,160,1));
 
 	StateMachine()->GetDynamicFSM()->ChangeState(L"null");
+
+	CGameObject* mainCam = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"MainCamera");
+	CTraceCameraScript* mainCamScpt = mainCam->GetScript<CTraceCameraScript>();
 }
 
 void CSwingingGarbageMagnetScript::BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
@@ -34,6 +41,18 @@ void CSwingingGarbageMagnetScript::Overlap(CCollider2D* _Collider, CGameObject* 
 
 void CSwingingGarbageMagnetScript::EndOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
 {
+	if( 8 == _OtherObj->GetLayerIdx())
+	{
+
+		CGameObject* mainCam = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"MainCamera");
+		CTraceCameraScript* mainCamScpt = mainCam->GetScript<CTraceCameraScript>();
+
+		if (GetOwner() != mainCamScpt->GetTraceTarget())
+		{
+			mainCamScpt->SetTraceTarget(GetOwner());
+			StateMachine()->GetDynamicFSM()->ChangeState(L"start");
+		}
+	}
 }
 
 void CSwingingGarbageMagnetScript::tick()

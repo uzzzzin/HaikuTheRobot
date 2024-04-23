@@ -4,6 +4,7 @@
 #include <Engine/CLevelMgr.h>
 #include <Engine/CLevel.h>
 #include "CCamEventScript.h"
+#include "CRoomMgrScript.h"
 
 CTraceCameraScript::CTraceCameraScript()
 	: CScript(SCRIPT_TYPE::TRACECAMERASCRIPT)
@@ -43,6 +44,11 @@ void CTraceCameraScript::tick()
 		TargetPosX = Target->Transform()->GetRelativePos().x;
 		TargetPosY = Target->Transform()->GetRelativePos().y;
 		GetOwner()->Transform()->SetRelativePos(Vec3(TargetPosX, TargetPosY, TargetPosZ));
+	}
+
+	if (nullptr == Target) // 고정 포즈를 박아버리겠다
+	{
+		GetOwner()->Transform()->SetRelativePos(FixedPos);
 	}
 }
 

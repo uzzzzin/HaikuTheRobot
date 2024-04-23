@@ -132,6 +132,7 @@
     <ClInclude Include="CSGMNullState.h">
       <Filter>States\Boss\SwingingGarbageMagnet</Filter>
     </ClInclude>
+    <ClInclude Include="CSGMStartState.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -212,5 +213,6 @@
     <ClCompile Include="CSGMNullState.cpp">
       <Filter>States\Boss\SwingingGarbageMagnet</Filter>
     </ClCompile>
+    <ClCompile Include="CSGMStartState.cpp" />
   </ItemGroup>
 </Project>
