@@ -54,9 +54,6 @@
 #include "C:\Users\woo06\Desktop\Haiku\HaikuTheRobot\Haiku\Project\Scripts\CSwingingGarbageMagnetScript.cpp"
 
 
-#include "C:\Users\woo06\Desktop\Haiku\HaikuTheRobot\Haiku\Project\Scripts\CTraceCameraScript.cpp"
-
-
 #include "C:\Users\woo06\Desktop\Haiku\HaikuTheRobot\Haiku\Project\Scripts\Scripts.cpp"
 
 

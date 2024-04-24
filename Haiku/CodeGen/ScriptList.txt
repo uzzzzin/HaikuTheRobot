@@ -16,4 +16,3 @@ CRoomMgrScript
 CScrewScript
 CSwingingGarbageMagnetScript
 CTiredTireScript
-CTraceCameraScript

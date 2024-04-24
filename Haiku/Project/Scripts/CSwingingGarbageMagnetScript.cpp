@@ -4,7 +4,7 @@
 #include <Engine/CLevelMgr.h>
 #include <Engine/CLevel.h>
 
-#include "CTraceCameraScript.h"
+#include "CMainCameraScript.h"
 #include "CCamEventScript.h"
 
 
@@ -28,7 +28,7 @@ void CSwingingGarbageMagnetScript::begin()
 	StateMachine()->GetDynamicFSM()->ChangeState(L"null");
 
 	CGameObject* mainCam = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"MainCamera");
-	CTraceCameraScript* mainCamScpt = mainCam->GetScript<CTraceCameraScript>();
+	CMainCameraScript* mainCamScpt = mainCam->GetScript<CMainCameraScript>();
 }
 
 void CSwingingGarbageMagnetScript::BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
@@ -45,7 +45,7 @@ void CSwingingGarbageMagnetScript::EndOverlap(CCollider2D* _Collider, CGameObjec
 	{
 
 		CGameObject* mainCam = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"MainCamera");
-		CTraceCameraScript* mainCamScpt = mainCam->GetScript<CTraceCameraScript>();
+		CMainCameraScript* mainCamScpt = mainCam->GetScript<CMainCameraScript>();
 
 		if (GetOwner() != mainCamScpt->GetTraceTarget())
 		{

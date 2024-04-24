@@ -5,7 +5,6 @@
 #include <Engine/CLevel.h>
 
 #include "CRoomMgrScript.h"
-#include "CTraceCameraScript.h"
 
 CBoss1RoomScript::CBoss1RoomScript()
 	:CScript(BOSS1ROOMSCRIPT)
