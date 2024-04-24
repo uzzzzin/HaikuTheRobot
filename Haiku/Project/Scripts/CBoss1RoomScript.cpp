@@ -5,6 +5,7 @@
 #include <Engine/CLevel.h>
 
 #include "CRoomMgrScript.h"
+#include "CMainCameraScript.h"
 
 CBoss1RoomScript::CBoss1RoomScript()
 	:CScript(BOSS1ROOMSCRIPT)
@@ -22,8 +23,17 @@ void CBoss1RoomScript::begin()
 
 void CBoss1RoomScript::tick()
 {
-	//CRoomMgrScript* RoomMgrScpt = GetOwner()->GetScript<CRoomMgrScript>();
-	//RoomMgrScpt->SetCurBossRoomPos();
+	CGameObject* kingGO = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"ImtheKing");
+	CRoomMgrScript* RoomMgrScpt = kingGO->GetScript<CRoomMgrScript>();
+
+	wstring curRoom = RoomMgrScpt->GetCurRoom()->GetName();
+	if (L"ChangeRoom2" == curRoom)
+	{
+		CGameObject* MainCam = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"MainCamera");
+		CMainCameraScript* MainCamScpt = MainCam->GetScript<CMainCameraScript>();
+		MainCamScpt->SetCamType(MAIN_CAMERA_TYPE::FIXED);
+		MainCamScpt->SetFixedPos(Vec3(MainCamScpt->TargetPosXYX().x, -5, -120));
+	}
 }
 
 void CBoss1RoomScript::BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)

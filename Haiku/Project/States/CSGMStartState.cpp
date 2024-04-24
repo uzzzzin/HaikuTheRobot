@@ -25,6 +25,8 @@ void CSGMStartState::Enter()
 	CGameObject* bossDoorL = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"gbossDoorL_SGM");
 	bossDoorR->Animator2D()->Play(L"boss_Door", false);
 	bossDoorL->Animator2D()->Play(L"boss_Door", false);
+	bossDoorR->Collider2D()->Activate();
+	bossDoorL->Collider2D()->Activate();
 }
 
 void CSGMStartState::finaltick()

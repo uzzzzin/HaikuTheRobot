@@ -29,15 +29,16 @@ void CMainCameraScript::begin()
 
 void CMainCameraScript::tick()
 {
+	CCamEventScript* pScpt = GetOwner()->GetScript<CCamEventScript>();
+
 	switch (camType)
 	{
 	case MAIN_CAMERA_TYPE::TRACE:
 	{
-		CCamEventScript* pScpt = GetOwner()->GetScript<CCamEventScript>();
 
 		if (pScpt != nullptr)
 		{
-			if (CAM_EFFECT::SHAKE == pScpt->GetCurCamEffect())
+			if (CAM_EFFECT::SHAKE == pScpt->GetCurCamEffect()) // 카메라 셰이킹 먹히게 하려구
 				return;
 		}
 
@@ -52,7 +53,19 @@ void CMainCameraScript::tick()
 
 	case MAIN_CAMERA_TYPE::FIXED:
 	{
+		if (nullptr != Target)
+		{ // 타겟(하이쿠)의 위치 정보는 계속 받아올거야 
+			TargetPosX = Target->Transform()->GetRelativePos().x;
+			TargetPosY = Target->Transform()->GetRelativePos().y;
+		}
 
+		if (pScpt != nullptr)
+		{
+			if (CAM_EFFECT::SHAKE == pScpt->GetCurCamEffect())
+				return;
+		}
+
+		GetOwner()->Transform()->SetRelativePos(FixedPos);
 	}
 	break;
 

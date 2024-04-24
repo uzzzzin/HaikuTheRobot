@@ -10,16 +10,10 @@
     <ClInclude Include="CScriptMgr.h">
       <Filter>ScriptMgr</Filter>
     </ClInclude>
-    <ClInclude Include="CHaikuScript.h">
-      <Filter>Scripts</Filter>
-    </ClInclude>
     <ClInclude Include="CPlatformScript.h">
       <Filter>Scripts</Filter>
     </ClInclude>
     <ClInclude Include="CCtrlScript.h">
-      <Filter>Scripts</Filter>
-    </ClInclude>
-    <ClInclude Include="CHaikuSwordScript.h">
       <Filter>Scripts</Filter>
     </ClInclude>
     <ClInclude Include="CBackgroundScript.h">
@@ -30,15 +24,6 @@
     </ClInclude>
     <ClInclude Include="CMonsterScript.h">
       <Filter>Scripts\etc.</Filter>
-    </ClInclude>
-    <ClInclude Include="CNuttyScript.h">
-      <Filter>Scripts</Filter>
-    </ClInclude>
-    <ClInclude Include="CTiredTireScript.h">
-      <Filter>Scripts</Filter>
-    </ClInclude>
-    <ClInclude Include="CScrewScript.h">
-      <Filter>Scripts</Filter>
     </ClInclude>
     <ClInclude Include="CPlayerScript.h">
       <Filter>Scripts\etc.</Filter>
@@ -58,11 +43,26 @@
     <ClInclude Include="CBoss1RoomScript.h">
       <Filter>Scripts</Filter>
     </ClInclude>
-    <ClInclude Include="CSwingingGarbageMagnetScript.h">
-      <Filter>Scripts</Filter>
-    </ClInclude>
     <ClInclude Include="CMainCameraScript.h">
       <Filter>Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="CNuttyScript.h">
+      <Filter>Scripts\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="CScrewScript.h">
+      <Filter>Scripts\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="CTiredTireScript.h">
+      <Filter>Scripts\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="CSwingingGarbageMagnetScript.h">
+      <Filter>Scripts\Boss</Filter>
+    </ClInclude>
+    <ClInclude Include="CHaikuSwordScript.h">
+      <Filter>Scripts\Haiku</Filter>
+    </ClInclude>
+    <ClInclude Include="CHaikuScript.h">
+      <Filter>Scripts\Haiku</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -75,16 +75,10 @@
     <ClCompile Include="CScriptMgr.cpp">
       <Filter>ScriptMgr</Filter>
     </ClCompile>
-    <ClCompile Include="CHaikuScript.cpp">
-      <Filter>Scripts</Filter>
-    </ClCompile>
     <ClCompile Include="CPlatformScript.cpp">
       <Filter>Scripts</Filter>
     </ClCompile>
     <ClCompile Include="CCtrlScript.cpp">
-      <Filter>Scripts</Filter>
-    </ClCompile>
-    <ClCompile Include="CHaikuSwordScript.cpp">
       <Filter>Scripts</Filter>
     </ClCompile>
     <ClCompile Include="CBackgroundScript.cpp">
@@ -96,17 +90,8 @@
     <ClCompile Include="CMonsterScript.cpp">
       <Filter>Scripts\etc.</Filter>
     </ClCompile>
-    <ClCompile Include="CNuttyScript.cpp">
-      <Filter>Scripts</Filter>
-    </ClCompile>
     <ClCompile Include="CPlayerScript.cpp">
       <Filter>Scripts\etc.</Filter>
-    </ClCompile>
-    <ClCompile Include="CTiredTireScript.cpp">
-      <Filter>Scripts</Filter>
-    </ClCompile>
-    <ClCompile Include="CScrewScript.cpp">
-      <Filter>Scripts</Filter>
     </ClCompile>
     <ClCompile Include="CChangeRoomScript.cpp">
       <Filter>Scripts</Filter>
@@ -123,11 +108,26 @@
     <ClCompile Include="CBoss1RoomScript.cpp">
       <Filter>Scripts</Filter>
     </ClCompile>
-    <ClCompile Include="CSwingingGarbageMagnetScript.cpp">
-      <Filter>Scripts</Filter>
-    </ClCompile>
     <ClCompile Include="CMainCameraScript.cpp">
       <Filter>Scripts</Filter>
+    </ClCompile>
+    <ClCompile Include="CNuttyScript.cpp">
+      <Filter>Scripts\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="CScrewScript.cpp">
+      <Filter>Scripts\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="CTiredTireScript.cpp">
+      <Filter>Scripts\Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="CSwingingGarbageMagnetScript.cpp">
+      <Filter>Scripts\Boss</Filter>
+    </ClCompile>
+    <ClCompile Include="CHaikuSwordScript.cpp">
+      <Filter>Scripts\Haiku</Filter>
+    </ClCompile>
+    <ClCompile Include="CHaikuScript.cpp">
+      <Filter>Scripts\Haiku</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -142,6 +142,15 @@
     </Filter>
     <Filter Include="Scripts\etc.">
       <UniqueIdentifier>{7f2079cd-7ef5-4237-bbf1-6a8781bc0626}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scripts\Monster">
+      <UniqueIdentifier>{276c7957-b3c6-4533-88a3-f6827c76422a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scripts\Boss">
+      <UniqueIdentifier>{469b4a92-3822-46e0-bd3f-dfe6bf400144}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scripts\Haiku">
+      <UniqueIdentifier>{23dc7b19-e65d-4977-8a81-86ba9c752c28}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -9,6 +9,7 @@
 CRoomMgrScript::CRoomMgrScript()
 	: CScript(ROOMMGRSCRIPT)
 	, bChanging (false)
+	, curRoomName(L"ChangeRoom2")
 {
 }
 
@@ -33,8 +34,9 @@ void CRoomMgrScript::tick()
 
 void CRoomMgrScript::Change(wstring _name)
 {
-	wstring afterRoomName = map_connectedRoom.find(_name)->second;
-	CGameObject* AfterRoom = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(afterRoomName);
+	curRoomName = map_connectedRoom.find(_name)->second;
+	//wstring afterRoomName = map_connectedRoom.find(_name)->second;
+	CGameObject* AfterRoom = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(curRoomName);
 	
 	CGameObject* Haiku = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"Haiku");
 	Haiku->Transform()->SetRelativePos(Vec3(AfterRoom->Transform()->GetRelativePos().x, AfterRoom->Transform()->GetRelativePos().y+2, Haiku->Transform()->GetRelativePos().z));

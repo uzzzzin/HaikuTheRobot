@@ -33,6 +33,13 @@ void CSwingingGarbageMagnetScript::begin()
 
 void CSwingingGarbageMagnetScript::BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
 {
+	if (8 == _OtherObj->GetLayerIdx() && L"null" == curStateName)
+	{
+		CGameObject* mainCam = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"MainCamera");
+		//mainCam->GetScript<CCamEventScript>()->FadeOut(0.2f);
+		mainCam->GetScript<CCamEventScript>()->FadeIn(0.14f);
+		mainCam->GetScript<CCamEventScript>()->Shake(0.4f, 6);
+	}
 }
 
 void CSwingingGarbageMagnetScript::Overlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
@@ -45,6 +52,8 @@ void CSwingingGarbageMagnetScript::EndOverlap(CCollider2D* _Collider, CGameObjec
 	{
 
 		CGameObject* mainCam = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"MainCamera");
+		//mainCam->GetScript<CCamEventScript>()->Shake(0.6f,4);
+
 		CMainCameraScript* mainCamScpt = mainCam->GetScript<CMainCameraScript>();
 
 		if (GetOwner() != mainCamScpt->GetTraceTarget())

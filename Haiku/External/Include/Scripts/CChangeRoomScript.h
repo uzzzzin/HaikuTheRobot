@@ -4,10 +4,7 @@
 class CChangeRoomScript :
     public CScript
 {
-
     int change;
-
-
 public:
     virtual void begin() override;
     virtual void tick() override;

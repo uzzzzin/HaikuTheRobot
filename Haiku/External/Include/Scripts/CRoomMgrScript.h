@@ -1,5 +1,9 @@
 #pragma once
 #include <Engine/CScript.h>
+
+#include <Engine/CLevelMgr.h>
+#include <Engine/CLevel.h>
+
 class CRoomMgrScript :
     public CScript
 {
@@ -7,9 +11,9 @@ private:
     bool    bChanging;
     wstring curBeforeChangeRoomName;
 
-    map<wstring, wstring>   map_connectedRoom;
+    wstring curRoomName;
 
-    Vec3 curBossRoomPos; // 보스방에 들어갔을 때, 보스룸의 포지션 값을 카메라가 고정할 값으로 지정하기 위한..
+    map<wstring, wstring>   map_connectedRoom;
 
 public:
     void SetChanging(bool _b, wstring _name)
@@ -17,11 +21,10 @@ public:
         bChanging = _b;
         curBeforeChangeRoomName = _name;
     }
-    
-    void SetCurBossRoomPos(Vec3 _pos) { curBossRoomPos = _pos; }
 
 public:
-    Vec3 GetCurBossRoomPos() { return curBossRoomPos; }
+    CGameObject* GetCurRoom() { return CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(curRoomName);}
+    //wstring GetCurRoomName() { return curRoomName; }
 
 public:
     void Change(wstring _name);
