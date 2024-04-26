@@ -135,6 +135,13 @@
     <ClInclude Include="CSGMStartState.h">
       <Filter>States\Boss\SwingingGarbageMagnet</Filter>
     </ClInclude>
+    <ClInclude Include="CSGMUpOnTopState.h" />
+    <ClInclude Include="CSGMYumOnMiddleState.h">
+      <Filter>States\Boss\SwingingGarbageMagnet</Filter>
+    </ClInclude>
+    <ClInclude Include="CSGMUpToMiddleState.h">
+      <Filter>States\Boss\SwingingGarbageMagnet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -216,6 +223,13 @@
       <Filter>States\Boss\SwingingGarbageMagnet</Filter>
     </ClCompile>
     <ClCompile Include="CSGMStartState.cpp">
+      <Filter>States\Boss\SwingingGarbageMagnet</Filter>
+    </ClCompile>
+    <ClCompile Include="CSGMUpOnTopState.cpp" />
+    <ClCompile Include="CSGMYumOnMiddleState.cpp">
+      <Filter>States\Boss\SwingingGarbageMagnet</Filter>
+    </ClCompile>
+    <ClCompile Include="CSGMUpToMiddleState.cpp">
       <Filter>States\Boss\SwingingGarbageMagnet</Filter>
     </ClCompile>
   </ItemGroup>

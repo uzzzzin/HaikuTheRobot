@@ -4,6 +4,8 @@
 class CSGMStartState :
     public CState
 {
+    float accTime;
+    float duration;
 
 public:
     virtual void Enter() override;

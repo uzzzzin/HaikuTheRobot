@@ -19,6 +19,9 @@ CNuttyIdleState
 CNuttyTraceState
 CSGMNullState
 CSGMStartState
+CSGMUpOnTopState
+CSGMUpToMiddleState
+CSGMYumOnMiddleState
 CTireDieState
 CTireIdleState
 CTraceState

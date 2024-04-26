@@ -20,7 +20,7 @@ CSGMNullState::~CSGMNullState()
 void CSGMNullState::Enter()
 {
 	CSwingingGarbageMagnetScript* pScpt = GetOwnerObj()->GetScript<CSwingingGarbageMagnetScript>();
-	pScpt->SetCurStateName(L"null");
+	pScpt->SetCurStateName(L"Null");
 
 	GetOwnerObj()->Animator2D()->Play(L"SGM_null");
 
@@ -38,5 +38,5 @@ void CSGMNullState::finaltick()
 void CSGMNullState::Exit()
 {
 	CSwingingGarbageMagnetScript* pScpt = GetOwnerObj()->GetScript<CSwingingGarbageMagnetScript>();
-	pScpt->SetPrevStateName(L"null");
+	pScpt->SetPrevStateName(L"Null");
 }
