@@ -22,8 +22,8 @@
 #include "CNuttyTraceState.h"
 #include "CSGMNullState.h"
 #include "CSGMStartState.h"
-#include "CSGMUpOnTopState.h"
 #include "CSGMUpToMiddleState.h"
+#include "CSGMUpToTopState.h"
 #include "CSGMYumOnMiddleState.h"
 #include "CTireDieState.h"
 #include "CTireIdleState.h"
@@ -52,8 +52,8 @@ void CStateMgr::GetStateInfo(vector<wstring>& _vec)
 	_vec.push_back(L"CNuttyTraceState");
 	_vec.push_back(L"CSGMNullState");
 	_vec.push_back(L"CSGMStartState");
-	_vec.push_back(L"CSGMUpOnTopState");
 	_vec.push_back(L"CSGMUpToMiddleState");
+	_vec.push_back(L"CSGMUpToTopState");
 	_vec.push_back(L"CSGMYumOnMiddleState");
 	_vec.push_back(L"CTireDieState");
 	_vec.push_back(L"CTireIdleState");
@@ -104,10 +104,10 @@ CState* CStateMgr::GetState(const wstring& _strStateName)
 		return new CSGMNullState;
 	if (L"CSGMStartState" == _strStateName)
 		return new CSGMStartState;
-	if (L"CSGMUpOnTopState" == _strStateName)
-		return new CSGMUpOnTopState;
 	if (L"CSGMUpToMiddleState" == _strStateName)
 		return new CSGMUpToMiddleState;
+	if (L"CSGMUpToTopState" == _strStateName)
+		return new CSGMUpToTopState;
 	if (L"CSGMYumOnMiddleState" == _strStateName)
 		return new CSGMYumOnMiddleState;
 	if (L"CTireDieState" == _strStateName)
@@ -186,11 +186,11 @@ CState* CStateMgr::GetState(UINT _iStateType)
 	case (UINT)STATE_TYPE::SGMSTARTSTATE:
 		return new CSGMStartState;
 		break;
-	case (UINT)STATE_TYPE::SGMUPONTOPSTATE:
-		return new CSGMUpOnTopState;
-		break;
 	case (UINT)STATE_TYPE::SGMUPTOMIDDLESTATE:
 		return new CSGMUpToMiddleState;
+		break;
+	case (UINT)STATE_TYPE::SGMUPTOTOPSTATE:
+		return new CSGMUpToTopState;
 		break;
 	case (UINT)STATE_TYPE::SGMYUMONMIDDLESTATE:
 		return new CSGMYumOnMiddleState;
@@ -296,12 +296,12 @@ const wchar_t * CStateMgr::GetStateName(CState * _pState)
 		return L"CSGMStartState";
 		break;
 
-	case STATE_TYPE::SGMUPONTOPSTATE:
-		return L"CSGMUpOnTopState";
-		break;
-
 	case STATE_TYPE::SGMUPTOMIDDLESTATE:
 		return L"CSGMUpToMiddleState";
+		break;
+
+	case STATE_TYPE::SGMUPTOTOPSTATE:
+		return L"CSGMUpToTopState";
 		break;
 
 	case STATE_TYPE::SGMYUMONMIDDLESTATE:

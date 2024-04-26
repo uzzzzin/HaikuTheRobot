@@ -1,6 +1,8 @@
 #include "pch.h"
 #include "CNuttyDetectState.h"
 
+#include <Engine/CTimeMgr.h>
+
 #include <Engine/CStateMachine.h>
 
 #include <Engine/CAnimator2D.h>

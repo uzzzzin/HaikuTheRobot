@@ -1,11 +1,18 @@
 #pragma once
 #include <Engine/CState.h>
-
-class CSGMUpOnTopState :
+class CSGMUpToTopState :
     public CState
 {
+private:
+
     float accTime;
     float duration;
+
+    Vec3 prevColOffset;
+    Vec3 prevColScale;
+
+    Vec3 wantColOffset;
+    Vec3 wantColScale;
 
 public:
     virtual void Enter() override;
@@ -13,8 +20,7 @@ public:
     virtual void Exit() override;
 
 public:
-    CSGMUpOnTopState();
-    ~CSGMUpOnTopState();
+    CSGMUpToTopState();
+    ~CSGMUpToTopState();
 };
-
 

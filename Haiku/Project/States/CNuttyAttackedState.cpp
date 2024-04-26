@@ -1,6 +1,9 @@
 #include "pch.h"
 #include "CNuttyAttackedState.h"
 
+#include <Engine/CTimeMgr.h>
+
+
 #include <Engine/CTransform.h>
 #include <Engine/CStateMachine.h>
 #include <Engine/CAnimator2D.h>

@@ -63,10 +63,10 @@
 #include "C:\Users\woo06\Desktop\Haiku\HaikuTheRobot\Haiku\Project\States\CSGMStartState.cpp"
 
 
-#include "C:\Users\woo06\Desktop\Haiku\HaikuTheRobot\Haiku\Project\States\CSGMUpOnTopState.cpp"
-
-
 #include "C:\Users\woo06\Desktop\Haiku\HaikuTheRobot\Haiku\Project\States\CSGMUpToMiddleState.cpp"
+
+
+#include "C:\Users\woo06\Desktop\Haiku\HaikuTheRobot\Haiku\Project\States\CSGMUpToTopState.cpp"
 
 
 #include "C:\Users\woo06\Desktop\Haiku\HaikuTheRobot\Haiku\Project\States\CSGMYumOnMiddleState.cpp"

@@ -193,8 +193,8 @@ call CodeGen.exe</Command>
     <ClInclude Include="CNuttyTraceState.h" />
     <ClInclude Include="CSGMNullState.h" />
     <ClInclude Include="CSGMStartState.h" />
-    <ClInclude Include="CSGMUpOnTopState.h" />
     <ClInclude Include="CSGMUpToMiddleState.h" />
+    <ClInclude Include="CSGMUpToTopState.h" />
     <ClInclude Include="CSGMYumOnMiddleState.h" />
     <ClInclude Include="CStateMgr.h" />
     <ClInclude Include="CTireDieState.h" />
@@ -228,8 +228,8 @@ call CodeGen.exe</Command>
     <ClCompile Include="CNuttyTraceState.cpp" />
     <ClCompile Include="CSGMNullState.cpp" />
     <ClCompile Include="CSGMStartState.cpp" />
-    <ClCompile Include="CSGMUpOnTopState.cpp" />
     <ClCompile Include="CSGMUpToMiddleState.cpp" />
+    <ClCompile Include="CSGMUpToTopState.cpp" />
     <ClCompile Include="CSGMYumOnMiddleState.cpp" />
     <ClCompile Include="CStateMgr.cpp" />
     <ClCompile Include="CTireDieState.cpp" />
