@@ -36,7 +36,7 @@ public:
     void SetOffset(Vec3 _Offset) { m_Offset = _Offset; }
     void SetScale(Vec3 _Scale) { m_Scale = _Scale; }
     void SetRotationZ(float _Angle) { m_Rotation.z = _Angle; }
-    //void SetRotation(Vec3 _Rot) { m_Rotation = _Rot; }
+    void SetRotation(Vec3 _Rot) { m_Rotation = _Rot; }
 
     const Matrix& GetWorldMat() { return m_matColWorld; }
 

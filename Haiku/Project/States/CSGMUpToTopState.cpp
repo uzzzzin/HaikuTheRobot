@@ -26,9 +26,6 @@ void CSGMUpToTopState::Enter()
 
 	GetOwnerObj()->Animator2D()->Play(L"SGM_UpToTop", false); // 2프레임?
 
-	//GetOwnerObj()->Collider2D()->SetOffset(Vec3(0,7,0));
-	//GetOwnerObj()->Collider2D()->SetScale(Vec3(62,50,1));
-
 	wantColOffset = Vec3(0, 7, 0);
 	wantColScale = Vec3(62, 50, 1);
 }
@@ -37,16 +34,28 @@ void CSGMUpToTopState::finaltick()
 {
 	accTime += DT;
 
+	CSwingingGarbageMagnetScript* pScpt = GetOwnerObj()->GetScript<CSwingingGarbageMagnetScript>();
+	BOSS_SWINGING_GARBAGE_MAGNET stage = pScpt->GetCurStage();
+
 	if (accTime > duration)
-	{
-		ChangeState(L"YumOnTop");
-		int a = 0;
+	{	
+		switch (stage)
+		{
+		case BOSS_SWINGING_GARBAGE_MAGNET::INTRO:
+		case BOSS_SWINGING_GARBAGE_MAGNET::STAGE1:
+			ChangeState(L"YumOnTop");
+			break;
+
+		case BOSS_SWINGING_GARBAGE_MAGNET::STAGE2:
+			break;
+
+		case BOSS_SWINGING_GARBAGE_MAGNET::CLEAR:
+			break;
+		}
 	}
 	else
 	{
 		// 콜라이더 위치가 스르륵 옮겨가야해요..
-		//if()
-		int a = 0;
 
 		float ratio = accTime / duration; // 시간이 누적될수록 점점 1에 가까워짐 == 퍼센트가 오른다
 

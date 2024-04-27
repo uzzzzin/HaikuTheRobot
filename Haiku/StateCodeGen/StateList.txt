@@ -17,11 +17,15 @@ CNuttyAttackedState
 CNuttyDetectState
 CNuttyIdleState
 CNuttyTraceState
+CSGMDownAttackState
+CSGMIdleOnMiddleState
+CSGMMoveOnMiddleState
 CSGMNullState
 CSGMStartState
 CSGMUpToMiddleState
 CSGMUpToTopState
 CSGMYumOnMiddleState
+CSGMYumOnTopState
 CTireDieState
 CTireIdleState
 CTraceState

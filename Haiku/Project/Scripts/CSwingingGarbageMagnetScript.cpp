@@ -12,6 +12,9 @@ CSwingingGarbageMagnetScript::CSwingingGarbageMagnetScript()
 	:CScript(SWINGINGGARBAGEMAGNETSCRIPT)
 	, curStateName(L"None")
 	, prevStateName(L"None")
+	, curStage(BOSS_SWINGING_GARBAGE_MAGNET::INTRO)
+	, curDir(1)
+	, prevDir(0)
 {
 }
 
@@ -21,9 +24,13 @@ CSwingingGarbageMagnetScript::~CSwingingGarbageMagnetScript()
 
 void CSwingingGarbageMagnetScript::begin()
 {
+	GetRenderComponent()->GetDynamicMaterial();
+
 	CGameObject* SGMBar = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"SwingingGarbageMagnetBar");
 	SGMBar->Animator2D()->Play(L"SGM_Bar", false);
 	SGMBar->Transform()->SetRelativeScale(Vec3(400,160,1));
+
+	curStage = BOSS_SWINGING_GARBAGE_MAGNET::INTRO;
 
 	StateMachine()->GetDynamicFSM()->ChangeState(L"Null");
 
@@ -66,6 +73,8 @@ void CSwingingGarbageMagnetScript::EndOverlap(CCollider2D* _Collider, CGameObjec
 
 void CSwingingGarbageMagnetScript::tick()
 {
+	GetRenderComponent()->GetMaterial()->SetScalarParam(SCALAR_PARAM::INT_0, curDir);
+	prevDir = curDir;
 }
 
 void CSwingingGarbageMagnetScript::SaveToFile(FILE* _File)

@@ -271,11 +271,10 @@ enum class LAST_COL_DIR
 
 enum class BOSS_SWINGING_GARBAGE_MAGNET
 {
-	AWAKE,
-	DIE,
-	MOVE,
-	//ATTACK, 종류 여러개 다 분리하기..
-	NONE,
+	INTRO,
+	STAGE1,
+	STAGE2,
+	CLEAR,
 };
 
 enum class MAIN_CAMERA_TYPE

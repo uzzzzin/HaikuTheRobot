@@ -52,6 +52,24 @@
     <Filter Include="States\Boss\SwingingGarbageMagnet">
       <UniqueIdentifier>{b4c086ae-5a3f-4a5b-af6c-11566612ff98}</UniqueIdentifier>
     </Filter>
+    <Filter Include="States\Boss\SwingingGarbageMagnet\Intro">
+      <UniqueIdentifier>{ab4fed09-9ffe-481c-8abe-7dedefea7db5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States\Boss\SwingingGarbageMagnet\UpTo">
+      <UniqueIdentifier>{0f87dd53-58cb-450d-9fae-58264815e46d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States\Boss\SwingingGarbageMagnet\Yum">
+      <UniqueIdentifier>{3dfb859a-ac07-4fe0-a5ac-8c91fedac8aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States\Boss\SwingingGarbageMagnet\Attack">
+      <UniqueIdentifier>{025aba72-9273-4810-9b33-30ce7376e599}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States\Boss\SwingingGarbageMagnet\Idle">
+      <UniqueIdentifier>{390d19d7-8766-4b35-a528-d82dbc9ffa2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="States\Boss\SwingingGarbageMagnet\Move">
+      <UniqueIdentifier>{64744516-8ae9-4dc2-a442-9e3c761c26c3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -130,19 +148,31 @@
       <Filter>States\Haiku</Filter>
     </ClInclude>
     <ClInclude Include="CSGMNullState.h">
-      <Filter>States\Boss\SwingingGarbageMagnet</Filter>
+      <Filter>States\Boss\SwingingGarbageMagnet\Intro</Filter>
     </ClInclude>
     <ClInclude Include="CSGMStartState.h">
-      <Filter>States\Boss\SwingingGarbageMagnet</Filter>
-    </ClInclude>
-    <ClInclude Include="CSGMYumOnMiddleState.h">
-      <Filter>States\Boss\SwingingGarbageMagnet</Filter>
+      <Filter>States\Boss\SwingingGarbageMagnet\Intro</Filter>
     </ClInclude>
     <ClInclude Include="CSGMUpToMiddleState.h">
-      <Filter>States\Boss\SwingingGarbageMagnet</Filter>
+      <Filter>States\Boss\SwingingGarbageMagnet\UpTo</Filter>
     </ClInclude>
     <ClInclude Include="CSGMUpToTopState.h">
-      <Filter>States\Boss\SwingingGarbageMagnet</Filter>
+      <Filter>States\Boss\SwingingGarbageMagnet\UpTo</Filter>
+    </ClInclude>
+    <ClInclude Include="CSGMYumOnMiddleState.h">
+      <Filter>States\Boss\SwingingGarbageMagnet\Yum</Filter>
+    </ClInclude>
+    <ClInclude Include="CSGMYumOnTopState.h">
+      <Filter>States\Boss\SwingingGarbageMagnet\Yum</Filter>
+    </ClInclude>
+    <ClInclude Include="CSGMDownAttackState.h">
+      <Filter>States\Boss\SwingingGarbageMagnet\Attack</Filter>
+    </ClInclude>
+    <ClInclude Include="CSGMIdleOnMiddleState.h">
+      <Filter>States\Boss\SwingingGarbageMagnet\Idle</Filter>
+    </ClInclude>
+    <ClInclude Include="CSGMMoveOnMiddleState.h">
+      <Filter>States\Boss\SwingingGarbageMagnet\Move</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -222,19 +252,31 @@
       <Filter>States\Haiku</Filter>
     </ClCompile>
     <ClCompile Include="CSGMNullState.cpp">
-      <Filter>States\Boss\SwingingGarbageMagnet</Filter>
+      <Filter>States\Boss\SwingingGarbageMagnet\Intro</Filter>
     </ClCompile>
     <ClCompile Include="CSGMStartState.cpp">
-      <Filter>States\Boss\SwingingGarbageMagnet</Filter>
-    </ClCompile>
-    <ClCompile Include="CSGMYumOnMiddleState.cpp">
-      <Filter>States\Boss\SwingingGarbageMagnet</Filter>
+      <Filter>States\Boss\SwingingGarbageMagnet\Intro</Filter>
     </ClCompile>
     <ClCompile Include="CSGMUpToMiddleState.cpp">
-      <Filter>States\Boss\SwingingGarbageMagnet</Filter>
+      <Filter>States\Boss\SwingingGarbageMagnet\UpTo</Filter>
     </ClCompile>
     <ClCompile Include="CSGMUpToTopState.cpp">
-      <Filter>States\Boss\SwingingGarbageMagnet</Filter>
+      <Filter>States\Boss\SwingingGarbageMagnet\UpTo</Filter>
+    </ClCompile>
+    <ClCompile Include="CSGMYumOnMiddleState.cpp">
+      <Filter>States\Boss\SwingingGarbageMagnet\Yum</Filter>
+    </ClCompile>
+    <ClCompile Include="CSGMYumOnTopState.cpp">
+      <Filter>States\Boss\SwingingGarbageMagnet\Yum</Filter>
+    </ClCompile>
+    <ClCompile Include="CSGMDownAttackState.cpp">
+      <Filter>States\Boss\SwingingGarbageMagnet\Attack</Filter>
+    </ClCompile>
+    <ClCompile Include="CSGMIdleOnMiddleState.cpp">
+      <Filter>States\Boss\SwingingGarbageMagnet\Idle</Filter>
+    </ClCompile>
+    <ClCompile Include="CSGMMoveOnMiddleState.cpp">
+      <Filter>States\Boss\SwingingGarbageMagnet\Move</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

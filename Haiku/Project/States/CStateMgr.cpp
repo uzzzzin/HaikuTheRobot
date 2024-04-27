@@ -20,11 +20,15 @@
 #include "CNuttyDetectState.h"
 #include "CNuttyIdleState.h"
 #include "CNuttyTraceState.h"
+#include "CSGMDownAttackState.h"
+#include "CSGMIdleOnMiddleState.h"
+#include "CSGMMoveOnMiddleState.h"
 #include "CSGMNullState.h"
 #include "CSGMStartState.h"
 #include "CSGMUpToMiddleState.h"
 #include "CSGMUpToTopState.h"
 #include "CSGMYumOnMiddleState.h"
+#include "CSGMYumOnTopState.h"
 #include "CTireDieState.h"
 #include "CTireIdleState.h"
 #include "CTraceState.h"
@@ -50,11 +54,15 @@ void CStateMgr::GetStateInfo(vector<wstring>& _vec)
 	_vec.push_back(L"CNuttyDetectState");
 	_vec.push_back(L"CNuttyIdleState");
 	_vec.push_back(L"CNuttyTraceState");
+	_vec.push_back(L"CSGMDownAttackState");
+	_vec.push_back(L"CSGMIdleOnMiddleState");
+	_vec.push_back(L"CSGMMoveOnMiddleState");
 	_vec.push_back(L"CSGMNullState");
 	_vec.push_back(L"CSGMStartState");
 	_vec.push_back(L"CSGMUpToMiddleState");
 	_vec.push_back(L"CSGMUpToTopState");
 	_vec.push_back(L"CSGMYumOnMiddleState");
+	_vec.push_back(L"CSGMYumOnTopState");
 	_vec.push_back(L"CTireDieState");
 	_vec.push_back(L"CTireIdleState");
 	_vec.push_back(L"CTraceState");
@@ -100,6 +108,12 @@ CState* CStateMgr::GetState(const wstring& _strStateName)
 		return new CNuttyIdleState;
 	if (L"CNuttyTraceState" == _strStateName)
 		return new CNuttyTraceState;
+	if (L"CSGMDownAttackState" == _strStateName)
+		return new CSGMDownAttackState;
+	if (L"CSGMIdleOnMiddleState" == _strStateName)
+		return new CSGMIdleOnMiddleState;
+	if (L"CSGMMoveOnMiddleState" == _strStateName)
+		return new CSGMMoveOnMiddleState;
 	if (L"CSGMNullState" == _strStateName)
 		return new CSGMNullState;
 	if (L"CSGMStartState" == _strStateName)
@@ -110,6 +124,8 @@ CState* CStateMgr::GetState(const wstring& _strStateName)
 		return new CSGMUpToTopState;
 	if (L"CSGMYumOnMiddleState" == _strStateName)
 		return new CSGMYumOnMiddleState;
+	if (L"CSGMYumOnTopState" == _strStateName)
+		return new CSGMYumOnTopState;
 	if (L"CTireDieState" == _strStateName)
 		return new CTireDieState;
 	if (L"CTireIdleState" == _strStateName)
@@ -180,6 +196,15 @@ CState* CStateMgr::GetState(UINT _iStateType)
 	case (UINT)STATE_TYPE::NUTTYTRACESTATE:
 		return new CNuttyTraceState;
 		break;
+	case (UINT)STATE_TYPE::SGMDOWNATTACKSTATE:
+		return new CSGMDownAttackState;
+		break;
+	case (UINT)STATE_TYPE::SGMIDLEONMIDDLESTATE:
+		return new CSGMIdleOnMiddleState;
+		break;
+	case (UINT)STATE_TYPE::SGMMOVEONMIDDLESTATE:
+		return new CSGMMoveOnMiddleState;
+		break;
 	case (UINT)STATE_TYPE::SGMNULLSTATE:
 		return new CSGMNullState;
 		break;
@@ -194,6 +219,9 @@ CState* CStateMgr::GetState(UINT _iStateType)
 		break;
 	case (UINT)STATE_TYPE::SGMYUMONMIDDLESTATE:
 		return new CSGMYumOnMiddleState;
+		break;
+	case (UINT)STATE_TYPE::SGMYUMONTOPSTATE:
+		return new CSGMYumOnTopState;
 		break;
 	case (UINT)STATE_TYPE::TIREDIESTATE:
 		return new CTireDieState;
@@ -288,6 +316,18 @@ const wchar_t * CStateMgr::GetStateName(CState * _pState)
 		return L"CNuttyTraceState";
 		break;
 
+	case STATE_TYPE::SGMDOWNATTACKSTATE:
+		return L"CSGMDownAttackState";
+		break;
+
+	case STATE_TYPE::SGMIDLEONMIDDLESTATE:
+		return L"CSGMIdleOnMiddleState";
+		break;
+
+	case STATE_TYPE::SGMMOVEONMIDDLESTATE:
+		return L"CSGMMoveOnMiddleState";
+		break;
+
 	case STATE_TYPE::SGMNULLSTATE:
 		return L"CSGMNullState";
 		break;
@@ -306,6 +346,10 @@ const wchar_t * CStateMgr::GetStateName(CState * _pState)
 
 	case STATE_TYPE::SGMYUMONMIDDLESTATE:
 		return L"CSGMYumOnMiddleState";
+		break;
+
+	case STATE_TYPE::SGMYUMONTOPSTATE:
+		return L"CSGMYumOnTopState";
 		break;
 
 	case STATE_TYPE::TIREDIESTATE:

@@ -31,9 +31,27 @@ void CSGMUpToMiddleState::finaltick()
 {
 	accTime += DT;
 
+	CSwingingGarbageMagnetScript* pScpt = GetOwnerObj()->GetScript<CSwingingGarbageMagnetScript>();
+	BOSS_SWINGING_GARBAGE_MAGNET stage = pScpt->GetCurStage();
+
 	if (accTime > duration)
 	{
-		ChangeState(L"YumOnMiddle");
+		switch (stage)
+		{
+		case BOSS_SWINGING_GARBAGE_MAGNET::INTRO:
+			ChangeState(L"YumOnMiddle");
+			break;
+
+		case BOSS_SWINGING_GARBAGE_MAGNET::STAGE1:
+			ChangeState(L"IdleOnMiddle");
+			break;
+
+		case BOSS_SWINGING_GARBAGE_MAGNET::STAGE2:
+			break;
+
+		case BOSS_SWINGING_GARBAGE_MAGNET::CLEAR:
+			break;
+		}
 	}
 }
 
