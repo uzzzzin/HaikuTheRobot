@@ -7,6 +7,14 @@ class CBoss1RoomScript :
 private:
     bool bIntroDoor;
 
+    bool bCameraLock;
+
+public:
+    bool GetCameraLock() { return bCameraLock; }
+
+public:
+    void SetCameraLock(bool _lock) { bCameraLock = _lock; }
+
 public:
     virtual void tick() override;
     virtual void begin() override;

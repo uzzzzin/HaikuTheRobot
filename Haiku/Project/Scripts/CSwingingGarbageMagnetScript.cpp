@@ -6,6 +6,7 @@
 
 #include "CMainCameraScript.h"
 #include "CCamEventScript.h"
+#include "CBoss1RoomScript.h"
 
 
 CSwingingGarbageMagnetScript::CSwingingGarbageMagnetScript()
@@ -43,7 +44,7 @@ void CSwingingGarbageMagnetScript::BeginOverlap(CCollider2D* _Collider, CGameObj
 	if (8 == _OtherObj->GetLayerIdx() && L"Null" == curStateName) // 맨 처음 보스 타격 -> 카메라 고정
 	{
 		CGameObject* mainCam = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"MainCamera");
-		//mainCam->GetScript<CCamEventScript>()->FadeOut(0.2f);
+		
 		mainCam->GetScript<CCamEventScript>()->FadeIn(0.14f);
 		mainCam->GetScript<CCamEventScript>()->Shake(0.36f, 6);
 	}
@@ -59,13 +60,18 @@ void CSwingingGarbageMagnetScript::EndOverlap(CCollider2D* _Collider, CGameObjec
 	{
 
 		CGameObject* mainCam = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"MainCamera");
-		//mainCam->GetScript<CCamEventScript>()->Shake(0.6f,4);
 
 		CMainCameraScript* mainCamScpt = mainCam->GetScript<CMainCameraScript>();
 
 		if (GetOwner() != mainCamScpt->GetTraceTarget())
 		{
-			mainCamScpt->SetTraceTarget(GetOwner());
+			//mainCamScpt->SetTraceTarget(GetOwner());
+			
+			CGameObject* boss1room = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"ggbossc2");
+			CBoss1RoomScript* scpt = boss1room->GetScript<CBoss1RoomScript>();
+			scpt->SetCameraLock(true);
+
+			mainCamScpt->SetFixedPos(Vec3(GetOwner()->Transform()->GetRelativePos().x, -5,-120));
 			StateMachine()->GetDynamicFSM()->ChangeState(L"Start");
 		}
 	}

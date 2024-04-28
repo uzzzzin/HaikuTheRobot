@@ -10,6 +10,7 @@
 CBoss1RoomScript::CBoss1RoomScript()
 	:CScript(BOSS1ROOMSCRIPT)
 	, bIntroDoor(false)
+	, bCameraLock(false)
 {
 }
 
@@ -31,8 +32,16 @@ void CBoss1RoomScript::tick()
 	{
 		CGameObject* MainCam = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"MainCamera");
 		CMainCameraScript* MainCamScpt = MainCam->GetScript<CMainCameraScript>();
-		MainCamScpt->SetCamType(MAIN_CAMERA_TYPE::FIXED);
-		MainCamScpt->SetFixedPos(Vec3(MainCamScpt->TargetPosXYX().x, -5, -120));
+		
+		if (false == bCameraLock)
+		{
+			MainCamScpt->SetCamType(MAIN_CAMERA_TYPE::FIXED);
+			MainCamScpt->SetFixedPos(Vec3(MainCamScpt->TargetPosXYX().x, -5, -120));
+		}
+		else // CameraLock == true
+		{
+
+		}
 	}
 }
 
