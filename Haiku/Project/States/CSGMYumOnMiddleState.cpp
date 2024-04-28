@@ -49,7 +49,6 @@ void CSGMYumOnMiddleState::finaltick()
 		switch (stage)
 		{
 		case BOSS_SWINGING_GARBAGE_MAGNET::INTRO:
-			pScpt->SetCurStage(BOSS_SWINGING_GARBAGE_MAGNET::STAGE1);
 			ChangeState(L"UpToTop");
 			break;
 
@@ -63,10 +62,6 @@ void CSGMYumOnMiddleState::finaltick()
 		case BOSS_SWINGING_GARBAGE_MAGNET::CLEAR:
 			break;
 		}
-	}
-	else
-	{
-		//f(accTime) 틱단위 콜라이더 오프셋 조정은 나중에 언젠간..
 	}
 }
 

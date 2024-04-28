@@ -1,33 +1,35 @@
 #include "pch.h"
-#include "CSGMUpToMiddleState.h"
+#include "CSGMChangeDirState.h"
 
 #include <Scripts/CSwingingGarbageMagnetScript.h>
 
-CSGMUpToMiddleState::CSGMUpToMiddleState()
-	: CState(STATE_TYPE::SGMUPTOMIDDLESTATE)
+CSGMChangeDirState::CSGMChangeDirState()
+	: CState(STATE_TYPE::SGMCHANGEDIRSTATE)
 	, accTime(0)
 	, duration(0.4f)
 {
 }
 
-CSGMUpToMiddleState::~CSGMUpToMiddleState()
+CSGMChangeDirState::~CSGMChangeDirState()
 {
 }
 
-
-void CSGMUpToMiddleState::Enter()
+void CSGMChangeDirState::Enter()
 {
 	CSwingingGarbageMagnetScript* pScpt = GetOwnerObj()->GetScript<CSwingingGarbageMagnetScript>();
-	pScpt->SetCurStateName(L"UpToMiddle");
+	pScpt->SetCurStateName(L"ChangeDir");
 
-	accTime = 0;
+	GetOwnerObj()->Animator2D()->Play(L"SGM_ChangeDir", false); // 4 ÇÁ·¹ÀÓ
 
-	GetOwnerObj()->Animator2D()->Play(L"SGM_UpToMiddle", false);
-	GetOwnerObj()->Collider2D()->SetOffset(Vec3(0, -44, 0));
-	GetOwnerObj()->Collider2D()->SetScale(Vec3(62, 56, 1));
+	int dir = pScpt->GetCurDir();
+
+	if (0 == dir)
+		pScpt->SetCurDir(1);
+	if (1 == dir)
+		pScpt->SetCurDir(0);
 }
 
-void CSGMUpToMiddleState::finaltick()
+void CSGMChangeDirState::finaltick()
 {
 	accTime += DT;
 
@@ -39,12 +41,6 @@ void CSGMUpToMiddleState::finaltick()
 		switch (stage)
 		{
 		case BOSS_SWINGING_GARBAGE_MAGNET::INTRO:
-			++introCnt;
-			if (1 < introCnt)
-			{
-				pScpt->SetCurStage(BOSS_SWINGING_GARBAGE_MAGNET::STAGE1);
-			}
-			ChangeState(L"YumOnMiddle");
 			break;
 
 		case BOSS_SWINGING_GARBAGE_MAGNET::STAGE1:
@@ -60,8 +56,8 @@ void CSGMUpToMiddleState::finaltick()
 	}
 }
 
-void CSGMUpToMiddleState::Exit()
+void CSGMChangeDirState::Exit()
 {
 	CSwingingGarbageMagnetScript* pScpt = GetOwnerObj()->GetScript<CSwingingGarbageMagnetScript>();
-	pScpt->SetPrevStateName(L"UpToMiddle");
+	pScpt->SetPrevStateName(L"ChangeDir");
 }

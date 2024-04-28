@@ -1,22 +1,19 @@
 #pragma once
 #include <Engine/CState.h>
 
-class CSGMUpToMiddleState :
+class CSGMChangeDirState :
     public CState
 {
+private:
     float accTime;
     float duration;
-
-    int introCnt;
-
 public:
     virtual void Enter() override;
     virtual void finaltick() override;
     virtual void Exit() override;
 
 public:
-    CSGMUpToMiddleState();
-    ~CSGMUpToMiddleState();
+    CSGMChangeDirState();
+    ~CSGMChangeDirState();
 };
-
 

@@ -39,6 +39,8 @@ void CSGMYumOnTopState::finaltick()
 		switch (stage)
 		{
 		case BOSS_SWINGING_GARBAGE_MAGNET::INTRO:
+			ChangeState(L"DownAttack");
+			break;
 		case BOSS_SWINGING_GARBAGE_MAGNET::STAGE1:
 			ChangeState(L"DownAttack");
 			break;

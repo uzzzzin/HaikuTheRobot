@@ -70,6 +70,9 @@
     <Filter Include="States\Boss\SwingingGarbageMagnet\Move">
       <UniqueIdentifier>{64744516-8ae9-4dc2-a442-9e3c761c26c3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="States\Boss\SwingingGarbageMagnet\Change">
+      <UniqueIdentifier>{d6069f24-d0cc-4304-bd4f-cf2360141d63}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -174,6 +177,9 @@
     <ClInclude Include="CSGMMoveOnMiddleState.h">
       <Filter>States\Boss\SwingingGarbageMagnet\Move</Filter>
     </ClInclude>
+    <ClInclude Include="CSGMChangeDirState.h">
+      <Filter>States\Boss\SwingingGarbageMagnet\Change</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -277,6 +283,9 @@
     </ClCompile>
     <ClCompile Include="CSGMMoveOnMiddleState.cpp">
       <Filter>States\Boss\SwingingGarbageMagnet\Move</Filter>
+    </ClCompile>
+    <ClCompile Include="CSGMChangeDirState.cpp">
+      <Filter>States\Boss\SwingingGarbageMagnet\Change</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -20,6 +20,7 @@
 #include "CNuttyDetectState.h"
 #include "CNuttyIdleState.h"
 #include "CNuttyTraceState.h"
+#include "CSGMChangeDirState.h"
 #include "CSGMDownAttackState.h"
 #include "CSGMIdleOnMiddleState.h"
 #include "CSGMMoveOnMiddleState.h"
@@ -54,6 +55,7 @@ void CStateMgr::GetStateInfo(vector<wstring>& _vec)
 	_vec.push_back(L"CNuttyDetectState");
 	_vec.push_back(L"CNuttyIdleState");
 	_vec.push_back(L"CNuttyTraceState");
+	_vec.push_back(L"CSGMChangeDirState");
 	_vec.push_back(L"CSGMDownAttackState");
 	_vec.push_back(L"CSGMIdleOnMiddleState");
 	_vec.push_back(L"CSGMMoveOnMiddleState");
@@ -108,6 +110,8 @@ CState* CStateMgr::GetState(const wstring& _strStateName)
 		return new CNuttyIdleState;
 	if (L"CNuttyTraceState" == _strStateName)
 		return new CNuttyTraceState;
+	if (L"CSGMChangeDirState" == _strStateName)
+		return new CSGMChangeDirState;
 	if (L"CSGMDownAttackState" == _strStateName)
 		return new CSGMDownAttackState;
 	if (L"CSGMIdleOnMiddleState" == _strStateName)
@@ -195,6 +199,9 @@ CState* CStateMgr::GetState(UINT _iStateType)
 		break;
 	case (UINT)STATE_TYPE::NUTTYTRACESTATE:
 		return new CNuttyTraceState;
+		break;
+	case (UINT)STATE_TYPE::SGMCHANGEDIRSTATE:
+		return new CSGMChangeDirState;
 		break;
 	case (UINT)STATE_TYPE::SGMDOWNATTACKSTATE:
 		return new CSGMDownAttackState;
@@ -314,6 +321,10 @@ const wchar_t * CStateMgr::GetStateName(CState * _pState)
 
 	case STATE_TYPE::NUTTYTRACESTATE:
 		return L"CNuttyTraceState";
+		break;
+
+	case STATE_TYPE::SGMCHANGEDIRSTATE:
+		return L"CSGMChangeDirState";
 		break;
 
 	case STATE_TYPE::SGMDOWNATTACKSTATE:

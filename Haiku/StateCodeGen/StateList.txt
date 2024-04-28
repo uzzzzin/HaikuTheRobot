@@ -17,6 +17,7 @@ CNuttyAttackedState
 CNuttyDetectState
 CNuttyIdleState
 CNuttyTraceState
+CSGMChangeDirState
 CSGMDownAttackState
 CSGMIdleOnMiddleState
 CSGMMoveOnMiddleState

@@ -43,7 +43,16 @@ void CSGMIdleOnMiddleState::finaltick()
 			break;
 
 		case BOSS_SWINGING_GARBAGE_MAGNET::STAGE1:
-			ChangeState(L"YumOnMiddle");
+
+			if (L"ChangeDir" == pScpt->GetPrevStateName())
+			{
+				ChangeState(L"UpToTop");
+			}
+
+			if (L"UpToMiddle" == pScpt->GetPrevStateName())
+			{
+				ChangeState(L"YumOnMiddle");
+			}
 			break;
 
 		case BOSS_SWINGING_GARBAGE_MAGNET::STAGE2:

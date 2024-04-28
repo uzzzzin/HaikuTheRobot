@@ -7,6 +7,8 @@ class CSGMUpToMiddleState :
     float accTime;
     float duration;
 
+    int introCnt;
+
 public:
     virtual void Enter() override;
     virtual void finaltick() override;

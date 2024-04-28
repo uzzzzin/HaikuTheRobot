@@ -39,11 +39,12 @@ void CSGMDownAttackState::finaltick()
 
 	if (accTime > duration)
 	{
-		//ChangeState(L"IdleOnMiddle");
-
 		switch (stage)
 		{
 		case BOSS_SWINGING_GARBAGE_MAGNET::INTRO:
+			ChangeState(L"UpToMiddle");
+			break;
+
 		case BOSS_SWINGING_GARBAGE_MAGNET::STAGE1:
 			ChangeState(L"UpToMiddle");
 			break;

@@ -191,6 +191,7 @@ call CodeGen.exe</Command>
     <ClInclude Include="CNuttyDetectState.h" />
     <ClInclude Include="CNuttyIdleState.h" />
     <ClInclude Include="CNuttyTraceState.h" />
+    <ClInclude Include="CSGMChangeDirState.h" />
     <ClInclude Include="CSGMDownAttackState.h" />
     <ClInclude Include="CSGMIdleOnMiddleState.h" />
     <ClInclude Include="CSGMMoveOnMiddleState.h" />
@@ -230,6 +231,7 @@ call CodeGen.exe</Command>
     <ClCompile Include="CNuttyDetectState.cpp" />
     <ClCompile Include="CNuttyIdleState.cpp" />
     <ClCompile Include="CNuttyTraceState.cpp" />
+    <ClCompile Include="CSGMChangeDirState.cpp" />
     <ClCompile Include="CSGMDownAttackState.cpp" />
     <ClCompile Include="CSGMIdleOnMiddleState.cpp" />
     <ClCompile Include="CSGMMoveOnMiddleState.cpp" />
