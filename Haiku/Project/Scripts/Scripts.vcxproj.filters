@@ -64,6 +64,9 @@
     <ClInclude Include="CHaikuScript.h">
       <Filter>Scripts\Haiku</Filter>
     </ClInclude>
+    <ClInclude Include="CTrashBallScript.h">
+      <Filter>Scripts\Monster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -128,6 +131,9 @@
     </ClCompile>
     <ClCompile Include="CHaikuScript.cpp">
       <Filter>Scripts\Haiku</Filter>
+    </ClCompile>
+    <ClCompile Include="CTrashBallScript.cpp">
+      <Filter>Scripts\Monster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

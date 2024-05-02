@@ -30,3 +30,6 @@ CSGMYumOnTopState
 CTireDieState
 CTireIdleState
 CTraceState
+CTrashBallDestroyState
+CTrashBallDropState
+CTrashBallSpawnState

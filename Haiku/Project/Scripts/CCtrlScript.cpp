@@ -19,6 +19,9 @@ CCtrlScript::CCtrlScript()
 	CCollisionMgr::GetInst()->LayerCheck(5, 2); // ¸ó½ºÅÍ & ÇÃ·§Æû
 
 	CCollisionMgr::GetInst()->LayerCheck(4, 10); // ÇÏÀÌÄí & Ã¼ÀÎÁö·ë
+
+
+	CCollisionMgr::GetInst()->LayerCheck(11, 2); // TrashBall & ÇÃ·§Æû
 }
 
 CCtrlScript::~CCtrlScript()

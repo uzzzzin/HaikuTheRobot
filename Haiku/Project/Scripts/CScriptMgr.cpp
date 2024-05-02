@@ -19,6 +19,7 @@
 #include "CScrewScript.h"
 #include "CSwingingGarbageMagnetScript.h"
 #include "CTiredTireScript.h"
+#include "CTrashBallScript.h"
 
 void CScriptMgr::GetScriptInfo(vector<wstring>& _vec)
 {
@@ -40,6 +41,7 @@ void CScriptMgr::GetScriptInfo(vector<wstring>& _vec)
 	_vec.push_back(L"CScrewScript");
 	_vec.push_back(L"CSwingingGarbageMagnetScript");
 	_vec.push_back(L"CTiredTireScript");
+	_vec.push_back(L"CTrashBallScript");
 }
 
 CScript * CScriptMgr::GetScript(const wstring& _strScriptName)
@@ -80,6 +82,8 @@ CScript * CScriptMgr::GetScript(const wstring& _strScriptName)
 		return new CSwingingGarbageMagnetScript;
 	if (L"CTiredTireScript" == _strScriptName)
 		return new CTiredTireScript;
+	if (L"CTrashBallScript" == _strScriptName)
+		return new CTrashBallScript;
 	return nullptr;
 }
 
@@ -140,6 +144,9 @@ CScript * CScriptMgr::GetScript(UINT _iScriptType)
 		break;
 	case (UINT)SCRIPT_TYPE::TIREDTIRESCRIPT:
 		return new CTiredTireScript;
+		break;
+	case (UINT)SCRIPT_TYPE::TRASHBALLSCRIPT:
+		return new CTrashBallScript;
 		break;
 	}
 	return nullptr;
@@ -219,6 +226,10 @@ const wchar_t * CScriptMgr::GetScriptName(CScript * _pScript)
 
 	case SCRIPT_TYPE::TIREDTIRESCRIPT:
 		return L"CTiredTireScript";
+		break;
+
+	case SCRIPT_TYPE::TRASHBALLSCRIPT:
+		return L"CTrashBallScript";
 		break;
 
 	}

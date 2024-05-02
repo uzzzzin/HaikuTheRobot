@@ -11,6 +11,9 @@
 #include <list>
 #include <map>
 
+#include <cstdlib>
+#include <ctime>
+
 using std::vector;
 using std::list;
 using std::map;

@@ -12,12 +12,20 @@ private:
     int curDir; // 현재 방향          // R 1, L 0
     int prevDir; // 1틱 전 방향       
 
+private:
+    int HaikuColCnt; // 하이쿠한테 맞은 횟수
+
+    int Stage1Cnt; // 1스테이지  히트 카운트
+    int Stage2Cnt; // 2스테이지 히트 카운트
+
 public:
     wstring GetCurStateName() { return curStateName; }
     wstring GetPrevStateName() { return prevStateName; }
     BOSS_SWINGING_GARBAGE_MAGNET GetCurStage() { return curStage; }
     int GetCurDir() { return curDir; }
     int GetPrevDir() { return prevDir; }
+
+    int GetHaikuColCnt() { return HaikuColCnt; }
 
 public:
     void SetCurStateName(wstring _stateName) { curStateName = _stateName; }

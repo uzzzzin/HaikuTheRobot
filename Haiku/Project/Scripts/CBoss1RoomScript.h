@@ -9,11 +9,16 @@ private:
 
     bool bCameraLock;
 
+    int  curTrashBallCnt;
+
 public:
     bool GetCameraLock() { return bCameraLock; }
+    int  GetCurTrashBallCnt() { return curTrashBallCnt; }
 
 public:
     void SetCameraLock(bool _lock) { bCameraLock = _lock; }
+    void MinusCurTrashBallCnt() { --curTrashBallCnt; }
+    void PlusCurTrashBallCnt() { ++curTrashBallCnt; }
 
 public:
     virtual void tick() override;

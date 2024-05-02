@@ -30,6 +30,7 @@ public:
 
 protected:
     void Instantiate(Ptr<CPrefab> _Prefab, Vec3 _vWorldPos, int _LayerIdx);
+    CGameObject* Instantiate_GO(Ptr<CPrefab> _Prefab, Vec3 _vWorldPos, int _LayerIdx);
     void AddScriptParam(SCRIPT_PARAM _Param, const string& _Desc, void* _Data) { m_ScriptParam.push_back(tScriptParam{ _Param , _Desc, _Data }); }
 
 public:

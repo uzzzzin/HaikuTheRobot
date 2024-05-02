@@ -33,6 +33,9 @@
 #include "CTireDieState.h"
 #include "CTireIdleState.h"
 #include "CTraceState.h"
+#include "CTrashBallDestroyState.h"
+#include "CTrashBallDropState.h"
+#include "CTrashBallSpawnState.h"
 
 void CStateMgr::GetStateInfo(vector<wstring>& _vec)
 {
@@ -68,6 +71,9 @@ void CStateMgr::GetStateInfo(vector<wstring>& _vec)
 	_vec.push_back(L"CTireDieState");
 	_vec.push_back(L"CTireIdleState");
 	_vec.push_back(L"CTraceState");
+	_vec.push_back(L"CTrashBallDestroyState");
+	_vec.push_back(L"CTrashBallDropState");
+	_vec.push_back(L"CTrashBallSpawnState");
 }
 
 CState* CStateMgr::GetState(const wstring& _strStateName)
@@ -136,6 +142,12 @@ CState* CStateMgr::GetState(const wstring& _strStateName)
 		return new CTireIdleState;
 	if (L"CTraceState" == _strStateName)
 		return new CTraceState;
+	if (L"CTrashBallDestroyState" == _strStateName)
+		return new CTrashBallDestroyState;
+	if (L"CTrashBallDropState" == _strStateName)
+		return new CTrashBallDropState;
+	if (L"CTrashBallSpawnState" == _strStateName)
+		return new CTrashBallSpawnState;
 	return nullptr;
 }
 
@@ -238,6 +250,15 @@ CState* CStateMgr::GetState(UINT _iStateType)
 		break;
 	case (UINT)STATE_TYPE::TRACESTATE:
 		return new CTraceState;
+		break;
+	case (UINT)STATE_TYPE::TRASHBALLDESTROYSTATE:
+		return new CTrashBallDestroyState;
+		break;
+	case (UINT)STATE_TYPE::TRASHBALLDROPSTATE:
+		return new CTrashBallDropState;
+		break;
+	case (UINT)STATE_TYPE::TRASHBALLSPAWNSTATE:
+		return new CTrashBallSpawnState;
 		break;
 	}
 	return nullptr;
@@ -373,6 +394,18 @@ const wchar_t * CStateMgr::GetStateName(CState * _pState)
 
 	case STATE_TYPE::TRACESTATE:
 		return L"CTraceState";
+		break;
+
+	case STATE_TYPE::TRASHBALLDESTROYSTATE:
+		return L"CTrashBallDestroyState";
+		break;
+
+	case STATE_TYPE::TRASHBALLDROPSTATE:
+		return L"CTrashBallDropState";
+		break;
+
+	case STATE_TYPE::TRASHBALLSPAWNSTATE:
+		return L"CTrashBallSpawnState";
 		break;
 
 	}

@@ -208,6 +208,9 @@ call CodeGen.exe</Command>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">아니오</ExcludedFromBuild>
     </ClInclude>
     <ClInclude Include="CTraceState.h" />
+    <ClInclude Include="CTrashBallDestroyState.h" />
+    <ClInclude Include="CTrashBallDropState.h" />
+    <ClInclude Include="CTrashBallSpawnState.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
@@ -248,6 +251,9 @@ call CodeGen.exe</Command>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">아니오</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="CTraceState.cpp" />
+    <ClCompile Include="CTrashBallDestroyState.cpp" />
+    <ClCompile Include="CTrashBallDropState.cpp" />
+    <ClCompile Include="CTrashBallSpawnState.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

@@ -8,6 +8,8 @@
 #include "CCamEventScript.h"
 #include "CBoss1RoomScript.h"
 
+#include "CTrashBallScript.h"
+
 
 CSwingingGarbageMagnetScript::CSwingingGarbageMagnetScript()
 	:CScript(SWINGINGGARBAGEMAGNETSCRIPT)
@@ -16,6 +18,9 @@ CSwingingGarbageMagnetScript::CSwingingGarbageMagnetScript()
 	, curStage(BOSS_SWINGING_GARBAGE_MAGNET::INTRO)
 	, curDir(1)
 	, prevDir(0)
+	, HaikuColCnt(0)
+	, Stage1Cnt(10)
+	, Stage2Cnt(10)
 {
 }
 
@@ -37,6 +42,9 @@ void CSwingingGarbageMagnetScript::begin()
 
 	CGameObject* mainCam = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"MainCamera");
 	CMainCameraScript* mainCamScpt = mainCam->GetScript<CMainCameraScript>();
+
+	//TrashBall = CAssetMgr::GetInst()->FindAsset<CPrefab>(L"TrashBall");
+	//TrashBall = CAssetMgr::GetInst()->Load<CPrefab>(L"TrashBall", L"prefab\\TrashBall.pref");
 }
 
 void CSwingingGarbageMagnetScript::BeginOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
@@ -56,24 +64,35 @@ void CSwingingGarbageMagnetScript::Overlap(CCollider2D* _Collider, CGameObject* 
 
 void CSwingingGarbageMagnetScript::EndOverlap(CCollider2D* _Collider, CGameObject* _OtherObj, CCollider2D* _OtherCollider)
 {
-	if( 8 == _OtherObj->GetLayerIdx() && L"Null" == curStateName)
+	if( 8 == _OtherObj->GetLayerIdx()) // 하이쿠의 검
 	{
-
-		CGameObject* mainCam = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"MainCamera");
-
-		CMainCameraScript* mainCamScpt = mainCam->GetScript<CMainCameraScript>();
-
-		if (GetOwner() != mainCamScpt->GetTraceTarget())
+		if (0 == HaikuColCnt) // Stage 1
 		{
-			//mainCamScpt->SetTraceTarget(GetOwner());
-			
-			CGameObject* boss1room = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"ggbossc2");
-			CBoss1RoomScript* scpt = boss1room->GetScript<CBoss1RoomScript>();
-			scpt->SetCameraLock(true);
+			if (L"Null" == curStateName) 
+			{
+				CGameObject* mainCam = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"MainCamera");
 
-			mainCamScpt->SetFixedPos(Vec3(GetOwner()->Transform()->GetRelativePos().x, -5,-120));
-			StateMachine()->GetDynamicFSM()->ChangeState(L"Start");
+				CMainCameraScript* mainCamScpt = mainCam->GetScript<CMainCameraScript>();
+
+				if (GetOwner() != mainCamScpt->GetTraceTarget())
+				{
+					CGameObject* boss1room = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"ggbossc2");
+					CBoss1RoomScript* scpt = boss1room->GetScript<CBoss1RoomScript>();
+					scpt->SetCameraLock(true);
+
+					mainCamScpt->SetFixedPos(Vec3(GetOwner()->Transform()->GetRelativePos().x, -5, -120));
+					StateMachine()->GetDynamicFSM()->ChangeState(L"Start");
+				}
+			}
 		}
+
+		if (HaikuColCnt >= Stage1Cnt) // 스테이지1이 끝날 시점이 되었어요 -> 스테이지2로 넘어갑시다
+		{
+			curStage = BOSS_SWINGING_GARBAGE_MAGNET::STAGE2;
+			//StateMachine()->GetDynamicFSM()->ChangeState(L"Null2State");
+		}
+		
+		++HaikuColCnt;
 	}
 }
 
@@ -81,6 +100,11 @@ void CSwingingGarbageMagnetScript::tick()
 {
 	GetRenderComponent()->GetMaterial()->SetScalarParam(SCALAR_PARAM::INT_0, curDir);
 	prevDir = curDir;
+
+	if (L"DownAttack" == curStateName)
+	{
+		//CGameObject* tbGO = Instantiate_GO(TrashBall, GetOwner()->Transform()->GetRelativePos(), 11);
+	}
 }
 
 void CSwingingGarbageMagnetScript::SaveToFile(FILE* _File)

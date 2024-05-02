@@ -1,6 +1,9 @@
 #include "pch.h"
 #include "CSGMDownAttackState.h"
 
+#include <Engine/CLevelMgr.h>
+#include <Engine/CLevel.h>
+
 #include <Scripts/CSwingingGarbageMagnetScript.h>
 
 CSGMDownAttackState::CSGMDownAttackState()
@@ -28,6 +31,18 @@ void CSGMDownAttackState::Enter()
 
 	wantColOffset = Vec3(0, -49, 0);
 	wantColScale = Vec3(62, 57, 1);
+
+
+	Ptr<CPrefab> tb	= CAssetMgr::GetInst()->FindAsset<CPrefab>(L"TrashBall");
+	tb = CAssetMgr::GetInst()->Load<CPrefab>(L"TrashBall", L"prefab\\TrashBall.pref");
+
+	if (tb != nullptr)
+	{
+		CGameObject* tbGO = tb->Instantiate();
+		GamePlayStatic::SpawnGameObject(tbGO, 11);
+	}
+
+
 }
 
 void CSGMDownAttackState::finaltick()

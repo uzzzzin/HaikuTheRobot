@@ -73,6 +73,9 @@
     <Filter Include="States\Boss\SwingingGarbageMagnet\Change">
       <UniqueIdentifier>{d6069f24-d0cc-4304-bd4f-cf2360141d63}</UniqueIdentifier>
     </Filter>
+    <Filter Include="States\Monster\TrashBall">
+      <UniqueIdentifier>{5c824c34-cb06-4ee4-8fca-e1883ca95ebe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -180,6 +183,15 @@
     <ClInclude Include="CSGMChangeDirState.h">
       <Filter>States\Boss\SwingingGarbageMagnet\Change</Filter>
     </ClInclude>
+    <ClInclude Include="CTrashBallDropState.h">
+      <Filter>States\Monster\TrashBall</Filter>
+    </ClInclude>
+    <ClInclude Include="CTrashBallSpawnState.h">
+      <Filter>States\Monster\TrashBall</Filter>
+    </ClInclude>
+    <ClInclude Include="CTrashBallDestroyState.h">
+      <Filter>States\Monster\TrashBall</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
@@ -286,6 +298,15 @@
     </ClCompile>
     <ClCompile Include="CSGMChangeDirState.cpp">
       <Filter>States\Boss\SwingingGarbageMagnet\Change</Filter>
+    </ClCompile>
+    <ClCompile Include="CTrashBallDropState.cpp">
+      <Filter>States\Monster\TrashBall</Filter>
+    </ClCompile>
+    <ClCompile Include="CTrashBallSpawnState.cpp">
+      <Filter>States\Monster\TrashBall</Filter>
+    </ClCompile>
+    <ClCompile Include="CTrashBallDestroyState.cpp">
+      <Filter>States\Monster\TrashBall</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -29,6 +29,20 @@ void CScript::Instantiate(Ptr<CPrefab> _Prefab, Vec3 _vWorldPos, int _layerIdx)
 	GamePlayStatic::SpawnGameObject(pNewObj, _layerIdx);
 }
 
+CGameObject* CScript::Instantiate_GO(Ptr<CPrefab> _Prefab, Vec3 _vWorldPos, int _layerIdx)
+{
+	if (nullptr == _Prefab)
+		return nullptr;
+
+	CGameObject* pNewObj = _Prefab->Instantiate();
+
+	pNewObj->Transform()->SetRelativePos(_vWorldPos);
+
+	GamePlayStatic::SpawnGameObject(pNewObj, _layerIdx);
+
+	return pNewObj;
+}
+
 void CScript::SaveToFile(FILE* _File)
 {
 
