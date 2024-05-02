@@ -11,6 +11,9 @@ private:
     float spawnAccTime;
     float spawnTime;
 
+    Vec3 prevPos;
+    float spawnDistance; // 일정 y값이 되면 tb 생성
+
     bool bSpawnNextTB;
 
 public:

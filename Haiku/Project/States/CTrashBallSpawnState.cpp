@@ -17,6 +17,7 @@ CTrashBallSpawnState::CTrashBallSpawnState()
 	, spawnAccTime(0)
 	, spawnTime(0.35f)
 	, bSpawnNextTB(false)
+	, spawnDistance(-20.f)
 {
 }
 
@@ -37,6 +38,8 @@ void CTrashBallSpawnState::Enter()
 	CBoss1RoomScript* RoomScpt = boss1room->GetScript<CBoss1RoomScript>();
 
 	RoomScpt->PlusCurTrashBallCnt();
+
+	prevPos = GetOwnerObj()->Transform()->GetRelativePos();
 }
 
 void CTrashBallSpawnState::finaltick()
@@ -50,7 +53,8 @@ void CTrashBallSpawnState::finaltick()
 		ChangeState(L"Drop");
 	}
 
-	if (spawnAccTime >= spawnTime) // 스폰시간이 되었으면 
+	//if (spawnAccTime >= spawnTime) // 스폰시간이 되었으면 
+	if(GetOwnerObj()->Transform()->GetRelativePos().y >= prevPos.y + spawnDistance)
 	{
 		CGameObject* boss1room = CLevelMgr::GetInst()->GetCurrentLevel()->FindObjectByName(L"ggbossc2");
 		CBoss1RoomScript* RoomScpt = boss1room->GetScript<CBoss1RoomScript>();
